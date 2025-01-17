@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UM - XAIR | Project</title>
+    <link rel="icon" href="assets/nighfury-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, black, #1a1a1a);
+            color: white;
+        }
+        .customfont {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="pt-10 bg-gradient-to-tr from-black via-black to-indigo-900 fade-in">
+
+    <div class="flex justify-center">
+        <header class="w-[85%] flex flex-col items-center justify-between px-6 py-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10">
+            <div class="flex items-center w-full justify-between">
+                <div class="flex items-center">
+                    <img src="assets/nighfury-black.png" alt="Logo" class="w-12 h-12">
+                    <div class="ml-3">
+                        <h1 class="text-lg font-semibold">UM - XAIR</h1>
+                        <p class="text-sm text-gray-400">Project Hub</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#features" class="text-md">Features</a>
+                    <a href="#about" class="text-md">About</a>
+                    <a href="#try-now" class="w-40 text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
+                </nav>
+                <button class="lg:hidden text-white" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-center text-white hidden" id="mobile-menu">
+                <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#features" class="text-md py-2">Features</a>
+                    <a href="#about" class="text-md py-2">About</a>
+                    <a href="#try-now" class="w-40 mx-auto text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <main class="flex flex-col items-center justify-center text-center mt-20 md:mt-40">
+        <div class="px-4 mt-10 md:mt-2">
+            <p class="text-xs md:text-sm mb-2 md:mb-4">Enter the Future Project</p>
+            <h1 class="text-4xl md:text-7xl font-bold mb-3 md:mb-4">Tailwind CSS Gradient</h1>
+            <p class="text-sm md:text-lg mb-4 md:mb-6">
+                Simplify your workflow with our intuitive and powerful tools designed to keep you ahead.
+            </p>
+        </div>
+        <div class="flex md:space-x-4 space-x-2">
+            <a href="#" class="flex items-center justify-center px-6 py-4 w-40 bg-white text-black rounded-full">
+                Get Started
+            </a>
+            <a href="#" class="flex items-center justify-center px-6 py-4 w-40 border-2 text-white rounded-full">
+                Learn More
+            </a>
+        </div>
+        <div class="w-full mt-8 md:mt-10">
+            <img src="assets/image (4).png" alt="Project Management Illustration" class="w-full mx-auto h-auto">
+        </div>
+    </main>
+
+    <section class="mt-10 py-20 text-white min-h-screen">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl sm:text-5xl font-bold">Our Amazing Features</h2>
+                <p class="text-sm sm:text-md mt-4">Explore the unique capabilities that will elevate your experience.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-[30px] p-4 sm:p-6">
+                    <img src="https://i.pinimg.com/736x/6f/13/75/6f1375525387ffa02572d2527c8e3940.jpg" alt="Feature 1" 
+                         class="w-full rounded-[15px] object-cover mb-3 sm:mb-4">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">Feature 1</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        This feature helps you streamline your tasks and stay ahead of deadlines.
+                    </p>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-[30px] p-4 sm:p-6">
+                    <img src="https://i.pinimg.com/736x/1e/b8/c1/1eb8c12842ddf373a718d3c1fe3ba0be.jpg" alt="Feature 2" 
+                         class="w-full rounded-[15px] object-cover mb-3 sm:mb-4">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">Feature 2</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Effortlessly manage your projects with this powerful and intuitive tool.
+                    </p>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-[30px] p-4 sm:p-6">
+                    <img src="https://i.pinimg.com/736x/d2/d4/c6/d2d4c66adfcf62d259be5615fcfa44d0.jpg" alt="Feature 3" 
+                         class="w-full rounded-[15px] object-cover mb-3 sm:mb-4">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">Feature 3</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Enhance your workflow with seamless integrations and automation options.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-16 text-white min-h-screen">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div class="order-2 lg:order-1">
+                <img src="assets/cube.gif" alt="Feature Image" class="w-full rounded-lg shadow-lg">
+            </div>
+            <div class="order-1 lg:order-2 text-center lg:text-left">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6">
+                    Transform the Way You Work
+                </h2>
+                <p class="text-sm sm:text-md text-gray-300 leading-relaxed">
+                    Discover innovative tools and features designed to simplify your workflow, boost your productivity, and
+                    take your projects to the next level. With our platform, managing complex tasks becomes a breeze.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-20 text-white bg-gradient-to-bl from-black via-black to-indigo-900">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6">Our Gradient Cards</h2>
+                <p class="text-sm sm:text-md text-gray-300 leading-relaxed">Explore beautifully designed cards with vibrant gradient colors.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-blue-500 to-purple-500')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>                
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-green-400 to-blue-400"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-green-400 to-blue-400')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-pink-500 to-orange-500"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-pink-500 to-orange-500')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-indigo-500 to-teal-500"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-indigo-500 to-teal-500')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-purple-900 via-black to-blue-900"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-purple-900 via-black to-blue-900')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>                
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-violet-200 to-pink-200"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-violet-200 to-pink-200')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-yellow-100 via-green-100 to-teal-100"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-yellow-100 via-green-100 to-teal-100')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-lime-200 via-green-300 to-teal-400"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-lime-200 via-green-300 to-teal-400')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-cyan-500 to-blue-500')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>                
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-green-400 via-blue-500 to-purple-600')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="relative group">
+                    <div class="w-full h-48 rounded-[30px] bg-gradient-to-r from-slate-900 to-slate-700"></div>
+                    <button onclick="copyToClipboard('bg-gradient-to-r from-slate-900 to-slate-700')" 
+                            class="absolute inset-x-0 bottom-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 w-4/5 mx-auto px-4 py-3 bg-white bg-opacity-20 backdrop-blur-lg text-white rounded-full flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </div>
+    
+            <div id="copyMessage" class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-20 backdrop-blur-lg text-white text-4xl font-bold py-4 px-6 rounded-full opacity-0 pointer-events-none transition-opacity duration-300">
+                Gradient Code Copied!
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function copyToClipboard(gradientCode) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = gradientCode;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999);
+    
+            document.execCommand('copy');
+    
+            document.body.removeChild(tempInput);
+    
+            const message = document.getElementById('copyMessage');
+            message.classList.remove('opacity-0');
+            message.classList.add('opacity-100');
+            
+            setTimeout(() => {
+                message.classList.remove('opacity-100');
+                message.classList.add('opacity-0');
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
