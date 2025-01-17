@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UM - XAIR | Project</title>
+    <link rel="icon" href="assets/nighfury-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .customfont {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="fade-in bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
+
+    <div class="flex justify-center text-white">
+        <header class="mt-10 w-[85%] flex flex-col items-center justify-between px-6 py-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10">
+            <div class="flex items-center w-full justify-between">
+                <div class="flex items-center">
+                    <img src="assets/nighfury-black.png" alt="Logo" class="w-12 h-12">
+                    <div class="ml-3">
+                        <h1 class="text-lg font-semibold">UM - XAIR</h1>
+                        <p class="text-sm text-gray-400">Developer Tools</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#" class="text-md">Features</a>
+                    <a href="#" class="text-md">About</a>
+                    <a href="#" class="w-40 text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
+                </nav>
+                <button class="lg:hidden text-white" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-center text-white hidden" id="mobile-menu">
+                <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#" class="text-md py-2">Features</a>
+                    <a href="#" class="text-md py-2">About</a>
+                    <a href="#" class="w-40 mx-auto text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <main class="min-h-screen w-full flex flex-col items-center justify-center text-center bg-cover bg-center text-white" style="background-image: url('assets/orbit-oled-dark-5k-za.jpg');">
+        <p class="text-lg md:text-xl text-gray-300 mb-2">Just One Step</p>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+            Make Your Dream Come True <br> Right Now with DevXAir Developer Tools
+        </h1>
+        <div class="mt-8 w-full flex justify-center">
+            <a href="#" class="px-4 py-4 w-64 bg-white text-black text-center rounded-full">
+                Get Started
+            </a>
+        </div>        
+    </main>
+
+    <section class="h-80 relative bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-[10rem] font-bold text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30">FEATURES</h2>
+            <p class="text-3xl font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black z-10">Tool Highlights</p>
+        </div>
+    </section>
+    
+    <section class="pb-20 relative bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
+        <div class="container mx-auto px-4 mt-16 w-[70%]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div class="relative w-full" style="padding-top: 177.77%; position: relative;">
+                    <img src="assets/cgi-water-drops-abstract-5k-3v.jpg" alt="Image" class="absolute top-0 left-0 w-full h-full object-cover rounded-[50px]">
+                    <button class="absolute top-6 right-6 bg-white rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+                        </svg>
+                    </button> 
+                    <div class="absolute bottom-4 left-4 text-white p-4">
+                        <h3 class="text-2xl font-bold mb-2">Card Title 1</h3>
+                        <p class="text-sm">Short description about the feature or product in this image.</p>
+                    </div>
+                </div>
+
+                <div class="relative w-full" style="padding-top: 177.77%; position: relative;">
+                    <img src="assets/dark-flavours-59.jpg" alt="Image" class="absolute top-0 left-0 w-full h-full object-cover rounded-[50px]">
+                    <button class="absolute top-6 right-6 bg-white rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+                        </svg>
+                    </button> 
+                    <div class="absolute bottom-4 left-4 text-white p-4">
+                        <h3 class="text-2xl font-bold mb-2">Card Title 1</h3>
+                        <p class="text-sm">Short description about the feature or product in this image.</p>
+                    </div>
+                </div>
+
+                <div class="relative w-full" style="padding-top: 177.77%; position: relative;">
+                    <img src="assets/abstract-mountain-and-moon-ru.jpg" alt="Image" class="absolute top-0 left-0 w-full h-full object-cover rounded-[50px]">
+                    <button class="absolute top-6 right-6 bg-white rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
+                        </svg>
+                    </button> 
+                    <div class="absolute bottom-4 left-4 text-white p-4">
+                        <h3 class="text-2xl font-bold mb-2">Card Title 1</h3>
+                        <p class="text-sm">Short description about the feature or product in this image.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="h-80 relative bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-[10rem] font-bold text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30">ABOUT</h2>
+            <p class="text-3xl font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black z-10">My Story</p>
+        </div>
+    </section>
+    
+    <section class="py-16 bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
+        <div class="container mx-auto grid grid-cols-3 gap-3">
+            <!-- First Column: 3 Rows -->
+            <div class="flex flex-col gap-6">
+                <div class="bg-white rounded-[50px] p-4">
+                    <h3 class="text-lg font-semibold">Card 1</h3>
+                    <p class="text-gray-600">Description for card 1.</p>
+                </div>
+                <div class="bg-white rounded-[50px] p-4">
+                    <h3 class="text-lg font-semibold">Card 2</h3>
+                    <p class="text-gray-600">Description for card 2.</p>
+                </div>
+                <div class="bg-white rounded-[50px] overflow-hidden">
+                    <img src="assets/example-image.jpg" alt="Card Image" class="w-full h-64 object-cover">
+                </div>
+            </div>
+    
+            <!-- Second Column: 1 Full-Height Row -->
+            <div>
+                <div class="bg-white rounded-[50px] p-6 h-full flex flex-col justify-center">
+                    <img src="assets/example-image.jpg" alt="Card Image" class="w-full h-64 object-cover">
+
+                </div>
+            </div>
+    
+            <!-- Third Column: 3 Rows -->
+            <div class="flex flex-col gap-6">
+                <div class="bg-white rounded-[50px] overflow-hidden">
+                    <img src="assets/example-image.jpg" alt="Card Image" class="w-full h-64 object-cover">
+                </div>
+                <div class="bg-white rounded-[50px] p-4">
+                    <h3 class="text-lg font-semibold">Card 5</h3>
+                    <p class="text-gray-600">Description for card 5.</p>
+                </div>
+                <div class="bg-white rounded-[50px] p-4">
+                    <h3 class="text-lg font-semibold">Card 6</h3>
+                    <p class="text-gray-600">Description for card 6.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+      
+    
+    
+    
+    
+      
+
+
+
+</body>
+</html>
