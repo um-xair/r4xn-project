@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UM - XAIR | Project</title>
+    <link rel="icon" href="assets/nighfury-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .customfont {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="fade-in bg-black">
+
+    <div class="flex justify-center text-white">
+        <header class="mt-10 w-[85%] flex flex-col items-center justify-between px-6 py-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10">
+            <div class="flex items-center w-full justify-between">
+                <div class="flex items-center">
+                    <img src="assets/nighfury-black.png" alt="Logo" class="w-12 h-12">
+                    <div class="ml-3">
+                        <h1 class="text-lg font-semibold">UM - XAIR</h1>
+                        <p class="text-sm text-gray-400">Developer Tools</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#" class="text-md">Features</a>
+                    <a href="#" class="text-md">About</a>
+                    <a href="#" class="w-40 text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
+                </nav>
+                <button class="lg:hidden text-white" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-center text-white hidden" id="mobile-menu">
+                <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#" class="text-md py-2">Features</a>
+                    <a href="#" class="text-md py-2">About</a>
+                    <a href="#" class="w-40 mx-auto text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+<main class="min-h-screen w-full flex items-center justify-center bg-cover bg-center text-white" style="background-image: url('assets/abstract-lines-dark-4k-mg.jpg');">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center md:text-left">
+            <p class="text-lg md:text-xl text-gray-300 mb-2">Enter the Future Project</p>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight">Tailwind CSS Card</h1>
+            <p class="text-lg md:text-xl text-gray-300">
+                Simplify your workflow with our intuitive and powerful tools designed to keep you ahead.
+            </p>
+            <div class="mt-8">
+                <a href="#" class="px-4 py-4 w-64 bg-white text-black text-center rounded-full inline-block">
+                    Get Started
+                </a>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <img src="assets/image (5).png" alt="DevXAir Developer Tools" class="max-w-full rounded-lg shadow-lg">
+        </div>
+    </div>
+</main>
+
+<section class="relative bg-black h-96 overflow-hidden">
+    <div class="absolute -top-32 left-0 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="gradient-fill-top" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#0F0F0F" />
+                    <stop offset="100%" stop-color="black" />
+                </linearGradient>
+            </defs>
+            <path d="M0,200 C600,100 840,100 1440,200L1440,320L0,320Z" fill="url(#gradient-fill-top)"></path>
+        </svg>
+    </div>
+    <div class="absolute -top-16 left-0 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="gradient-fill-bottom" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#0F0F0F" />
+                    <stop offset="100%" stop-color="black" />
+                </linearGradient>
+            </defs>
+            <path d="M0,240 C600,160 840,160 1440,240L1440,320L0,320Z" fill="url(#gradient-fill-bottom)"></path>
+        </svg>
+    </div>
+</section>
+
+<section class="text-white min-h-screen">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl sm:text-5xl font-bold">Our Amazing Features</h2>
+            <p class="text-sm sm:text-md mt-4">Explore the unique capabilities that will elevate your experience.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
+            <div class="relative bg-[#0c0c0c] border-2 border-gray-500 rounded-[30px] overflow-hidden mb-3 sm:mb-4 flex flex-col items-center justify-center p-6 aspect-square">
+                <div class="relative w-32 h-32 overflow-hidden mb-4 flex justify-center items-center">
+                    <img src="assets/image (6).png" alt="Feature 1" class="object-cover">
+                </div>
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">Feature 1</h3>
+                <p class="text-gray-300 text-sm sm:text-base text-center">This feature helps you streamline your tasks and stay ahead of deadlines.</p>
+            </div>
+            
+            
+            <div class="relative bg-[#0c0c0c] border-2 border-gray-500 rounded-[30px] overflow-hidden mb-3 sm:mb-4 flex flex-col items-center justify-center p-6 aspect-square">
+                <div class="relative w-32 h-32 overflow-hidden mb-4 flex justify-center items-center">
+                    <img src="assets/imgae (7).png" alt="Feature 1" class="absolute inset-0 w-32 mx-auto object-cover">
+                </div>
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">Feature 1</h3>
+                <p class="text-gray-300 text-sm sm:text-base text-center">This feature helps you streamline your tasks and stay ahead of deadlines.</p>
+            </div>
+            
+            <div class="relative bg-[#0c0c0c] border-2 border-gray-500 rounded-[30px] overflow-hidden mb-3 sm:mb-4 flex flex-col items-center justify-center p-6 aspect-square">
+                <div class="relative w-32 h-32 overflow-hidden mb-4 flex justify-center items-center">
+                    <img src="assets/8 (1).png" alt="Feature 1" class="absolute inset-0 w-32 mx-auto object-cover">
+                </div>
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">Feature 1</h3>
+                <p class="text-gray-300 text-sm sm:text-base text-center">This feature helps you streamline your tasks and stay ahead of deadlines.</p>
+            </div>
+        </div>            
+    </div>
+</section>
+
+<section class="flex justify-center items-center pb-10">
+    <div class="bg-gradient-to-tr from-black via-zinc-900 to-black rounded-[50px] py-20 w-[90%] sm:w-[80%] text-center animate-gradient-moving">
+        <h2 class="text-white text-4xl sm:text-8xl font-semibold mb-4">Explore The Cards</h2>
+    </div>
+</section>
+
+<style>
+    @keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-moving {
+    background-size: 200% 200%;
+    animation: gradientMove 6s linear infinite;
+}
+
+</style>
+
+
+
+
+
+
+    
+
+</body>
+</html>
