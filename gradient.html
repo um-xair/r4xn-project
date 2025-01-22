@@ -41,7 +41,7 @@
 <body class="pt-10 bg-gradient-to-tr from-black via-black to-indigo-900 fade-in">
 
     <div class="flex justify-center">
-        <header class="w-[85%] flex flex-col items-center justify-between px-6 py-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10">
+        <header id="header" class="w-[85%] flex flex-col items-center justify-between px-6 py-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10 transition-opacity duration-500">
             <div class="flex items-center w-full justify-between">
                 <div class="flex items-center">
                     <img src="assets/r4xn-black.png" alt="Logo" class="w-12 h-12">
@@ -72,8 +72,20 @@
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+    
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+    
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                header.style.opacity = '0';
+            } else {
+                header.style.opacity = '1';
+            }
+            lastScrollY = window.scrollY;
         });
     </script>
 
