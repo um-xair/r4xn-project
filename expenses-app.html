@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        .floating-animation {
+            animation: float 2s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="px-4 py-6 bg-gradient-to-bl from-[#DEE4F0] via-slate-100 to-zinc-200 fade-in mb-[100px]">
+
+    <div class="w-full bg-white rounded-full py-4 z-50">
+        <div class="flex items-center justify-between px-6 h-full">
+            <a href="#" class="w-10 h-10 rounded-full bg-[#783BE7] flex items-center justify-center">
+                <i class="fa-solid fa-bars text-white"></i>
+            </a>
+            <h1 class="text-[#040D12] text-2xl font-extrabold text-xl">Expenses Tracker</h1>
+            <div class="w-10 h-10"></div>
+        </div>
+    </div>
+
+    <div class="mt-10 px-2 bg-red-100">
+        <div class="circle relative mx-auto">
+            <div class="absolute bg-white inset-0 rounded-full m-6"></div>
+            <div class="absolute text-black text-xl">
+                RM109.87
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #E9336E 0% 33%,
+                #783BE7 33% 66%,
+                #4C6AFF 66% 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+      
+
+    <div class="mt-10 px-2">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Latest Expenses</h1>
+            <div class="flex space-x-4">
+                <span class="text-sm">View All</span>
+            </div>
+        </div>
+    
+        <div class="mt-4 bg-white p-6 rounded-[30px] flex flex-col md:flex-row">
+            <div class="flex flex-row items-center sm:items-start sm:w-auto w-full">
+                <div class="w-6 h-32 bg-[#E9336E] mb-4 sm:mb-0 sm:mr-4 rounded-full"></div>
+                <div class="bg-[#F2F2F2]  flex items-center rounded-[30px] lg:ml-0 ml-4 mb-4 sm:mb-0">
+                    <img src="assets/food.png" alt="Image" class="p-6 w-full h-auto object-cover">
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full sm:ml-4">
+                <div class="text-gray-800 mb-4 sm:mb-0">
+                    <h2 class="text-xl text-[#E9336E] font-bold">Foods & Drinks</h2>
+                    <p class="text-sm text-gray-600 mt-1">Nasi and Tom Yam Campur</p>
+                    <p class="text-xs text-gray-500 mt-1">15 December 2024</p>
+                </div>
+                <div class="text-2xl font-bold text-[#E9336E]">
+                    +RM 10
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mt-10 px-2">
+            <!-- Grid Container with 5 Columns -->
+            <div class="grid grid-cols-5 gap-4">
+                <!-- First Column -->
+                <div class="bg-gray-200 p-4 rounded-lg"><div class="w-6 h-32 bg-[#E9336E] mb-4 sm:mb-0 sm:mr-4 rounded-full"></div></div>
+                
+                <!-- Second Column -->
+                <div class="bg-gray-200 p-4 rounded-lg w-full h-full"><div class="bg-[#F2F2F2]  flex items-center rounded-[30px] lg:ml-0 ml-4 mb-4 sm:mb-0">
+                    <img src="assets/food.png" alt="Image" class="p-6 object-cover">
+                </div></div>
+                
+                <!-- Third Column (Spans 2 columns) -->
+                <div class="bg-gray-200 p-4 rounded-lg col-span-2"><div class="text-gray-800 mb-4 sm:mb-0">
+                    <h2 class="text-xl text-[#E9336E] font-bold">Foods & Drinks</h2>
+                    <p class="text-sm text-gray-600 mt-1">Nasi and Tom Yam Campur</p>
+                    <p class="text-xs text-gray-500 mt-1">15 December 2024</p>
+                </div></div>
+                
+                <!-- Fifth Column -->
+                <div class="bg-gray-200 p-4 rounded-lg"><div class="text-2xl font-bold text-[#E9336E]">
+                    +RM 10
+                </div></div>
+            </div>
+        </div>
+        
+        
+        
+        
+    
+
+
+
+
+
+
+
+
+
+    
+
+    <div class="bg-white p-4 fixed bottom-0 left-0 w-full h-[110px] z-[888]">
+        <div class="flex justify-between items-center text-center h-full">
+            <a href="#" class="flex flex-col items-center text-[#783BE7] w-1/5">
+                <i class="fa-solid fa-house text-2xl"></i>
+                <span class="text-sm mt-1">home</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-[#783BE7] w-1/5">
+                <i class="fa-solid fa-shapes text-2xl"></i>
+                <span class="text-sm mt-1">expense</span>
+            </a>
+            <div class="bg-[#783BE7] text-white rounded-full w-14 h-14 flex items-center justify-center w-1/5">
+                <i class="fa-solid fa-plus text-2xl"></i>
+            </div>
+            <a href="#" class="flex flex-col items-center text-[#783BE7] w-1/5">
+                <i class="fa-solid fa-clock-rotate-left text-2xl"></i>
+                <span class="text-sm mt-1">history</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-[#783BE7] w-1/5">
+                <i class="fa-solid fa-chart-line text-2xl"></i>
+                <span class="text-sm mt-1">analytic</span>
+            </a>
+        </div>
+    </div>
+    
+</body>
+</html>
