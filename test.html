@@ -1,0 +1,91 @@
+<div class="py-6" id="donut-chart"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+  const getChartOptions = () => {
+    return {
+      series: [12, 19, 30],
+      colors: ["#E9336E", "#4C6AFF", "#783BE7"],
+      chart: {
+        height: 320,
+        width: "100%",
+        type: "donut",
+      },
+      stroke: {
+        colors: ["transparent"],
+      },
+      plotOptions: {
+        pie: {
+          donut: {
+            labels: {
+              show: true,
+              name: {
+                show: true,
+                fontFamily: "Inter, sans-serif",
+                offsetY: 20,
+              },
+              total: {
+                showAlways: true,
+                show: true,
+                label: "Total expenses",
+                fontFamily: "Inter, sans-serif",
+                formatter: function (w) {
+                  const sum = w.globals.seriesTotals.reduce((a, b) => a + b, 0);
+                  return 'RM' + sum;
+                },
+              },
+              value: {
+                show: true,
+                fontFamily: "Inter, sans-serif",
+                offsetY: -20,
+                formatter: function (value) {
+                  return value;
+                },
+              },
+            },
+            size: "80%",
+          },
+          borderRadius: 30,  // Add this line to round the edges of the donut slices
+        },
+      },
+      grid: {
+        padding: {
+          top: -2,
+        },
+      },
+      labels: ["Direct", "Sponsor", "Affiliate"],
+      dataLabels: {
+        enabled: false,
+      },
+      legend: {
+        position: "bottom",
+        fontFamily: "Inter, sans-serif",
+      },
+      yaxis: {
+        labels: {
+          formatter: function (value) {
+            return 'RM' + value;
+          },
+        },
+      },
+      xaxis: {
+        labels: {
+          formatter: function (value) {
+            return 'RM' + value;
+          },
+        },
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
+      },
+    };
+  };
+
+  if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
+    const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
+    chart.render();
+  }
+</script>
