@@ -1,91 +1,64 @@
-<div class="py-6" id="donut-chart"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doughnut Chart with Center Text</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <div class="bg-white shadow-lg rounded-2xl p-6">
+    <h2 class="text-lg font-semibold text-gray-700 mb-4">Sales Overview</h2>
+    <div class="relative">
+      <canvas id="doughnutChart" class="max-w-xs"></canvas>
+    </div>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script>
-  const getChartOptions = () => {
-    return {
-      series: [12, 19, 30],
-      colors: ["#E9336E", "#4C6AFF", "#783BE7"],
-      chart: {
-        height: 320,
-        width: "100%",
-        type: "donut",
-      },
-      stroke: {
-        colors: ["transparent"],
-      },
-      plotOptions: {
-        pie: {
-          donut: {
-            labels: {
-              show: true,
-              name: {
-                show: true,
-                fontFamily: "Inter, sans-serif",
-                offsetY: 20,
-              },
-              total: {
-                showAlways: true,
-                show: true,
-                label: "Total expenses",
-                fontFamily: "Inter, sans-serif",
-                formatter: function (w) {
-                  const sum = w.globals.seriesTotals.reduce((a, b) => a + b, 0);
-                  return 'RM' + sum;
-                },
-              },
-              value: {
-                show: true,
-                fontFamily: "Inter, sans-serif",
-                offsetY: -20,
-                formatter: function (value) {
-                  return value;
-                },
-              },
-            },
-            size: "80%",
-          },
-          borderRadius: 30,  // Add this line to round the edges of the donut slices
-        },
-      },
-      grid: {
-        padding: {
-          top: -2,
-        },
-      },
-      labels: ["Direct", "Sponsor", "Affiliate"],
-      dataLabels: {
-        enabled: false,
-      },
-      legend: {
-        position: "bottom",
-        fontFamily: "Inter, sans-serif",
-      },
-      yaxis: {
-        labels: {
-          formatter: function (value) {
-            return 'RM' + value;
-          },
-        },
-      },
-      xaxis: {
-        labels: {
-          formatter: function (value) {
-            return 'RM' + value;
-          },
-        },
-        axisTicks: {
-          show: false,
-        },
-        axisBorder: {
-          show: false,
-        },
-      },
+  <script>
+    // Plugin to add text in the center
+    const centerTextPlugin = {
+      id: 'centerText',
+      beforeDraw: (chart) => {
+        const { width, height, ctx } = chart;
+        ctx.save();
+        const text = '75%';
+        ctx.font = 'bold 24px sans-serif';
+        ctx.fillStyle = '#4B5563'; // Text color
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const x = width / 2;
+        const y = height / 2;
+        ctx.fillText(text, x, y);
+        ctx.restore();
+      }
     };
-  };
 
-  if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
-    const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
-    chart.render();
-  }
-</script>
+    // Initialize the chart
+    const ctx = document.getElementById('doughnutChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Products A', 'Products B', 'Products C'],
+        datasets: [{
+          label: 'Sales',
+          data: [300, 150, 100],
+          backgroundColor: ['#4CAF50', '#FF9800', '#03A9F4'],
+          borderColor: ['#4CAF50', '#FF9800', '#03A9F4'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom',
+          }
+        }
+      },
+      plugins: [centerTextPlugin]
+    });
+  </script>
+</body>
+</html>
