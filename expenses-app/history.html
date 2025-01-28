@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
@@ -50,7 +51,7 @@
             <a href="#" id="menu-btn" class="w-10 h-10 rounded-full bg-[#783BE7] flex items-center justify-center">
                 <i class="fa-solid fa-bars text-white"></i>
             </a>
-            <h1 class="text-[#040D12] text-2xl font-extrabold text-xl">Summary</h1>
+            <h1 class="text-[#040D12] text-2xl font-extrabold text-xl">History</h1>
             <div class="w-10 h-10"></div>
         </div>
     </div>
@@ -98,45 +99,142 @@
     </script>
 
     <div class="mt-10 px-2">
-        <div class="relative bg-gradient-to-b from-[#1E146F] to-indigo-600 p-10 rounded-[30px]">
-            <div class="text-white">
-                <p class="text-sm mb-2">01/27/2025</p>
-                <h2 class="text-4xl font-bold mb-2">RM 1,200.00</h2>
-                <p class="text-lg">NATASYA UMAIRAH</p>
+        <div class="grid grid-cols-3 gap-2">
+            <div class="bg-white p-4 rounded-[30px] flex justify-center items-center">
+                <p class="text-center text-sm text-[#232323]">Yaer</p>
+            </div>
+            <div class="bg-white p-4 rounded-[30px] flex justify-center items-center">
+                <p class="text-center text-sm text-[#232323]">Month</p>
+            </div>
+            <div class="bg-white p-4 rounded-[30px] flex justify-center items-center">
+                <p class="text-center text-sm text-[#232323]">Week</p>
             </div>
         </div>
     </div>
 
     <div class="mt-10 px-2">
-        <div class="flex justify-between items-center mb-4">
-            <h1 class="text-2xl font-bold">Top Category</h1>
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-            <div class="bg-white p-4 rounded-[30px] flex flex-col items-center">
-                <div class="relative size-32">
-                    <svg class="size-full rotate-180" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#F499B6]" stroke-width="4" stroke-dasharray="50 100" stroke-linecap="round"></circle>
-                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#E9336E]" stroke-width="4" stroke-dasharray="37.5 100" stroke-linecap="round"></circle>
-                    </svg>
-                    <div class="absolute top-20 start-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                        <img src="../assets/food.png" alt="Image 1" class="w-full mx-auto object-cover">
-                    </div>
-                </div>
-                <p class="text-center text-sm text-[#232323]">Foods & Drinks</p>
-                <p class="text-center text-xs text-gray-500">RM200/month</p>
+        <div class="relative flex flex-col rounded-[30px] bg-white bg-clip-border text-[#232323]">
+            <div class="p-4">
+                <div id="bar-chart"></div>
             </div>
-            <div class="bg-white p-4 rounded-[30px] flex flex-col items-center">
-                <div class="relative size-32">
-                    <svg class="size-full rotate-180" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#A5B4FF]" stroke-width="4" stroke-dasharray="50 100" stroke-linecap="round"></circle>
-                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#4C6AFF]" stroke-width="4" stroke-dasharray="10 100" stroke-linecap="round"></circle>
-                    </svg>
-                    <div class="absolute top-20 start-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                        <img src="../assets/food.png" alt="Image 2" class="w-full mx-auto object-cover">
-                    </div>
+        </div>
+
+        <script>
+        const chartConfig = {
+            series: [
+                {
+                    name: "Expenses",
+                    data: [400, 600, 1000, 800, 400],
+                },
+            ],
+            chart: {
+                type: "bar",
+                height: 240,
+                toolbar: {
+                    show: false,
+                },
+            },
+            title: {
+                show: "",
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            colors: ["#783BE7"],
+            plotOptions: {
+                bar: {
+                    columnWidth: "60%",
+                    borderRadius: 10,
+                },
+            },
+            xaxis: {
+                axisTicks: {
+                    show: false,
+                },
+                axisBorder: {
+                    show: false,
+                },
+                labels: {
+                    style: {
+                        colors: "#616161",
+                        fontSize: "12px",
+                        fontFamily: "inherit",
+                        fontWeight: 400,
+                    },
+                },
+                categories: [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                ],
+            },
+            yaxis: {
+                min: 200,
+                max: 1000,
+                labels: {
+                    style: {
+                        colors: "#616161",
+                        fontSize: "12px",
+                        fontFamily: "inherit",
+                        fontWeight: 400,
+                    },
+                },
+            },
+            grid: {
+                show: true,
+                borderColor: "#dddddd",
+                strokeDashArray: 5,
+                xaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                padding: {
+                    top: 5,
+                    right: 20,
+                },
+            },
+            fill: {
+                opacity: 0.8,
+            },
+            tooltip: {
+                theme: "dark",
+            },
+
+        };
+
+        const chart = new ApexCharts(document.querySelector("#bar-chart"), chartConfig);
+        chart.render();
+        </script>
+    </div>
+
+
+
+    <div class="mt-10 px-2">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Activity</h1>
+            <div class="flex space-x-4">
+                <span class="text-sm">View All</span>
+            </div>
+        </div>
+        <div class="grid grid-cols-12 gap-2 bg-white p-2 rounded-[30px] sm:grid-cols-12 mt-6">
+            <div class="col-span-12 sm:col-span-3 p-4 flex space-x-4 items-center">
+                <div class="w-4 h-20 bg-[#E9336E] rounded-full"></div>
+                <div class="bg-[#F2F2F2] w-full h-full flex items-center justify-center rounded-[30px]">
+                    <img src="../assets/food.png" alt="Image" class="w-16 h-16 object-cover p-2">
                 </div>
-                <p class="text-center text-sm text-[#232323]">Foods & Drinks</p>
-                <p class="text-center text-xs text-gray-500">RM250/month</p>
+            </div>
+            <div class="col-span-12 sm:col-span-6 p-4">
+                <div class="text-gray-800">
+                    <h2 class="text-lg text-[#E9336E] font-bold">Foods & Drinks</h2>
+                    <p class="text-sm text-gray-600 mt-1">Nasi and Tom Yam Campur</p>
+                    <p class="text-xs text-gray-500 mt-1">15 December 2024</p>
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-3 p-4 flex items-center justify-start">
+                <div class="text-2xl font-bold text-[#E9336E] lg:mx-auto">+RM 10</div>
             </div>
         </div>
     </div>
