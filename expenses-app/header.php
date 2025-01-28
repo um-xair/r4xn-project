@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
@@ -50,7 +51,7 @@
             <a href="#" id="menu-btn" class="w-10 h-10 rounded-full bg-[#783BE7] flex items-center justify-center">
                 <i class="fa-solid fa-bars text-white"></i>
             </a>
-            <h1 class="text-[#040D12] text-2xl font-extrabold text-xl">Category</h1>
+            <h1 class="text-[#040D12] text-2xl font-extrabold text-xl">Expenses Tracker</h1>
             <div class="w-10 h-10"></div>
         </div>
     </div>
@@ -96,48 +97,3 @@
             overlay.classList.add('hidden');
         });
     </script>
-
-    <div class="mt-10 px-2">
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div class="bg-white rounded-[30px] flex flex-col items-center justify-center">
-                <div class="bg-[#783BE7] text-white rounded-full w-14 h-14 flex items-center justify-center">
-                    <i class="fa-solid fa-plus text-2xl"></i>
-                </div>
-            </div>
-            <div class="bg-white p-4 rounded-[30px] flex flex-col items-center">
-                <img src="../assets/food.png" alt="Image 2" class=" p-1 w-3/5 mx-auto object-cover mb-2">
-                <p class="text-center text-md text-gray-800">category 1</p>
-            </div>
-            <div class="bg-white p-4 rounded-[30px] flex flex-col items-center">
-                <img src="../assets/food.png" alt="Image 3" class=" p-1 w-3/5 mx-auto object-cover mb-2">
-                <p class="text-center text-md text-gray-800">category 2</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-white p-4 fixed bottom-0 left-0 w-full h-[110px] z-80">
-        <div class="flex justify-between items-center text-center h-full">
-            <a href="../expenses-app/expenses-app.html" class="flex flex-col items-center text-[#783BE7] w-1/5">
-                <i class="fa-solid fa-house text-2xl"></i>
-                <span class="text-xs mt-1">home</span>
-            </a>
-            <a href="../expenses-app/category.html" class="flex flex-col items-center text-[#783BE7] w-1/5">
-                <i class="fa-solid fa-shapes text-2xl"></i>
-                <span class="text-xs mt-1">category</span>
-            </a>
-            <div class="bg-[#783BE7] text-white rounded-full w-14 h-14 flex items-center justify-center w-1/5">
-                <i class="fa-solid fa-plus text-2xl"></i>
-            </div>
-            <a href="../expenses-app/history.html" class="flex flex-col items-center text-[#783BE7] w-1/5">
-                <i class="fa-solid fa-clock-rotate-left text-2xl"></i>
-                <span class="text-xs mt-1">history</span>
-            </a>
-            <a href="../expenses-app/summary.html" class="flex flex-col items-center text-[#783BE7] w-1/5">
-                <i class="fa-solid fa-chart-line text-2xl"></i>
-                <span class="text-xs mt-1">analytic</span>
-            </a>
-        </div>
-    </div>
-    
-</body>
-</html>
