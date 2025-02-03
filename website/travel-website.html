@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website TravelSphere</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen space-y-8 bg-[#010f0f]">
+
+    <header class="bg-[#1A3636] text-white rounded-[30px] px-8 py-4 flex items-center justify-between w-4/5 mt-8 relative">
+        <div class="flex items-center space-x-4">
+            <img src="assets/beach-vacation.png" alt="Logo" class="w-10 h-10">
+            <h1 class="text-2xl font-bold">Travel Sphere</h1>
+        </div>
+        <button id="menu-btn" class="block lg:hidden text-white focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+        <nav id="menu" class="hidden z-50 mt-4 lg:mt-0 lg:flex space-x-6 lg:space-x-6 absolute lg:relative top-full right-0 w-full lg:w-auto bg-[#40534C] lg:bg-transparent rounded-[30px] lg:rounded-none p-4 lg:p-0 transition-all duration-300">
+            <ul class="flex flex-col lg:flex-row lg:space-x-6">
+                <li><a href="#home" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">Home</a></li>
+                <li><a href="#about" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">About</a></li>
+                <li><a href="#services" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">Services</a></li>
+                <li><a href="#contact" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('hidden');
+    });
+    </script>
+    
+    <section class="relative bg-cover bg-center h-[80vh] w-4/5 mx-auto mt-10 rounded-[30px]" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/gettyimages-833247510-1528401432.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50 rounded-2xl"></div>
+        <div class="relative h-full flex items-center justify-start px-8">
+            <div class="text-left text-white max-w-full">
+                <h2 class="text-5xl font-bold md:text-4xl sm:text-3xl">Discover Your Next Adventure</h2>
+                <p class="text-xl mt-4 md:text-lg sm:text-base">Explore the world with our exclusive travel packages</p>
+                <a href="#services" class="mt-6 inline-block bg-[#1A3636] hover:bg-[#35453f] text-white py-3 px-8 rounded-full text-lg md:text-base sm:text-sm">Explore Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="lg:p-8 p-2 w-4/5 mx-auto mt-10 flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8 space-y-8 lg:space-y-0" style="height: 90vh;">
+        <div class="relative w-full lg:w-1/2 h-[200px] lg:h-[700px] mx-auto flex justify-center items-center"> 
+            <img src="https://afar.brightspotcdn.com/dims4/default/6b7a834/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg" alt="Image 1" 
+            class="absolute top-0 left-0 lg:w-[60%] lg:h-[90%] w-[90%] h-[100%] object-cover rounded-[30px] shadow-lg">
+            <img src="https://images.squarespace-cdn.com/content/v1/5369465be4b0507a1fd05af0/1528837069483-LD1R6EJDDHBY8LBPVHIU/randall-ruiz-272502.jpg" alt="Image 2" 
+            class="absolute lg:bottom-[0px] lg:right-[50px] lg:w-[60%] lg:h-[90%] w-[90%] h-[100%] right-[0px] top-[60px] object-cover rounded-[30px] shadow-lg">
+        </div>
+    
+        <div class="relative w-full lg:w-1/2 text-left text-white flex flex-col items-center justify-center lg:items-start">
+            <img src="assets/sea-turtle.png" 
+                 alt="Top Left Image" 
+                 class="lg:mt-[150px] mt-[90px] left-0 w-[100px] h-[100px] shadow-lg">
+            <h2 class="text-4xl font-bold mb-4 mt-10 text-center lg:text-left">Explore the Beauty of Nature</h2> <!-- Adjust the margin-top to avoid overlap -->
+            <p class="text-lg lg:mb-6 mb-4 text-justify text-center lg:text-left">Discover breathtaking landscapes, serene forests, and majestic waterfalls with our travel packages tailored for nature lovers.</p>
+            <a href="#contact" class="lg:mt-6 mt-2 inline-block bg-[#1A3636] hover:bg-[#35453f] text-white py-3 px-8 rounded-full text-lg md:text-base sm:text-sm">Get Started</a>
+        </div>
+    </section>
+    
+    <section class="lg:p-8 p-2 w-4/5 mx-auto mt-10 flex flex-col lg:flex-row items-center justify-center lg:items-center lg:space-x-8 space-y-8 lg:space-y-0 min-h-[90vh]">
+        <div class="lg:w-1/2 text-left text-white">
+            <h2 class="text-4xl font-bold mb-4">Embrace the Wonders of the World</h2>
+    
+            <div class="mt-10 flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-6">
+                <img src="assets/island.png" 
+                     alt="Feature Image" 
+                     class="lg:w-[10%] w-[20%] h-auto object-cover">
+                <div class="text-left lg:w-4/5">
+                    <h2 class="text-lg font-bold">Embrace the Wonders of the World</h2>
+                    <p class="text-sm mb-6">Experience the best travel options with our unique features designed for nature lovers and adventure seekers.</p>
+                </div>
+            </div>
+            <div class="mt-10 flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-6">
+                <img src="assets/sunsets.png" 
+                     alt="Feature Image" 
+                     class="lg:w-[10%] w-[20%] w-1/2 h-auto object-cover">
+                <div class="text-left lg:w-4/5">
+                    <h2 class="text-lg font-bold">Embrace the Wonders of the World</h2>
+                    <p class="text-sm mb-6">Experience the best travel options with our unique features designed for nature lovers and adventure seekers.</p>
+                </div>
+            </div>
+            <div class="mt-10 flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-6">
+                <img src="assets/success.png" 
+                     alt="Feature Image" 
+                     class="lg:w-[10%] w-[20%] w-1/2 h-auto object-cover">
+                <div class="text-left lg:w-4/5">
+                    <h2 class="text-lg font-bold">Embrace the Wonders of the World</h2>
+                    <p class="text-sm mb-6">Experience the best travel options with our unique features designed for nature lovers and adventure seekers.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="lg:w-1/2 grid grid-cols-2 grid-rows-2 gap-4 w-full">
+            <img src="https://i.pinimg.com/736x/04/7a/d8/047ad8c814106def7a8728404603df69.jpg" 
+                 alt="Beach" 
+                 class="w-full lg:h-[300px] h-[200px] object-cover rounded-tr-[80px] rounded-bl-[80px] shadow-lg">
+            
+            <img src="https://static2.tripoto.com/media/filter/tst/img/210609/TripDocument/1474116741_destination_for_malaysian_24343.jpg" 
+                 alt="Mountain" 
+                 class="w-full lg:h-[300px] h-[200px] object-cover rounded-tl-[80px] rounded-br-[80px] shadow-lg">
+            
+            <img src="https://www.gemcarrental.com.my/wp-content/uploads/2024/04/Scenic-Views-in-Cameron-Highlands-1024x585.jpg" 
+                 alt="Forest" 
+                 class="w-full lg:h-[300px] h-[200px] object-cover rounded-tl-[80px] rounded-br-[80px] shadow-lg">
+            
+            <img src="https://www.sgmytaxi.com/wp-content/uploads/Perhentian-Islands.jpg" 
+                 alt="Waterfall" 
+                 class="w-full lg:h-[300px] h-[200px] object-cover rounded-tr-[80px] rounded-bl-[80px] shadow-lg">
+        </div>
+    </section>
+    
+    <section class="w-4/5 mx-auto py-8 lg:py-16 flex items-center justify-center text-white" style="min-height: 90vh;">
+        <div class="text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 p-8">The Best Destinations</h2>
+            <p class="text-md lg:text-lg mb-8">Explore our carefully curated selection of the best travel destinations around the world, perfect for every kind of traveler.</p>
+    
+            <div class="grid lg:grid-cols-3 grid-cols-1 gap-6 w-full lg:w-auto mx-auto">
+                <div class="bg-white relative w-full max-w-[350px] lg:max-w-[400px] rounded-[30px] shadow-lg overflow-hidden mx-auto h-auto lg:h-[550px]">
+                    <img src="https://cdn.kimkim.com/files/a/images/43e0d2b0551dbde614769df0f1e908dfdeff9e5f/original-505713b260977fd7c3022a023f6188d4.jpg" alt="Beautiful Beaches" class="w-full h-[300px] lg:h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 text-white">
+                        <h3 class="text-lg lg:text-xl font-semibold">Beautiful Beaches</h3>
+                        <p class="text-sm mt-2">Relax on the pristine shores and soak up the sun in breathtaking coastal destinations.</p>
+                    </div>
+                </div>
+    
+                <div class="bg-white relative w-full max-w-[350px] lg:max-w-[400px] rounded-[30px] shadow-lg overflow-hidden mx-auto h-auto lg:h-[550px]">
+                    <img src="https://blog.redbus.my/wp-content/uploads/2020/09/Image-6-1.png" alt="Bustling City" class="w-full h-[300px] lg:h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 text-white">
+                        <h3 class="text-lg lg:text-xl font-semibold">Bustling City</h3>
+                        <p class="text-sm mt-2">Discover the vibrant energy of urban landscapes and cultural centers.</p>
+                    </div>
+                </div>
+    
+                <div class="bg-white relative w-full max-w-[350px] lg:max-w-[400px] rounded-[30px] shadow-lg overflow-hidden mx-auto h-auto lg:h-[550px]">
+                    <img src="https://pohcdn.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__popular_cities/public/live_banner/Kota-Kinabalu.jpg" alt="Mountain Escape" class="w-full h-[300px] lg:h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 text-white">
+                        <h3 class="text-lg lg:text-xl font-semibold">Mountain Escape</h3>
+                        <p class="text-sm mt-2">Escape to serene mountain retreats and experience tranquility like never before.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#1A3636] text-white rounded-[30px] lg:p-8 p-8 w-4/5 mx-auto mt-10 flex flex-col items-center justify-center min-h-[50vh]">
+        <div class="container mx-auto text-center max-w-3xl">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+            <p class="text-lg lg:text-xl mb-8">Stay updated with our latest travel tips, destination guides, and exclusive offers!</p>
+    
+            <form action="#" method="POST" class="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-4 w-full lg:w-auto">
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Enter your email address" 
+                    required 
+                    class="w-full lg:w-2/3 py-3 px-4 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+                >
+                <button 
+                    type="submit" 
+                    class="inline-block bg-[#35453f] text-white py-3 px-8 rounded-[15px] text-lg md:text-base sm:text-sm transition mt-2 lg:mt-0"
+                >
+                    Subscribe
+                </button>
+            </form>
+    
+            <p class="mt-6 text-gray-400 text-sm">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+    
+    <footer class="bg-[#35453f] text-white lg:p-4 p-2 lg:w-4/5 w-full mx-auto mt-10 flex flex-col lg:flex-row items-center justify-center lg:items-center lg:space-x-8 space-y-8 lg:space-y-0">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 DEVXAIR. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
