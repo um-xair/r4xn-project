@@ -1,64 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doughnut Chart with Center Text</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-  <div class="bg-white shadow-lg rounded-2xl p-6">
-    <h2 class="text-lg font-semibold text-gray-700 mb-4">Sales Overview</h2>
-    <div class="relative">
-      <canvas id="doughnutChart" class="max-w-xs"></canvas>
-    </div>
-  </div>
-
-  <script>
-    // Plugin to add text in the center
-    const centerTextPlugin = {
-      id: 'centerText',
-      beforeDraw: (chart) => {
-        const { width, height, ctx } = chart;
-        ctx.save();
-        const text = '75%';
-        ctx.font = 'bold 24px sans-serif';
-        ctx.fillStyle = '#4B5563'; // Text color
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        const x = width / 2;
-        const y = height / 2;
-        ctx.fillText(text, x, y);
-        ctx.restore();
-      }
-    };
-
-    // Initialize the chart
-    const ctx = document.getElementById('doughnutChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Products A', 'Products B', 'Products C'],
-        datasets: [{
-          label: 'Sales',
-          data: [300, 150, 100],
-          backgroundColor: ['#4CAF50', '#FF9800', '#03A9F4'],
-          borderColor: ['#4CAF50', '#FF9800', '#03A9F4'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'bottom',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4XN | Project</title>
+    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-      },
-      plugins: [centerTextPlugin]
-    });
-  </script>
+        .customfont {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="fade-in px-10">
+
+    <div class="flex justify-center">
+        <header id="header" class="mt-10 w-[80%] flex flex-col items-center justify-between px-6 py-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10 transition-opacity duration-500">
+            <div class="flex items-center w-full justify-between">
+                <div class="flex items-center">
+                    <img src="assets/r4xn-black.png" alt="Logo" class="w-12 h-12">
+                    <div class="ml-3">
+                        <h1 class="text-lg font-semibold">R4XN</h1>
+                        <p class="text-sm text-gray-400">Project Hub</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#" class="text-md">Home</a>
+                    <a href="#" class="text-md">About</a>
+                    <a href="#" class="text-md">Room</a>
+                    <a href="#" class="text-md">Features</a>
+                    <a href="#" class="text-md">Menu</a>
+                    <a href="#" class="text-md">News</a>
+                </nav>
+                <button class="lg:hidden text-white" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-center text-white hidden" id="mobile-menu">
+                <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#" class="text-md">Home</a>
+                    <a href="#" class="text-md">About</a>
+                    <a href="#" class="text-md">Room</a>
+                    <a href="#" class="text-md">Features</a>
+                    <a href="#" class="text-md">Menu</a>
+                    <a href="#" class="text-md">News</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+    
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                header.style.opacity = '0';
+            } else {
+                header.style.opacity = '1';
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+
+    <main class="flex flex-col items-center justify-center text-center min-h-screen">
+        <div class="relative w-full h-full">
+            <img src="assets/snapedit_1738575168387.jpeg" alt="image description" class="w-full object-cover rounded-[50px]" />
+            <div class="absolute inset-0 bg-black opacity-50 rounded-[50px]"></div>
+            <div class="absolute inset-0 flex items-center justify-center text-white text-3xl font-semibold">
+                <p>Your text here</p>
+            </div>
+            <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-[90%] bg-[#040d12] h-40 text-white rounded-[30px] shadow-lg flex items-center justify-center">
+                <div class="grid grid-cols-4 gap-10 w-full items-center p-10">
+                    <div class="flex flex-col items-start">
+                        <label for="arrival-date" class="text-md text-white font-semibold mb-2">Arrival Date</label>
+                        <div class="relative w-full">
+                            <input type="date" id="arrival-date" class="w-full p-2 bg-transparent border-b border-white text-white focus:outline-none">
+                            <i class="fas fa-calendar-alt text-white absolute right-2 top-1/2 transform -translate-y-1/2 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start">
+                        <label for="departure-date" class="text-md text-white font-semibold mb-2">Departure Date</label>
+                        <div class="relative w-full">
+                            <input type="date" id="arrival-date" class="w-full p-2 bg-transparent border-b border-white text-white focus:outline-none">
+                            <i class="fas fa-calendar-alt text-white absolute right-2 top-1/2 transform -translate-y-1/2 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start">
+                        <label for="guests" class="text-md text-white font-semibold mb-2">Guests</label>
+                        <input type="text" id="guests" class="w-full p-2 bg-transparent border-b border-white text-white focus:outline-none" 
+                            placeholder="enter guest quantity" 
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    </div>                
+                    <div class="flex items-center justify-center">
+                        <button class="w-4/5 py-4 bg-[#4C6AFF] text-white rounded-full text-sm">
+                            <i class="fas fa-search text-white mr-2"></i>
+                            Check Availability
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+    
+
+
 </body>
 </html>
