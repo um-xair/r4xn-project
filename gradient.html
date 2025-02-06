@@ -41,70 +41,125 @@
 <body class="pt-10 bg-gradient-to-tr from-black via-black to-indigo-900 fade-in">
 
     <div class="flex justify-center">
-        <header id="header" class="w-[85%] flex flex-col items-center justify-between px-6 py-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10 transition-opacity duration-500">
+        <header id="header" class="w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-6 py-4 lg:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10 transition-opacity duration-500">
             <div class="flex items-center w-full justify-between">
                 <div class="flex items-center">
-                    <img src="assets/r4xn-black.png" alt="Logo" class="w-12 h-12">
                     <div class="ml-3">
                         <h1 class="text-lg font-semibold">R4XN</h1>
                         <p class="text-sm text-gray-400">Project Hub</p>
                     </div>
                 </div>
                 <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#home" class="text-md">Home</a>
                     <a href="#features" class="text-md">Features</a>
+                    <a href="#explore" class="text-md">Explore</a>
+                    <div class="relative">
+                        <button id="desktop-tools-btn" class="text-md flex items-center space-x-2">
+                            <span>Tools</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div id="desktop-tools-menu" class="absolute right-0 mt-2 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg hidden p-4">
+                            <div class="grid grid-cols-3 w-full">
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Tailwind CSS Gradient</h3>
+                                    <p class="text-xs text-gray-400">Vibrant multi-color gradients for web.</p>
+                                </a>
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Tailwind CSS Card</h3>
+                                    <p class="text-xs text-gray-400">Stylish modern, adaptive card layouts.</p>
+                                </a>
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Color Pallete</h3>
+                                    <p class="text-xs text-gray-400">Design custom color combinations easily.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <a href="#about" class="text-md">About</a>
-                    <a href="#try-now" class="w-40 text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
                 </nav>
                 <button class="lg:hidden text-white" id="menu-btn">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
-            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-center text-white hidden" id="mobile-menu">
+    
+            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-white hidden" id="mobile-menu">
                 <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#home" class="text-md">Home</a>
                     <a href="#features" class="text-md py-2">Features</a>
+                    <a href="#explore" class="text-md py-2">Explore</a>
+                    <div class="relative">
+                        <button id="mobile-tools-btn" class="text-md flex items-center space-x-1 py-2">
+                            <span>Tools</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div id="mobile-tools-menu" class="hidden flex flex-col space-y-2 bg-[#0A0A0A] text-white p-2 rounded-md">
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Gradient</a>
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Card</a>
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Color Palette</a>
+                        </div>
+                    </div>
                     <a href="#about" class="text-md py-2">About</a>
-                    <a href="#try-now" class="w-40 mx-auto text-center px-4 py-3 text-md text-black bg-white rounded-full">Try Now</a>
                 </nav>
             </div>
         </header>
     </div>
     
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const header = document.getElementById('header');
-        let lastScrollY = window.scrollY;
-    
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        document.getElementById("menu-btn").addEventListener("click", function () {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
         });
     
-        window.addEventListener('scroll', () => {
+        document.getElementById("mobile-tools-btn").addEventListener("click", function () {
+            document.getElementById("mobile-tools-menu").classList.toggle("hidden");
+        });
+    
+        const toolsBtn = document.getElementById("desktop-tools-btn");
+        const toolsMenu = document.getElementById("desktop-tools-menu");
+    
+        toolsBtn.addEventListener("click", function (event) {
+            event.stopPropagation(); 
+            toolsMenu.classList.toggle("hidden");
+        });
+    
+        toolsMenu.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    
+        document.addEventListener("click", function (event) {
+            if (!toolsMenu.classList.contains("hidden") && event.target !== toolsBtn) {
+                toolsMenu.classList.add("hidden");
+            }
+        });
+    
+        const header = document.getElementById("header");
+        let lastScrollY = window.scrollY;
+    
+        window.addEventListener("scroll", () => {
             if (window.scrollY > lastScrollY) {
-                header.style.opacity = '0';
+                header.style.opacity = "0";
             } else {
-                header.style.opacity = '1';
+                header.style.opacity = "1";
             }
             lastScrollY = window.scrollY;
         });
     </script>
 
-    <main class="flex flex-col items-center justify-center text-center min-h-screen lg:mt-40">
-        <div class="px-4 mt-10 md:mt-2">
-            <p class="text-xs md:text-sm mb-2 md:mb-4">Enter the Future Project</p>
-            <h1 class="text-4xl md:text-7xl font-bold mb-3 md:mb-4">Tailwind CSS Gradient</h1>
-            <p class="text-sm md:text-lg mb-4 md:mb-6">
+    <main id="home" class="flex flex-col items-center justify-center text-center min-h-screen lg:mt-40">
+        <div class="px-4 lg:mt-10 md:mt-20">
+            <p class="text-lg mb-3">Enter the Future Project</p>
+            <h1 class="text-4xl lg:text-7xl font-bold mb-3">Tailwind CSS Gradient</h1>
+            <p class="text-lg mb-3">
                 Simplify your workflow with our intuitive and powerful tools designed to keep you ahead.
             </p>
         </div>
-        <div class="flex md:space-x-4 space-x-2">
-            <a href="#" class="flex items-center justify-center px-6 py-4 w-40 bg-white text-black rounded-full">
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-2 md:gap-4 mt-10 max-w-lg mx-auto">
+            <a href="#explore" class="w-60 flex items-center justify-center px-6 py-4 bg-white text-black rounded-full">
                 Get Started
             </a>
-            <a href="#" class="flex items-center justify-center px-6 py-4 w-40 border-2 text-white rounded-full">
+            <a href="#about" class="w-60 flex items-center justify-center px-6 py-4 border-2 text-white rounded-full hover:bg-white hover:text-black transition-all duration-300">
                 Learn More
             </a>
-        </div>
+        </div>        
         <div class="w-full mt-8 md:mt-10">
             <img src="assets/image (4).png" alt="Project Management Illustration" class="w-full mx-auto h-auto">
         </div>
@@ -113,60 +168,60 @@
     <section id="features" class="mt-10 py-20 text-white min-h-screen">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-8">
-                <h2 class="text-3xl sm:text-5xl font-bold">Our Amazing Features</h2>
-                <p class="text-sm sm:text-md mt-4">Explore the unique capabilities that will elevate your experience.</p>
+                <h2 class="text-4xl lg:text-6xl font-bold">Our Amazing Features</h2>
+                <p class="text-lg mt-3">Explore powerful tools to create stunning gradients effortlessly.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
                 <div class="relative aspect-[2/3] rounded-[50px] overflow-hidden mb-3 sm:mb-4">
-                    <img src="https://i.pinimg.com/736x/6f/13/75/6f1375525387ffa02572d2527c8e3940.jpg" alt="Feature 1" 
+                    <img src="https://i.pinimg.com/736x/6f/13/75/6f1375525387ffa02572d2527c8e3940.jpg" alt="Gradient Generator" 
                          class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute bottom-0 left-0 w-full p-6">
-                        <h3 class="text-lg sm:text-xl font-semibold text-white">Feature 1</h3>
-                        <p class="text-gray-300 text-sm sm:text-base">This feature helps you streamline your tasks and stay ahead of deadlines.</p>
+                    <div class="absolute bottom-0 left-0 w-full p-8">
+                        <h3 class="text-lg lg:text-xl font-semibold text-white">Gradient Generator</h3>
+                        <p class="text-gray-300 text-sm">Easily create and customize beautiful gradients for your projects.</p>
                     </div>
                 </div>
                 <div class="relative aspect-[2/3] rounded-[50px] overflow-hidden mb-3 sm:mb-4">
-                    <img src="https://i.pinimg.com/736x/1e/b8/c1/1eb8c12842ddf373a718d3c1fe3ba0be.jpg" alt="Feature 2" 
+                    <img src="https://i.pinimg.com/736x/1e/b8/c1/1eb8c12842ddf373a718d3c1fe3ba0be.jpg" alt="Live Preview & Export" 
                          class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute bottom-0 left-0 w-full p-6">
-                        <h3 class="text-lg sm:text-xl font-semibold text-white">Feature 2</h3>
-                        <p class="text-gray-300 text-sm sm:text-base">This feature helps you streamline your tasks and stay ahead of deadlines.</p>
+                    <div class="absolute bottom-0 left-0 w-full p-8">
+                        <h3 class="text-lg lg:text-xl font-semibold text-white">Live Preview & Export</h3>
+                        <p class="text-gray-300 text-sm">Instantly see your gradient changes and export CSS code with ease.</p>
                     </div>
                 </div>
                 <div class="relative aspect-[2/3] rounded-[50px] overflow-hidden mb-3 sm:mb-4">
-                    <img src="https://i.pinimg.com/736x/d2/d4/c6/d2d4c66adfcf62d259be5615fcfa44d0.jpg" alt="Feature 3" 
+                    <img src="https://i.pinimg.com/736x/d2/d4/c6/d2d4c66adfcf62d259be5615fcfa44d0.jpg" alt="Preset Templates" 
                          class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute bottom-0 left-0 w-full p-6">
-                        <h3 class="text-lg sm:text-xl font-semibold text-white">Feature 3</h3>
-                        <p class="text-gray-300 text-sm sm:text-base">This feature helps you streamline your tasks and stay ahead of deadlines.</p>
+                    <div class="absolute bottom-0 left-0 w-full p-8">
+                        <h3 class="text-lg lg:text-xl font-semibold text-white">Preset Templates</h3>
+                        <p class="text-gray-300 text-sm">Choose from a variety of pre-designed gradients to kickstart your design.</p>
                     </div>
                 </div>
             </div>            
         </div>
     </section>
     
-    <section id="about" class="py-16 text-white min-h-screen">
+    <section id="about" class="py-20 text-white min-h-screen flex items-center justify-center">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div class="order-2 lg:order-1">
                 <img src="assets/cube.gif" alt="Feature Image" class="w-full rounded-lg shadow-lg">
             </div>
             <div class="order-1 lg:order-2 text-center lg:text-left">
-                <h2 class="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6">
+                <h2 class="text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">
                     Transform the Way You Work
                 </h2>
-                <p class="text-sm sm:text-md text-gray-300 leading-relaxed">
+                <p class="text-lg text-gray-300 leading-relaxed">
                     Discover innovative tools and features designed to simplify your workflow, boost your productivity, and
                     take your projects to the next level. With our platform, managing complex tasks becomes a breeze.
                 </p>
             </div>
         </div>
-    </section>
+    </section>    
     
-    <section id="try-now" class="py-20 text-white bg-gradient-to-bl from-black via-black to-indigo-900 bg-gradient-to-tr from-black via-black to-indigo-900">
+    <section id="explore" class="py-20 text-white bg-gradient-to-bl from-black via-black to-indigo-900 bg-gradient-to-tr from-black via-black to-indigo-900">
         <div class="max-w-screen-xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6">Our Gradient Cards</h2>
-                <p class="text-sm sm:text-md text-gray-300 leading-relaxed">Explore beautifully designed cards with vibrant gradient colors.</p>
+                <h2 class="text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">Our Gradient Cards</h2>
+                <p class="text-lg text-gray-300 leading-relaxed">Explore beautifully designed cards with vibrant gradient colors.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="relative group">
@@ -275,7 +330,7 @@
         </div>
     </section>
 
-    <footer class="flex justify-between w-full md:px-24 px-4 py-4 text-md text-white">
+    <footer class="flex justify-between w-full lg:px-20 px-10 py-4 text-md text-white">
         <p>ALL RIGHTS RESERVED</p>
         <p id="year">R4XN <span id="currentYear"></span></p>
     </footer>
