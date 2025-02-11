@@ -209,51 +209,43 @@
             <h2 class="text-[10rem] font-bold text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30">ABOUT</h2>
             <p class="text-3xl font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black z-10">My Story</p>
         </div>        
-        <div class="container mx-auto max-w-7xl grid lg:grid-cols-3 grid-cols-1 gap-3">
-            <div class="flex flex-col gap-6">
-                <div class="bg-white rounded-[50px] p-8">
+        
+        <div class="swiper mySwiper container mx-auto max-w-7xl">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
                     <div class="mb-2">
-                        <i class="fa-solid fa-pen-nib text-4xl text-purple-600"></i>
+                        <i class="fa-solid fa-pen-nib text-5xl text-purple-600"></i>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Responsive UI/UX Engineering</h3>
                     <p class="text-xs text-gray-600">
                         Delivering high-performance user experiences across all devices with cutting-edge design principles and seamless interactivity.
                     </p>
                 </div>
-                <div class="bg-white rounded-[50px] p-8">
+                
+    
+                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
                     <div class="mb-2">
-                        <i class="fa-solid fa-server text-4xl text-purple-600"></i>
+                        <i class="fa-solid fa-server text-5xl text-purple-600"></i>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Full-Stack Synchronization</h3>
                     <p class="text-xs text-gray-600">
                         Architecting scalable and high-performance applications by seamlessly integrating databases, servers, and APIs for a robust digital infrastructure.
                     </p>
                 </div>
-                <div class="bg-white rounded-[50px] overflow-hidden">
-                    <img src="assets/abstract-mountain-and-moon-ru.jpg" alt="Card Image" class="w-full h-64 object-cover">
-                </div>
-            </div>
     
-            <div class="rounded-[50px] overflow-hidden h-full">
-                <img src="assets/abstract-mountain-and-moon-ru.jpg" alt="Card Image" class="w-full h-full object-cover">
-            </div>
-            
-            <div class="flex flex-col gap-6">
-                <div class="bg-white rounded-[50px] overflow-hidden">
-                    <img src="assets/abstract-mountain-and-moon-ru.jpg" alt="Card Image" class="w-full h-64 object-cover">
-                </div>
-                <div class="bg-white rounded-[50px] p-8">
+                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
                     <div class="mb-2">
-                        <i class="fa-solid fa-microchip text-4xl text-purple-600"></i>
+                        <i class="fa-solid fa-microchip text-5xl text-purple-600"></i>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">IoT Solutions</h3>
                     <p class="text-xs text-gray-600">
                         Developing next-gen IoT solutions with Arduino, NodeMCU, and ESP32, enabling real-time connectivity, automation, and intelligent device management.
                     </p>
                 </div>
-                <div class="bg-white rounded-[50px] p-8">
+    
+                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
                     <div class="mb-2">
-                        <i class="fa-solid fa-database text-4xl text-purple-600"></i>
+                        <i class="fa-solid fa-database text-5xl text-purple-600"></i>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Scalable Database Management</h3>
                     <p class="text-xs text-gray-600">
@@ -263,6 +255,19 @@
             </div>
         </div>
     </section>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            speed: 5000,
+        });
+    </script>
     
     <section id="explore" class="py-20 px-4 bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
         <div class="text-center h-80 relative">
