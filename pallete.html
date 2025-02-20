@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4XN | Project</title>
+    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .customfont {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <div class="flex justify-center text-white">
+        <header id="header" class="mt-10 bg-[#232323] w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-6 py-4 lg:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-[999] transition-opacity duration-500">
+            <div class="flex items-center w-full justify-between">
+                <div class="flex items-center">
+                    <div class="ml-3">
+                        <h1 class="text-lg font-semibold">R4XN</h1>
+                        <p class="text-sm text-gray-400">Project Hub</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#home" class="text-md">Home</a>
+                    <a href="#features" class="text-md">Features</a>
+                    <a href="#explore" class="text-md">Explore</a>
+                    <div class="relative">
+                        <button id="desktop-tools-btn" class="text-md flex items-center space-x-2">
+                            <span>Tools</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div id="desktop-tools-menu" class="absolute right-0 mt-2 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg hidden p-4">
+                            <div class="grid grid-cols-3 w-full">
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Tailwind CSS Gradient</h3>
+                                    <p class="text-xs text-gray-400">Vibrant multi-color gradients for web.</p>
+                                </a>
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Tailwind CSS Card</h3>
+                                    <p class="text-xs text-gray-400">Stylish modern, adaptive card layouts.</p>
+                                </a>
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Color Pallete</h3>
+                                    <p class="text-xs text-gray-400">Design custom color combinations easily.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#about" class="text-md">About</a>
+                </nav>
+                <button class="lg:hidden text-white" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+    
+            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-white hidden" id="mobile-menu">
+                <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#home" class="text-md">Home</a>
+                    <a href="#features" class="text-md py-2">Features</a>
+                    <a href="#explore" class="text-md py-2">Explore</a>
+                    <div class="relative">
+                        <button id="mobile-tools-btn" class="text-md flex items-center space-x-1 py-2">
+                            <span>Tools</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div id="mobile-tools-menu" class="hidden flex flex-col space-y-2 bg-[#0A0A0A] text-white p-2 rounded-md">
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Gradient</a>
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Card</a>
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Color Palette</a>
+                        </div>
+                    </div>
+                    <a href="#about" class="text-md py-2">About</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <script>
+        document.getElementById("menu-btn").addEventListener("click", function () {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    
+        document.getElementById("mobile-tools-btn").addEventListener("click", function () {
+            document.getElementById("mobile-tools-menu").classList.toggle("hidden");
+        });
+    
+        const toolsBtn = document.getElementById("desktop-tools-btn");
+        const toolsMenu = document.getElementById("desktop-tools-menu");
+    
+        toolsBtn.addEventListener("click", function (event) {
+            event.stopPropagation(); 
+            toolsMenu.classList.toggle("hidden");
+        });
+    
+        toolsMenu.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    
+        document.addEventListener("click", function (event) {
+            if (!toolsMenu.classList.contains("hidden") && event.target !== toolsBtn) {
+                toolsMenu.classList.add("hidden");
+            }
+        });
+    
+        const header = document.getElementById("header");
+        let lastScrollY = window.scrollY;
+    
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > lastScrollY) {
+                header.style.opacity = "0";
+            } else {
+                header.style.opacity = "1";
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+
+    <main id="home" class="min-h-screen w-full flex items-center justify-center text-center bg-cover bg-center text-white px-4"
+        style="background-image: url('assets/prism-lights-abstract-5k-5v.jpg');">
+        <div class="container max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <p class="text-lg mb-3">Discover Your Perfect Palette</p>
+            <h1 class="text-4xl lg:text-7xl font-bold leading-tight">
+                <span class="typewriter">Generate Stunning Color Schemes<br class="hidden sm:block">with Our Palette Tool</span>
+            </h1>
+            <div class="mt-8 w-full flex justify-center">
+                <a href="#color" class="px-6 py-4 w-full lg:w-1/5 bg-white text-black text-center rounded-full">
+                    Generate Now
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <section id="color" class="flex flex-col items-center justify-center min-h-screen space-y-6 py-20">
+        <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+            <span class="typewriter">Color Palette Generator</span>
+        </h1>
+        <p class="text-lg mb-3 text-gray-400">Create Beautiful Color Schemes that Work</p>
+    
+        <div class="mt-10 flex flex-col items-center space-y-2 w-3/5">
+            <div class="flex items-center space-x-3 w-full">
+                <div class="border border-gray-100 bg-gray-100 rounded-[10px] px-3 py-2 flex items-center w-full">
+                    <input type="text" id="colorInput" placeholder="Color code or name" 
+                        class="px-2 py-1 outline-none text-black flex-1 bg-gray-100 w-full">
+                </div>
+                <div class="border border-gray-200 rounded-[10px] flex items-center justify-center w-12 h-12">
+                    <i class="fa-solid fa-image text-gray-500 text-xl cursor-pointer"></i>
+                </div>
+            </div>
+            <p class="text-sm mb-3 text-gray-400">Or select an initial color</p>
+        </div>        
+        
+        <div class="grid grid-cols-8 gap-2 mt-4">
+            <div class="h-32 w-32 bg-red-500 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-red-400 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-red-300 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-red-200 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-blue-200 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-blue-300 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-blue-400 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-blue-500 rounded-[15px]"></div>
+        
+            <div class="h-32 w-32 bg-yellow-500 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-yellow-400 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-yellow-300 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-yellow-200 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-green-200 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-green-300 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-green-400 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-green-500 rounded-[15px]"></div>
+        
+            <div class="h-32 w-32 bg-orange-500 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-orange-400 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-orange-300 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-orange-200 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-purple-200 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-purple-300 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-purple-400 rounded-[15px]"></div>
+            <div class="h-32 w-32 bg-purple-500 rounded-[15px]"></div>
+        </div>
+    </section>
+
+    <script>
+        const colorSchemes = {
+            "red-900": ["red-700", "red-500", "blue-500", "yellow-500", "gray-500"],
+            "blue-900": ["blue-700", "blue-500", "orange-500", "green-500", "gray-500"],
+            "yellow-900": ["yellow-700", "yellow-500", "purple-500", "red-500", "gray-500"],
+            "green-900": ["green-700", "green-500", "blue-500", "yellow-500", "gray-500"],
+            "orange-900": ["orange-700", "orange-500", "blue-500", "red-500", "gray-500"],
+            "purple-900": ["purple-700", "purple-500", "yellow-500", "blue-500", "gray-500"]
+        };
+
+        const generatedPalette = document.getElementById("generatedPalette");
+        const generatedTitle = document.getElementById("generatedTitle");
+
+        document.getElementById("mainPalette").addEventListener("click", (event) => {
+            if (event.target.dataset.color) {
+                const baseColor = event.target.dataset.color;
+                generatePalette(baseColor);
+            }
+        });
+
+        function generatePalette(baseColor) {
+            generatedPalette.innerHTML = "";
+            generatedTitle.classList.remove("hidden");
+
+            colorSchemes[baseColor].forEach(color => {
+                let div = document.createElement("div");
+                div.className = `h-32 w-32 bg-${color} rounded-[15px]`;
+                generatedPalette.appendChild(div);
+            });
+        }
+    </script>
+
+</body>
+</html>

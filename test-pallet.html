@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4XN | Project</title>
+    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="fade-in flex flex-col items-center justify-center min-h-screen">
+
+    <section id="color" class="flex flex-col items-center justify-center w-full space-y-4 py-10">
+        <h1 class="text-4xl font-bold text-center">
+            <span class="typewriter">Color Palette Generator</span>
+        </h1>
+        <p class="text-lg text-gray-400 text-center">Create Beautiful Color Schemes that Work</p>
+
+        <div class="mt-4 flex flex-col items-center space-y-2 w-3/5">
+            <div class="flex items-center space-x-3 w-full">
+                <div class="border border-gray-100 bg-gray-100 rounded-lg px-3 py-2 flex items-center w-full">
+                    <input type="text" id="colorInput" placeholder="Color code or name" 
+                        class="px-2 py-1 outline-none text-black flex-1 bg-gray-100 w-full">
+                </div>
+                <div class="border border-gray-200 rounded-lg flex items-center justify-center w-12 h-12">
+                    <i class="fa-solid fa-image text-gray-500 text-xl cursor-pointer"></i>
+                </div>
+            </div>
+            <p class="text-sm text-gray-400">Or select an initial color</p>
+        </div>        
+
+        <div id="mainPalette" class="grid grid-cols-8 gap-2 mt-4">
+            <div class="h-32 w-32 bg-red-500 rounded-[15px] cursor-pointer" data-color="red-500"></div>
+            <div class="h-32 w-32 bg-red-400 rounded-[15px] cursor-pointer" data-color="red-400"></div>
+            <div class="h-32 w-32 bg-red-300 rounded-[15px] cursor-pointer" data-color="red-300"></div>
+            <div class="h-32 w-32 bg-red-200 rounded-[15px] cursor-pointer" data-color="red-200"></div>
+            <div class="h-32 w-32 bg-blue-200 rounded-[15px] cursor-pointer" data-color="blue-200"></div>
+            <div class="h-32 w-32 bg-blue-300 rounded-[15px] cursor-pointer" data-color="blue-300"></div>
+            <div class="h-32 w-32 bg-blue-400 rounded-[15px] cursor-pointer" data-color="blue-400"></div>
+            <div class="h-32 w-32 bg-blue-500 rounded-[15px] cursor-pointer" data-color="blue-500"></div>
+        </div>
+
+        <h2 class="text-2xl font-bold mt-6 hidden text-center" id="generatedTitle">Generated Color Scheme</h2>
+        <div id="generatedPalette" class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full px-4"></div>
+    </section>
+
+    <script>
+        const colorSchemes = {
+            "red-500": {
+                "Analogous":        ["#EF4444", "#EF449A", "#EF9A44", "#EF6A44", "#EF4470"],
+                "Monochromatic":    ["#EF4444", "#BB3937", "#8A2E2B", "#5B231F", "#301613"],
+                "Triadic":          ["#EF4444", "#44EF44", "#4444EF", "#44EFB9", "#B944EF"],
+                "Complementary":    ["#EF4444", "#EF449A", "#EF9A44", "#44EF9A", "#449AEF"],
+                "Tetradic":         ["#EF4444", "#9AEF44", "#44EFEF", "#9A44EF", "#EF6A9A"]
+            },
+
+            "red-400": {
+                "Analogous":        ["#F87171", "#F871C0", "#F8C071", "#F89771", "#F87196"],
+                "Monochromatic":    ["#F87171", "#D65F5F", "#B14D4D", "#8A3C3C", "#642A2A"],
+                "Triadic":          ["#F87171", "#71F871", "#7171F8", "#71F8C0", "#C071F8"],
+                "Complementary":    ["#F87171", "#F871C0", "#F8C071", "#71F8C0", "#71C0F8"],
+                "Tetradic":         ["#F87171", "#C0F871", "#71F8F8", "#C071F8", "#F897C0"]
+            },
+
+            "red-300": {
+                "Analogous":        ["#FCA5A5", "#FCA5D6", "#FCD6A5", "#FCB5A5", "#FCA5B5"],
+                "Monochromatic":    ["#FCA5A5", "#E38F8F", "#C87A7A", "#AD6565", "#924F4F"],
+                "Triadic":          ["#FCA5A5", "#A5FCA5", "#A5A5FC", "#A5FCF0", "#F0A5FC"],
+                "Complementary":    ["#FCA5A5", "#FCA5D6", "#FCD6A5", "#A5FCD6", "#A5D6FC"],
+                "Tetradic":         ["#FCA5A5", "#D6FCA5", "#A5FCFC", "#D6A5FC", "#FCB5D6"]
+            },
+
+            "red-200": {
+                "Analogous":        ["#FECACA", "#FECADF", "#FEDFCA", "#FECACF", "#FECADF"],
+                "Monochromatic":    ["#FECACA", "#E5B5B5", "#CC9F9F", "#B38A8A", "#997474"],
+                "Triadic":          ["#FECACA", "#CAFECF", "#CACAFE", "#CAFEE5", "#E5CAFE"],
+                "Complementary":    ["#FECACA", "#FECADF", "#FEDFCA", "#CAFEDF", "#CADFFE"],
+                "Tetradic":         ["#FECACA", "#DFFECF", "#CAFEEE", "#DFC9FE", "#FECFDF"]
+            }
+
+        };
+
+        document.getElementById("mainPalette").addEventListener("click", (event) => {
+            if (event.target.dataset.color) {
+                const baseColor = event.target.dataset.color;
+                generatePalettes(baseColor);
+            }
+        });
+
+        function generatePalettes(baseColor) {
+            const generatedPalette = document.getElementById("generatedPalette");
+            const generatedTitle = document.getElementById("generatedTitle");
+
+            generatedPalette.innerHTML = "";
+            generatedTitle.classList.remove("hidden");
+
+            const categories = ["Analogous", "Monochromatic", "Triadic", "Complementary", "Tetradic", "Random"];
+
+            categories.forEach(category => {
+                const section = document.createElement("div");
+                section.className = "w-full flex flex-col items-center";
+
+                const title = document.createElement("h2");
+                title.className = "text-lg font-semibold mt-4";
+                title.innerText = category;
+                section.appendChild(title);
+
+                const paletteContainer = document.createElement("div");
+                paletteContainer.className = "grid grid-cols-5 gap-1 mt-2";
+
+                let colors = [];
+                if (category === "Random") {
+                    colors = generateRandomColors();
+                } else {
+                    colors = colorSchemes[baseColor] ? [...(colorSchemes[baseColor][category] || [])] : [];
+                }
+
+                while (colors.length < 5) {
+                    colors.push("#CCCCCC");
+                }
+                colors = colors.slice(0, 5);
+
+                colors.forEach(color => {
+                    let div = document.createElement("div");
+                    div.style.backgroundColor = color; 
+                    div.className = "h-14 w-14 rounded-md";
+                    paletteContainer.appendChild(div);
+                });
+
+                section.appendChild(paletteContainer);
+                generatedPalette.appendChild(section);
+            });
+        }
+
+        function generateRandomColors() {
+            const colors = [];
+            for (let i = 0; i < 5; i++) {
+                colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
+            }
+            return colors;
+        }
+    </script>
+
+</body>
+</html>
