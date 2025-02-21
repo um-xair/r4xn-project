@@ -50,7 +50,7 @@
                 <nav class="hidden lg:flex items-center space-x-6">
                     <a href="#home" class="text-md">Home</a>
                     <a href="#features" class="text-md">Features</a>
-                    <a href="#explore" class="text-md">Explore</a>
+                    <a href="#color" class="text-md">Explore</a>
                     <div class="relative">
                         <button id="desktop-tools-btn" class="text-md flex items-center space-x-2">
                             <span>Tools</span>
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#about" class="text-md">About</a>
+                    <a href="#features" class="text-md">About</a>
                 </nav>
                 <button class="lg:hidden text-white" id="menu-btn">
                     <i class="fas fa-bars text-2xl"></i>
@@ -84,7 +84,7 @@
                 <nav class="flex flex-col space-y-4 py-4">
                     <a href="#home" class="text-md">Home</a>
                     <a href="#features" class="text-md py-2">Features</a>
-                    <a href="#explore" class="text-md py-2">Explore</a>
+                    <a href="#color" class="text-md py-2">Explore</a>
                     <div class="relative">
                         <button id="mobile-tools-btn" class="text-md flex items-center space-x-1 py-2">
                             <span>Tools</span>
@@ -96,7 +96,7 @@
                             <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Color Palette</a>
                         </div>
                     </div>
-                    <a href="#about" class="text-md py-2">About</a>
+                    <a href="#features" class="text-md py-2">About</a>
                 </nav>
             </div>
         </header>
@@ -202,14 +202,46 @@
         </div>
     </section>
 
-    <section class="w-full flex items-center justify-center min-h-screen">
+    <section id="colorSchemeSection" class="w-full flex items-center justify-center min-h-screen hidden">
         <div class="max-w-8xl mx-auto">
-            <h2 class="text-4xl font-bold mt-6 hidden text-center py-10" id="generatedTitle">Generated Color Scheme</h2>
+            <h2 class="text-4xl lg:text-6xl font-bold mt-6 hidden text-center" id="generatedTitle">Generated Color Scheme</h2>
             <div id="generatedPalette" class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full px-4"></div>
         </div>
-    </section>    
+    </section>
 
+    <section id="features" class="w-full py-20 bg-cover bg-center relative min-h-screen flex items-center justify-center" style="background-image: url('assets/abstraction-cubes-v3.jpg');">
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl lg:text-6xl font-bold text-white text-center mb-10">Our Unique Capabilities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-white rounded-[30px] p-6 flex flex-col items-center justify-center text-center w-full aspect-[4/3]">
+                    <img src="assets/color-1.png" alt="Color Libraries" class="w-20 h-20 object-contain mb-4">
+                    <h3 class="mt-4 text-2xl font-semibold">Extensive Color Libraries</h3>
+                    <p class="text-gray-500 text-sm">Access a vast array of colors and shades to find the perfect combination for your project.</p>
+                </div>
+                <div class="bg-white rounded-[30px] p-6 flex flex-col items-center justify-center text-center w-full aspect-[4/3]">
+                    <img src="assets/color-2.png" alt="Color Libraries" class="w-20 h-20 object-contain mb-4">
+                    <h3 class="mt-4 text-2xl font-semibold">Palette Preview</h3>
+                    <p class="text-gray-500 text-sm">Visualize how colors work together with real-time previews and mockups.</p>
+                </div>
+                <div class="bg-white rounded-[30px] p-6 flex flex-col items-center justify-center text-center w-full aspect-[4/3]">
+                    <img src="assets/color-3.png" alt="Color Libraries" class="w-20 h-20 object-contain mb-4">
+                    <h3 class="mt-4 text-2xl font-semibold">Color Harmony Tools</h3>
+                    <p class="text-gray-500 text-sm">Utilize tools to generate harmonious color schemes, including complementary, analogous, and triadic combinations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="flex justify-between w-full lg:px-20 px-10 py-4 text-md text-white bg-black">
+        <p>ALL RIGHTS RESERVED</p>
+        <p id="year">R4XN <span id="currentYear"></span></p>
+    </footer>
+    
     <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         const colorSchemes = {
             "red-500": {
                 "Analogous":        ["#EF4444", "#EF449A", "#EF9A44", "#EF6A44", "#EF4470"],
@@ -472,8 +504,10 @@
             if (event.target.dataset.color) {
                 const baseColor = event.target.dataset.color;
                 generatePalettes(baseColor);
+                const colorSchemeSection = document.getElementById("colorSchemeSection");
+                colorSchemeSection.classList.remove("hidden");
                 document.getElementById("generatedTitle").classList.remove("hidden");
-                document.getElementById("generatedPalette").scrollIntoView({ behavior: "smooth" });
+                document.getElementById("colorSchemeSection").scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
 
@@ -491,7 +525,7 @@
                 section.className = "w-full flex flex-col items-center";
             
                 const title = document.createElement("h2");
-                title.className = "text-lg mt-4";
+                title.className = "text-lg mt-10";
                 title.innerText = category;
                 section.appendChild(title);
             
@@ -502,7 +536,7 @@
             
                 colors.forEach(hex => {
                     let div = document.createElement("div");
-                    div.className = `h-20 w-20 rounded-lg cursor-pointer flex items-center justify-center relative`;
+                    div.className = `h-20 w-20 rounded-[10px] cursor-pointer flex items-center justify-center relative`;
                     div.style.backgroundColor = hex;
                     div.setAttribute("data-hex", hex);
                 
