@@ -20,26 +20,13 @@
         }
     </style>
 </head>
-<body class="fade-in flex flex-col items-center justify-center min-h-screen">
+<body class="fade-in flex flex-col items-center justify-center">
 
-    <section id="color" class="flex flex-col items-center justify-center w-full space-y-4 py-10">
-        <h1 class="text-4xl font-bold text-center">
+    <section id="color" class="flex flex-col items-center justify-center w-full space-y-4 py-10 min-h-screen">
+        <h1 class="text-4xl lg:text-6xl font-bold text-center">
             <span class="typewriter">Color Palette Generator</span>
         </h1>
-        <p class="text-lg text-gray-400 text-center">Create Beautiful Color Schemes that Work</p>
-
-        <div class="mt-4 flex flex-col items-center space-y-2 w-3/5">
-            <div class="flex items-center space-x-3 w-full">
-                <div class="border border-gray-100 bg-gray-100 rounded-lg px-3 py-2 flex items-center w-full">
-                    <input type="text" id="colorInput" placeholder="Color code or name" 
-                        class="px-2 py-1 outline-none text-black flex-1 bg-gray-100 w-full">
-                </div>
-                <div class="border border-gray-200 rounded-lg flex items-center justify-center w-12 h-12">
-                    <i class="fa-solid fa-image text-gray-500 text-xl cursor-pointer"></i>
-                </div>
-            </div>
-            <p class="text-sm text-gray-400">Or select an initial color</p>
-        </div>        
+        <p class="text-md text-gray-400 text-center">Create Beautiful Color Schemes that Work</p>
 
         <div id="mainPalette" class="grid grid-cols-8 gap-2 mt-4">
             <div class="h-32 w-32 bg-red-500 rounded-[15px] cursor-pointer" data-color="red-500"></div>
@@ -68,11 +55,24 @@
             <div class="h-32 w-32 bg-purple-300 rounded-[15px] cursor-pointer" data-color="purple-300"></div>
             <div class="h-32 w-32 bg-purple-400 rounded-[15px] cursor-pointer" data-color="purple-400"></div>
             <div class="h-32 w-32 bg-purple-500 rounded-[15px] cursor-pointer" data-color="purple-500"></div>
-        </div>
 
-        <h2 class="text-2xl font-bold mt-6 hidden text-center" id="generatedTitle">Generated Color Scheme</h2>
-        <div id="generatedPalette" class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full px-4"></div>
+            <div class="h-32 w-32 bg-slate-900 rounded-[15px] cursor-pointer" data-color="slate-900"></div>
+            <div class="h-32 w-32 bg-slate-800 rounded-[15px] cursor-pointer" data-color="slate-800"></div>
+            <div class="h-32 w-32 bg-slate-700 rounded-[15px] cursor-pointer" data-color="slate-700"></div>
+            <div class="h-32 w-32 bg-slate-600 rounded-[15px] cursor-pointer" data-color="slate-600"></div>
+            <div class="h-32 w-32 bg-slate-500 rounded-[15px] cursor-pointer" data-color="slate-500"></div>
+            <div class="h-32 w-32 bg-slate-400 rounded-[15px] cursor-pointer" data-color="slate-400"></div>
+            <div class="h-32 w-32 bg-slate-300 rounded-[15px] cursor-pointer" data-color="slate-300"></div>
+            <div class="h-32 w-32 bg-slate-200 rounded-[15px] cursor-pointer" data-color="slate-200"></div>
+        </div>
     </section>
+
+    <section class="w-full py-20 bg-gray-100 flex items-center justify-center">
+        <div class="max-w-8xl mx-auto">
+            <h2 class="text-3xl font-bold mt-6 hidden text-center py-10" id="generatedTitle">Generated Color Scheme</h2>
+            <div id="generatedPalette" class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full px-4"></div>
+        </div>
+    </section>    
 
     <script>
         const colorSchemes = {
@@ -204,61 +204,208 @@
                 "Tetradic":         ["#BBF7D0", "#F7BBD0", "#BBD0F7", "#F7D0BB", "#D0F7BB"]
             },
 
+            "orange-500": {
+                "Analogous":        ["#F97316", "#F97350", "#F97380", "#F973B0", "#F973E0"],
+                "Monochromatic":    ["#F97316", "#D96514", "#B85712", "#97490F", "#763B0D"],
+                "Triadic":          ["#F97316", "#16F973", "#7316F9", "#F91673", "#73F916"],
+                "Complementary":    ["#F97316", "#16F973", "#F97350", "#1673F9", "#F95016"],
+                "Tetradic":         ["#F97316", "#7316F9", "#16F950", "#F91673", "#73F916"]
+            },
 
+            "orange-400": {
+                "Analogous":        ["#FB923C", "#FB9270", "#FB92A4", "#FB92D8", "#FB92FF"],
+                "Monochromatic":    ["#FB923C", "#DC8236", "#BD7230", "#9E622A", "#805224"],
+                "Triadic":          ["#FB923C", "#3CFB92", "#923CFB", "#FB3C92", "#92FB3C"],
+                "Complementary":    ["#FB923C", "#3CFB92", "#FB9270", "#3C92FB", "#FB703C"],
+                "Tetradic":         ["#FB923C", "#923CFB", "#3C92FB", "#FB3C92", "#92FB3C"]
+            },
 
+            "orange-300": {
+                "Analogous":        ["#FDBA74", "#FDBAA0", "#FDBACC", "#FDBAFF", "#FDBAF0"],
+                "Monochromatic":    ["#FDBA74", "#DEA368", "#BF8D5C", "#A17650", "#825044"],
+                "Triadic":          ["#FDBA74", "#74FDBA", "#BA74FD", "#FD74BA", "#BAFD74"],
+                "Complementary":    ["#FDBA74", "#74FDBA", "#FDBAA0", "#74BAFD", "#FDA074"],
+                "Tetradic":         ["#FDBA74", "#BA74FD", "#74BAFD", "#FD74BA", "#BAFD74"]
+            },
+
+            "orange-200": {
+                "Analogous":        ["#FED7AA", "#FED7D0", "#FED7F6", "#FED7FF", "#FED7E4"],
+                "Monochromatic":    ["#FED7AA", "#DFBF99", "#C1A788", "#A39077", "#857866"],
+                "Triadic":          ["#FED7AA", "#AAFED7", "#D7AAFE", "#FEAAD7", "#D7FEAA"],
+                "Complementary":    ["#FED7AA", "#AAFED7", "#FED7D0", "#AAD7FE", "#FED0AA"],
+                "Tetradic":         ["#FED7AA", "#D7AAFE", "#AAD7FE", "#FEAAD7", "#D7FEAA"]
+            },
+
+            "purple-500": {
+                "Analogous":        ["#9333EA", "#9333AA", "#9333CC", "#9333FF", "#9333DD"],
+                "Monochromatic":    ["#9333EA", "#7F2ACB", "#6B22AC", "#571A8D", "#43116E"],
+                "Triadic":          ["#9333EA", "#33EA93", "#EA9333", "#9333FF", "#3393EA"],
+                "Complementary":    ["#9333EA", "#EA3393", "#9333AA", "#33EA93", "#EA9333"],
+                "Tetradic":         ["#9333EA", "#3393EA", "#33EA93", "#EA3393", "#9333FF"]
+            },
+
+            "purple-400": {
+                "Analogous":        ["#A855F7", "#A855B3", "#A855D1", "#A855FF", "#A855E3"],
+                "Monochromatic":    ["#A855F7", "#914AE0", "#7A3FCC", "#6233B7", "#4B28A3"],
+                "Triadic":          ["#A855F7", "#55F7A8", "#F7A855", "#A855FF", "#55A8F7"],
+                "Complementary":    ["#A855F7", "#F755A8", "#A855B3", "#55F7A8", "#F7A855"],
+                "Tetradic":         ["#A855F7", "#55A8F7", "#55F7A8", "#F755A8", "#A855FF"]
+            },
+
+            "purple-300": {
+                "Analogous":        ["#C084FC", "#C084D0", "#C084E7", "#C084FF", "#C084F1"],
+                "Monochromatic":    ["#C084FC", "#A973E0", "#9163C6", "#7A52AD", "#624193"],
+                "Triadic":          ["#C084FC", "#84FCC0", "#FCC084", "#C084FF", "#84C0FC"],
+                "Complementary":    ["#C084FC", "#FC84C0", "#C084D0", "#84FCC0", "#FCC084"],
+                "Tetradic":         ["#C084FC", "#84C0FC", "#84FCC0", "#FC84C0", "#C084FF"]
+            },
+
+            "purple-200": {
+                "Analogous":        ["#E9D5FF", "#E9D5F0", "#E9D5FA", "#E9D5FF", "#E9D5F8"],
+                "Monochromatic":    ["#E9D5FF", "#C9B6E0", "#A897C2", "#8879A4", "#685A86"],
+                "Triadic":          ["#E9D5FF", "#D5FFE9", "#FFE9D5", "#D5E9FF", "#E9D5F0"],
+                "Complementary":    ["#E9D5FF", "#FFD5E9", "#E9D5F0", "#D5FFE9", "#FFE9D5"],
+                "Tetradic":         ["#E9D5FF", "#D5E9FF", "#D5FFE9", "#FFD5E9", "#E9D5F8"]
+            },
+
+            "slate-900": {
+                "Analogous":        ["#0F172A", "#0F1720", "#0F172E", "#0F1735", "#0F1725"],
+                "Monochromatic":    ["#0F172A", "#0D1423", "#0B111D", "#090E16", "#070A10"],
+                "Triadic":          ["#0F172A", "#172A0F", "#2A0F17", "#1A2A0F", "#2A1A0F"],
+                "Complementary":    ["#0F172A", "#2A170F", "#0F1720", "#172A0F", "#2A0F17"],
+                "Tetradic":         ["#0F172A", "#0F2A17", "#2A0F2A", "#172A0F", "#1A0F2A"]
+            },
+
+            "slate-800": {
+                "Analogous":        ["#1E293B", "#1E2930", "#1E293E", "#1E2945", "#1E2935"],
+                "Monochromatic":    ["#1E293B", "#1B2534", "#181F2C", "#141926", "#101320"],
+                "Triadic":          ["#1E293B", "#293B1E", "#3B1E29", "#2A3B1E", "#3B2A1E"],
+                "Complementary":    ["#1E293B", "#3B291E", "#1E2930", "#293B1E", "#3B1E29"],
+                "Tetradic":         ["#1E293B", "#1E3B29", "#3B1E3B", "#293B1E", "#2A1E3B"]
+            },
+
+            "slate-700": {
+                "Analogous":        ["#334155", "#33414A", "#33415F", "#334166", "#334156"],
+                "Monochromatic":    ["#334155", "#2F3B4C", "#2A3442", "#262E39", "#212830"],
+                "Triadic":          ["#334155", "#415533", "#553341", "#3D5533", "#553D33"],
+                "Complementary":    ["#334155", "#554133", "#33414A", "#415533", "#553341"],
+                "Tetradic":         ["#334155", "#335541", "#553355", "#415533", "#433355"]
+            },
+
+            "slate-600": {
+                "Analogous":        ["#475569", "#47555E", "#475572", "#475579", "#475569"],
+                "Monochromatic":    ["#475569", "#414E5F", "#3B4654", "#353F4A", "#2E373F"],
+                "Triadic":          ["#475569", "#556947", "#694755", "#506947", "#694F47"],
+                "Complementary":    ["#475569", "#695547", "#47555E", "#556947", "#694755"],
+                "Tetradic":         ["#475569", "#475569", "#695569", "#556947", "#565569"]
+            },
+
+            "slate-500": {
+                "Analogous":        ["#64748B", "#647481", "#647495", "#64749C", "#64748C"],
+                "Monochromatic":    ["#64748B", "#5B6A80", "#515F74", "#475568", "#3D4A5C"],
+                "Triadic":          ["#64748B", "#748B64", "#8B6474", "#6E8B64", "#8B6E64"],
+                "Complementary":    ["#64748B", "#8B7464", "#647481", "#748B64", "#8B6474"],
+                "Tetradic":         ["#64748B", "#648B74", "#8B648B", "#748B64", "#75648B"]
+            },
+
+            "slate-400": {
+                "Analogous":        ["#94A3B8", "#94A3AC", "#94A3C0", "#94A3C7", "#94A3B3"],
+                "Monochromatic":    ["#94A3B8", "#8492A3", "#74808F", "#646E7A", "#545B65"],
+                "Triadic":          ["#94A3B8", "#A3B894", "#B894A3", "#9BB894", "#B89B94"],
+                "Complementary":    ["#94A3B8", "#B8A394", "#94A3AC", "#A3B894", "#B894A3"],
+                "Tetradic":         ["#94A3B8", "#94B8A3", "#B894B8", "#A3B894", "#A594B8"]
+            },
+
+            "slate-300": {
+                "Analogous":        ["#CBD5E1", "#CBD5D4", "#CBD5E8", "#CBD5EF", "#CBD5DA"],
+                "Monochromatic":    ["#CBD5E1", "#B7C0CA", "#A3AAB3", "#8F959D", "#7B8086"],
+                "Triadic":          ["#CBD5E1", "#D5E1CB", "#E1CBD5", "#D2E1CB", "#E1D2CB"],
+                "Complementary":    ["#CBD5E1", "#E1D5CB", "#CBD5D4", "#D5E1CB", "#E1CBD5"],
+                "Tetradic":         ["#CBD5E1", "#CBD5E1", "#E1CBE1", "#D5E1CB", "#D5CBE1"]
+            },
+
+            "slate-200": {
+                "Analogous":        ["#E2E8F0", "#E2E8E4", "#E2E8F6", "#E2E8FD", "#E2E8EB"],
+                "Monochromatic":    ["#E2E8F0", "#CED3D9", "#BABEC3", "#A6A9AC", "#929496"],
+                "Triadic":          ["#E2E8F0", "#E8F0E2", "#F0E2E8", "#E6F0E2", "#F0E6E2"],
+                "Complementary":    ["#E2E8F0", "#F0E8E2", "#E2E8E4", "#E8F0E2", "#F0E2E8"],
+                "Tetradic":         ["#E2E8F0", "#E2F0E8", "#F0E2F0", "#E8F0E2", "#E8E2F0"]
+            }
         };
 
         document.getElementById("mainPalette").addEventListener("click", (event) => {
-            if (event.target.dataset.color) {
-                const baseColor = event.target.dataset.color;
-                generatePalettes(baseColor);
-            }
+    if (event.target.dataset.color) {
+        const baseColor = event.target.dataset.color;
+        generatePalettes(baseColor);
+
+        // Scroll smoothly to the generated palette section
+        document.getElementById("generatedTitle").classList.remove("hidden");
+        document.getElementById("generatedPalette").scrollIntoView({ behavior: "smooth" });
+    }
+});
+
+
+function generatePalettes(baseColor) {
+    const generatedPalette = document.getElementById("generatedPalette");
+    const generatedTitle = document.getElementById("generatedTitle");
+
+    generatedPalette.innerHTML = ""; // Clear previous palettes
+    generatedTitle.classList.remove("hidden"); // Show title
+
+    const categories = ["Analogous", "Monochromatic", "Triadic", "Complementary", "Tetradic"];
+
+    categories.forEach(category => {
+        const section = document.createElement("div");
+        section.className = "w-full flex flex-col items-center";
+
+        // Title
+        const title = document.createElement("h2");
+        title.className = "text-lg font-semibold mt-4";
+        title.innerText = category;
+        section.appendChild(title);
+
+        // Color Palette Container
+        const paletteContainer = document.createElement("div");
+        paletteContainer.className = "grid grid-cols-5 gap-2 mt-2";
+
+        // Get colors for this category
+        let colors = colorSchemes[baseColor] ? [...(colorSchemes[baseColor][category] || [])] : [];
+
+        colors.forEach(hex => {
+            let div = document.createElement("div");
+            div.className = `h-14 w-14 rounded-md cursor-pointer flex items-center justify-center relative`;
+            div.style.backgroundColor = hex;
+            div.setAttribute("data-hex", hex);
+
+            // Tooltip
+            const tooltip = document.createElement("span");
+            tooltip.className = "absolute bottom-full mb-1 px-2 py-1 text-xs text-white bg-black rounded opacity-0 transition-opacity";
+            tooltip.innerText = hex;
+            div.appendChild(tooltip);
+
+            // Show hex on hover
+            div.addEventListener("mouseenter", () => {
+                tooltip.classList.remove("opacity-0");
+            });
+            div.addEventListener("mouseleave", () => {
+                tooltip.classList.add("opacity-0");
+            });
+
+            // Copy hex on click
+            div.addEventListener("click", () => {
+                navigator.clipboard.writeText(hex);
+                tooltip.innerText = "Copied!";
+                setTimeout(() => tooltip.innerText = hex, 1000);
+            });
+
+            paletteContainer.appendChild(div);
         });
 
-        function generatePalettes(baseColor) {
-            const generatedPalette = document.getElementById("generatedPalette");
-            const generatedTitle = document.getElementById("generatedTitle");
+        section.appendChild(paletteContainer);
+        generatedPalette.appendChild(section);
+    });
+}
 
-            generatedPalette.innerHTML = "";
-            generatedTitle.classList.remove("hidden");
-
-            const categories = ["Analogous", "Monochromatic", "Triadic", "Complementary", "Tetradic", "Random"];
-
-            categories.forEach(category => {
-                const section = document.createElement("div");
-                section.className = "w-full flex flex-col items-center";
-
-                const title = document.createElement("h2");
-                title.className = "text-lg font-semibold mt-4";
-                title.innerText = category;
-                section.appendChild(title);
-
-                const paletteContainer = document.createElement("div");
-                paletteContainer.className = "grid grid-cols-5 gap-1 mt-2";
-
-                let colors = [];
-                if (category === "Random") {
-                    colors = generateRandomColors();
-                } else {
-                    colors = colorSchemes[baseColor] ? [...(colorSchemes[baseColor][category] || [])] : [];
-                }
-
-                while (colors.length < 5) {
-                    colors.push("#CCCCCC");
-                }
-                colors = colors.slice(0, 5);
-
-                colors.forEach(color => {
-                    let div = document.createElement("div");
-                    div.style.backgroundColor = color; 
-                    div.className = "h-14 w-14 rounded-md";
-                    paletteContainer.appendChild(div);
-                });
-
-                section.appendChild(paletteContainer);
-                generatedPalette.appendChild(section);
-            });
-        }
 
         function generateRandomColors() {
             const colors = [];
