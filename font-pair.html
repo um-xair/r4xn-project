@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Spotlight Hero</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Triangle Spotlight Effect */
+        .triangle-spotlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 600px solid rgba(255, 255, 255, 0.2);
+            border-top: 600px solid transparent;
+            border-bottom: 600px solid transparent;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen flex items-center justify-center relative">
+
+    <!-- Triangle Spotlight Effect -->
+    <div class="triangle-spotlight"></div>
+
+    <!-- Hero Section -->
+    <div class="text-center relative z-10 p-6">
+        <h1 class="text-4xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">
+            Spotlight <br> is the new trend.
+        </h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-lg mx-auto">
+            The triangular spotlight effect draws attention to key elements on the page.
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4XN | Project</title>
+    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+        .customfont {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .smooth-font {
+            transition: font-family 0.3s ease-in-out, opacity 0.3s;
+        }
+    
+        .fade {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-[#0A0A0A] fade-in">
+
+    <div class="flex justify-center">
+        <header id="header" class="mt-10 w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-6 py-4 lg:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-[999] transition-opacity duration-500">
+            <div class="flex items-center w-full justify-between">
+                <div class="flex items-center">
+                    <div class="ml-3">
+                        <h1 class="text-lg font-semibold">R4XN</h1>
+                        <p class="text-sm text-gray-400">Project Hub</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#home" class="text-md">Home</a>
+                    <a href="#features" class="text-md">Features</a>
+                    <a href="#explore" class="text-md">Explore</a>
+                    <div class="relative">
+                        <button id="desktop-tools-btn" class="text-md flex items-center space-x-2">
+                            <span>Tools</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div id="desktop-tools-menu" class="absolute right-0 mt-2 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg hidden p-4">
+                            <div class="grid grid-cols-3 w-full">
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Tailwind CSS Gradient</h3>
+                                    <p class="text-xs text-gray-400">Vibrant multi-color gradients for web.</p>
+                                </a>
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Tailwind CSS Card</h3>
+                                    <p class="text-xs text-gray-400">Stylish modern, adaptive card layouts.</p>
+                                </a>
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Color Pallete</h3>
+                                    <p class="text-xs text-gray-400">Design custom color combinations easily.</p>
+                                </a>
+                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <h3 class="text-md font-semibold">Font Pair Generator</h3>
+                                    <p class="text-xs text-gray-400">Discover and match perfect font combinations.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#about" class="text-md">About</a>
+                </nav>
+                <button class="lg:hidden text-white" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+    
+            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-white hidden" id="mobile-menu">
+                <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#home" class="text-md">Home</a>
+                    <a href="#features" class="text-md py-2">Features</a>
+                    <a href="#explore" class="text-md py-2">Explore</a>
+                    <div class="relative">
+                        <button id="mobile-tools-btn" class="text-md flex items-center space-x-1 py-2">
+                            <span>Tools</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div id="mobile-tools-menu" class="hidden flex flex-col space-y-2 bg-[#0A0A0A] text-white p-2 rounded-md">
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Gradient</a>
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Card</a>
+                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Color Palette</a>
+                        </div>
+                    </div>
+                    <a href="#about" class="text-md py-2">About</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <script>
+        document.getElementById("menu-btn").addEventListener("click", function () {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    
+        document.getElementById("mobile-tools-btn").addEventListener("click", function () {
+            document.getElementById("mobile-tools-menu").classList.toggle("hidden");
+        });
+    
+        const toolsBtn = document.getElementById("desktop-tools-btn");
+        const toolsMenu = document.getElementById("desktop-tools-menu");
+    
+        toolsBtn.addEventListener("click", function (event) {
+            event.stopPropagation(); 
+            toolsMenu.classList.toggle("hidden");
+        });
+    
+        toolsMenu.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    
+        document.addEventListener("click", function (event) {
+            if (!toolsMenu.classList.contains("hidden") && event.target !== toolsBtn) {
+                toolsMenu.classList.add("hidden");
+            }
+        });
+    
+        const header = document.getElementById("header");
+        let lastScrollY = window.scrollY;
+    
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > lastScrollY) {
+                header.style.opacity = "0";
+            } else {
+                header.style.opacity = "1";
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+
+    <main class="relative z-10 text-center p-6 flex flex-col justify-center items-center min-h-screen">
+        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-[600px] border-t-[600px] border-b-[600px] border-transparent border-l-white/20 blur-[150px] pointer-events-none"></span>
+        <h1 class="text-4xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">
+            Find the <br> Perfect Font Pair
+        </h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-lg">
+            A simple tool to discover and test beautiful font combinations for your projects.
+        </p>
+    </main>
+    
+    <section id="explore" class="py-20 text-white min-h-screen flex justify-center items-center">
+        <div class="bg-neutral-900 p-10 rounded-[20px] w-full max-w-[90%]">
+            
+            <div class="grid grid-cols-2 mb-8">
+                <div class="flex space-x-2">
+                    <button id="generateFont" class="px-5 py-3 bg-white text-black rounded-[10px] flex items-center space-x-2">
+                        <i class="fa-solid fa-retweet"></i>
+                        <span>Generate Font</span>
+                    </button>
+                </div>
+            </div>
+                
+            <div class="mt-10 flex flex-col items-start space-y-10">
+                <div class="flex items-center space-x-4 text-xl">
+                    <span id="fontNameH2" class="font-mono">Default Font</span>
+    
+                    <button id="lockH2" class="lock-btn w-auto h-8 flex items-center space-x-2 px-3 py-1 opacity-50 hover:opacity-100 transition">
+                        <i class="fas fa-lock-open"></i>
+                        <span class="text-sm">Unlock</span>
+                    </button>
+                </div>
+    
+                <h2 id="heading" class="smooth-font text-4xl lg:text-8xl font-extrabold text-gray-300 mt-4">
+                    Font Pairing Made Simple.
+                </h2>
+    
+                <div class="flex items-center space-x-4 text-xl">
+                    <span id="fontNameP" class="font-mono">Default Font</span>
+    
+                    <button id="lockP" class="lock-btn w-auto h-8 flex items-center space-x-2 px-3 py-1 opacity-50 hover:opacity-100 transition">
+                        <i class="fas fa-lock-open"></i>
+                        <span class="text-sm">Unlock</span>
+                    </button>
+                </div>
+    
+                <div id="paragraph" class="smooth-font text-gray-300 space-y-6 text-[15px] text-justify leading-relaxed font-extralight">
+                    <p>
+                        Typography is the art of arranging type to make written language legible, readable, and visually appealing. 
+                        It includes selecting typefaces, sizes, spacing, and colors to enhance readability. 
+                        Choosing the right fonts and their combinations can dramatically impact how a message is perceived. 
+                        A well-chosen font pairing can create harmony, establish brand recognition, and make content more engaging.
+                        <br><br>
+                        Good typography improves comprehension and engagement, especially for books, websites, and other widely-read materials. 
+                        The balance between serif and sans-serif fonts, letter spacing, and line height all play a crucial role in delivering an enjoyable reading experience.
+                        Proper contrast between text and background ensures accessibility, while the right font hierarchy helps guide the reader’s eye smoothly through the content.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        const fonts = [
+            "Arial, sans-serif",
+            "Verdana, sans-serif",
+            "Helvetica, sans-serif",
+            "Tahoma, sans-serif",
+            "Trebuchet MS, sans-serif",
+            "Impact, sans-serif",
+            "Gill Sans, sans-serif",
+            "Futura, sans-serif",
+            "Franklin Gothic Medium, sans-serif",
+            "Century Gothic, sans-serif",
+            "Lucida Sans, sans-serif",
+            "Georgia, serif",
+            "Times New Roman, serif",
+            "Garamond, serif",
+            "Palatino Linotype, serif",
+            "Book Antiqua, serif",
+            "Baskerville, serif",
+            "Didot, serif",
+            "Cambria, serif",
+            "Rockwell, serif",
+            "Constantia, serif",
+            "Courier New, monospace",
+            "Lucida Console, monospace",
+            "Monaco, monospace",
+            "Consolas, monospace",
+            "Fira Code, monospace",
+            "Source Code Pro, monospace",
+            "IBM Plex Mono, monospace",
+            "Ubuntu Mono, monospace",
+            "Inconsolata, monospace",
+            "JetBrains Mono, monospace"
+        ];
+
+        let isH2Locked = false;
+        let isPLocked = false;
+    
+        document.getElementById("generateFont").addEventListener("click", function () {
+            if (!isH2Locked) {
+                changeFontSmoothly("heading", "fontNameH2");
+            }
+    
+            if (!isPLocked) {
+                changeFontSmoothly("paragraph", "fontNameP");
+            }
+        });
+    
+        document.getElementById("lockH2").addEventListener("click", function () {
+            isH2Locked = !isH2Locked;
+            toggleLock(this, isH2Locked);
+        });
+    
+        document.getElementById("lockP").addEventListener("click", function () {
+            isPLocked = !isPLocked;
+            toggleLock(this, isPLocked);
+        });
+    
+        function getRandomFont() {
+            return fonts[Math.floor(Math.random() * fonts.length)];
+        }
+    
+        function changeFontSmoothly(elementId, fontNameId) {
+            let element = document.getElementById(elementId);
+            let fontName = document.getElementById(fontNameId);
+            let newFont = getRandomFont();
+    
+            element.classList.add("fade");
+    
+            setTimeout(() => {
+                element.style.fontFamily = newFont;
+                fontName.textContent = newFont;
+                element.classList.remove("fade");
+            }, 300);
+        }
+    
+        function toggleLock(button, isLocked) {
+            let icon = button.querySelector("i");
+            let text = button.querySelector("span");
+    
+            if (isLocked) {
+                icon.classList.replace("fa-lock-open", "fa-lock");
+                text.textContent = "Locked";
+                button.classList.add("text-green-400");
+            } else {
+                icon.classList.replace("fa-lock", "fa-lock-open");
+                text.textContent = "Unlock";
+                button.classList.remove("text-green-400");
+            }
+        }
+    </script>
+
+    <footer class="flex justify-between w-full lg:px-20 px-10 py-4 text-md text-white">
+        <p>ALL RIGHTS RESERVED</p>
+        <p id="year">R4XN <span id="currentYear"></span></p>
+    </footer>
+    
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
