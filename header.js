@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <i class="fas fa-chevron-down text-sm"></i>
                             </button>
                             <div id="desktop-tools-menu"
-                                class="absolute right-0 mt-8 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg opacity-0 scale-95 translate-y-2 transition-all duration-300 ease-in-out pointer-events-none p-4 backdrop-blur-md backdrop-filter">
+                                class="absolute right-0 mt-8 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg opacity-0 scale-95 translate-y-2 transition-all duration-300 ease-in-out pointer-events-none p-4 backdrop-blur-md backdrop-filter hidden">
                                 <div class="grid grid-cols-3 w-full">
                                     <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">Tailwind CSS Gradient</h3>
@@ -85,18 +85,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toolsBtn.addEventListener("click", function (event) {
         event.stopPropagation();
-        if (toolsMenu.classList.contains("opacity-0")) {
-            toolsMenu.classList.remove("opacity-0", "scale-95", "translate-y-2", "pointer-events-none");
+        const isHidden = toolsMenu.classList.contains("hidden");
+        
+        if (isHidden) {
+            toolsMenu.classList.remove("hidden", "opacity-0", "scale-95", "translate-y-2", "pointer-events-none");
             toolsMenu.classList.add("opacity-100", "scale-100", "translate-y-0");
         } else {
-            toolsMenu.classList.add("opacity-0", "scale-95", "translate-y-2", "pointer-events-none");
+            toolsMenu.classList.add("hidden", "opacity-0", "scale-95", "translate-y-2", "pointer-events-none");
             toolsMenu.classList.remove("opacity-100", "scale-100", "translate-y-0");
         }
     });
 
     document.addEventListener("click", function (event) {
         if (!toolsBtn.contains(event.target) && !toolsMenu.contains(event.target)) {
-            toolsMenu.classList.add("opacity-0", "scale-95", "translate-y-2", "pointer-events-none");
+            toolsMenu.classList.add("hidden", "opacity-0", "scale-95", "translate-y-2", "pointer-events-none");
             toolsMenu.classList.remove("opacity-100", "scale-100", "translate-y-0");
         }
     });

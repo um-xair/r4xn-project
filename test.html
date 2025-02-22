@@ -3,432 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R4XN | Project</title>
-    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Hero Parallax with Tailwind</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .customfont {
-            font-family: 'Montserrat', sans-serif;
-        }
-        .fade-in {
-            animation: fadeIn 0.3s ease-in;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        html {
-            scroll-behavior: smooth;
+        @keyframes floating {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
-<body class="fade-in bg-black">
+<body class="bg-black text-white flex flex-col items-center justify-center min-h-screen overflow-hidden">
 
-    <div class="flex justify-center text-white">
-        <header id="header" class="mt-10 bg-[#232323] w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-6 py-4 lg:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-[999] transition-opacity duration-500">
-            <div class="flex items-center w-full justify-between">
-                <div class="flex items-center">
-                    <div class="ml-3">
-                        <h1 class="text-lg font-semibold">R4XN</h1>
-                        <p class="text-sm text-gray-400">Project Hub</p>
-                    </div>
-                </div>
-                <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="#home" class="text-md">Home</a>
-                    <a href="#features" class="text-md">Features</a>
-                    <a href="#explore" class="text-md">Explore</a>
-                    <div class="relative">
-                        <button id="desktop-tools-btn" class="text-md flex items-center space-x-2">
-                            <span>Tools</span>
-                            <i class="fas fa-chevron-down text-sm"></i>
-                        </button>
-                        <div id="desktop-tools-menu" class="absolute right-0 mt-2 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg hidden p-4">
-                            <div class="grid grid-cols-3 w-full">
-                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
-                                    <h3 class="text-md font-semibold">Tailwind CSS Gradient</h3>
-                                    <p class="text-xs text-gray-400">Vibrant multi-color gradients for web.</p>
-                                </a>
-                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
-                                    <h3 class="text-md font-semibold">Tailwind CSS Card</h3>
-                                    <p class="text-xs text-gray-400">Stylish modern, adaptive card layouts.</p>
-                                </a>
-                                <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
-                                    <h3 class="text-md font-semibold">Color Pallete</h3>
-                                    <p class="text-xs text-gray-400">Design custom color combinations easily.</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#about" class="text-md">About</a>
-                </nav>
-                <button class="lg:hidden text-white" id="menu-btn">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-    
-            <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-white hidden" id="mobile-menu">
-                <nav class="flex flex-col space-y-4 py-4">
-                    <a href="#home" class="text-md">Home</a>
-                    <a href="#features" class="text-md py-2">Features</a>
-                    <a href="#explore" class="text-md py-2">Explore</a>
-                    <div class="relative">
-                        <button id="mobile-tools-btn" class="text-md flex items-center space-x-1 py-2">
-                            <span>Tools</span>
-                            <i class="fas fa-chevron-down text-sm"></i>
-                        </button>
-                        <div id="mobile-tools-menu" class="hidden flex flex-col space-y-2 bg-[#0A0A0A] text-white p-2 rounded-md">
-                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Gradient</a>
-                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Card</a>
-                            <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Color Palette</a>
-                        </div>
-                    </div>
-                    <a href="#about" class="text-md py-2">About</a>
-                </nav>
-            </div>
-        </header>
+    <div class="text-center">
+        <h1 class="text-4xl font-bold">Explore Amazing Projects</h1>
+        <p class="text-lg text-gray-400 mt-2">A showcase of cutting-edge tools and design inspirations</p>
     </div>
-    
-    <script>
-        document.getElementById("menu-btn").addEventListener("click", function () {
-            document.getElementById("mobile-menu").classList.toggle("hidden");
-        });
-    
-        document.getElementById("mobile-tools-btn").addEventListener("click", function () {
-            document.getElementById("mobile-tools-menu").classList.toggle("hidden");
-        });
-    
-        const toolsBtn = document.getElementById("desktop-tools-btn");
-        const toolsMenu = document.getElementById("desktop-tools-menu");
-    
-        toolsBtn.addEventListener("click", function (event) {
-            event.stopPropagation(); 
-            toolsMenu.classList.toggle("hidden");
-        });
-    
-        toolsMenu.addEventListener("click", function (event) {
-            event.stopPropagation();
-        });
-    
-        document.addEventListener("click", function (event) {
-            if (!toolsMenu.classList.contains("hidden") && event.target !== toolsBtn) {
-                toolsMenu.classList.add("hidden");
-            }
-        });
-    
-        const header = document.getElementById("header");
-        let lastScrollY = window.scrollY;
-    
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > lastScrollY) {
-                header.style.opacity = "0";
-            } else {
-                header.style.opacity = "1";
-            }
-            lastScrollY = window.scrollY;
-        });
-    </script>
 
-    <main id="home" class="min-h-screen w-full flex items-center justify-center text-center bg-cover bg-center text-white px-4"
-        style="background-image: url('assets/metal-abstract-purple-w6.jpg');">
-        <div class="container max-w-7xl mx-auto px-4 flex flex-col items-center">
-            <p class="text-lg mb-3">Just One Step</p>
-            <h1 class="text-4xl lg:text-7xl font-bold leading-tight">
-                <span class="typewriter">Make Your Dream Come True<br class="hidden sm:block">with R4XN TECH</span>
-            </h1>
-            <div class="mt-8 w-full flex justify-center">
-                <a href="#features" class="px-6 py-4 w-full lg:w-1/5 bg-white text-black text-center rounded-full">
-                    View Projects
-                </a>
-            </div>
-        </div>
-    </main>
-    
-    <section id="features" class="py-20 px-4 bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
-        <div class="text-center h-80 relative">
-            <h2 class="text-[8rem] font-extrabold text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30">PROJECTS</h2>
-            <p class="text-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black z-10">Latest Project</p>
-        </div>
-        <div class="container mx-auto max-w-7xl">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-                <div class="relative w-full">
-                    <img src="assets/cgi-water-drops-abstract-5k-3v.jpg" alt="Image" class="absolute top-0 left-0 w-full h-full object-cover rounded-[50px]">
-                    <button class="absolute top-6 right-6 bg-white rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                        </svg>
-                    </button> 
-                    <div class="absolute bottom-4 left-4 text-white p-8">
-                        <h3 class="text-2xl font-bold mb-2">Card Title 1</h3>
-                        <p class="text-sm">Short thebdescription about the feature or product in this image.</p>
-                    </div>
-                </div>
-                <div class="relative w-full" style="padding-top: 177.77%; position: relative;">
-                    <img src="assets/dark-flavours-59.jpg" alt="Image" class="absolute top-0 left-0 w-full h-full object-cover rounded-[50px]">
-                    <button class="absolute top-6 right-6 bg-white rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                        </svg>
-                    </button> 
-                    <div class="absolute bottom-4 left-4 text-white p-8">
-                        <h3 class="text-2xl font-bold mb-2">Card Title 1</h3>
-                        <p class="text-sm">Short description about the feature or product in this image.</p>
-                    </div>
-                </div>
-                <div class="relative w-full" style="padding-top: 177.77%; position: relative;">
-                    <img src="assets/abstract-mountain-and-moon-ru.jpg" alt="Image" class="absolute top-0 left-0 w-full h-full object-cover rounded-[50px]">
-                    <button class="absolute top-6 right-6 bg-white rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                        </svg>
-                    </button> 
-                    <div class="absolute bottom-4 left-4 text-white p-8">
-                        <h3 class="text-2xl font-bold mb-2">Card Title 1</h3>
-                        <p class="text-sm">Short description about the feature or product in this image.</p>
-                    </div>
-                </div>
-                <div class="relative w-full" style="padding-top: 177.77%; position: relative;">
-                    <img src="assets/abstract-mountain-and-moon-ru.jpg" alt="Image" class="absolute top-0 left-0 w-full h-full object-cover rounded-[50px]">
-                    <button class="absolute top-6 right-6 bg-white rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                            <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                        </svg>
-                    </button> 
-                    <div class="absolute bottom-4 left-4 text-white p-8">
-                        <h3 class="text-2xl font-bold mb-2">Card Title 1</h3>
-                        <p class="text-sm">Short description about the feature or product in this image.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="about" class="py-20 px-4 bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
-        <div class="text-center h-80 relative">
-            <h2 class="text-[8rem] font-extrabold text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30">ELITE ABILITY</h2>
-            <p class="text-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black z-10">Top Skill</p>
-        </div>        
-        
-        <div class="swiper mySwiper container mx-auto max-w-7xl">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
-                    <div class="mb-2">
-                        <i class="fa-solid fa-pen-nib text-5xl text-purple-600"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">Responsive UI/UX Engineering</h3>
-                    <p class="text-xs text-gray-600">
-                        Delivering high-performance user experiences across all devices with cutting-edge design principles and seamless interactivity.
-                    </p>
-                </div>
-                
-    
-                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
-                    <div class="mb-2">
-                        <i class="fa-solid fa-server text-5xl text-purple-600"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">Full-Stack Synchronization</h3>
-                    <p class="text-xs text-gray-600">
-                        Architecting scalable and high-performance applications by seamlessly integrating databases, servers, and APIs for a robust digital infrastructure.
-                    </p>
-                </div>
-    
-                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
-                    <div class="mb-2">
-                        <i class="fa-solid fa-microchip text-5xl text-purple-600"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">IoT Solutions</h3>
-                    <p class="text-xs text-gray-600">
-                        Developing next-gen IoT solutions with Arduino, NodeMCU, and ESP32, enabling real-time connectivity, automation, and intelligent device management.
-                    </p>
-                </div>
-    
-                <div class="swiper-slide bg-white rounded-[50px] p-8 h-[300px] flex flex-col justify-center items-center text-center">
-                    <div class="mb-2">
-                        <i class="fa-solid fa-database text-5xl text-purple-600"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">Scalable Database Management</h3>
-                    <p class="text-xs text-gray-600">
-                        Designing efficient, high-availability database systems using SQL (MySQL, PostgreSQL) and NoSQL (MongoDB, Firebase) to ensure secure and optimized data storage.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 p-5 w-[90%] lg:w-[80%]" id="parallaxContainer"></div>
 
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false,
-            },
-            speed: 5000,
+        const products = [
+            { title: "Moonbeam", link: "https://gomoonbeam.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/moonbeam.png" },
+            { title: "Cursor", link: "https://cursor.so", thumbnail: "https://aceternity.com/images/products/thumbnails/new/cursor.png" },
+            { title: "Rogue", link: "https://userogue.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/rogue.png" },
+            { title: "Editorially", link: "https://editorially.org", thumbnail: "https://aceternity.com/images/products/thumbnails/new/editorially.png" },
+            { title: "Editrix AI", link: "https://editrix.ai", thumbnail: "https://aceternity.com/images/products/thumbnails/new/editrix.png" },
+            { title: "Pixel Perfect", link: "https://app.pixelperfect.quest", thumbnail: "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png" },
+            { title: "Algochurn", link: "https://algochurn.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/algochurn.png" },
+            { title: "Aceternity UI", link: "https://ui.aceternity.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/aceternityui.png" },
+            { title: "Tailwind Master Kit", link: "https://tailwindmasterkit.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png" },
+            { title: "SmartBridge", link: "https://smartbridgetech.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/smartbridge.png" },
+            { title: "Renderwork Studio", link: "https://renderwork.studio", thumbnail: "https://aceternity.com/images/products/thumbnails/new/renderwork.png" },
+            { title: "Creme Digital", link: "https://cremedigital.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/cremedigital.png" },
+        ];
+
+        const parallaxContainer = document.getElementById("parallaxContainer");
+
+        products.forEach((product, index) => {
+            const item = document.createElement("a");
+            item.href = product.link;
+            item.className = `relative w-full h-[180px] lg:h-[200px] rounded-[20px] overflow-hidden transition-transform duration-300 hover:scale-105 shadow-lg ${index % 2 === 0 ? 'animate-[floating_4s_infinite_ease-in-out]' : 'animate-[floating_6s_infinite_ease-in-out]'}`;
+            item.target = "_blank";
+            item.innerHTML = `<img src="${product.thumbnail}" alt="${product.title}" class="w-full h-full object-cover rounded-xl">`;
+            parallaxContainer.appendChild(item);
+        });
+
+        document.addEventListener("mousemove", (event) => {
+            const { clientX, clientY } = event;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const deltaX = (clientX - centerX) * 0.01;
+            const deltaY = (clientY - centerY) * 0.01;
+
+            parallaxContainer.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
         });
     </script>
-    
-    <section id="explore" class="py-20 px-4 bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50">
-        <div class="text-center h-80 relative">
-            <h2 class="text-[10rem] font-bold text-gray-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30">R4XN</h2>
-            <p class="text-3xl font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black z-10">Our Project</p>
-        </div>
-        <div class="grid container mx-auto max-w-7xl gap-3 p-2 grid-cols-4 grid-rows-4">
-            <div class="col-span-2 row-span-2 relative rounded-[50px] overflow-hidden">
-                <img src="assets/cgi-water-drops-abstract-5k-3v.jpg" alt="Salmon" class="w-full h-full object-cover">
-                <button class="absolute top-6 right-6 bg-white rounded-full p-2 shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                        <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                    </svg>
-                </button>
-                <div class="absolute bottom-4 left-4 text-white p-4">
-                    <h3 class="text-xl font-bold">Salmon</h3>
-                    <p class="text-sm">A delicious and healthy dish.</p>
-                </div>
-            </div>
-            <div class="col-span-2 row-span-4 relative rounded-[50px] overflow-hidden">
-                <img src="assets/cgi-water-drops-abstract-5k-3v.jpg" alt="Salmon" class="w-full h-full object-cover">
-                <button class="absolute top-6 right-6 bg-white rounded-full p-2 shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                        <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                    </svg>
-                </button>
-                <div class="absolute bottom-4 left-4 text-white p-4">
-                    <h3 class="text-xl font-bold">Salmon</h3>
-                    <p class="text-sm">A delicious and healthy dish.</p>
-                </div>
-            </div>
-            <div class="col-span-1 row-span-2 relative rounded-[50px] overflow-hidden">
-                <img src="assets/cgi-water-drops-abstract-5k-3v.jpg" alt="Salmon" class="w-full h-full object-cover">
-                <button class="absolute top-6 right-6 bg-white rounded-full p-2 shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                        <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                    </svg>
-                </button>
-                <div class="absolute bottom-4 left-4 text-white p-4">
-                    <h3 class="text-xl font-bold">Salmon</h3>
-                    <p class="text-sm">A delicious and healthy dish.</p>
-                </div>
-            </div>
-            <div class="col-span-1 row-span-2 relative rounded-[50px] overflow-hidden">
-                <img src="assets/cgi-water-drops-abstract-5k-3v.jpg" alt="Salmon" class="w-full h-full object-cover">
-                <button class="absolute top-6 right-6 bg-white rounded-full p-2 shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                        <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/>
-                    </svg>
-                </button>
-                <div class="absolute bottom-4 left-4 text-white p-4">
-                    <h3 class="text-xl font-bold">Salmon</h3>
-                    <p class="text-sm">A delicious and healthy dish.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- SwiperJS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-    </script>
-
-    <footer class="bg-gradient-to-br from-black to-stone-900 text-white py-20">
-        <div class="container mx-auto px-4 w-[80%]">
-            <div class="grid grid-cols-1 md:grid-cols-[40%_20%_20%_20%] gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">About R4XN</h3>
-                    <p class="text-sm text-gray-400">
-                        R4XN is a tech collaboration between 
-                        <span class="italic font-semibold">RAWZEENS TECH</span>, a full-stack developer, and 
-                        <span class="italic font-semibold">DEVXAIR</span>, a front-end developer. Together, we deliver innovative solutions in web development, IoT, and system design.
-                    </p>
-                    <h3 class="text-lg font-semibold mt-6 mb-4">Follow Us</h3>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/Rawzeens" target="_blank" 
-                           class="text-gray-400 hover:text-white transition-colors duration-300 icon-hover" 
-                           aria-label="Follow us on GitHub">
-                            <i class="fa-brands fa-github text-3xl"></i>
-                        </a>
-                        <a href="https://tiktok.com/@r4xn" target="_blank" 
-                           class="text-gray-400 hover:text-white transition-colors duration-300 icon-hover" 
-                           aria-label="Follow us on TikTok">
-                            <i class="fa-brands fa-tiktok text-3xl"></i>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Discover More</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white hover:underline">Portfolio</a></li>
-                        <li><a href="#front-end-projects" class="text-gray-400 hover:text-white hover:underline">Front-End Projects</a></li>
-                        <li><a href="#iot-solutions" class="text-gray-400 hover:text-white hover:underline">IoT Solutions</a></li>
-                        <li><a href="#system-design" class="text-gray-400 hover:text-white hover:underline">System Design</a></li>
-                    </ul>
-                </div>
-    
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex flex-col space-y-2">
-                            <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
-                                <i class="fa-brands fa-whatsapp text-xl"></i>
-                                <a href="tel:+601119415142" class="hover:underline">+60 11-1941 5142</a>
-                            </div>
-                            <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
-                                <i class="fa-brands fa-whatsapp text-xl"></i>
-                                <a href="tel:+601162260866" class="hover:underline">+60 11-6226 0866</a>
-                            </div>
-                        </li>
-                        <li class="flex flex-col space-y-2">
-                            <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
-                                <i class="fa-solid fa-envelope text-xl"></i>
-                                <a href="mailto:walkers287@gmail.com" class="hover:underline">walkers287@gmail.com</a>
-                            </div>
-                            <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
-                                <i class="fa-solid fa-envelope text-xl"></i>
-                                <a href="mailto:natasyahebat@gmail.com" class="hover:underline">natasyahebat@gmail.com</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 border-t border-gray-700 pt-4 text-center text-gray-500">
-                <p class="text-sm">
-                    © <span id="current-year"></span> R4XN. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-    
-    <script>
-        document.getElementById("current-year").textContent = new Date().getFullYear();
-    </script>
-
 </body>
 </html>
