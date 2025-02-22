@@ -19,7 +19,7 @@
             font-family: 'Montserrat', sans-serif;
         }
         .fade-in {
-            animation: fadeIn 0.3s ease-in;
+            animation: fadeIn 0.5s ease-in;
         }
         @keyframes fadeIn {
             from {
@@ -38,8 +38,6 @@
     </style>
 </head>
 <body class="bg-gradient-to-tr from-black via-black to-indigo-900 fade-in">
-
-    <script src="header.js"></script>
 
     <main id="home" class="flex flex-col items-center justify-center text-center min-h-screen lg:mt-40">
         <div class="px-4 lg:mt-10 md:mt-20">
@@ -227,8 +225,6 @@
         </div>
     </section>
 
-    <script src="footer.js"></script>
-
     <script>
         function copyToClipboard(gradientCode) {
             const tempInput = document.createElement('textarea');
@@ -251,6 +247,9 @@
             }, 2000);
         }
     </script>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
 
 </body>
 </html>
