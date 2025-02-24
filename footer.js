@@ -12,10 +12,13 @@ function loadFooter() {
                         </p>
                         <h3 class="text-lg font-semibold mt-6 mb-4">Follow Us</h3>
                         <div class="flex space-x-4">
+                            <a href="https://github.com/um-xair" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 icon-hover" aria-label="Follow us on GitHub">
+                                <i class="fa-brands fa-github text-3xl"></i>
+                            </a>
                             <a href="https://github.com/Rawzeens" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 icon-hover" aria-label="Follow us on GitHub">
                                 <i class="fa-brands fa-github text-3xl"></i>
                             </a>
-                            <a href="https://tiktok.com/@r4xn" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 icon-hover" aria-label="Follow us on TikTok">
+                            <a href="https://tiktok.com/@rawxair" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 icon-hover" aria-label="Follow us on TikTok">
                                 <i class="fa-brands fa-tiktok text-3xl"></i>
                             </a>
                         </div>
@@ -23,7 +26,7 @@ function loadFooter() {
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Discover More</h3>
                         <ul class="space-y-2">
-                            <li><a href="#home" class="text-gray-400 hover:text-white hover:underline">Portfolio</a></li>
+                            <li><a href="https://r4xn.netlify.app/" class="text-gray-400 hover:text-white hover:underline">Portfolio</a></li>
                             <li><a href="#front-end-projects" class="text-gray-400 hover:text-white hover:underline">Front-End Projects</a></li>
                             <li><a href="#iot-solutions" class="text-gray-400 hover:text-white hover:underline">IoT Solutions</a></li>
                             <li><a href="#system-design" class="text-gray-400 hover:text-white hover:underline">System Design</a></li>
@@ -35,11 +38,11 @@ function loadFooter() {
                             <li class="flex flex-col space-y-2">
                                 <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
                                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                                    <a href="tel:+601119415142" class="hover:underline">+60 11-1941 5142</a>
+                                    <a href="https://wa.me/601119415142" target="_blank" class="hover:underline">+60 11-1941 5142</a>
                                 </div>
                                 <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
                                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                                    <a href="tel:+601162260866" class="hover:underline">+60 11-6226 0866</a>
+                                    <a href="https://wa.me/601162260866" target="_blank" class="hover:underline">+60 11-6226 0866</a>
                                 </div>
                             </li>
                             <li class="flex flex-col space-y-2">
@@ -60,11 +63,11 @@ function loadFooter() {
                             <li class="flex flex-col space-y-2">
                                 <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
                                     <i class="fa-solid fa-globe text-lg"></i>
-                                    <a href="#" target="_blank" class="hover:underline">Rawzeens</a>
+                                    <a href="https://rawzeens.rf.gd/" target="_blank" class="hover:underline">Rawzeens</a>
                                 </div>
                                 <div class="flex items-center space-x-2 text-gray-400 hover:text-white">
                                     <i class="fa-solid fa-globe text-lg"></i>
-                                    <a href="#" target="_blank" class="hover:underline">Devxair</a>
+                                    <a href="https://devxair.netlify.app/" target="_blank" class="hover:underline">Devxair</a>
                                 </div>
                             </li>
                         </ul>                    

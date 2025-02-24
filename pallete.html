@@ -47,14 +47,17 @@
                 <span>Generate Stunning Color Schemes<br class="hidden sm:block">with Our Palette Tool</span>
             </h1>
             <div class="mt-8 w-full flex justify-center">
-                <a href="#color" class="px-6 py-4 w-3/4 lg:w-1/5 bg-white text-black text-center rounded-full">
+                <a href="#color" 
+                   class="px-6 py-4 w-3/4 lg:w-1/5 bg-white text-black text-center rounded-full transition-all duration-500 ease-in-out
+                          hover:bg-gradient-to-r hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 hover:text-white">
                     Generate Now
                 </a>
-            </div>
+            </div>                
         </div>
     </main>
 
-    <section id="color" class="flex flex-col items-center justify-center w-full space-y-4 py-10 min-h-screen">
+    <div id="explore">
+    <section id="color" class="flex flex-col items-center justify-center w-full space-y-4 py-10 min-h-screen px-4">
         <h1 class="text-4xl lg:text-6xl font-bold text-center">
             <span class="customfont">Color Palette</span> Generator</span>
         </h1>
@@ -98,6 +101,7 @@
             <div class="h-10 w-10 md:h-16 md:w-16 lg:h-32 lg:w-32 lg:rounded-[15px] rounded-md bg-slate-200 cursor-pointer" data-color="slate-200"></div>
         </div>
     </section>
+    </div>
 
     <section id="colorSchemeSection" class="w-full flex items-center justify-center min-h-screen hidden">
         <div class="max-w-8xl mx-auto">
@@ -128,6 +132,22 @@
                     <p class="text-gray-500 text-sm">Utilize tools to generate harmonious color schemes, including complementary, analogous, and triadic combinations.</p>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <section id="about" class="relative w-full min-h-screen flex items-center justify-center px-8 py-16 bg-black">
+        <div class="absolute inset-0">
+            <img src="assets/pallete.gif" alt="Color Palette Generator" class="w-full h-full object-cover opacity-30">
+        </div>
+        <div class="relative z-10 w-full max-w-5xl text-center px-6 lg:px-12">
+            <h2 class="text-4xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
+                Color Palette Generator 🎨
+            </h2>
+            <p class="text-lg text-gray-200 leading-relaxed mt-4 drop-shadow-md">
+                Discover the perfect colors for your next project with ease! Our AI-powered tool generates
+                harmonious palettes to enhance your designs. Save, customize, and explore endless
+                combinations instantly.
+            </p>
         </div>
     </section>
     
