@@ -21,19 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div id="desktop-tools-menu"
                                 class="absolute right-0 mt-8 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg opacity-0 scale-95 translate-y-2 transition-all duration-300 ease-in-out pointer-events-none p-4 backdrop-blur-md backdrop-filter hidden">
                                 <div class="grid grid-cols-3 w-full">
-                                    <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <a href="gradient.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">Tailwind CSS Gradient</h3>
                                         <p class="text-xs text-gray-400">Vibrant multi-color gradients for web.</p>
                                     </a>
-                                    <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <a href="card.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">Tailwind CSS Card</h3>
                                         <p class="text-xs text-gray-400">Stylish modern, adaptive card layouts.</p>
                                     </a>
-                                    <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <a href="pallete.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">Color Palette</h3>
                                         <p class="text-xs text-gray-400">Design custom color combinations easily.</p>
                                     </a>
-                                    <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <a href="font.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">Font Pair Generator</h3>
                                         <p class="text-xs text-gray-400">Discover and match perfect font combinations.</p>
                                     </a>
