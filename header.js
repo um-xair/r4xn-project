@@ -58,10 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <i class="fas fa-chevron-down text-sm"></i>
                             </button>
                             <div id="mobile-tools-menu" class="hidden flex flex-col space-y-2 bg-[#0A0A0A] text-white p-2 rounded-md">
-                                <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Gradient</a>
-                                <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Card</a>
-                                <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Color Palette</a>
-                                <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">Font Generator</a>
+                                <a href="gradient.html" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Gradient</a>
+                                <a href="card.html" class="text-sm py-2 block hover:bg-neutral-900 p-4">Tailwind CSS Card</a>
+                                <a href="pallete.html" class="text-sm py-2 block hover:bg-neutral-900 p-4">Color Palette</a>
+                                <a href="font.html" class="text-sm py-2 block hover:bg-neutral-900 p-4">Font Generator</a>
                             </div>
                         </div>
                         <a href="#about" class="text-md py-2">About</a>
