@@ -1,3 +1,4 @@
+
 function loadFooter() {
     const footerHTML = `
         <footer class="bg-gradient-to-br from-black to-stone-900 text-white py-20">
@@ -26,10 +27,10 @@ function loadFooter() {
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Discover More</h3>
                         <ul class="space-y-2">
-                            <li><a href="https://r4xn.netlify.app/" class="text-gray-400 hover:text-white transition-all duration-500 hover:underline">Portfolio</a></li>
-                            <li><a href="#front-end-projects" class="text-gray-400 hover:text-white transition-all duration-500 hover:underline">Front-End Projects</a></li>
-                            <li><a href="#iot-solutions" class="text-gray-400 hover:text-white transition-all duration-500 hover:underline">IoT Solutions</a></li>
-                            <li><a href="#system-design" class="text-gray-400 hover:text-white transition-all duration-500 hover:underline">System Design</a></li>
+                            <li><a href="https://r4xn.netlify.app/" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">Portfolio</a></li>
+                            <li><a href="#front-end-projects" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">Front-End Projects</a></li>
+                            <li><a href="#iot-solutions" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">IoT Solutions</a></li>
+                            <li><a href="#system-design" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">System Design</a></li>
                         </ul>
                     </div>
                     <div>
@@ -38,21 +39,21 @@ function loadFooter() {
                             <li class="flex flex-col space-y-2">
                                 <div class="flex items-center space-x-2 text-gray-400 transition-all duration-500 hover:text-white">
                                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                                    <a href="https://wa.me/601119415142" target="_blank" class="hover:underline">+60 11-1941 5142</a>
+                                    <a href="https://wa.me/601119415142" target="_blank" class="hover-underline">+60 11-1941 5142</a>
                                 </div>
                                 <div class="flex items-center space-x-2 text-gray-400 transition-all duration-500 hover:text-white">
                                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                                    <a href="https://wa.me/601162260866" target="_blank" class="hover:underline">+60 11-6226 0866</a>
+                                    <a href="https://wa.me/601162260866" target="_blank" class="hover-underline">+60 11-6226 0866</a>
                                 </div>
                             </li>
                             <li class="flex flex-col space-y-2">
                                 <div class="flex items-center space-x-2 text-gray-400 transition-all duration-500 hover:text-white">
                                     <i class="fa-solid fa-envelope text-xl"></i>
-                                    <a href="mailto:walkers287@gmail.com" class="hover:underline">walkers287@gmail.com</a>
+                                    <a href="mailto:walkers287@gmail.com" class="hover-underline">walkers287@gmail.com</a>
                                 </div>
                                 <div class="flex items-center space-x-2 text-gray-400 transition-all duration-500 hover:text-white">
                                     <i class="fa-solid fa-envelope text-xl"></i>
-                                    <a href="mailto:natasyahebat@gmail.com" class="hover:underline">natasyahebat@gmail.com</a>
+                                    <a href="mailto:natasyahebat@gmail.com" class="hover-underline">natasyahebat@gmail.com</a>
                                 </div>
                             </li>
                         </ul>
@@ -63,11 +64,11 @@ function loadFooter() {
                             <li class="flex flex-col space-y-2">
                                 <div class="flex items-center space-x-2 text-gray-400 transition-all duration-500 hover:text-white">
                                     <i class="fa-solid fa-globe text-lg"></i>
-                                    <a href="https://rawzeens.rf.gd/" target="_blank" class="hover:underline">Rawzeens</a>
+                                    <a href="https://rawzeens.rf.gd/" target="_blank" class="hover-underline">Rawzeens</a>
                                 </div>
                                 <div class="flex items-center space-x-2 text-gray-400 transition-all duration-500 hover:text-white">
                                     <i class="fa-solid fa-globe text-lg"></i>
-                                    <a href="https://devxair.netlify.app/" target="_blank" class="hover:underline">Devxair</a>
+                                    <a href="https://devxair.netlify.app/" target="_blank" class="hover-underline">Devxair</a>
                                 </div>
                             </li>
                         </ul>                    
@@ -86,3 +87,4 @@ function loadFooter() {
 }
 
 loadFooter();
+

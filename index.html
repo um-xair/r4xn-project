@@ -76,6 +76,23 @@
         .animate-fadeInScale {
             animation: fadeInScale 0.8s ease-out forwards;
         }
+        .hover-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .hover-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease-in-out;
+        }
+        .hover-underline:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="fade-in bg-black">
@@ -100,7 +117,8 @@
             <h2 class="text-5xl font-extrabold text-gray-300">Current Projects</h2>
             <p class="text-md text-gray-400 mt-2">Explore our latest innovations and ongoing developments.</p>
         </div>
-        <div class="mt-8 border-2 border-[#CBD5E1] bg-black lg:p-8 p-4 rounded-[30px] flex flex-col justify-center items-center w-full lg:max-w-4xl max-w-2xl 
+    
+        <div id="bottom" class="mt-8 border-2 border-[#CBD5E1] bg-black lg:p-8 p-4 rounded-[30px] flex flex-col justify-center items-center w-full lg:max-w-4xl max-w-2xl 
             transition-transform duration-500 hover:scale-105">
             <a href="https://yourprojectlink.com" target="_blank" class="w-full block">
                 <img src="assets/color-pallete-main.jpg" alt="Feature Image" 
@@ -118,7 +136,7 @@
         </div>
     
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full max-w-[85%]">
-            <div class="col-span-12 lg:col-span-7 relative group rounded-[30px] overflow-hidden">
+            <div id="bottom1" class="col-span-12 lg:col-span-7 relative group rounded-[30px] overflow-hidden">
                 <img src="assets/gradient-main.jpg" alt="Project Image"
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                 <div
@@ -134,7 +152,7 @@
                 </div>
             </div>
     
-            <div class="col-span-12 lg:col-span-5 relative group rounded-[30px] overflow-hidden">
+            <div id="bottom2" class="col-span-12 lg:col-span-5 relative group rounded-[30px] overflow-hidden">
                 <img src="assets/drypath-main.png" alt="Project Image"
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                 <div
@@ -150,7 +168,7 @@
                 </div>
             </div>
     
-            <div class="col-span-12 lg:col-span-5 relative group rounded-[30px] overflow-hidden">
+            <div id="bottom3" class="col-span-12 lg:col-span-5 relative group rounded-[30px] overflow-hidden">
                 <img src="assets/geofencing-main.jpg" alt="Project Image"
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                 <div
@@ -166,7 +184,7 @@
                 </div>
             </div>
     
-            <div class="col-span-12 lg:col-span-7 relative group rounded-[30px] overflow-hidden">
+            <div id="bottom4" class="col-span-12 lg:col-span-7 relative group rounded-[30px] overflow-hidden">
                 <img src="assets/color-pallete-main.jpg" alt="Project Image"
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                 <div
@@ -184,32 +202,30 @@
         </div>
     </section>    
     
-
     <script>
         ScrollReveal().reveal('#bottom', { 
             origin: 'bottom', 
             distance: '80px', 
-            duration: 2000 
+            duration: 2000,
+            easing: 'ease-in-out',
+            opacity: 0,
+            reset: true
         });
-
         ScrollReveal().reveal('#bottom1', { 
             origin: 'bottom', 
             distance: '80px', 
             duration: 3000 
         });
-
         ScrollReveal().reveal('#bottom2', { 
             origin: 'bottom', 
             distance: '80px', 
             duration: 4000 
         });
-
         ScrollReveal().reveal('#bottom3', { 
             origin: 'bottom', 
             distance: '80px', 
             duration: 5000 
         });
-
         ScrollReveal().reveal('#bottom4', { 
             origin: 'bottom', 
             distance: '80px', 
