@@ -27,7 +27,7 @@ function loadFooter() {
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Discover More</h3>
                         <ul class="space-y-2">
-                            <li><a href="https://r4xn.netlify.app/" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">Portfolio</a></li>
+                            <li><a href="https://r4xn.netlify.app/" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">R4XN Portfolio</a></li>
                             <li><a href="#front-end-projects" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">Front-End Projects</a></li>
                             <li><a href="#iot-solutions" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">IoT Solutions</a></li>
                             <li><a href="#system-design" class="text-gray-400 hover:text-white transition-all duration-500 hover-underline">System Design</a></li>
