@@ -56,10 +56,10 @@
     
     <script>
         const products = [
-            { title: "Moonbeam", link: "https://gomoonbeam.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/moonbeam.png" },
-            { title: "Cursor", link: "https://cursor.so", thumbnail: "https://aceternity.com/images/products/thumbnails/new/cursor.png" },
-            { title: "Rogue", link: "https://userogue.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/rogue.png" },
-            { title: "Editorially", link: "https://editorially.org", thumbnail: "https://aceternity.com/images/products/thumbnails/new/editorially.png" },
+            { title: "GradientX", link: "#", thumbnail: "assets/gradient-main.jpg" },
+            { title: "Card Template Lab", link: "https://cursor.so", thumbnail: "assets/card-main.jpg" },
+            { title: "Color Nest Studio", link: "https://userogue.com", thumbnail: "assets/color-pallete-main.jpg" },
+            { title: "Font Sync Engine", link: "https://editorially.org", thumbnail: "assets/font-main.jpg" },
             { title: "Editrix AI", link: "https://editrix.ai", thumbnail: "https://aceternity.com/images/products/thumbnails/new/editrix.png" },
             { title: "Pixel Perfect", link: "https://app.pixelperfect.quest", thumbnail: "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png" },
             { title: "Algochurn", link: "https://algochurn.com", thumbnail: "https://aceternity.com/images/products/thumbnails/new/algochurn.png" },
@@ -81,7 +81,10 @@
             item.innerHTML = `
                 <img src="${product.thumbnail}" alt="${product.title}" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <span class="text-white text-lg font-semibold">${product.title}</span>
+                    <span class="text-white text-lg font-semibold relative">
+                        ${product.title}
+                        <span class="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </span>
                 </div>
             `;
             parallaxContainer.appendChild(item);

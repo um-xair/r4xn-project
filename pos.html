@@ -40,6 +40,17 @@
             </div>
             
             <div class="px-4 py-2">
+               <div class="bg-gray-50 rounded-[15px] p-4 flex items-center">
+                   <img src="https://i.pinimg.com/736x/fe/7f/96/fe7f96cbf8383273d77dc73a275c5e0f.jpg" alt="Cashier Profile" class="w-16 h-16 rounded-full">
+                   
+                   <div class="ml-3">
+                       <span class="block font-bold text-lg text-gray-900">John Doe</span>
+                       <span class="text-xs text-gray-500">Cashier</span>
+                   </div>
+               </div>
+            </div>
+
+            <div class="px-4 py-2">
                 <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Categories</p>
                 <ul>
                     <li class="mb-2">
@@ -161,7 +172,7 @@
                 <!-- Products Section -->
                 <div class="flex-1 overflow-y-auto p-6">
                     <!-- Featured Categories -->
-                    <div class="mb-8">
+                    <div class="mb-4">
                         <h2 class="text-xl font-bold text-gray-800 mb-4">Featured Categories</h2>
                         <div class="grid grid-cols-4 gap-4">
                             <div class="bg-white rounded-[30px] text-black px-6 py-10 flex flex-col cursor-pointer">
@@ -206,24 +217,34 @@
                         </div>
                     </div>
 
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="relative w-4/5">
+                            <input type="text" placeholder="Search..." class="w-full px-4 py-2 pl-12 bg-white border border-gray-100 rounded-[30px] text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#4C6AFF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2" viewBox="0 -960 960 960" fill="#D2D2D2">
+                                <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                            </svg>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-4 py-2 bg-white border border-gray-100 rounded-[30px] text-sm font-medium text-gray-600 flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"></path>
+                                </svg>
+                                Filter
+                            </button>
+                            <button class="px-4 py-2 bg-white border border-gray-100 rounded-[30px] text-sm font-medium text-gray-600 flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                                Sort
+                            </button>
+                        </div>
+                    </div>
+                    
+
                     <!-- Products -->
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <h2 class="text-xl font-bold text-gray-800">Products</h2>
-                            <div class="flex items-center space-x-2">
-                                <button class="px-4 py-2 bg-white border border-gray-100 rounded-[30px] text-sm font-medium text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"></path>
-                                    </svg>
-                                    Filter
-                                </button>
-                                <button class="px-4 py-2 bg-white border border-gray-100 rounded-[30px] text-sm font-medium text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                                    </svg>
-                                    Sort
-                                </button>
-                            </div>
                         </div>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6" id="productsGrid">
