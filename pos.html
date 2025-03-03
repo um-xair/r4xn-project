@@ -36,20 +36,100 @@
         html {
             scroll-behavior: smooth;
         }
+        #sidebar {
+            transform: translateX(-200%);
+        }
+        #sidebar.active {
+            transform: translateX(0);
+        }
+        #overlay.active {
+            display: block;
+        }
     </style>
 </head>
-<body class="fade-in bg-[#F2F2F2]">
-    
+<body class="fade-in bg-[#F2F2F2]">    
     <div class="grid grid-cols-3 gap-4 h-screen">
         <div class="col-span-2 bg-[#F2F2F2] p-6">
             
             <header class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-2">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <div id="sidebarToggle" class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#006AFF" class="w-6 h-6">
                             <path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/>
                         </svg>
                     </div>
+
+                    <div class="fixed top-0 left-0 w-80 h-full bg-white transform -translate-x-full transition-all duration-300 ease-in-out z-[20]" id="sidebar">
+                        <div class="py-4 px-4 h-full flex flex-col justify-between">
+                            <div class="relative">
+                                <div class="grid grid-cols-[2fr_1fr] gap-2 items-center w-full">
+                                    <button class="w-full text-left py-3 px-4 bg-gray-100 rounded-full flex items-center justify-between col-span-1">
+                                        <span>Profile</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5">
+                                            <path d="M12 15l-6-6h12l-6 6z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="flex items-center justify-center w-10 h-10 bg-red-500 text-white rounded-full cursor-pointer col-span-1 justify-self-end">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                                            <path d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="absolute left-0 w-full bg-gray-100 mt-2 rounded-[15px] hidden dropdown-content">
+                                    <div class="flex items-center p-3 space-x-4">
+                                        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+                                            <img src="https://i.pinimg.com/736x/4d/08/32/4d083274fd2abffa874f600391fb0ef5.jpg" alt="Profile Picture" class="w-12 h-12 rounded-full object-cover">
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-800">John Doe</p>
+                                            <p class="text-sm text-gray-600">Software Engineer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="flex flex-col justify-center space-y-2 mt-6 flex-grow">
+                                <li class="flex items-center space-x-3 rounded-[10px] p-3 group hover:bg-blue-50 transition-all ease-in-out duration-300">
+                                    <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full group-hover:bg-blue-500">
+                                        <i class="fa-solid fa-house text-gray-400 text-lg group-hover:text-white"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-800 text-md group-hover:text-blue-500">Home</a>
+                                </li>
+                                <li class="flex items-center space-x-3 rounded-[10px] p-3 group hover:bg-blue-50 transition-all ease-in-out duration-300">
+                                    <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full group-hover:bg-blue-500">
+                                        <i class="fa-solid fa-utensils text-gray-400 text-lg group-hover:text-white"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-800 text-md group-hover:text-blue-500">Menu Management</a>
+                                </li>
+                                <li class="flex items-center space-x-3 rounded-[10px] p-3 group hover:bg-blue-50 transition-all ease-in-out duration-300">
+                                    <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full group-hover:bg-blue-500">
+                                        <i class="fa-solid fa-chart-line text-gray-400 text-lg group-hover:text-white"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-800 text-md group-hover:text-blue-500">Activity</a>
+                                </li>
+                                <li class="flex items-center space-x-3 rounded-[10px] p-3 group hover:bg-blue-50 transition-all ease-in-out duration-300">
+                                    <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full group-hover:bg-blue-500">
+                                        <i class="fa-solid fa-gear text-gray-400 text-lg group-hover:text-white"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-800 text-md group-hover:text-blue-500">Settings</a>
+                                </li>
+                            </ul>
+                            <div class="fixed bottom-4 left-0 w-full px-4">
+                                <div class="w-full">
+                                    <button class="w-full text-left py-3 px-4 bg-gray-100 rounded-full flex items-center justify-between">
+                                        <span>Logout</span>
+                                        <div class="flex items-center justify-center w-10 h-10 bg-red-500 text-white rounded-full cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                                                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fixed inset-0 bg-black opacity-50 hidden z-10" id="overlay"></div>
+
                     <div class="bg-white p-2 rounded-full flex items-center justify-center space-x-1 px-4">
                         <div class="w-8 h-8 rounded-full flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#006AFF" class="w-6 h-6">
@@ -155,40 +235,133 @@
                 </div>
             </div>
 
+            <!-- Menu Items -->
             <div class="grid grid-cols-4 gap-4">
-                <div class="bg-white p-4 rounded-[20px]">
+                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Cheeseburger" data-price="7.00">
                     <span class="bg-[#006AFF] text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Fast Food</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
                         <img src="assets/cheeseburger.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
-                    <p class="text-gray-800 font-semibold mt-3">Cheese Burger</p>
-                    <p class="text-gray-600 text-sm">$5.99</p>
+                    <p class="text-gray-800 font-semibold mt-3 item-name">Cheese Burger</p>
+                    <p class="text-gray-600 text-sm item-price">RM 7.00</p>
+                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
-                <div class="bg-white p-4 rounded-[20px]">
+                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Caesar Salad" data-price="5.99">
                     <span class="bg-green-500 text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Salad</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
                         <img src="assets/caesar-salad.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
-                    <p class="text-gray-800 font-semibold mt-3">Caesar Salad</p>
-                    <p class="text-gray-600 text-sm">$4.99</p>
+                    <p class="text-gray-800 font-semibold mt-3 item-name">Caesar Salad</p>
+                    <p class="text-gray-600 text-sm item-price">RM 5.99</p>
+                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
-                <div class="bg-white p-4 rounded-[20px]">
+                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Chocolate Cake" data-price="6.49">
                     <span class="bg-red-500 text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Dessert</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
                         <img src="assets/chocolate-cake.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
-                    <p class="text-gray-800 font-semibold mt-3">Chocolate Cake</p>
-                    <p class="text-gray-600 text-sm">$6.49</p>
+                    <p class="text-gray-800 font-semibold mt-3 item-name">Chocolate Cake</p>
+                    <p class="text-gray-600 text-sm item-price">RM 6.49</p>
+                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
-                <div class="bg-white p-4 rounded-[20px]">
+                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Lemonade" data-price="3.99">
                     <span class="bg-yellow-500 text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Beverage</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
                         <img src="assets/lemonade.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
-                    <p class="text-gray-800 font-semibold mt-3">Lemonade</p>
-                    <p class="text-gray-600 text-sm">$3.99</p>
+                    <p class="text-gray-800 font-semibold mt-3 item-name">Lemonade</p>
+                    <p class="text-gray-600 text-sm item-price">RM 3.99</p>
+                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
             </div>
+
+            <script>
+                let orderItems = [];
+                
+                function addToOrder(name, price) {
+                    const existingItem = orderItems.find(item => item.name === name);
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        orderItems.push({ name, price, quantity: 1 });
+                    }
+                    updateOrderSection();
+                }
+                
+                function updateOrderSection() {
+                    const orderSection = document.getElementById("orderSection");
+                    orderSection.innerHTML = ""; 
+
+                    let subtotal = 0;
+                
+                    orderItems.forEach(item => {
+                        const orderItemHTML = `
+                        <div class="flex items-center justify-between bg-white p-4 border-b-2 border-dashed border-gray-100">
+                            <div class="w-20 h-20 mr-4">
+                                <img src="assets/${item.name.toLowerCase().replace(/\s+/g, '-')}.jpeg" alt="Item Image" class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-800">${item.name}</p>
+                                <p class="text-gray-600 text-sm">RM ${item.price.toFixed(2)}</p>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex items-center bg-gray-100 rounded-full overflow-hidden p-2">
+                                    <button class="decrease w-8 h-8 bg-white text-gray-600 rounded-full">-</button>
+                                    <input type="text" value="${item.quantity}" class="quantity w-12 text-center py-1 bg-gray-100 border-none focus:outline-none" readonly />
+                                    <button class="increase w-8 h-8 bg-white text-gray-600 rounded-full">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        orderSection.innerHTML += orderItemHTML;
+                
+                        subtotal += item.price * item.quantity;
+                    });
+                
+                    updateOrderSummary(subtotal);
+                }
+                
+                function updateOrderSummary(subtotal) {
+                    const tax = subtotal * 0.1;
+                    const discount = 2.00;
+                    const total = subtotal + tax - discount;
+                
+                    document.getElementById("subtotal").textContent = `RM ${subtotal.toFixed(2)}`;
+                    document.getElementById("tax").textContent = `RM ${tax.toFixed(2)}`;
+                    document.getElementById("discount").textContent = `RM ${discount.toFixed(2)}`;
+                    document.getElementById("total").textContent = `RM ${total.toFixed(2)}`;
+                }
+                
+                document.querySelectorAll('.add-to-order-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const menuItem = this.closest('.menu-item');
+                        const itemName = menuItem.querySelector('.item-name').textContent;
+                        const itemPrice = parseFloat(menuItem.querySelector('.item-price').textContent.replace('RM', '').trim());
+                        addToOrder(itemName, itemPrice);
+                    });
+                });
+                
+                document.getElementById('orderSection').addEventListener('click', (e) => {
+                    if (e.target.classList.contains('decrease')) {
+                        const orderItemElement = e.target.closest('.flex');
+                        const itemName = orderItemElement.querySelector('.font-semibold').textContent;
+                        const item = orderItems.find(item => item.name === itemName);
+                
+                        if (item.quantity > 1) {
+                            item.quantity--;
+                            updateOrderSection();
+                        }
+                    }
+                    if (e.target.classList.contains('increase')) {
+                        const orderItemElement = e.target.closest('.flex');
+                        const itemName = orderItemElement.querySelector('.font-semibold').textContent;
+                        const item = orderItems.find(item => item.name === itemName);
+                
+                        item.quantity++;
+                        updateOrderSection();
+                    }
+                });
+            </script>
         </div>
         
         <div class="col-span-1 bg-white relative min-h-screen">
@@ -209,21 +382,22 @@
                     </svg>
                 </div>
             </div>
-
+        
             <div class="grid grid-cols-2 gap-4">
                 <div class="col-span-2 p-3 rounded-lg">
                     <div class="flex justify-between gap-4">
                         <div class="flex-1">
-                            <select id="table" class="w-full p-2 mt-2 bg-gray-100 rounded-full">
-                                <option value="table1">Select Table</option>
+                            <select id="table" class="w-full py-3 px-2 mt-2 bg-gray-100 rounded-full">
+                                <option value="select-table">Select Table</option>
+                                <option value="table1">Table 1</option>
                                 <option value="table2">Table 2</option>
                                 <option value="table3">Table 3</option>
-                                <option value="table4">Table 4</option>
                             </select>
                         </div>
                         <div class="flex-1">
-                            <select id="order-type" class="w-full p-2 mt-2 bg-gray-100 rounded-full">
-                                <option value="dine-in">Select Order Type</option>
+                            <select id="order-type" class="w-full py-3 px-2 mt-2 bg-gray-100 rounded-full">
+                                <option value="order-type">Order Type</option>
+                                <option value="dine-in">Dine In</option>
                                 <option value="takeout">Takeout</option>
                                 <option value="delivery">Delivery</option>
                             </select>
@@ -231,82 +405,75 @@
                     </div>
                 </div>
             </div>
-
-            <div class="bg-white p-4 flex items-center justify-between border-b-2 border-dashed border-gray-100">
-                <div class="w-20 h-20 mr-4">
-                    <img src="assets/cheeseburger.jpeg" alt="Item Image" class="w-full h-full object-cover rounded-lg">
-                </div>
-                <div class="flex-1">
-                    <p class="font-semibold text-gray-800">Cheeseburger</p>
-                    <div class="flex justify-between items-center">
-                        <p class="text-gray-600 text-sm">RM 7.00</p>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <div class="flex items-center bg-gray-200 rounded-full overflow-hidden p-2">
-                        <button id="decrease" class="w-8 h-8 bg-white text-gray-600 rounded-full">
-                            -
-                        </button>
-                        <input id="quantity" type="text" value="1" class="w-12 text-center py-1 bg-gray-200 border-none focus:outline-none" />
-                        <button id="increase" class="w-8 h-8 bg-white text-gray-600 rounded-full">
-                            +
-                        </button>
-                    </div>
-                </div>
+        
+            <div id="orderSection" class="bg-white p-4 flex flex-col space-y-4" style="max-height: 400px; overflow-y: scroll;">
             </div>
-
+                    
             <div class="absolute bottom-0 left-0 right-0 bg-white p-4 mt-6 rounded-lg shadow-lg">
                 <div class="flex justify-between items-center mb-2">
                     <p class="text-gray-800 text-sm">Subtotal</p>
-                    <p class="text-gray-800 text-sm">RM 14.00</p>
+                    <p id="subtotal" class="text-gray-800 text-sm">RM 0.00</p>
                 </div>
                 <div class="flex justify-between items-center mb-2">
                     <p class="text-gray-800 text-sm">Tax</p>
-                    <p class="text-gray-800 text-sm">RM 1.40</p>
+                    <p id="tax" class="text-gray-800 text-sm">RM 0.00</p>
                 </div>
                 <div class="flex justify-between items-center mb-2">
                     <p class="text-gray-800 text-sm">Discount</p>
-                    <p class="text-gray-800 text-sm">RM 2.00</p>
+                    <p id="discount" class="text-gray-800 text-sm">RM 0.00</p>
                 </div>
                 <div class="flex justify-between items-center mb-6 border-t-2 border-dashed border-gray-100 py-3">
                     <p class="text-gray-800">Total</p>
-                    <p class="text-gray-800">RM 13.40</p>
+                    <p id="total" class="text-gray-800">RM 0.00</p>
                 </div>
                 <button class="w-full bg-blue-600 text-white py-5 rounded-full text-lg">
                     Place Order
                 </button>
             </div>
-            
-            
-            
-            
-            
-            
-            
-            
         </div>
+        
     </div>
 
-
     <script>
-        // Get the input and buttons
         const quantityInput = document.getElementById('quantity');
         const decreaseButton = document.getElementById('decrease');
         const increaseButton = document.getElementById('increase');
     
-        // Decrease the value
         decreaseButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) { // Prevent going below 1
+            if (currentValue > 1) {
                 quantityInput.value = currentValue - 1;
             }
         });
     
-        // Increase the value
         increaseButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityInput.value);
             quantityInput.value = currentValue + 1;
         });
+    
+        const dropdownButton = document.querySelector('.relative button');
+        const dropdownContent = document.querySelector('.dropdown-content');
+    
+        dropdownButton.addEventListener('click', () => {
+            dropdownContent.classList.toggle('hidden');
+        });
+    
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+    
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('hidden');
+            overlay.classList.toggle('active');
+        });
+    
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            overlay.classList.add('hidden');
+        });
     </script>
+
 </body>
 </html>
