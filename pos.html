@@ -237,47 +237,43 @@
 
             <!-- Menu Items -->
             <div class="grid grid-cols-4 gap-4">
-                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Cheeseburger" data-price="7.00">
+                <div class="add-to-order-btn menu-item bg-white p-3 rounded-[20px]" data-name="Cheeseburger" data-price="7.00">
                     <span class="bg-[#006AFF] text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Fast Food</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
-                        <img src="assets/cheeseburger.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
+                        <img src="assets/cheese-burger.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
                     <p class="text-gray-800 font-semibold mt-3 item-name">Cheese Burger</p>
                     <p class="text-gray-600 text-sm item-price">RM 7.00</p>
-                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
-                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Caesar Salad" data-price="5.99">
+                <div class="add-to-order-btn menu-item bg-white p-3 rounded-[20px]" data-name="Caesar Salad" data-price="5.99">
                     <span class="bg-green-500 text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Salad</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
                         <img src="assets/caesar-salad.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
                     <p class="text-gray-800 font-semibold mt-3 item-name">Caesar Salad</p>
                     <p class="text-gray-600 text-sm item-price">RM 5.99</p>
-                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
-                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Chocolate Cake" data-price="6.49">
+                <div class="add-to-order-btn menu-item bg-white p-3 rounded-[20px]" data-name="Chocolate Cake" data-price="6.49">
                     <span class="bg-red-500 text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Dessert</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
                         <img src="assets/chocolate-cake.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
                     <p class="text-gray-800 font-semibold mt-3 item-name">Chocolate Cake</p>
                     <p class="text-gray-600 text-sm item-price">RM 6.49</p>
-                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
-                <div class="menu-item bg-white p-3 rounded-[20px]" data-name="Lemonade" data-price="3.99">
+                <div class="add-to-order-btn menu-item bg-white p-3 rounded-[20px]" data-name="Lemonade" data-price="3.99">
                     <span class="bg-yellow-500 text-white text-xs px-3 py-2 rounded-full absolute mt-2 ml-2 backdrop-blur-md bg-opacity-60">Beverage</span>
                     <div class="bg-gray-100 rounded-xl flex items-center justify-center h-auto">
                         <img src="assets/lemonade.jpeg" alt="Food Image" class="w-full rounded-[10px] object-cover">
                     </div>
                     <p class="text-gray-800 font-semibold mt-3 item-name">Lemonade</p>
                     <p class="text-gray-600 text-sm item-price">RM 3.99</p>
-                    <button class="add-to-order-btn w-full bg-blue-600 text-white py-3 rounded-full mt-4">Add to Order</button>
                 </div>
             </div>
 
             <script>
                 let orderItems = [];
-                
+            
                 function addToOrder(name, price) {
                     const existingItem = orderItems.find(item => item.name === name);
                     if (existingItem) {
@@ -287,51 +283,51 @@
                     }
                     updateOrderSection();
                 }
-                
+            
                 function updateOrderSection() {
                     const orderSection = document.getElementById("orderSection");
                     orderSection.innerHTML = ""; 
-
+            
                     let subtotal = 0;
-                
+            
                     orderItems.forEach(item => {
                         const orderItemHTML = `
-                        <div class="flex items-center justify-between bg-white p-4 border-b-2 border-dashed border-gray-100">
-                            <div class="w-20 h-20 mr-4">
-                                <img src="assets/${item.name.toLowerCase().replace(/\s+/g, '-')}.jpeg" alt="Item Image" class="w-full h-full object-cover rounded-lg">
-                            </div>
-                            <div class="flex-1">
-                                <p class="font-semibold text-gray-800">${item.name}</p>
-                                <p class="text-gray-600 text-sm">RM ${item.price.toFixed(2)}</p>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="flex items-center bg-gray-100 rounded-full overflow-hidden p-2">
-                                    <button class="decrease w-8 h-8 bg-white text-gray-600 rounded-full">-</button>
-                                    <input type="text" value="${item.quantity}" class="quantity w-12 text-center py-1 bg-gray-100 border-none focus:outline-none" readonly />
-                                    <button class="increase w-8 h-8 bg-white text-gray-600 rounded-full">+</button>
+                            <div class="flex items-center justify-between bg-white p-4 border-b-2 border-dashed border-gray-100">
+                                <div class="w-20 h-20 mr-4">
+                                    <img src="assets/${item.name.toLowerCase().replace(/\s+/g, '-')}.jpeg" alt="Item Image" class="w-full h-full object-cover rounded-lg">
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-semibold text-gray-800 item-name">${item.name}</p>
+                                    <p class="text-gray-600 text-sm">RM ${item.price.toFixed(2)}</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="flex items-center bg-gray-100 rounded-full overflow-hidden p-2">
+                                        <button class="decrease w-8 h-8 bg-white text-gray-600 rounded-full" data-name="${item.name}">-</button>
+                                        <input type="text" value="${item.quantity}" class="quantity w-12 text-center py-1 bg-gray-100 border-none focus:outline-none" readonly />
+                                        <button class="increase w-8 h-8 bg-white text-gray-600 rounded-full" data-name="${item.name}">+</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         `;
                         orderSection.innerHTML += orderItemHTML;
-                
+            
                         subtotal += item.price * item.quantity;
                     });
-                
+            
                     updateOrderSummary(subtotal);
                 }
-                
+            
                 function updateOrderSummary(subtotal) {
                     const tax = subtotal * 0.1;
                     const discount = 2.00;
                     const total = subtotal + tax - discount;
-                
+            
                     document.getElementById("subtotal").textContent = `RM ${subtotal.toFixed(2)}`;
                     document.getElementById("tax").textContent = `RM ${tax.toFixed(2)}`;
                     document.getElementById("discount").textContent = `RM ${discount.toFixed(2)}`;
                     document.getElementById("total").textContent = `RM ${total.toFixed(2)}`;
                 }
-                
+            
                 document.querySelectorAll('.add-to-order-btn').forEach(button => {
                     button.addEventListener('click', function() {
                         const menuItem = this.closest('.menu-item');
@@ -340,28 +336,33 @@
                         addToOrder(itemName, itemPrice);
                     });
                 });
-                
+            
                 document.getElementById('orderSection').addEventListener('click', (e) => {
                     if (e.target.classList.contains('decrease')) {
-                        const orderItemElement = e.target.closest('.flex');
-                        const itemName = orderItemElement.querySelector('.font-semibold').textContent;
+                        const itemName = e.target.getAttribute('data-name');
                         const item = orderItems.find(item => item.name === itemName);
-                
-                        if (item.quantity > 1) {
+            
+                        if (item && item.quantity > 1) {
                             item.quantity--;
+                            updateOrderSection();
+                        } else {
+                            orderItems = orderItems.filter(orderItem => orderItem.name !== itemName);
                             updateOrderSection();
                         }
                     }
+            
                     if (e.target.classList.contains('increase')) {
-                        const orderItemElement = e.target.closest('.flex');
-                        const itemName = orderItemElement.querySelector('.font-semibold').textContent;
+                        const itemName = e.target.getAttribute('data-name');
                         const item = orderItems.find(item => item.name === itemName);
-                
-                        item.quantity++;
-                        updateOrderSection();
+            
+                        if (item) {
+                            item.quantity++;
+                            updateOrderSection();
+                        }
                     }
                 });
             </script>
+            
         </div>
         
         <div class="col-span-1 bg-white relative min-h-screen">
@@ -406,7 +407,7 @@
                 </div>
             </div>
         
-            <div id="orderSection" class="bg-white p-4 flex flex-col space-y-4" style="max-height: 400px; overflow-y: scroll;">
+            <div id="orderSection" class="bg-white flex flex-col" style="max-height: 400px; overflow-y: scroll;">
             </div>
                     
             <div class="absolute bottom-0 left-0 right-0 bg-white p-4 mt-6 rounded-lg shadow-lg">
@@ -435,22 +436,6 @@
     </div>
 
     <script>
-        const quantityInput = document.getElementById('quantity');
-        const decreaseButton = document.getElementById('decrease');
-        const increaseButton = document.getElementById('increase');
-    
-        decreaseButton.addEventListener('click', () => {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
-        });
-    
-        increaseButton.addEventListener('click', () => {
-            let currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
-        });
-    
         const dropdownButton = document.querySelector('.relative button');
         const dropdownContent = document.querySelector('.dropdown-content');
     
