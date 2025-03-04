@@ -45,28 +45,30 @@
 </head>
 <body class="bg-[#0A0A0A] fade-in">
 
-    <main id="home" class="relative z-10 text-center p-6 flex flex-col justify-center items-center min-h-screen">
-        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-[600px] border-t-[600px] border-b-[600px] border-transparent border-l-white/20 blur-[150px] pointer-events-none"></span>
-        <h1 class="text-4xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">
+    <main id="home" class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+        <span class="absolute inset-0 flex justify-center items-center pointer-events-none">
+            <span class="w-[600px] h-[600px] bg-white/20 blur-[150px] rounded-full"></span>
+        </span>
+        <h1 class="text-4xl sm:text-6xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">
             Find the <br> Perfect Font Pair
         </h1>
-        <p class="mt-4 text-lg text-gray-300 max-w-lg">
+        <p class="mt-4 text-base sm:text-lg text-gray-300 max-w-lg">
             A simple tool to discover and test beautiful font combinations for your projects.
         </p>
     </main>
-    
+        
     <section id="explore" class="py-20 text-white min-h-screen flex justify-center items-center">
         <div class="bg-neutral-900 p-10 rounded-[20px] w-full max-w-[90%]">
             
-            <div class="grid grid-cols-2 mb-8">
-                <div class="flex space-x-2">
-                    <button id="generateFont" class="px-5 py-3 bg-white text-black rounded-[10px] flex items-center space-x-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full">
+                <div class="flex justify-center sm:justify-start">
+                    <button id="generateFont" class="px-5 py-3 bg-white text-black rounded-lg flex items-center space-x-2 shadow-md hover:bg-gray-200 transition">
                         <i class="fa-solid fa-retweet"></i>
                         <span>Generate Font</span>
                     </button>
                 </div>
             </div>
-                
+                            
             <div class="mt-10 flex flex-col items-start space-y-10">
                 <div class="flex items-center space-x-4 text-xl">
                     <span id="fontNameH2" class="font-mono">Default Font</span>
