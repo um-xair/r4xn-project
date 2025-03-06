@@ -3,80 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website TravelSphere</title>
+    <title>R4XN | Project</title>
+    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Russo+One&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
         }
-        html {
-            scroll-behavior: smooth;
+        .customfont {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         ::-webkit-scrollbar {
             display: none;
         }
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
-
-<body class="flex flex-col items-center justify-center min-h-screen space-y-8 bg-[#010f0f]">
-
-    <header class="bg-[#1A3636] text-white rounded-[30px] px-8 py-4 flex items-center justify-between w-4/5 mt-8 relative">
-        <div class="flex items-center space-x-4">
-            <img src="assets/beach-vacation.png" alt="Logo" class="w-10 h-10">
-            <h1 class="text-2xl font-bold">Travel Sphere</h1>
-        </div>
+<body class="fade-in bg-[#1B1212]">
+    <header class="bg-[#1B1212] text-white w-full px-20 py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50">
+        <h1 class="text-xl font-bold">Travel Vibez</h1>
         <button id="menu-btn" class="block lg:hidden text-white focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
         </button>
-        <nav id="menu" class="hidden z-50 mt-4 lg:mt-0 lg:flex space-x-6 lg:space-x-6 absolute lg:relative top-full right-0 w-full lg:w-auto bg-[#40534C] lg:bg-transparent rounded-[30px] lg:rounded-none p-4 lg:p-0 transition-all duration-300">
+        <nav id="menu" class="hidden lg:flex space-x-6 absolute lg:relative top-full right-0 w-full lg:w-auto bg-[#1B1212] lg:bg-transparent p-4 lg:p-0 transition-all duration-300">
             <ul class="flex flex-col lg:flex-row lg:space-x-6">
-                <li><a href="#home" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">Home</a></li>
-                <li><a href="#about" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">About</a></li>
-                <li><a href="#services" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">Services</a></li>
-                <li><a href="#contact" class="hover:bg-[#35453f] lg:hover:bg-transparent lg:hover:underline block py-2 px-3 lg:py-0 rounded-[15px]">Contact</a></li>
+                <li><a href="#hero-section" class="hover:underline block py-2 px-3">Home</a></li>
+                <li><a href="#about" class="hover:underline block py-2 px-3">About</a></li>
+                <li><a href="#services" class="hover:underline block py-2 px-3">Services</a></li>
+                <li><a href="#contact" class="hover:underline block py-2 px-3">Contact</a></li>
             </ul>
         </nav>
     </header>
 
+    <section id="hero-section" class="relative bg-cover bg-center h-screen w-full flex flex-col items-center justify-center text-white text-center transition-all duration-300 ease-in" style="background-image: url('assets/travel-1.jpg');">
+        <div id="bg-overlay" class="absolute inset-0 bg-black opacity-40 transition-opacity duration-500"></div>
+        <div class="relative z-10 px-6 w-full max-w-7xl text-left">
+            <h2 class="text-4xl font-semibold leading-tight">Explore the World</h2>
+            <p class="text-8xl mt-2 font-bold">Travel Beyond Limits</p>
+            <p class="text-lg mt-4 leading-relaxed">
+                Discover breathtaking destinations, hidden gems, and unforgettable experiences.  
+                Whether you're seeking adventure, relaxation, or cultural immersion, we've got the perfect journey for you.
+            </p>
+            <button class="mt-6 bg-white text-black w-1/5 py-5 px-8 rounded-full text-md">
+                Book Now
+            </button>
+        </div>            
+        <div class="absolute bottom-10 right-10 grid grid-cols-3 gap-4 w-full max-w-3xl">
+            <div class="text-center group">
+                <div class="relative cursor-pointer" onclick="changeBackground('assets/travel-1.jpg')">
+                    <img src="assets/travel-1.jpg" class="rounded-[15px] w-full mx-auto shadow-lg transition-transform duration-300 transform group-hover:scale-105" alt="Destination 1">
+                </div>
+                <p class="mt-2 text-md">Beach Paradise</p>
+            </div>
+            <div class="text-center group">
+                <div class="relative cursor-pointer" onclick="changeBackground('assets/travel-2.jpg')">
+                    <img src="assets/travel-2.jpg" class="rounded-[15px] w-full mx-auto shadow-lg transition-transform duration-300 transform group-hover:scale-105" alt="Destination 2">
+                </div>
+                <p class="mt-2 text-md">Mountain Escape</p>
+            </div>
+            <div class="text-center group">
+                <div class="relative cursor-pointer" onclick="changeBackground('assets/travel-3.jpg')">
+                    <img src="assets/travel-3.jpg" class="rounded-[15px] w-full mx-auto shadow-lg transition-transform duration-300 transform group-hover:scale-105" alt="Destination 3">
+                </div>
+                <p class="mt-2 text-md">City Lights</p>
+            </div>
+        </div>        
+    </section>
+    
     <script>
-        document.getElementById('menu-btn').addEventListener('click', function() {
-        const menu = document.getElementById('menu');
-        menu.classList.toggle('hidden');
-    });
+        function changeBackground(imageUrl) {
+            const heroSection = document.getElementById('hero-section');
+            const overlay = document.getElementById('bg-overlay');
+            overlay.style.opacity = '0.5';
+            setTimeout(() => {
+                heroSection.style.backgroundImage = `url('${imageUrl}')`;
+            }, 300);
+            setTimeout(() => {
+                overlay.style.opacity = '0.2';
+            }, 600);
+        }
     </script>
     
-    <section class="relative bg-cover bg-center h-[80vh] w-4/5 mx-auto mt-10 rounded-[30px]" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/gettyimages-833247510-1528401432.jpg');">
-        <div class="absolute inset-0 bg-black opacity-50 rounded-2xl"></div>
-        <div class="relative h-full flex items-center justify-start px-8">
-            <div class="text-left text-white max-w-full">
-                <h2 class="text-5xl font-bold md:text-4xl sm:text-3xl">Discover Your Next Adventure</h2>
-                <p class="text-xl mt-4 md:text-lg sm:text-base">Explore the world with our exclusive travel packages</p>
-                <a href="#services" class="mt-6 inline-block bg-[#1A3636] hover:bg-[#35453f] text-white py-3 px-8 rounded-full text-lg md:text-base sm:text-sm">Explore Now</a>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <section id="about" class="w-full max-w-[90%] mx-auto mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 items-center min-h-screen">
+        <div class="relative flex justify-center items-center w-full">
+            <div class="relative w-[70%] flex justify-center">
+                <img src="assets/travel-4.jpg" alt="Nature Image 1" 
+                     class="w-full aspect-[9/11] object-cover rounded-[20px]">
+                <img src="assets/travel-5.jpg" alt="Nature Image 2" 
+                     class="absolute bottom-[-40px] right-[-50px] w-[60%] aspect-[9/11] object-cover rounded-[20px]">
             </div>
+        </div>
+        <div class="text-left text-white flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
+            <h2 class="text-4xl font-bold mb-4">Explore the Beauty of Nature</h2>
+            <p class="text-sm leading-relaxed">
+                Immerse yourself in breathtaking landscapes, from serene forests to majestic waterfalls. 
+                Our carefully curated travel experiences will take you beyond the ordinary, 
+                allowing you to connect with nature like never before.
+            </p>
         </div>
     </section>
 
-    <section class="lg:p-8 p-2 w-4/5 mx-auto mt-10 flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8 space-y-8 lg:space-y-0" style="height: 90vh;">
-        <div class="relative w-full lg:w-1/2 h-[200px] lg:h-[700px] mx-auto flex justify-center items-center"> 
-            <img src="https://afar.brightspotcdn.com/dims4/default/6b7a834/2147483647/strip/true/crop/1000x667+0+0/resize/1440x960!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F06%2Fa1%2F73403f3f4813a4a8f6d9e78c9f5d%2Fshutterstock-1938868960.jpg" alt="Image 1" 
-            class="absolute top-0 left-0 lg:w-[60%] lg:h-[90%] w-[90%] h-[100%] object-cover rounded-[30px] shadow-lg">
-            <img src="https://images.squarespace-cdn.com/content/v1/5369465be4b0507a1fd05af0/1528837069483-LD1R6EJDDHBY8LBPVHIU/randall-ruiz-272502.jpg" alt="Image 2" 
-            class="absolute lg:bottom-[0px] lg:right-[50px] lg:w-[60%] lg:h-[90%] w-[90%] h-[100%] right-[0px] top-[60px] object-cover rounded-[30px] shadow-lg">
-        </div>
-    
-        <div class="relative w-full lg:w-1/2 text-left text-white flex flex-col items-center justify-center lg:items-start">
-            <img src="assets/sea-turtle.png" 
-                 alt="Top Left Image" 
-                 class="lg:mt-[150px] mt-[90px] left-0 w-[100px] h-[100px] shadow-lg">
-            <h2 class="text-4xl font-bold mb-4 mt-10 text-center lg:text-left">Explore the Beauty of Nature</h2> <!-- Adjust the margin-top to avoid overlap -->
-            <p class="text-lg lg:mb-6 mb-4 text-justify text-center lg:text-left">Discover breathtaking landscapes, serene forests, and majestic waterfalls with our travel packages tailored for nature lovers.</p>
-            <a href="#contact" class="lg:mt-6 mt-2 inline-block bg-[#1A3636] hover:bg-[#35453f] text-white py-3 px-8 rounded-full text-lg md:text-base sm:text-sm">Get Started</a>
-        </div>
-    </section>
+
+
+
     
     <section class="lg:p-8 p-2 w-4/5 mx-auto mt-10 flex flex-col lg:flex-row items-center justify-center lg:items-center lg:space-x-8 space-y-8 lg:space-y-0 min-h-[90vh]">
         <div class="lg:w-1/2 text-left text-white">
