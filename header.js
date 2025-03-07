@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <a href="#about" class="text-md">About</a>
                     </nav>
-                    <button class="lg:hidden text-white" id="menu-btn">
+                    <button class="lg:hidden text-white" id="menu-btn" aria-label="Open menu">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
