@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div id="desktop-resources-menu"
                                 class="absolute right-0 mt-8 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg opacity-0 scale-95 translate-y-2 transition-all duration-300 ease-in-out pointer-events-none p-4 backdrop-blur-md backdrop-filter hidden">
                                 <div class="grid grid-cols-3 w-full">
-                                    <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <a href="front-end-projects.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">Front-End Projects</h3>
                                         <p class="text-xs text-gray-400">Interactive web applications with modern UI/UX design.</p>
                                     </a>
