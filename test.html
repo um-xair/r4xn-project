@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>Spotify-Like Music Player</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body class="h-screen bg-black flex items-center justify-center p-6">
 
     <div class="bg-[#151515] p-6 rounded-[30px] w-[400px]">
-        <!-- YouTube Player -->
-        <div id="player" class="w-full h-[200px] mb-4 rounded-[15px] overflow-hidden"></div>
+        <!-- Album Art -->
+        <img id="album-cover" src="cover1.jpg" class="w-full rounded-[15px] mb-4">
 
         <!-- Song Info -->
         <div class="flex items-center justify-between w-full">
             <div>
-                <p id="song-title" class="text-2xl text-white">Ma Meilleure Ennemie</p>
-                <p id="song-artist" class="text-lg text-gray-500">Arcane League of Legends</p>
+                <p id="song-title" class="text-2xl text-white">Song Title</p>
+                <p id="song-artist" class="text-lg text-gray-500">Artist Name</p>
             </div>
             <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#222] cursor-pointer">
                 <i class="fas fa-heart text-white"></i>
@@ -27,8 +26,14 @@
         </div>
 
         <!-- Progress Bar -->
-        <div class="w-full mt-6 bg-white h-1 rounded-full">
-            <div id="progress" class="bg-blue-500 h-1 rounded-full w-0"></div>
+        <div class="relative w-full mt-6">
+            <input id="progress-bar" type="range" value="0" class="w-full cursor-pointer">
+        </div>
+
+        <!-- Time Labels -->
+        <div class="flex justify-between text-gray-400 text-sm mt-1">
+            <span id="current-time">0:00</span>
+            <span id="total-duration">0:00</span>
         </div>
 
         <!-- Controls -->
@@ -48,70 +53,65 @@
                 </div>
             </div>
             <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#222] cursor-pointer" onclick="toggleRepeat()">
-                <i class="fa-solid fa-repeat text-white"></i>
+                <i id="repeat-icon" class="fa-solid fa-repeat text-white"></i>
             </div>
         </div>
     </div>
 
+    <audio id="audio-player"></audio>
+
     <script>
-        let player;
         let isPlaying = false;
         let isRepeat = false;
         let currentSongIndex = 0;
 
-        const songs = [
-            { title: "Ma Meilleure Ennemie", artist: "Arcane League of Legends", videoId: "OuTLKgPyaF0" },
-            { title: "Rise", artist: "The Glitch Mob", videoId: "fB8TyLTD7EE" },
-            { title: "Legends Never Die", artist: "Against The Current", videoId: "r6zIGXun57U" }
+        let songs = [
+            { title: "Rise", artist: "The Glitch Mob", src: "songs/rise.mp3", cover: "cover1.jpg" },
+            { title: "Legends Never Die", artist: "Against The Current", src: "songs/legends_never_die.mp3", cover: "cover2.jpg" },
+            { title: "Warriors", artist: "Imagine Dragons", src: "songs/warriors.mp3", cover: "cover3.jpg" }
         ];
 
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '200',
-                width: '350',
-                videoId: songs[currentSongIndex].videoId,
-                playerVars: { 'autoplay': 0, 'controls': 0 },
-                events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
-            });
-        }
-
-        function onPlayerReady(event) {
-            loadSong(currentSongIndex);
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED && !isRepeat) {
-                nextSong();
-            }
-        }
+        const audioPlayer = document.getElementById("audio-player");
+        const playIcon = document.getElementById("play-icon");
+        const progressBar = document.getElementById("progress-bar");
+        const currentTime = document.getElementById("current-time");
+        const totalDuration = document.getElementById("total-duration");
 
         function loadSong(index) {
             const song = songs[index];
             document.getElementById("song-title").textContent = song.title;
             document.getElementById("song-artist").textContent = song.artist;
-            player.loadVideoById(song.videoId);
+            document.getElementById("album-cover").src = song.cover;
+            audioPlayer.src = song.src;
+            
+            audioPlayer.onloadedmetadata = () => {
+                totalDuration.textContent = formatTime(audioPlayer.duration);
+                progressBar.value = 0;
+            };
         }
 
         function togglePlay() {
-            if (!player) return;
-            if (isPlaying) {
-                player.pauseVideo();
-                document.getElementById("play-icon").classList.replace("fa-pause", "fa-play");
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playIcon.classList.replace("fa-play", "fa-pause");
+                isPlaying = true;
             } else {
-                player.playVideo();
-                document.getElementById("play-icon").classList.replace("fa-play", "fa-pause");
+                audioPlayer.pause();
+                playIcon.classList.replace("fa-pause", "fa-play");
+                isPlaying = false;
             }
-            isPlaying = !isPlaying;
         }
 
         function nextSong() {
             currentSongIndex = (currentSongIndex + 1) % songs.length;
             loadSong(currentSongIndex);
+            playMusic();
         }
 
         function prevSong() {
             currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
             loadSong(currentSongIndex);
+            playMusic();
         }
 
         function shuffleSong() {
@@ -121,18 +121,43 @@
             } while (randomIndex === currentSongIndex);
             currentSongIndex = randomIndex;
             loadSong(currentSongIndex);
+            playMusic();
         }
 
         function toggleRepeat() {
             isRepeat = !isRepeat;
+            audioPlayer.loop = isRepeat;
+            document.getElementById("repeat-icon").classList.toggle("text-blue-500");
         }
 
-        // Expose functions globally so HTML buttons work
-        window.togglePlay = togglePlay;
-        window.nextSong = nextSong;
-        window.prevSong = prevSong;
-        window.shuffleSong = shuffleSong;
-        window.toggleRepeat = toggleRepeat;
+        function playMusic() {
+            audioPlayer.play();
+            playIcon.classList.replace("fa-play", "fa-pause");
+            isPlaying = true;
+        }
+
+        audioPlayer.addEventListener("timeupdate", () => {
+            if (audioPlayer.duration) {
+                progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                currentTime.textContent = formatTime(audioPlayer.currentTime);
+            }
+        });
+
+        progressBar.addEventListener("input", () => {
+            audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
+        });
+
+        audioPlayer.addEventListener("ended", () => {
+            if (!isRepeat) nextSong();
+        });
+
+        function formatTime(seconds) {
+            let minutes = Math.floor(seconds / 60);
+            let secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+        }
+
+        loadSong(currentSongIndex);
     </script>
 
 </body>

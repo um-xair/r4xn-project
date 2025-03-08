@@ -33,7 +33,7 @@
         }
     </style>
 </head>
-<body class="bg-[#040D12] text-white flex items-center justify-center h-screen overflow-hidden">
+<body class="bg-black text-white flex items-center justify-center h-screen overflow-hidden">
     
     <div class="grid grid-cols-3 gap-4 w-full h-screen p-10">
         <div class="bg-[#151515] p-6 rounded-[30px] row-span-2 flex flex-col items-center justify-center h-full">
@@ -104,13 +104,22 @@
         </div>
 
         <div class="bg-[#151515] p-6 rounded-[30px] h-full">
-            <h2 class="text-2xl font-bold mb-4">Now Playing</h2>
-            <iframe class="w-full h-52 rounded-lg shadow-md" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Music Video" frameborder="0" allowfullscreen></iframe>
+            <h2 class="text-2xl font-bold mb-4 text-white">Now Playing</h2>
+        
+            <!-- YouTube Embed with Autoplay -->
+            <iframe class="w-full h-52 rounded-lg shadow-md"
+                src="https://www.youtube.com/embed/1F3OGIFnW1k?autoplay=1"
+                title="Music Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        
             <div class="mt-4">
                 <p class="text-xl text-white">Ma Meilleure Ennemie</p>
                 <p class="text-sm text-gray-500">Arcane League of Legends</p>
             </div>
-        </div>
+        </div>               
 
         <div class="bg-[#151515] p-6 rounded-[30px] col-span-2 h-full">
             <h2 class="text-2xl font-bold mb-4">Playlist</h2>
