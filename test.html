@@ -3,161 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify-Like Music Player</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Sliding Puzzle Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="h-screen bg-black flex items-center justify-center p-6">
+<body class="flex justify-center items-center h-screen bg-gray-900 text-white">
 
-    <div class="bg-[#151515] p-6 rounded-[30px] w-[400px]">
-        <!-- Album Art -->
-        <img id="album-cover" src="cover1.jpg" class="w-full rounded-[15px] mb-4">
-
-        <!-- Song Info -->
-        <div class="flex items-center justify-between w-full">
-            <div>
-                <p id="song-title" class="text-2xl text-white">Song Title</p>
-                <p id="song-artist" class="text-lg text-gray-500">Artist Name</p>
-            </div>
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#222] cursor-pointer">
-                <i class="fas fa-heart text-white"></i>
-            </div>
+    <div class="text-center">
+        <h1 class="text-3xl font-bold mb-4">Sliding Puzzle Game</h1>
+        <div id="puzzle" class="grid grid-cols-3 gap-2 w-48 mx-auto">
+            <!-- Puzzle Tiles Will Be Generated Here -->
         </div>
-
-        <!-- Progress Bar -->
-        <div class="relative w-full mt-6">
-            <input id="progress-bar" type="range" value="0" class="w-full cursor-pointer">
-        </div>
-
-        <!-- Time Labels -->
-        <div class="flex justify-between text-gray-400 text-sm mt-1">
-            <span id="current-time">0:00</span>
-            <span id="total-duration">0:00</span>
-        </div>
-
-        <!-- Controls -->
-        <div class="flex items-center justify-between w-full mt-6 px-4">
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#222] cursor-pointer" onclick="shuffleSong()">
-                <i class="fa-solid fa-shuffle text-white"></i>
-            </div>
-            <div class="flex gap-4">
-                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#222] cursor-pointer" onclick="prevSong()">
-                    <i class="fas fa-step-backward text-white"></i>
-                </div>
-                <div class="w-16 h-16 flex items-center justify-center rounded-full bg-[#222] cursor-pointer" onclick="togglePlay()">
-                    <i id="play-icon" class="fas fa-play text-2xl text-white"></i>
-                </div>
-                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#222] cursor-pointer" onclick="nextSong()">
-                    <i class="fas fa-step-forward text-white"></i>
-                </div>
-            </div>
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[#222] cursor-pointer" onclick="toggleRepeat()">
-                <i id="repeat-icon" class="fa-solid fa-repeat text-white"></i>
-            </div>
-        </div>
+        <button onclick="shuffleTiles()" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded">Shuffle</button>
     </div>
 
-    <audio id="audio-player"></audio>
-
     <script>
-        let isPlaying = false;
-        let isRepeat = false;
-        let currentSongIndex = 0;
+        const puzzle = document.getElementById("puzzle");
+        let tiles = [];
 
-        let songs = [
-            { title: "Rise", artist: "The Glitch Mob", src: "songs/rise.mp3", cover: "cover1.jpg" },
-            { title: "Legends Never Die", artist: "Against The Current", src: "songs/legends_never_die.mp3", cover: "cover2.jpg" },
-            { title: "Warriors", artist: "Imagine Dragons", src: "songs/warriors.mp3", cover: "cover3.jpg" }
-        ];
-
-        const audioPlayer = document.getElementById("audio-player");
-        const playIcon = document.getElementById("play-icon");
-        const progressBar = document.getElementById("progress-bar");
-        const currentTime = document.getElementById("current-time");
-        const totalDuration = document.getElementById("total-duration");
-
-        function loadSong(index) {
-            const song = songs[index];
-            document.getElementById("song-title").textContent = song.title;
-            document.getElementById("song-artist").textContent = song.artist;
-            document.getElementById("album-cover").src = song.cover;
-            audioPlayer.src = song.src;
-            
-            audioPlayer.onloadedmetadata = () => {
-                totalDuration.textContent = formatTime(audioPlayer.duration);
-                progressBar.value = 0;
-            };
+        function createTiles() {
+            puzzle.innerHTML = "";
+            tiles = [...Array(8).keys()].map(i => i + 1).concat(null); // Numbers 1-8 + Empty Space
+            tiles.forEach(num => {
+                const tile = document.createElement("div");
+                tile.className = "tile flex justify-center items-center w-16 h-16 bg-blue-500 text-xl font-bold cursor-pointer rounded";
+                tile.textContent = num ? num : "";
+                tile.dataset.value = num;
+                tile.addEventListener("click", moveTile);
+                puzzle.appendChild(tile);
+            });
         }
 
-        function togglePlay() {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playIcon.classList.replace("fa-play", "fa-pause");
-                isPlaying = true;
-            } else {
-                audioPlayer.pause();
-                playIcon.classList.replace("fa-pause", "fa-play");
-                isPlaying = false;
-            }
-        }
-
-        function nextSong() {
-            currentSongIndex = (currentSongIndex + 1) % songs.length;
-            loadSong(currentSongIndex);
-            playMusic();
-        }
-
-        function prevSong() {
-            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-            loadSong(currentSongIndex);
-            playMusic();
-        }
-
-        function shuffleSong() {
-            let randomIndex;
+        function shuffleTiles() {
             do {
-                randomIndex = Math.floor(Math.random() * songs.length);
-            } while (randomIndex === currentSongIndex);
-            currentSongIndex = randomIndex;
-            loadSong(currentSongIndex);
-            playMusic();
+                tiles.sort(() => Math.random() - 0.5);
+            } while (!isSolvable());
+
+            createTiles();
         }
 
-        function toggleRepeat() {
-            isRepeat = !isRepeat;
-            audioPlayer.loop = isRepeat;
-            document.getElementById("repeat-icon").classList.toggle("text-blue-500");
-        }
+        function moveTile(e) {
+            const index = tiles.indexOf(parseInt(e.target.dataset.value) || null);
+            const emptyIndex = tiles.indexOf(null);
+            const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - 3, emptyIndex + 3];
 
-        function playMusic() {
-            audioPlayer.play();
-            playIcon.classList.replace("fa-play", "fa-pause");
-            isPlaying = true;
-        }
-
-        audioPlayer.addEventListener("timeupdate", () => {
-            if (audioPlayer.duration) {
-                progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                currentTime.textContent = formatTime(audioPlayer.currentTime);
+            if (validMoves.includes(index)) {
+                [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
+                createTiles();
+                checkWin();
             }
-        });
-
-        progressBar.addEventListener("input", () => {
-            audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
-        });
-
-        audioPlayer.addEventListener("ended", () => {
-            if (!isRepeat) nextSong();
-        });
-
-        function formatTime(seconds) {
-            let minutes = Math.floor(seconds / 60);
-            let secs = Math.floor(seconds % 60);
-            return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
         }
 
-        loadSong(currentSongIndex);
+        function checkWin() {
+            if (tiles.slice(0, 8).every((num, i) => num === i + 1)) {
+                alert("🎉 You solved the puzzle!");
+            }
+        }
+
+        function isSolvable() {
+            let inversions = 0;
+            let nums = tiles.filter(n => n !== null);
+            for (let i = 0; i < nums.length; i++) {
+                for (let j = i + 1; j < nums.length; j++) {
+                    if (nums[i] > nums[j]) inversions++;
+                }
+            }
+            return inversions % 2 === 0;
+        }
+
+        createTiles();
     </script>
 
 </body>
