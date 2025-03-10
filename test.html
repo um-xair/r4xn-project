@@ -3,75 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sliding Puzzle Game</title>
+    <title>Image Puzzle Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .puzzle-piece {
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
 </head>
-<body class="flex justify-center items-center h-screen bg-gray-900 text-white">
-
-    <div class="text-center">
-        <h1 class="text-3xl font-bold mb-4">Sliding Puzzle Game</h1>
-        <div id="puzzle" class="grid grid-cols-3 gap-2 w-48 mx-auto">
-            <!-- Puzzle Tiles Will Be Generated Here -->
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <h1 class="text-3xl font-bold mb-2">Image Puzzle Game</h1>
+    <p class="text-lg text-gray-700 mb-6">Level: Easy</p>
+    
+    <div class="grid grid-cols-2 gap-8 w-full max-w-4xl">
+        <!-- Puzzle Grid -->
+        <div id="puzzle-container" class="grid grid-cols-6 grid-rows-6 gap-1 border border-gray-400 p-2 bg-white shadow-md">
+            <!-- Puzzle pieces will be inserted here dynamically -->
         </div>
-        <button onclick="shuffleTiles()" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded">Shuffle</button>
+        
+        <!-- Original Image Reference -->
+        <div class="border border-gray-400 p-2 bg-white shadow-md">
+            <img src="https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg" alt="Original Image" class="w-full h-auto">
+        </div>
     </div>
-
+    
     <script>
-        const puzzle = document.getElementById("puzzle");
-        let tiles = [];
+        document.addEventListener("DOMContentLoaded", function () {
+            const puzzleContainer = document.getElementById("puzzle-container");
+            const imageSrc = "https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg";
+            const gridSize = 6;
+            let pieces = [];
 
-        function createTiles() {
-            puzzle.innerHTML = "";
-            tiles = [...Array(8).keys()].map(i => i + 1).concat(null); // Numbers 1-8 + Empty Space
-            tiles.forEach(num => {
-                const tile = document.createElement("div");
-                tile.className = "tile flex justify-center items-center w-16 h-16 bg-blue-500 text-xl font-bold cursor-pointer rounded";
-                tile.textContent = num ? num : "";
-                tile.dataset.value = num;
-                tile.addEventListener("click", moveTile);
-                puzzle.appendChild(tile);
-            });
-        }
-
-        function shuffleTiles() {
-            do {
-                tiles.sort(() => Math.random() - 0.5);
-            } while (!isSolvable());
-
-            createTiles();
-        }
-
-        function moveTile(e) {
-            const index = tiles.indexOf(parseInt(e.target.dataset.value) || null);
-            const emptyIndex = tiles.indexOf(null);
-            const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - 3, emptyIndex + 3];
-
-            if (validMoves.includes(index)) {
-                [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
-                createTiles();
-                checkWin();
+            function createPuzzle() {
+                for (let i = 0; i < gridSize * gridSize; i++) {
+                    const piece = document.createElement("div");
+                    piece.classList.add("w-16", "h-16", "bg-gray-300", "flex", "items-center", "justify-center", "border", "puzzle-piece");
+                    piece.style.backgroundImage = `url(${imageSrc})`;
+                    piece.style.backgroundSize = `${gridSize * 100}% ${gridSize * 100}%`;
+                    piece.style.backgroundPosition = `${(i % gridSize) * -100 / (gridSize - 1)}% ${Math.floor(i / gridSize) * -100 / (gridSize - 1)}%`;
+                    piece.dataset.index = i;
+                    piece.addEventListener("click", () => movePiece(piece));
+                    pieces.push(piece);
+                }
+                shufflePuzzle();
             }
-        }
 
-        function checkWin() {
-            if (tiles.slice(0, 8).every((num, i) => num === i + 1)) {
-                alert("🎉 You solved the puzzle!");
+            function shufflePuzzle() {
+                pieces.sort(() => Math.random() - 0.5);
+                puzzleContainer.innerHTML = "";
+                pieces.forEach(piece => puzzleContainer.appendChild(piece));
             }
-        }
 
-        function isSolvable() {
-            let inversions = 0;
-            let nums = tiles.filter(n => n !== null);
-            for (let i = 0; i < nums.length; i++) {
-                for (let j = i + 1; j < nums.length; j++) {
-                    if (nums[i] > nums[j]) inversions++;
+            function movePiece(piece) {
+                const emptyIndex = pieces.findIndex(p => !p.innerHTML);
+                const pieceIndex = pieces.indexOf(piece);
+                const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - gridSize, emptyIndex + gridSize];
+
+                if (validMoves.includes(pieceIndex)) {
+                    [pieces[emptyIndex], pieces[pieceIndex]] = [pieces[pieceIndex], pieces[emptyIndex]];
+                    puzzleContainer.innerHTML = "";
+                    pieces.forEach(p => puzzleContainer.appendChild(p));
                 }
             }
-            return inversions % 2 === 0;
-        }
 
-        createTiles();
+            createPuzzle();
+        });
     </script>
-
 </body>
 </html>

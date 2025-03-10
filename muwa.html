@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Warranty Registration</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+    </style>
+    <body class="bg-gradient-to-br from-slate-100 via-slate-200 to-slate-100">
+
+    <main class="px-10 md:px-[6%] flex flex-col items-center justify-center min-h-screen text-center space-y-6">
+        <p class="text-sm uppercase tracking-wide">Register Your Warranty Today!</p>
+        <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold">Warranty Registration</h1>
+        <p class="text-sm lg:text-base max-w-2xl text-gray-700">
+            Please fill out the form below to register your warranty. This helps us ensure your Muwababy products are protected.
+        </p>
+        <a href="#form" class="mt-10 w-16 h-16 flex items-center justify-center rounded-full bg-gray-400 text-white shadow-lg animate-[bounce_2.5s_infinite] hover:bg-[#844D3E] transition-all duration-300 ease-in-out">
+            <i class="fas fa-arrow-down text-2xl"></i>
+        </a>  
+    </main>
+
+    <section id="form" class="px-10 md:px-[6%] flex flex-col items-center justify-center py-20">
+        <form id="warrantyForm" class="w-full max-w-5xl">
+            <div class="mb-8">
+                <label for="product_ids" class="block text-md font-medium text-black mb-2">
+                    Product IDs (comma-separated)
+                </label>
+                <input type="text" id="product_ids" name="product_ids" required 
+                    class="w-full py-2 border-b border-black bg-transparent focus:outline-none focus:ring-0 focus:border-b-2 focus:border-black placeholder-gray-500">
+            </div>
+
+            <div class="mb-8">
+                <label for="purchase_date" class="block text-md font-medium text-black mb-2">Purchase Date</label>
+                <input type="date" id="purchase_date" name="purchase_date" required
+                    class="w-full py-2 border-b border-black bg-transparent focus:outline-none focus:ring-0 focus:border-b-2 focus:border-black placeholder-gray-500">
+            </div>
+
+            <div class="mb-8">
+                <label for="invoice_number" class="block text-md font-medium text-black mb-2">Invoice Number</label>
+                <input type="text" id="invoice_number" name="invoice_number" required
+                    class="w-full px-4 py-3 border-b border-black bg-transparent focus:outline-none focus:ring-0 focus:border-b-2 focus:border-black placeholder-gray-500">
+            </div>
+
+            <div class="mb-8">
+                <label for="certificate_path" class="block text-md font-medium text-black mb-2">Certificate Path</label>
+                <div id="upload-box" class="w-full border-2 border-dashed border-gray-600 rounded-[10px] p-10 flex flex-col items-center justify-center text-center cursor-pointer">
+                    <input type="file" id="certificate_path" name="certificate_path" class="hidden" multiple accept=".jpg,.png,.pdf">
+                    <i class="fa-solid fa-image text-2xl"></i>
+                    <p class="text-gray-500 text-sm">Upload file here (Max 2 files)</p>
+                </div>
+                <div id="file-preview" class="grid grid-cols-3 gap-2 mt-4"></div>
+            </div>
+
+            <div class="mb-8">
+                <label for="first_product" class="block text-md font-medium text-black mb-2">
+                    Is this your first product?
+                </label>
+                <div class="grid grid-cols-4 gap-2 text-center text-sm">
+                    <label class="option-btn flex items-center justify-center w-full px-4 py-3 rounded-[10px] bg-white text-black cursor-pointer 
+                        hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out h-16" data-value="Yes">
+                        <input type="radio" name="first_product" value="Yes" class="hidden">
+                        <span>Yes</span>
+                    </label>
+                    <label class="option-btn flex items-center justify-center w-full px-4 py-3 rounded-[10px] bg-white text-black cursor-pointer 
+                        hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out h-16" data-value="No">
+                        <input type="radio" name="first_product" value="No" class="hidden">
+                        <span>No</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <label for="how_know_muwa" class="block text-md font-medium text-black mb-2">
+                    How did you know about Muwa?
+                </label>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-center text-sm">
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-globe text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="MUWA Website" class="hidden">
+                        <span>MUWA Website</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-baby text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Baby Fair/Baby Expo" class="hidden">
+                        <span>Baby Fair/Baby Expo</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-shopping-cart text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Shopee/Lazada" class="hidden">
+                        <span>Shopee/Lazada</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-globe-americas text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Another Website" class="hidden">
+                        <span>Another Website</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-store text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Baby Store" class="hidden">
+                        <span>Baby Store</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-user-friends text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Family/Friends" class="hidden">
+                        <span>Family/Friends</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fab fa-facebook text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Facebook" class="hidden">
+                        <span>Facebook</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fab fa-instagram text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Instagram" class="hidden">
+                        <span>Instagram</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fab fa-tiktok text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Tiktok" class="hidden">
+                        <span>Tiktok</span>
+                    </label>
+                    <label class="checkbox-btn flex items-center gap-2 justify-center rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-gift text-xl text-gray-300"></i>
+                        <input type="checkbox" name="how_know_muwa[]" value="Already own MUWA product" class="hidden">
+                        <span>Already own MUWA product</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <label for="why_choose_muwa" class="block text-md font-medium text-black mb-2">
+                    Why did you choose Muwa?
+                </label>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-center text-sm">
+                    <label class="checkbox-btn flex justify-center items-center gap-2 rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-star text-xl text-gray-300"></i>
+                        <input type="checkbox" name="why_choose_muwa[]" value="Quality" class="hidden">
+                        <span>Quality</span>
+                    </label>
+                    <label class="checkbox-btn flex justify-center items-center gap-2 rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-tag text-xl text-gray-300"></i>
+                        <input type="checkbox" name="why_choose_muwa[]" value="Price" class="hidden">
+                        <span>Price</span>
+                    </label>
+                    <label class="checkbox-btn flex justify-center items-center gap-2 rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-palette text-xl text-gray-300"></i>
+                        <input type="checkbox" name="why_choose_muwa[]" value="Appearance" class="hidden">
+                        <span>Appearance</span>
+                    </label>
+                    <label class="checkbox-btn flex justify-center items-center gap-2 rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-cogs text-xl text-gray-300"></i>
+                        <input type="checkbox" name="why_choose_muwa[]" value="Functionality" class="hidden">
+                        <span>Functionality</span>
+                    </label>
+                    <label class="checkbox-btn flex justify-center items-center gap-2 rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-thumbs-up text-xl text-gray-300"></i>
+                        <input type="checkbox" name="why_choose_muwa[]" value="Good Reviews" class="hidden">
+                        <span>Good Reviews</span>
+                    </label>
+                    <label class="checkbox-btn flex justify-center items-center gap-2 rounded-[10px] bg-white text-black px-4 py-5 h-16 cursor-pointer hover:bg-[#844D3E] hover:text-white transition-all duration-300 ease-in-out">
+                        <i class="fas fa-gift text-xl text-gray-300"></i>
+                        <input type="checkbox" name="why_choose_muwa[]" value="I received the product as a gift" class="hidden">
+                        <span>Received as a Gift</span>
+                    </label>
+                </div>
+            </div>            
+
+            <div class="mb-8">
+                <label class="block text-md font-medium text-black mb-2">Rating</label>
+                <div id="star-rating" class="flex space-x-2 text-gray-300 text-3xl cursor-pointer">
+                    <i class="fas fa-star" data-value="1"></i>
+                    <i class="fas fa-star" data-value="2"></i>
+                    <i class="fas fa-star" data-value="3"></i>
+                    <i class="fas fa-star" data-value="4"></i>
+                    <i class="fas fa-star" data-value="5"></i>
+                </div>
+                <input type="hidden" id="rating" name="rating">
+            </div>
+
+            <div class="mb-8">
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" id="terms_and_conditions" name="terms_and_conditions" required 
+                        class="w-5 h-5 text-black border-gray-300 rounded">
+                    <span class="text-sm font-medium text-black">I agree to the <a href="#" class="text-blue-600 underline">terms and conditions</a></span>
+                </label>
+            </div>
+
+            <button type="submit" 
+                class="w-full bg-[#844D3E] text-white py-4 px-4 rounded-full">
+                Register Warranty
+            </button>
+        </form>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const uploadBox = document.getElementById("upload-box");
+            const fileInput = document.getElementById("certificate_path");
+            const filePreview = document.getElementById("file-preview");
+            let uploadedFiles = [];
+        
+            uploadBox.addEventListener("click", () => fileInput.click());
+        
+            fileInput.addEventListener("change", function () {
+                const files = Array.from(fileInput.files);
+            
+                if (uploadedFiles.length + files.length > 2) {
+                    alert("You can only upload a maximum of 2 files.");
+                    fileInput.value = "";
+                    return;
+                }
+            
+                files.forEach(file => {
+                    if (uploadedFiles.length < 2) {
+                        uploadedFiles.push(file);
+                        displayFile(file);
+                    }
+                });
+            
+                fileInput.value = ""; 
+            });
+        
+            function displayFile(file) {
+                const fileReader = new FileReader();
+                fileReader.onload = function (e) {
+                    const fileUrl = file.type.startsWith("image/") ? e.target.result : "https://cdn-icons-png.flaticon.com/512/337/337946.png";
+                
+                    const fileContainer = document.createElement("div");
+                    fileContainer.classList.add("relative", "w-full", "h-full");
+                
+                    fileContainer.innerHTML = `
+                        <div class="relative w-full h-full">
+                            <button class="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center bg-red-500 text-white text-xs rounded-full shadow-md remove-btn">
+                                <i class="fas fa-times text-sm"></i>
+                            </button>
+                            <img src="${fileUrl}" class="w-full h-full object-cover rounded-lg border border-gray-300" alt="Uploaded File">
+                        </div>
+                    `;
+                    
+                    filePreview.appendChild(fileContainer);
+                    
+                    fileContainer.querySelector(".remove-btn").addEventListener("click", () => {
+                        filePreview.removeChild(fileContainer);
+                        uploadedFiles = uploadedFiles.filter(f => f !== file);
+                    });
+                };
+                fileReader.readAsDataURL(file);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const stars = document.querySelectorAll("#star-rating i");
+            const ratingInput = document.getElementById("rating");
+
+            stars.forEach(star => {
+                star.addEventListener("click", function () {
+                    const value = this.getAttribute("data-value");
+                    ratingInput.value = value;
+                    updateStars(value);
+                });
+            });
+
+            function updateStars(value) {
+                stars.forEach(star => {
+                    star.classList.toggle("text-yellow-400", star.getAttribute("data-value") <= value);
+                    star.classList.toggle("text-gray-300", star.getAttribute("data-value") > value);
+                });
+            }
+        });
+
+        document.querySelectorAll('.option-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.classList.remove('bg-[#844D3E]', 'text-white');
+                    btn.classList.add('bg-white', 'text-black');
+                });
+                this.classList.add('bg-[#844D3E]', 'text-white');
+                this.classList.remove('bg-white', 'text-black');
+                this.querySelector('input').checked = true;
+            });
+        });
+    
+        document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.checkbox-btn').forEach(label => {
+            label.addEventListener('click', function () {
+                const input = this.querySelector('input');
+                input.checked = !input.checked;
+                
+                this.classList.toggle('bg-[#844D3E]', input.checked);
+                this.classList.toggle('text-white', input.checked);
+                this.classList.toggle('bg-white', !input.checked);
+                this.classList.toggle('text-black', !input.checked);
+            });
+        });
+    });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/dfetch"></script>
+    <script>
+        document.getElementById('warrantyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            dfetch('api.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            });
+        });
+    </script>
+
+    </body>
+    </html>
