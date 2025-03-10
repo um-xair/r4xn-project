@@ -6,9 +6,26 @@
     <title>Image Puzzle Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        #puzzle-container {
+            position: relative;
+            width: 100%; /* Full width */
+            aspect-ratio: 1; /* Ensures the container is square */
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         .puzzle-piece {
-            cursor: pointer;
+            cursor: grab;
             user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            background-size: cover;
+            position: absolute;
+            width: 25%; /* 100% / 4 = 25% for each piece */
+            height: 25%; /* 25% for each piece */
+            background-position: center;
         }
     </style>
 </head>
@@ -16,15 +33,14 @@
     <h1 class="text-3xl font-bold mb-2">Image Puzzle Game</h1>
     <p class="text-lg text-gray-700 mb-6">Level: Easy</p>
     
-    <div class="grid grid-cols-2 gap-8 w-full max-w-4xl">
-        <!-- Puzzle Grid -->
-        <div id="puzzle-container" class="grid grid-cols-6 grid-rows-6 gap-1 border border-gray-400 p-2 bg-white shadow-md">
-            <!-- Puzzle pieces will be inserted here dynamically -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+        <div id="puzzle-container" class="relative">
+            <!-- Puzzle pieces will be added here -->
         </div>
-        
-        <!-- Original Image Reference -->
-        <div class="border border-gray-400 p-2 bg-white shadow-md">
-            <img src="https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg" alt="Original Image" class="w-full h-auto">
+    
+        <div class="p-2 bg-white shadow-md">
+            <img src="https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg" alt="Original Image" 
+                 class="w-full h-auto object-cover">
         </div>
     </div>
     
@@ -32,38 +48,75 @@
         document.addEventListener("DOMContentLoaded", function () {
             const puzzleContainer = document.getElementById("puzzle-container");
             const imageSrc = "https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg";
-            const gridSize = 6;
+            const gridSize = 4;
+            const pieceSize = 25; // 25% for each piece
             let pieces = [];
 
             function createPuzzle() {
                 for (let i = 0; i < gridSize * gridSize; i++) {
                     const piece = document.createElement("div");
-                    piece.classList.add("w-16", "h-16", "bg-gray-300", "flex", "items-center", "justify-center", "border", "puzzle-piece");
+                    piece.classList.add("puzzle-piece");
+                    piece.style.width = `${pieceSize}%`;
+                    piece.style.height = `${pieceSize}%`;
                     piece.style.backgroundImage = `url(${imageSrc})`;
-                    piece.style.backgroundSize = `${gridSize * 100}% ${gridSize * 100}%`;
+                    piece.style.backgroundSize = "400% 400%";
                     piece.style.backgroundPosition = `${(i % gridSize) * -100 / (gridSize - 1)}% ${Math.floor(i / gridSize) * -100 / (gridSize - 1)}%`;
                     piece.dataset.index = i;
-                    piece.addEventListener("click", () => movePiece(piece));
+
+                    const row = Math.floor(i / gridSize);
+                    const col = i % gridSize;
+
+                    piece.style.left = `${col * pieceSize}%`;
+                    piece.style.top = `${row * pieceSize}%`;
+
+                    piece.draggable = true;
+
+                    piece.addEventListener("dragstart", dragStart);
+                    piece.addEventListener("dragover", dragOver);
+                    piece.addEventListener("drop", drop);
+
                     pieces.push(piece);
+                    puzzleContainer.appendChild(piece);
                 }
                 shufflePuzzle();
             }
 
             function shufflePuzzle() {
-                pieces.sort(() => Math.random() - 0.5);
-                puzzleContainer.innerHTML = "";
-                pieces.forEach(piece => puzzleContainer.appendChild(piece));
+                const positions = [];
+                for (let i = 0; i < gridSize * gridSize; i++) {
+                    const row = Math.floor(i / gridSize);
+                    const col = i % gridSize;
+                    positions.push({ row, col });
+                }
+
+                positions.sort(() => Math.random() - 0.5); // Shuffle positions
+
+                pieces.forEach((piece, index) => {
+                    const { row, col } = positions[index];
+                    piece.style.left = `${col * pieceSize}%`;
+                    piece.style.top = `${row * pieceSize}%`;
+                });
             }
 
-            function movePiece(piece) {
-                const emptyIndex = pieces.findIndex(p => !p.innerHTML);
-                const pieceIndex = pieces.indexOf(piece);
-                const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - gridSize, emptyIndex + gridSize];
+            let draggedPiece = null;
 
-                if (validMoves.includes(pieceIndex)) {
-                    [pieces[emptyIndex], pieces[pieceIndex]] = [pieces[pieceIndex], pieces[emptyIndex]];
-                    puzzleContainer.innerHTML = "";
-                    pieces.forEach(p => puzzleContainer.appendChild(p));
+            function dragStart(event) {
+                draggedPiece = event.target;
+            }
+
+            function dragOver(event) {
+                event.preventDefault();
+            }
+
+            function drop(event) {
+                event.preventDefault();
+                if (draggedPiece) {
+                    const tempLeft = draggedPiece.style.left;
+                    const tempTop = draggedPiece.style.top;
+                    draggedPiece.style.left = event.target.style.left;
+                    draggedPiece.style.top = event.target.style.top;
+                    event.target.style.left = tempLeft;
+                    event.target.style.top = tempTop;
                 }
             }
 
