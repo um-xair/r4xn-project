@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Puzzle Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.3/dist/confetti.browser.min.js"></script>
     <style>
         #puzzle-container {
             position: relative;
-            width: 100%; /* Full width */
-            aspect-ratio: 1; /* Ensures the container is square */
+            width: 100%;
+            aspect-ratio: 1;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .puzzle-piece {
@@ -23,54 +26,87 @@
             border: 1px solid #ccc;
             background-size: cover;
             position: absolute;
-            width: 25%; /* 100% / 4 = 25% for each piece */
-            height: 25%; /* 25% for each piece */
-            background-position: center;
+            transition: left 0.2s ease, top 0.2s ease;
+        }
+
+        #success-message, #game-over-message {
+            display: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #success-message {
+            color: green;
+            background: #d4edda;
+        }
+
+        #game-over-message {
+            color: red;
+            background: #f8d7da;
         }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
     <h1 class="text-3xl font-bold mb-2">Image Puzzle Game</h1>
-    <p class="text-lg text-gray-700 mb-6">Level: Easy</p>
-    
+    <p id="level-text" class="text-lg text-gray-700 mb-6">Level: Easy</p>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
-        <div id="puzzle-container" class="relative">
-            <!-- Puzzle pieces will be added here -->
-        </div>
-    
-        <div class="p-2 bg-white shadow-md">
-            <img src="https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg" alt="Original Image" 
-                 class="w-full h-auto object-cover">
+        <div id="puzzle-container" class="relative"></div>
+
+        <div class="bg-white shadow-md">
+            <img id="original-image" src="https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg" 
+                 alt="Original Image" class="w-full h-auto object-cover">
         </div>
     </div>
-    
+
+    <button id="complete-button" class="mt-6 px-4 py-2 bg-blue-600 text-white rounded shadow">Complete</button>
+
+    <div id="success-message" class="mt-4">🎉 Congratulations! Moving to the next level...</div>
+    <div id="game-over-message" class="mt-4">❌ Game Over! Restarting from Level Easy...</div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const puzzleContainer = document.getElementById("puzzle-container");
-            const imageSrc = "https://i.pinimg.com/736x/b2/19/3b/b2193bdbd98244d74a0008b704cc37b2.jpg";
-            const gridSize = 4;
-            const pieceSize = 25; // 25% for each piece
+            const levelText = document.getElementById("level-text");
+            const successMessage = document.getElementById("success-message");
+            const gameOverMessage = document.getElementById("game-over-message");
+            const completeButton = document.getElementById("complete-button");
+            const imageSrc = document.getElementById("original-image").src;
+
+            let gridSize = 4; // Start with 4x4
+            let pieceSize = 100 / gridSize;
             let pieces = [];
+            let correctPositions = [];
 
             function createPuzzle() {
+                puzzleContainer.innerHTML = "";
+                pieces = [];
+                correctPositions = [];
+                pieceSize = 100 / gridSize;
+
                 for (let i = 0; i < gridSize * gridSize; i++) {
                     const piece = document.createElement("div");
                     piece.classList.add("puzzle-piece");
                     piece.style.width = `${pieceSize}%`;
                     piece.style.height = `${pieceSize}%`;
                     piece.style.backgroundImage = `url(${imageSrc})`;
-                    piece.style.backgroundSize = "400% 400%";
+                    piece.style.backgroundSize = `${gridSize * 100}% ${gridSize * 100}%`;
                     piece.style.backgroundPosition = `${(i % gridSize) * -100 / (gridSize - 1)}% ${Math.floor(i / gridSize) * -100 / (gridSize - 1)}%`;
                     piece.dataset.index = i;
 
                     const row = Math.floor(i / gridSize);
                     const col = i % gridSize;
 
+                    // Save correct positions
+                    correctPositions.push({ index: i, left: `${col * pieceSize}%`, top: `${row * pieceSize}%` });
+
                     piece.style.left = `${col * pieceSize}%`;
                     piece.style.top = `${row * pieceSize}%`;
 
                     piece.draggable = true;
-
                     piece.addEventListener("dragstart", dragStart);
                     piece.addEventListener("dragover", dragOver);
                     piece.addEventListener("drop", drop);
@@ -78,23 +114,18 @@
                     pieces.push(piece);
                     puzzleContainer.appendChild(piece);
                 }
+
                 shufflePuzzle();
             }
 
             function shufflePuzzle() {
-                const positions = [];
-                for (let i = 0; i < gridSize * gridSize; i++) {
-                    const row = Math.floor(i / gridSize);
-                    const col = i % gridSize;
-                    positions.push({ row, col });
-                }
-
-                positions.sort(() => Math.random() - 0.5); // Shuffle positions
+                const positions = [...correctPositions];
+                positions.sort(() => Math.random() - 0.5);
 
                 pieces.forEach((piece, index) => {
-                    const { row, col } = positions[index];
-                    piece.style.left = `${col * pieceSize}%`;
-                    piece.style.top = `${row * pieceSize}%`;
+                    const { left, top } = positions[index];
+                    piece.style.left = left;
+                    piece.style.top = top;
                 });
             }
 
@@ -110,7 +141,7 @@
 
             function drop(event) {
                 event.preventDefault();
-                if (draggedPiece) {
+                if (draggedPiece && event.target !== draggedPiece) {
                     const tempLeft = draggedPiece.style.left;
                     const tempTop = draggedPiece.style.top;
                     draggedPiece.style.left = event.target.style.left;
@@ -119,6 +150,133 @@
                     event.target.style.top = tempTop;
                 }
             }
+
+            function checkWin() {
+    let isSolved = pieces.every(piece => {
+        const index = parseInt(piece.dataset.index);
+        const correctPosition = correctPositions.find(pos => pos.index === index);
+
+        // Convert positions to numerical values
+        const currentLeft = Math.round(parseFloat(piece.style.left));
+        const currentTop = Math.round(parseFloat(piece.style.top));
+        const correctLeft = Math.round(parseFloat(correctPosition.left));
+        const correctTop = Math.round(parseFloat(correctPosition.top));
+
+        return currentLeft === correctLeft && currentTop === correctTop;
+    });
+
+    if (isSolved) {
+        showSuccess();
+    } else {
+        showGameOver();
+    }
+}
+function checkWin() {
+    let isSolved = pieces.every(piece => {
+        const index = parseInt(piece.dataset.index);
+        const correctPosition = correctPositions.find(pos => pos.index === index);
+
+        // Convert positions to numerical values
+        const currentLeft = Math.round(parseFloat(piece.style.left));
+        const currentTop = Math.round(parseFloat(piece.style.top));
+        const correctLeft = Math.round(parseFloat(correctPosition.left));
+        const correctTop = Math.round(parseFloat(correctPosition.top));
+
+        return currentLeft === correctLeft && currentTop === correctTop;
+    });
+
+    if (isSolved) {
+        showSuccess();
+    } else {
+        showGameOver();
+    }
+}
+function checkWin() {
+    let isSolved = pieces.every(piece => {
+        const index = parseInt(piece.dataset.index);
+        const correctPosition = correctPositions.find(pos => pos.index === index);
+
+        // Convert positions to numerical values
+        const currentLeft = Math.round(parseFloat(piece.style.left));
+        const currentTop = Math.round(parseFloat(piece.style.top));
+        const correctLeft = Math.round(parseFloat(correctPosition.left));
+        const correctTop = Math.round(parseFloat(correctPosition.top));
+
+        return currentLeft === correctLeft && currentTop === correctTop;
+    });
+
+    if (isSolved) {
+        showSuccess();
+    } else {
+        showGameOver();
+    }
+}
+function checkWin() {
+    let isSolved = pieces.every(piece => {
+        const index = parseInt(piece.dataset.index);
+        const correctPosition = correctPositions.find(pos => pos.index === index);
+
+        // Convert positions to numerical values
+        const currentLeft = Math.round(parseFloat(piece.style.left));
+        const currentTop = Math.round(parseFloat(piece.style.top));
+        const correctLeft = Math.round(parseFloat(correctPosition.left));
+        const correctTop = Math.round(parseFloat(correctPosition.top));
+
+        return currentLeft === correctLeft && currentTop === correctTop;
+    });
+
+    if (isSolved) {
+        showSuccess();
+    } else {
+        showGameOver();
+    }
+}
+
+
+
+
+
+            function showSuccess() {
+                successMessage.style.display = "block";
+                gameOverMessage.style.display = "none";
+                confetti({
+                    particleCount: 200,
+                    spread: 100,
+                    origin: { y: 0.6 }
+                });
+
+                setTimeout(nextLevel, 2000);
+            }
+
+            function showGameOver() {
+                gameOverMessage.style.display = "block";
+                successMessage.style.display = "none";
+
+                setTimeout(restartGame, 2000);
+            }
+
+            function nextLevel() {
+                successMessage.style.display = "none";
+
+                if (gridSize === 4) {
+                    gridSize = 5;
+                    levelText.innerText = "Level: Medium";
+                } else {
+                    alert("🎉 You completed all levels!");
+                    return;
+                }
+
+                createPuzzle();
+            }
+
+            function restartGame() {
+                gameOverMessage.style.display = "none";
+                gridSize = 4;
+                levelText.innerText = "Level: Easy";
+                createPuzzle();
+            }
+
+            completeButton.addEventListener("click", checkWin);
 
             createPuzzle();
         });
