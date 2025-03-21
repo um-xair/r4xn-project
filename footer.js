@@ -81,7 +81,7 @@ function loadFooter() {
         </footer>
         <script>
             document.getElementById("current-year").textContent = new Date().getFullYear();
-        </script>
+        </script> 
     `;
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 }
