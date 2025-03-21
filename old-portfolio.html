@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4XN | Project</title>
+    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .customfont {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            display: flex;
+            animation: scroll 10s linear infinite;
+        }
+        .fade-in-out {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .relative::before, .relative::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 10%;
+            height: 100%;
+            z-index: 10;
+        }
+        .view::before {
+            left: 0;
+            background: linear-gradient(to right, #0A0A0A, transparent);
+        }
+        .view::after {
+            right: 0;
+            background: linear-gradient(to left, #0A0A0A, transparent);
+        }
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .animate-fadeInScale {
+            animation: fadeInScale 0.8s ease-out forwards;
+        }
+        .hover-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .hover-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease-in-out;
+        }
+        .hover-underline:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="fade-in bg-black">
+
+    <main id="home" class="min-h-screen w-full flex items-center justify-center text-center bg-cover bg-center text-white px-4"
+        style="background-image: url('assets/metal-abstract-purple-w6.jpg');">
+        <div class="container max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <h1 class="text-4xl lg:text-8xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400 opacity-0 scale-90 animate-fadeInScale">
+                <span>Make Your Dream Come True with R4XN TECH</span>
+            </h1>
+            <div class="mt-8 w-full flex justify-center animate-fadeInScale">
+                <a href="#projects" 
+                   class="px-6 py-4 w-full md:w-2/4 lg:w-1/5 bg-slate-200 text-black text-center rounded-full text-lg transition-all duration-300 ease-in-out hover:bg-neutral-800 hover:text-white">
+                    View Projects
+                </a>
+            </div>            
+        </div>        
+    </main>
+    
+    <section id="projects" class="py-20 px-4 bg-[#0A0A0A] flex flex-col justify-center items-center min-h-screen space-y-10">
+        <div class="text-center">
+            <h2 class="text-5xl font-extrabold text-gray-300">Current Projects</h2>
+            <p class="text-md text-gray-400 mt-2">Explore our latest innovations and ongoing developments.</p>
+        </div>
+    
+        <div id="bottom" class="mt-8 border-2 border-[#CBD5E1] bg-black lg:p-8 p-4 rounded-[30px] flex flex-col justify-center items-center w-full lg:max-w-4xl max-w-2xl 
+            transition-transform duration-500 hover:scale-105">
+            <a href="#" target="_blank" class="w-full block">
+                <img src="assets/pos-system.jpg" alt="Feature Image" 
+                    class="w-full rounded-[15px]"> 
+            </a>
+        </div>
+    </section>
+
+    <section id="discover" class="py-20 px-4 bg-[#0A0A0A] flex flex-col justify-center items-center min-h-screen space-y-12">
+        <div class="text-center">
+            <h2 class="text-5xl font-extrabold text-gray-300">Explore Our Projects</h2>
+            <p class="text-md text-gray-400 mt-2">Discover innovative projects where creativity meets technology. Click to explore more.</p>
+        </div>
+    
+        <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-6 gap-4 w-full lg:max-w-[80%]">
+            <div id="bottom1" class="col-span-12 lg:col-span-8 relative group rounded-[30px] overflow-hidden">
+                <img src="assets/gradient-main.jpg" alt="Project Image"
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a href="#" target="_blank"
+                        class="relative text-white text-lg lg:text-3xl font-bold flex items-center space-x-3 after:absolute after:top-full after:left-0 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+                        <span>View Project</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="white">
+                            <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+    
+            <div id="bottom2" class="col-span-12 lg:col-span-4 relative group rounded-[30px] overflow-hidden">
+                <img src="assets/drypath-main.png" alt="Project Image"
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a href="#" target="_blank"
+                        class="relative text-white text-lg lg:text-3xl font-bold flex items-center space-x-3 after:absolute after:top-full after:left-0 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+                        <span>View Project</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="white">
+                            <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+    
+            <div id="bottom3" class="col-span-12 lg:col-span-4 relative group rounded-[30px] overflow-hidden">
+                <img src="assets/geofencing-main.jpg" alt="Project Image"
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a href="#" target="_blank"
+                        class="relative text-white text-lg lg:text-3xl font-bold flex items-center space-x-3 after:absolute after:top-full after:left-0 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+                        <span>View Project</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="white">
+                            <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+    
+            <div id="bottom4" class="col-span-12 lg:col-span-8 relative group rounded-[30px] overflow-hidden">
+                <img src="assets/color-pallete-main.jpg" alt="Project Image"
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div
+                    class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a href="#" target="_blank"
+                        class="relative text-white text-lg lg:text-3xl font-bold flex items-center space-x-3 after:absolute after:top-full after:left-0 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+                        <span>View Project</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="white">
+                            <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="relative w-full min-h-screen flex items-center justify-center py-20 px-4 bg-[#0A0A0A] bg-cover bg-center bg-no-repeat" style="background-image: url('assets/about.jpg');">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative z-10 w-full max-w-5xl text-center px-6 lg:px-12">
+            <h2 class="text-4xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
+                About R4XN
+            </h2>
+            <p class="text-lg text-gray-200 leading-relaxed mt-4 drop-shadow-md">
+                R4XN is a hub for developers, designers, and tech enthusiasts, offering a collection of innovative projects, 
+                powerful tools, and resources to elevate your workflow. From front-end development to IoT solutions and system design, 
+                R4XN provides a space to explore, learn, and create.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        ScrollReveal().reveal('#bottom', { 
+            origin: 'bottom', 
+            distance: '80px', 
+            duration: 2000,
+            easing: 'ease-in-out',
+            opacity: 0,
+            reset: true
+        });
+        ScrollReveal().reveal('#bottom1', { 
+            origin: 'bottom', 
+            distance: '80px', 
+            duration: 3000 
+        });
+        ScrollReveal().reveal('#bottom2', { 
+            origin: 'bottom', 
+            distance: '80px', 
+            duration: 4000 
+        });
+        ScrollReveal().reveal('#bottom3', { 
+            origin: 'bottom', 
+            distance: '80px', 
+            duration: 5000 
+        });
+        ScrollReveal().reveal('#bottom4', { 
+            origin: 'bottom', 
+            distance: '80px', 
+            duration: 6000 
+        });
+    </script>
+
+    <script src="header-index.js"></script>
+    <script src="footer.js"></script>
+
+</body>
+</html>
