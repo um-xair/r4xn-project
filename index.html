@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=no">
 <title>R4XN</title>
 <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -17,8 +17,6 @@
 <style>
     body {
         font-family: "Poppins", sans-serif;
-        overflow-x: hidden;
-        overflow-y: auto;
         background-color: #080808;
     }
     .customfont {
@@ -61,7 +59,7 @@
 </style>
 </head>
 
-<body>
+<body class="max-w-screen">
 
     <section class="min-h-screen px-6 py-10 md:px-32 md:py-10 flex items-center justify-start w-full">
         <h1 id="animatedText" class="max-w-4xl text-transparent bg-gradient-to-t from-gray-400 to-white bg-clip-text leading-[1] font-bold text-6xl md:text-[8rem] lg:text-[10rem]">
@@ -103,7 +101,7 @@
             'index-assets/project-10.png'
         ];
         document.write([...Array(2)].map((_, sectionIndex) => `
-            <section class="demo-gallery py-4">
+            <section class="demo-gallery overflow-x-auto w-screen py-4">
                 <ul class="wrapper">
                     ${images.slice(sectionIndex * 5, (sectionIndex + 1) * 5).map((img) => `
                     <li>
