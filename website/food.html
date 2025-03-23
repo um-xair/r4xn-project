@@ -50,28 +50,33 @@
 
 <body class="bg-[#F4F9F3] text-black w-full max-w-7xl mx-auto">
 
-    <header class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex items-center justify-between px-16 py-10 z-10">
-        <div>
+    <header class="absolute top-0 left-0 w-full flex items-center justify-between px-8 md:px-16 py-10 z-10">
+        <div class="hidden lg:block">
             <p class="text-sm uppercase tracking-wide">Specialist Food</p>
             <p class="text-xs text-gray-400">Healthy and Safety</p>
         </div>
-        <h1 class="absolute left-1/2 transform -translate-x-1/2 text-4xl">Foodie</h1>
-        <nav class="flex gap-8">
+        <h1 class="text-4xl">Foodie</h1>
+        <button id="menu-btn" class="md:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+        <nav class="hidden md:flex gap-8">
             <a href="#" class="hover:underline">Services</a>
             <a href="#" class="hover:underline">Menu</a>
             <a href="#" class="hover:underline">Offers</a>
         </nav>
-    </header>    
+    </header>
     
     <main class="relative flex flex-col items-center justify-center min-h-screen text-center">
         <div class="flex items-center leading-none">
-            <h2 class="lg:text-[10rem] md:text-7xl text-xl font-light reveal" id="simple">SIMPLE</h2>
-            <img src="assets/food.webp" alt="Food Image" class="lg:w-44 md:w-32" id="foodImage">
-            <h3 class="lg:text-[10rem] md:text-7xl text-xl font-light reveal" id="and">AND</h3>
+            <h2 class="lg:text-[10rem] md:text-7xl text-4xl font-light reveal" id="simple">SIMPLE</h2>
+            <img src="assets/food.webp" alt="Food Image" class="lg:w-44 md:w-32 w-20" id="foodImage">
+            <h3 class="lg:text-[10rem] md:text-7xl text-4xl font-light reveal" id="and">AND</h3>
         </div>
         <div class="flex items-center mt-0">
-            <h2 class="lg:text-[10rem] md:text-7xl text-xl font-light leading-none reveal" id="tasty">TASTY RECIPES</h2>
-            <a href="#explore" class="poppins ml-8 lg:w-32 lg:h-32 md:w-24 md:h-24 rounded-full border-2 border-black flex items-center justify-center lg:text-lg text-sm relative overflow-hidden group animate-float">
+            <h2 class="lg:text-[10rem] md:text-7xl text-4xl font-light leading-none reveal" id="tasty">TASTY RECIPES</h2>
+            <a href="#explore" class="poppins ml-8 lg:w-32 lg:h-32 md:w-24 md:h-24 w-24 h-24 rounded-full border-2 border-black flex items-center justify-center lg:text-lg text-sm relative overflow-hidden group animate-float">
                 <span class="relative z-10 leading-tight">Explore<br>Now</span>
                 <div class="absolute inset-0 bg-black scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-full"></div>
                 <span class="absolute inset-0 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center leading-tight">Explore<br>Now</span>
@@ -112,23 +117,23 @@
     
     <section id="explore" class="relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen">
         <div class="space-y-10">
-            <div class="flex flex-col lg:px-0 md:px-20">
-                <h2 class="text-7xl font-light leading-tight reveal-text">
+            <div class="flex flex-col lg:px-0 md:px-20 px-6">
+                <h2 class="md:text-7xl text-4xl font-light leading-tight reveal-text">
                     EXPERIENCE OF <br>
                     REAL RECIPES
                 </h2>
                 <div class="flex items-center gap-4">
-                    <p class="text-7xl font-light leading-tight reveal-text">TASTE</p>
-                    <img src="assets/food.webp" alt="Delicious Food" class="w-32 reveal-image">
+                    <p class="md:text-7xl text-4xl font-light leading-tight reveal-text">TASTE</p>
+                    <img src="assets/food.webp" alt="Delicious Food" class="md:w-32 w-24 reveal-image">
                 </div>
             </div>
-            <div class="lg:w-full md:w-96 md:mx-auto h-[1px] bg-black reveal-line"></div>
-            <div class="flex items-center gap-8 lg:px-0 md:px-20">
+            <div class="lg:w-full md:w-96 w-60 md:mx-auto h-[1px] bg-black reveal-line"></div>
+            <div class="flex flex-col sm:flex-row items-center gap-8 lg:px-0 md:px-20">
                 <img src="assets/food.webp" alt="Small Dish" class="w-40 reveal-image">
-                <div class="flex-1">
+                <div class="flex-1 text-center sm:text-left">
                     <p class="text-lg poppins">Our curated recipes bring authentic taste!</p>
                 </div>
-                <a href="#category" class="poppins ml-8 w-32 h-32 rounded-full border-2 border-black flex items-center justify-center text-lg relative overflow-hidden group animate-float">
+                <a href="#category" class="poppins w-32 h-32 rounded-full border-2 border-black flex items-center justify-center text-lg relative overflow-hidden group animate-float">
                     <span class="relative z-10 leading-tight text-center">Learn<br>More</span>
                     <div class="absolute inset-0 bg-black scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-full"></div>
                     <span class="absolute inset-0 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center leading-tight">Explore<br>Now</span>
@@ -136,7 +141,7 @@
             </div>
         </div>
         <div>
-            <img src="assets/food.webp" alt="Tasty Meal" class="lg:w-full md:w-3/5 md:mx-auto reveal-image">
+            <img src="assets/food.webp" alt="Tasty Meal" class="lg:w-full md:w-3/5 w-2/4 md:mx-auto mx-auto reveal-image">
         </div>
     </section>
     
@@ -195,17 +200,17 @@
         });
     </script>
     
-    <section id="category" class="py-20 items-center justify-center min-h-screen">
-        <div class="flex lg:flex-row md:flex-col items-center justify-between mb-16 gap-8">
+    <section id="category" class="lg:py-0 lg:px-0 md:px-10 md:py-20 px-6 items-center justify-center min-h-screen">
+        <div class="flex lg:flex-row md:flex-col flex-col items-center justify-between mb-16 gap-8">
             <p class="text-5xl font-bold slide-left">02</p>
-            <h2 class="text-7xl font-light slide-right">OUR CATEGORIES</h2>
+            <h2 class="md:text-7xl text-4xl font-light slide-right">OUR CATEGORIES</h2>
             <p class="text-lg max-w-sm leading-relaxed poppins fade-in">
                 Explore diverse food categories, each offering unique flavors and experiences.
             </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12 items-center">
-            <img src="assets/food.webp" alt="Category Image" class="lg:w-full w-3/5 md:mx-auto zoom-in">
-            <div class="flex flex-col space-y-6 poppins px-20">
+            <img src="assets/food.webp" alt="Category Image" class="lg:w-full w-3/5 zoom-in">
+            <div class="flex flex-col space-y-6 poppins">
                 <div class="flex justify-between items-center w-full fade-in-up">
                     <p class="text-lg font-light">Main menu category</p>
                     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000" class="w-8 h-8">
@@ -239,14 +244,14 @@
                 </div>
                 <hr class="w-full border-t-2 border-black grow-line delay-3">
             </div>        
-            <img src="assets/food.webp" alt="Category Image" class="lg:w-full w-3/5 md:mx-auto zoom-in delay-1">
+            <img src="assets/food.webp" alt="Category Image" class="lg:w-full w-3/5 zoom-in delay-1">
             <div class="flex items-center justify-start fade-in">
                 <p class="text-lg font-light poppins">
                     Discover delightful dishes, explore diverse cuisines, and ignite culinary creativity with step-by-step recipes to inspire every meal adventure.
                 </p>
             </div>
-            <div class="flex items-center justify-center">
-                <img src="assets/food.webp" alt="Category Image" class="lg:w-full w-3/5 md:mx-auto zoom-in delay-2">
+            <div class="flex lg:items-center lg:ustify-center">
+                <img src="assets/food.webp" alt="Category Image" class="lg:w-full w-3/5 zoom-in delay-2">
             </div>
             <div class="flex items-center justify-center fade-in-up delay-3">
                 <a href="#discover" class="poppins w-32 h-32 border-2 border-black rounded-full text-lg relative overflow-hidden group flex items-center justify-center animate-float">
@@ -313,8 +318,8 @@
         });
     </script>
     
-    <section id="discover" class="min-h-screen flex flex-col items-center justify-center space-y-16">
-        <h2 id="discover-title" class="lg:text-8xl md:text-7xl font-light text-center leading-tight">DISCOVER THE LATEST</h2>
+    <section id="discover" class="lg:py-0 lg:px-0 md:px-10 md:py-20 py-10 px-6 min-h-screen flex flex-col items-center justify-center space-y-16">
+        <h2 id="discover-title" class="lg:text-8xl md:text-7xl text-4xl font-light text-center leading-tight">DISCOVER THE LATEST</h2>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start w-full max-w-7xl lg:px-0 md:px-20">
             <div class="flex flex-col space-y-8 poppins" id="discover-left">
                 <p class="text-sm font-light">Savor the rich flavors of Asia, from spicy Thai curries to savory Japanese ramen</p>
@@ -421,24 +426,25 @@
         });
     </script>
 
-    <section id="explore" class="text-center space-y-16 min-h-screen flex flex-col justify-center">
+    <section id="explore" class="lg:py-0 lg:px-0 md:px-20 md:py-20 py-10 px-6 text-center space-y-16 min-h-screen flex flex-col justify-center">
         <div id="explore-title" class="space-y-6">
-            <h2 class="text-8xl font-light">EXPLORE REAL TASTE</h2>
+            <h2 class="md:text-7xl lg:text-8xl text-4xl font-light">EXPLORE REAL TASTE</h2>
             <p class="text-lg max-w-2xl mx-auto poppins">
                 Discover authentic flavors from around the world, crafted with passion and tradition.
             </p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
             <div id="explore-left" class="space-y-1 poppins">
-                <img src="assets/food.webp" alt="Asian Cuisine" class="w-2/3 mx-auto">
+                <img src="assets/food.webp" alt="Asian Cuisine" class="md:w-2/3 w-2/4 mx-auto">
                 <h3 class="text-xl font-light">Asian Cuisine</h3>
                 <p class="text-sm font-light">
                     A delightful mix of spices and rich aromas from Asia’s finest kitchens.
                 </p>
             </div>
             <div id="explore-center" class="relative poppins">
-                <img src="assets/food.webp" alt="Signature Dish" class="w-full">
-                <button id="explore-btn" class="absolute bottom-32 -right-60 w-32 h-32 border-2 border-black rounded-full text-lg relative overflow-hidden group flex items-center justify-center animate-float">
+                <img src="assets/food.webp" alt="Signature Dish" class="lg:w-full md:w-2/3 w-2/4 mx-auto">
+                <button id="explore-btn" class="w-32 h-32 border-2 border-black rounded-full text-lg relative overflow-hidden group flex items-center justify-center animate-float
+                    lg:absolute lg:bottom-32 lg:-right-60 mx-auto md:mx-auto">
                     <span class="relative z-10 leading-tight">Learn<br>More</span>
                     <div class="absolute inset-0 bg-black scale-0 group-hover:scale-100 transition-transform duration-500 ease-out rounded-full"></div>
                     <span class="absolute inset-0 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center leading-tight">
@@ -447,7 +453,7 @@
                 </button>
             </div>
             <div id="explore-right" class="space-y-1 poppins">
-                <img src="assets/food.webp" alt="Italian Delights" class="w-2/3 mx-auto">
+                <img src="assets/food.webp" alt="Italian Delights" class="md:w-2/3 w-2/4 mx-auto">
                 <h3 class="text-xl font-light">Italian Delights</h3>
                 <p class="text-sm font-light">
                     Indulge in timeless Italian classics, from creamy pastas to wood-fired pizzas.
@@ -519,13 +525,13 @@
     
     <footer class="text-black py-16">
         <div class="text-center space-y-8">
-            <h2 class="text-6xl font-light uppercase">Let's Connect With Us</h2>
-            <div class="flex justify-center items-center space-x-4">
-                <input type="email" placeholder="Enter your email" class="p-4 rounded-full text-black w-80 focus:outline-non border border-gray-500">
+            <h2 class="text-3xl md:text-4xl lg:text-6xl font-light uppercase leading-snug">Let's Connect With Us</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <input type="email" placeholder="Enter your email" class="p-4 rounded-full text-black lg:w-full w-80 focus:outline-none border border-gray-500">
                 <button class="bg-black text-white px-8 py-4 rounded-full hover:bg-gray-300 transition">Subscribe</button>
             </div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mt-16 text-center text-sm poppins">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mt-16 text-center text-sm poppins">
             <div class="space-y-4">
                 <h3 class="font-semibold">About Us</h3>
                 <ul class="space-y-2">
@@ -566,11 +572,12 @@
                     <li><a href="#" class="hover:underline">Twitter</a></li>
                 </ul>
             </div>
-        </div>    
+        </div>
         <div class="mt-16 text-center text-sm opacity-75">
             © 2025 Your Company. All rights reserved.
         </div>
     </footer>
+    
 
 </body>
 </html>
