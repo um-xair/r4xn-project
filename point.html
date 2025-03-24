@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinton Baby - Points & Referrals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5F7FA;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .tab-btn {
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .tab-btn.active {
+            background-color: #171717;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        }
+        .header-curve {
+            border-bottom-left-radius: 30% 25px;
+            border-bottom-right-radius: 30% 25px;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+        }
+        .activity-item {
+            transition: all 0.2s ease;
+        }
+        .activity-item:hover {
+            transform: scale(1.01);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="font-[Poppins] bg-[#F5F7FA] h-auto fade-in mb-20">
+    <div class="w-full bg-[#171717] h-40 rounded-b-[90px] py-4 z-50">
+        <div class="flex items-center justify-between px-6 h-full">
+            <a href="javascript:history.back()" class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                <i class="fa-solid fa-chevron-left text-[#171717]"></i>
+            </a>
+            <h1 class="text-white text-2xl font-extrabold sm:text-xl md:text-2xl lg:text-3xl px-2 text-center">My Points</h1>
+            <div class="w-10 h-10"></div>
+        </div>
+    </div>
+
+    <div class="mt-6 px-4">
+        <div class="bg-white rounded-[30px] py-8 px-6">
+            <div class="mb-4">
+                <h2 class="text-xl font-extrabold text-gray-800 mb-4">Your Points</h2>
+                <div class="flex items-baseline space-x-2">
+                    <span class="text-4xl font-black text-gray-900 truncate" id="userPoints">0</span>
+                    <span class="text-lg text-gray-500">Points</span>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 text-right">
+                <h2 class="text-xl font-bold text-gray-800 mb-3">Commission</h2>
+                <div class="flex items-baseline justify-end">
+                    <span class="text-4xl font-bold text-emerald-600 truncate" id="userCommission">0</span>
+                    <span class="text-sm text-gray-500 ml-2 font-medium">Points</span>
+                </div>
+            </div>
+            <div class="mt-6 bg-gradient-to-r from-blue-50 to-emerald-50 rounded-2xl p-6">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-sm font-medium text-gray-700">Commission Rate</h3>
+                    <span class="text-xs text-gray-500 font-medium">of referred purchase</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div class="bg-emerald-500 h-3 rounded-full w-1/2"></div>
+                </div>
+                <div class="mt-2 flex justify-between items-center">
+                    <span class="text-lg font-semibold text-emerald-600">50%</span>
+                    <span class="text-xs text-gray-500">Max Rate</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 px-4">
+        <div class="bg-gradient-to-tr from-[#1d1d1d] to-[#101010] text-[#1d1d1d] rounded-[30px] py-8 px-6">
+            <div class="flex flex-col items-start">
+                <div class="text-left mb-4">
+                    <h2 class="text-lg font-bold text-white mb-2">Invite Friends to Quinton Baby App</h2>
+                    <p class="text-sm text-[#D1D1D1]">Share your unique referral code now and earn rewards!</p>
+                </div>
+                <a href="referral.html" target="_blank">
+                    <button class="bg-white text-[#1d1d1d] text-sm font-semibold py-3 px-8 rounded-[15px] self-start">
+                        Share Now
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 px-4">
+        <div class="bg-white rounded-[30px] py-8 px-6">
+            <h2 class="text-2xl font-bold text-[#171717] mb-6">Referral Activities</h2>
+            <div class="flex justify-center overflow-x-auto mb-6">
+                <div class="flex space-x-2 w-full">
+                    <button onclick="switchTab('earnings')" class="tab-btn text-xs active bg-white text-[#171717] w-full py-3 rounded-[10px] border flex-1" id="earningsTab">
+                        Earnings
+                    </button>
+                    <button onclick="switchTab('referrals')" class="tab-btn text-xs bg-white text-[#171717] w-full py-3 rounded-[10px] border flex-1" id="referralsTab">
+                        Referrals
+                    </button>
+                    <button onclick="switchTab('redemptions')" class="tab-btn text-xs bg-white text-[#171717] w-full py-3 rounded-[10px] border flex-1" id="redemptionsTab">
+                        Rewards
+                    </button>
+                </div>
+            </div>
+            <div id="earningsContent" class="space-y-4">
+                <p class="text-center text-gray-500">No earnings to display.</p>
+            </div>
+            <div id="referralsContent" class="hidden space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <p class="text-center text-gray-500 col-span-full">No referrals to display.</p>
+                </div>
+            </div>
+            <div id="redemptionsContent" class="hidden space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <p class="text-center text-gray-500 col-span-full">No redemptions to display.</p>
+                </div>
+            </div>
+            <div class="flex justify-center mt-4">
+                <button onclick="showAllHistory()" class="flex items-center justify-center text-center text-sm font-semibold text-white bg-[#1D1D1D] py-5 rounded-full w-full">
+                    View All History
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const userId = localStorage.getItem('user_id');
+        if (userId) {
+            fetchUserData(userId);
+            fetchTotalPointsByTypes(userId, ['purchase', 'referral', 'redemption']);
+        } else {
+            console.error('User ID not found');
+        }
+    });
+
+    function fetchUserData(userId) {
+        fetch('https://app.quintonbaby.com.my/app/endpoint/api.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                'action': 'getUserStats',
+                'user_id': userId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('userPoints').textContent = data.points || '0';
+                document.getElementById('userCommission').textContent = (data.total_commission || '0') + ' Points';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function fetchTotalPointsByTypes(userId, types) {
+        fetch('https://app.quintonbaby.com.my/app/endpoint/api.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                'action': 'getTotalPointsByTypes',
+                'user_id': userId,
+                'types': types
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updatePointsContent(data);
+            } else {
+                console.error('Failed to fetch total points by types:', data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function updatePointsContent(data) {
+        const earningsContent = document.getElementById('earningsContent');
+        const referralsContent = document.getElementById('referralsContent');
+        const redemptionsContent = document.getElementById('redemptionsContent');
+
+        earningsContent.innerHTML = data.data.purchase.length ? data.data.purchase.map(point => `
+            <div class="bg-[#F8F8F8] rounded-[15px] p-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold">Purchase</p>
+                        <p class="text-sm text-gray-500">${new Date(point.created_at).toLocaleDateString()}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-green-600">+${point.points} Points</p>
+                    </div>
+                </div>
+            </div>
+        `).join('') : '<p class="text-center text-gray-500">No earnings to display.</p>';
+
+        referralsContent.innerHTML = data.data.referral.length ? data.data.referral.map(point => `
+            <div class="bg-[#F8F8F8] rounded-[15px] p-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold">Referral</p>
+                        <p class="text-sm text-gray-500">${new Date(point.created_at).toLocaleDateString()}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-green-600">+${point.points} Points</p>
+                    </div>
+                </div>
+            </div>
+        `).join('') : '<p class="text-center text-gray-500 col-span-full">No referrals to display.</p>';
+
+        redemptionsContent.innerHTML = data.data.redemption.length ? data.data.redemption.map(point => `
+            <div class="bg-[#F8F8F8] rounded-[15px] p-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold">Redemption</p>
+                        <p class="text-sm text-gray-500">${new Date(point.created_at).toLocaleDateString()}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-red-600">-${point.points} Points</p>
+                    </div>
+                </div>
+            </div>
+        `).join('') : '<p class="text-center text-gray-500 col-span-full">No redemptions to display.</p>';
+    }
+
+    function switchTab(tab) {
+        const earningsContent = document.getElementById('earningsContent');
+        const referralsContent = document.getElementById('referralsContent');
+        const redemptionsContent = document.getElementById('redemptionsContent');
+        const earningsTab = document.getElementById('earningsTab');
+        const referralsTab = document.getElementById('referralsTab');
+        const redemptionsTab = document.getElementById('redemptionsTab');
+
+        earningsContent.classList.add('hidden');
+        referralsContent.classList.add('hidden');
+        redemptionsContent.classList.add('hidden');
+        earningsTab.classList.remove('active');
+        referralsTab.classList.remove('active');
+        redemptionsTab.classList.remove('active');
+
+        if (tab === 'earnings') {
+            earningsContent.classList.remove('hidden');
+            earningsTab.classList.add('active');
+        } else if (tab === 'referrals') {
+            referralsContent.classList.remove('hidden');
+            referralsTab.classList.add('active');
+        } else if (tab === 'redemptions') {
+            redemptionsContent.classList.remove('hidden');
+            redemptionsTab.classList.add('active');
+        }
+    }
+
+    function showAllHistory() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        modal.innerHTML = `
+            <div class="bg-white rounded-[30px] p-6 m-4 max-w-md w-full max-h-[80vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-[#171717]">Complete History</h3>
+                    <button onclick="this.closest('.fixed').remove()" class="text-[#171717]">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-4" id="completeHistory">
+                    Loading...
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        
+        const userId = localStorage.getItem('user_id');
+        fetch('https://app.quintonbaby.com.my/app/endpoint/api.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                'action': 'getCompleteHistory',
+                'user_id': userId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateCompleteHistory(data.history);
+            }
+        });
+    }
+
+    function updateCompleteHistory(history) {
+        const container = document.getElementById('completeHistory');
+        container.innerHTML = history.map(item => `
+            <div class="bg-[#F8F8F8] rounded-[15px] p-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold">${item.referred_user}</p>
+                        <p class="text-sm text-gray-500">${new Date(item.date).toLocaleDateString()}</p>
+                        <p class="text-xs text-gray-400">Order #${item.order_id}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-green-600">RM ${item.commission}</p>
+                        <p class="text-sm text-gray-500">Purchase: RM ${item.purchase_amount}</p>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    </script>
+
+</body>
+</html>

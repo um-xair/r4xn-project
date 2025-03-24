@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R4XN | Project</title>
     <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: #080808;
+
         }
+        body::before {
+        --size: 45px;
+        --line: rgba(255, 255, 255, 0.115);
+        content: '';
+        position: fixed;
+        inset: 0;
+        background:
+            linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+            linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+        mask: linear-gradient(-15deg, transparent 50%, white);
+        pointer-events: none;
+        z-index: -1;
+    }
         .customfont {
             font-family: 'Inter', sans-serif;
         }
@@ -43,17 +69,17 @@
         }
     </style>
 </head>
+
 <body class="fade-in">
 
-    <section class="py-20 bg-[#0A0A0A] text-white text-center flex flex-col items-center justify-center min-h-screen w-full">
+    <section class="py-20 text-white text-center flex flex-col items-center justify-center min-h-screen w-full">
         <div class="max-w-4xl mx-auto py-20">
             <h1 class="text-4xl lg:text-6xl font-bold">Front-End Projects</h1>
             <p class="text-lg text-gray-400 mt-2">A collection of innovative web designs, interactive UI components, and responsive experiences</p>
         </div>
-    
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 p-5 w-full lg:w-[85%] mx-auto" id="parallaxContainer"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-5 w-full lg:w-[85%] mx-auto" id="parallaxContainer"></div>
     </section>
-    
+
     <script>
         const products = [
             { title: "GradientX", link: "#", thumbnail: "assets/gradient-main.jpg" },
@@ -72,14 +98,15 @@
 
         const parallaxContainer = document.getElementById("parallaxContainer");
 
+        // Populate the project grid with floating animation
         products.forEach((product, index) => {
             const item = document.createElement("a");
             item.href = product.link;
-            item.className = `relative group w-full h-[200px] rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105 shadow-lg 
+            item.className = `relative group w-full h-full rounded-[20px] overflow-hidden transition-transform duration-300 hover:scale-105 shadow-lg 
                 ${index % 2 === 0 ? 'animate-[floating_4s_infinite_ease-in-out]' : 'animate-[floating_6s_infinite_ease-in-out]'}`;
             item.target = "_blank";
             item.innerHTML = `
-                <img src="${product.thumbnail}" alt="${product.title}" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-500">
+                <img src="${product.thumbnail}" alt="${product.title}" class="w-full h-full object-cover rounded-[20px] group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <span class="text-white text-lg font-semibold relative">
                         ${product.title}
@@ -90,6 +117,7 @@
             parallaxContainer.appendChild(item);
         });
 
+        // Parallax effect on mousemove
         document.addEventListener("mousemove", (event) => {
             const { clientX, clientY } = event;
             const centerX = window.innerWidth / 2;
@@ -100,10 +128,24 @@
 
             parallaxContainer.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
         });
+
+        // GSAP Animations
+        window.addEventListener("load", () => {
+            gsap.from("h1", { opacity: 0, y: 50, duration: 1, ease: "power3.out" });
+            gsap.from("p", { opacity: 0, y: 30, delay: 0.5, duration: 1, ease: "power3.out" });
+            gsap.from("#parallaxContainer a", {
+                opacity: 0,
+                scale: 0.8,
+                stagger: 0.2,
+                duration: 1.5,
+                ease: "power3.out",
+                delay: 1,
+            });
+        });
     </script>
 
     <script src="header-index.js"></script>
     <script src="footer.js"></script>
-    
+
 </body>
 </html>
