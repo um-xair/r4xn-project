@@ -1,8 +1,8 @@
 function loadFooter() {
     const footerHTML = `
         <footer class="bg-black text-white py-20">
-            <div class="container mx-auto px-4 w-[80%]">
-                <div class="grid grid-cols-1 md:grid-cols-[40%_20%_20%] lg:grid-cols-[20%_20%_20%_40%] gap-8">
+            <div class="mx-auto px-4 w-[80%]">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[20%_20%_20%_40%] gap-8">
                     <div>
                         <h3 class="text-lg lg:text-2xl font-semibold mb-4">Discover More</h3>
                         <ul class="space-y-6">
