@@ -1,80 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R4XN | Project</title>
-    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #080808;
-
-        }
-        body::before {
-        --size: 45px;
-        --line: rgba(255, 255, 255, 0.115);
-        content: '';
-        position: fixed;
-        inset: 0;
-        background:
-            linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
-            linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
-        mask: linear-gradient(-15deg, transparent 50%, white);
-        pointer-events: none;
-        z-index: -1;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R4XN | Project</title>
+<link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">    <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> 
+<style>
+    body {
+        font-family: 'Outfit', sans-serif;
+        background-color: #080808;
     }
-        .customfont {
-            font-family: 'Inter', sans-serif;
+    body::before {
+    --size: 45px;
+    --line: rgba(255, 255, 255, 0.115);
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+        linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+    mask: linear-gradient(-15deg, transparent 50%, white);
+    pointer-events: none;
+    z-index: -1;
+    }
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
         }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
+        to {
+            opacity: 1;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        @keyframes floating {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-    </style>
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    @keyframes floating {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+</style>
 </head>
 
 <body class="fade-in">
 
     <section class="py-20 text-white text-center flex flex-col items-center justify-center min-h-screen w-full">
         <div class="max-w-4xl mx-auto py-20">
-            <h1 class="text-4xl lg:text-6xl font-bold">Front-End Projects</h1>
+            <h1 class="text-4xl lg:text-7xl font-bold">Front-End Projects</h1>
             <p class="text-lg text-gray-400 mt-2">A collection of innovative web designs, interactive UI components, and responsive experiences</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-5 w-full lg:w-[85%] mx-auto" id="parallaxContainer"></div>
@@ -110,7 +91,7 @@
                 <div class="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <span class="text-white text-lg font-semibold relative">
                         ${product.title}
-                        <span class="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-white transition-all duration-500 group-hover:w-full"></span>
                     </span>
                 </div>
             `;
