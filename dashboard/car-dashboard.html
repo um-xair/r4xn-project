@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R4XN</title>
+<link rel="icon" href="../assets/r4xn-black.png" type="image/png" sizes="32x32">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body {
+        font-family: "Raleway", sans-serif;
+    }
+    html{
+        overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+<body class="bg-gradient-to-t from-[#E2E9F3] to-[#EEEEF0] min-h-screen flex">
+
+    <aside class="w-20 flex flex-col justify-between py-6 h-screen fixed left-0 top-0 z-50">
+        <div class="flex justify-center">
+            <a href="#" class="flex items-center justify-center w-10 h-10 rounded-full bg-black">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                    <path d="M9.02 2.84004L3.63 7.04004C2.73 7.74004 2 9.23004 2 10.36V17.77C2 20.09 3.89 21.99 6.21 21.99H17.79C20.11 21.99 22 20.09 22 17.78V10.5C22 9.29004 21.19 7.74004 20.2 7.05004L14.02 2.72004C12.62 1.74004 10.37 1.79004 9.02 2.84004Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12 17.99V14.99" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+        </div>
+        <div class="flex flex-col items-center space-y-4">
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                    <path d="M7.99995 22H15.9999C20.0199 22 20.7399 20.39 20.9499 18.43L21.6999 10.43C21.9699 7.99 21.2699 6 16.9999 6H6.99995C2.72995 6 2.02995 7.99 2.29995 10.43L3.04995 18.43C3.25995 20.39 3.97995 22 7.99995 22Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8 6V5.2C8 3.43 8 2 11.2 2H12.8C16 2 16 3.43 16 5.2V6" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M14 13V14C14 14.01 14 14.01 14 14.02C14 15.11 13.99 16 12 16C10.02 16 10 15.12 10 14.03V13C10 12 10 12 11 12H13C14 12 14 12 14 13Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M21.65 11C19.34 12.68 16.7 13.68 14 14.02" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M2.62 11.27C4.87 12.81 7.41 13.74 10 14.03" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                    <path d="M7.5 7.67001V6.70001C7.5 4.45001 9.31 2.24001 11.56 2.03001C14.24 1.77001 16.5 3.88001 16.5 6.51001V7.89001" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8.99999 22H15C19.02 22 19.74 20.39 19.95 18.43L20.7 12.43C20.97 9.99 20.27 8 16 8H7.99999C3.72999 8 3.02999 9.99 3.29999 12.43L4.04999 18.43C4.25999 20.39 4.97999 22 8.99999 22Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M15.4955 12H15.5045" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8.49451 12H8.50349" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>              
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                    <path d="M9.16006 10.87C9.06006 10.86 8.94006 10.86 8.83006 10.87C6.45006 10.79 4.56006 8.84 4.56006 6.44C4.56006 3.99 6.54006 2 9.00006 2C11.4501 2 13.4401 3.99 13.4401 6.44C13.4301 8.84 11.5401 10.79 9.16006 10.87Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M16.41 4C18.35 4 19.91 5.57 19.91 7.5C19.91 9.39 18.41 10.93 16.54 11C16.46 10.99 16.37 10.99 16.28 11" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M4.15997 14.56C1.73997 16.18 1.73997 18.82 4.15997 20.43C6.90997 22.27 11.42 22.27 14.17 20.43C16.59 18.81 16.59 16.17 14.17 14.56C11.43 12.73 6.91997 12.73 4.15997 14.56Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M18.3401 20C19.0601 19.85 19.7401 19.56 20.3001 19.13C21.8601 17.96 21.8601 16.03 20.3001 14.86C19.7501 14.44 19.0801 14.16 18.3701 14" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                    <path d="M15.51 2.82996H8.49C6 2.82996 5.45 4.06996 5.13 5.58996L4 11H20L18.87 5.58996C18.55 4.06996 18 2.82996 15.51 2.82996Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M21.99 19.82C22.1 20.99 21.16 22 19.96 22H18.08C17 22 16.85 21.54 16.66 20.97L16.46 20.37C16.18 19.55 16 19 14.56 19H9.43998C7.99998 19 7.78998 19.62 7.53998 20.37L7.33998 20.97C7.14998 21.54 6.99998 22 5.91998 22H4.03998C2.83998 22 1.89998 20.99 2.00998 19.82L2.56998 13.73C2.70998 12.23 2.99998 11 5.61998 11H18.38C21 11 21.29 12.23 21.43 13.73L21.99 19.82Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M4 8H3" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M21 8H20" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12 3V5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M10.5 5H13.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M6 15H9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M15 15H18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+            <a href="#" class="w-12 h-12 flex items-center justify-center w-10 h-10 rounded-full bg-white">
+                  <i class="fas fa-ellipsis-h text-sm text-black"></i>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                    <path d="M11.6801 14.62L14.2401 12.06L11.6801 9.5" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M4 12.0601H14.17" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12 4C16.42 4 20 7 20 12C20 17 16.42 20 12 20" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>              
+        </div>
+    </aside>
+
+    <div class="ml-20 flex-1 flex flex-col mb-6">
+        <header class="flex justify-between items-center p-6">
+            <div>
+                <p class="text-sm text-gray-400">Personal Workspace</p>
+                <h1 class="text-2xl font-semibold">Hey, r4xn</h1>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                      <path d="M18.47 16.83L18.86 19.99C18.96 20.82 18.07 21.4 17.36 20.97L13.17 18.48C12.71 18.48 12.26 18.45 11.82 18.39C12.56 17.52 13 16.42 13 15.23C13 12.39 10.54 10.09 7.49997 10.09C6.33997 10.09 5.26997 10.42 4.37997 11C4.34997 10.75 4.33997 10.5 4.33997 10.24C4.33997 5.68999 8.28997 2 13.17 2C18.05 2 22 5.68999 22 10.24C22 12.94 20.61 15.33 18.47 16.83Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M13 15.23C13 16.42 12.56 17.5201 11.82 18.3901C10.83 19.5901 9.26 20.36 7.5 20.36L4.89 21.91C4.45 22.18 3.89 21.81 3.95 21.3L4.2 19.3301C2.86 18.4001 2 16.91 2 15.23C2 13.47 2.94 11.9201 4.38 11.0001C5.27 10.4201 6.34 10.0901 7.5 10.0901C10.54 10.0901 13 12.39 13 15.23Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </a>
+                <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                        <path d="M12.02 2.90991C8.70997 2.90991 6.01997 5.59991 6.01997 8.90991V11.7999C6.01997 12.4099 5.75997 13.3399 5.44997 13.8599L4.29997 15.7699C3.58997 16.9499 4.07997 18.2599 5.37997 18.6999C9.68997 20.1399 14.34 20.1399 18.65 18.6999C19.86 18.2999 20.39 16.8699 19.73 15.7699L18.58 13.8599C18.28 13.3399 18.02 12.4099 18.02 11.7999V8.90991C18.02 5.60991 15.32 2.90991 12.02 2.90991Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"></path>
+                        <path d="M13.87 3.19994C13.56 3.10994 13.24 3.03994 12.91 2.99994C11.95 2.87994 11.03 2.94994 10.17 3.19994C10.46 2.45994 11.18 1.93994 12.02 1.93994C12.86 1.93994 13.58 2.45994 13.87 3.19994Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M15.02 19.0601C15.02 20.7101 13.67 22.0601 12.02 22.0601C11.2 22.0601 10.44 21.7201 9.90002 21.1801C9.36002 20.6401 9.02002 19.8801 9.02002 19.0601" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10"></path>
+                    </svg>
+                </a>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
+            
+            <div class="relative bg-white/20 backdrop-blur-lg rounded-[30px] border-2 p-6 md:col-span-1">
+                <div class="flex items-center justify-between">
+                    <img src="https://i.pinimg.com/736x/77/96/01/779601ee3c56339680780c4e92b9727e.jpg" alt="Profile" class="w-16 h-16 rounded-full">
+                    <div class="text-center flex-1">
+                        <h2 class="text-xl font-bold">John Doe</h2>
+                        <p class="text-sm text-gray-400">Sales Manager</p>
+                    </div>
+                    <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="bg-[#F4F3F8] rounded-[30px] p-6 mt-6">
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="text-xl font-semibold">Sales Department</h3>
+                                <p class="text-sm text-gray-400">Updated: 12 March 2025</p>
+                            </div>
+                            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
+                                    <path d="M3 9C4.1 9 5 8.1 5 7C5 5.9 4.1 5 3 5C1.9 5 1 5.9 1 7C1 8.1 1.9 9 3 9Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M21 9C22.1 9 23 8.1 23 7C23 5.9 22.1 5 21 5C19.9 5 19 5.9 19 7C19 8.1 19.9 9 21 9Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M19 7H15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M9 7H5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M7.5 16.5V18.5C7.5 19.1 7.1 19.6 6.6 19.9C6.4 20 6.2 20 6 20H4C3.2 20 2.5 19.3 2.5 18.5V16.5C2.5 15.7 3.2 15 4 15H6C6.8 15 7.5 15.7 7.5 16.5Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M21.5 16.5V18.5C21.5 19.3 20.8 20 20 20H18C17.8 20 17.6 20 17.4 19.9C16.9 19.6 16.5 19.1 16.5 18.5V16.5C16.5 15.7 17.2 15 18 15H20C20.8 15 21.5 15.7 21.5 16.5Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M15 5.5V8.5C15 9.3 14.3 10 13.5 10H10.5C9.7 10 9 9.3 9 8.5V5.5C9 4.7 9.7 4 10.5 4H13.5C14.3 4 15 4.7 15 5.5Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M15 7.73C17.37 8.93 19 11.51 19 14.5C19 14.67 18.99 14.83 18.97 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M5.03 15C5.01 14.83 5 14.67 5 14.5C5 11.51 6.63 8.93 9 7.73" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>                        
+                        </div>
+                    </div>            
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-4">
+                        <div class="bg-white rounded-[15px] p-4 text-center">
+                            <h3 class="text-5xl font-bold text-gray-800">120</h3>
+                            <p class="text-sm text-gray-500 mt-2">Total Sales</p>
+                        </div>
+                        <div class="bg-white rounded-[15px] p-4 text-center">
+                            <h3 class="text-5xl font-bold text-gray-800">50</h3>
+                            <p class="text-sm text-gray-500 mt-2">New Clients</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://i.pinimg.com/736x/1a/da/b7/1adab786560aea0af24b97e07ef04e31.jpg" class="w-10 h-10 rounded-full">
+                            <img src="https://i.pinimg.com/736x/7d/b4/27/7db4273065217d1b0dc870e19bafb19b.jpg" class="w-10 h-10 rounded-full">
+                            <img src="https://i.pinimg.com/736x/ee/92/9e/ee929e0bbe3aab099de19cad53b8589a.jpg" class="w-10 h-10 rounded-full">
+                        </div>
+                        <button class="bg-black text-white px-6 py-3 rounded-full text-sm">
+                            Full Report
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-[#F4F3F8] rounded-[30px] p-6 mt-6">
+                    <h2 class="text-xl font-semibold mb-4">Sales Analytics</h2>
+                    <canvas id="analyticsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="col-span-1 lg:col-span-2 flex flex-col gap-6">
+                <div class="bg-white/20 backdrop-blur-lg rounded-[30px] border-2 p-6">
+                    <h2 class="text-xl font-semibold">Activities</h2>
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="relative bg-[#F5F7F8] rounded-[15px] px-6 py-8">
+                            <p class="text-4xl font-bold">16</p>
+                            <p class="text-gray-400 mt-1">New request</p>
+                            <a href="#" class="absolute bottom-4 right-4 w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rotate-45">
+                                    <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 20.4999V3.66992" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="relative bg-[#F5F7F8] rounded-[15px] px-6 py-8">
+                            <p class="text-4xl font-bold">3</p>
+                            <p class="text-gray-400 mt-1">Not converted request</p>
+                            <a href="#" class="absolute bottom-4 right-4 w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rotate-45">
+                                    <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 20.4999V3.66992" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="relative bg-[#F5F7F8] rounded-[15px] px-6 py-8">
+                            <p class="text-4xl font-bold">20</p>
+                            <p class="text-gray-400 mt-1">Started test drive</p>
+                            <a href="#" class="absolute bottom-4 right-4 w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rotate-45">
+                                    <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 20.4999V3.66992" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="relative bg-[#F5F7F8] rounded-[15px] px-6 py-8">
+                            <p class="text-4xl font-bold">6</p>
+                            <p class="text-gray-400 mt-1">Offers in review</p>
+                            <a href="#" class="absolute bottom-4 right-4 w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rotate-45">
+                                    <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 20.4999V3.66992" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="relative bg-[#F5F7F8] rounded-[15px] px-6 py-8">
+                            <p class="text-4xl font-bold">23</p>
+                            <p class="text-gray-400 mt-1">Signed deals</p>
+                            <a href="#" class="absolute bottom-4 right-4 w-12 h-12 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rotate-45">
+                                    <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 20.4999V3.66992" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/20 backdrop-blur-lg rounded-[30px] border-2 p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold">Tasks</h2>
+                        <div class="flex gap-2">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                    <path d="M5.40002 2.09998H18.6C19.7 2.09998 20.6 2.99998 20.6 4.09998V6.29998C20.6 7.09998 20.1 8.09998 19.6 8.59998L15.3 12.4C14.7 12.9 14.3 13.9 14.3 14.7V19C14.3 19.6 13.9 20.4 13.4 20.7L12 21.6C10.7 22.4 8.90002 21.5 8.90002 19.9V14.6C8.90002 13.9 8.50002 13 8.10002 12.5L4.30002 8.49998C3.80002 7.99998 3.40002 7.09998 3.40002 6.49998V4.19998C3.40002 2.99998 4.30002 2.09998 5.40002 2.09998Z" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M10.93 2.09998L6 9.99998" stroke="#000000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                    <path d="M6 12H18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 18V6" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+        
+                    <hr class="border-gray-200">
+                
+                    <div class="flex flex-col lg:flex-row items-start justify-between py-4 gap-4">
+                        <div class="flex items-center gap-4 w-80">
+                            <img src="https://i.pinimg.com/736x/ee/92/9e/ee929e0bbe3aab099de19cad53b8589a.jpg" alt="Profile" class="w-12 h-12 rounded-full">
+                            <div class="flex flex-col">
+                                <p class="text-lg font-semibold">John Doe</p>
+                                <p class="text-gray-500 text-sm">UI/UX Designer</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full gap-4">
+                            <div class="flex flex-col">
+                                <p class="text-lg font-semibold">Design Dashboard Layout</p>
+                                <p class="text-gray-400 text-sm">Create a modern, responsive admin panel layout.</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                        <path d="M8 2V5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M16 2V5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M3.5 9.09H20.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                        <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M15.9965 11H16.0054" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M11.9955 11H12.0045" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M7.99451 11H8.00349" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-200">
+
+                    <div class="flex flex-col lg:flex-row items-start justify-between py-4 gap-4">
+                        <div class="flex items-center gap-4 w-80">
+                            <img src="https://i.pinimg.com/736x/1a/da/b7/1adab786560aea0af24b97e07ef04e31.jpg" alt="Profile" class="w-12 h-12 rounded-full">
+                            <div class="flex flex-col">
+                                <p class="text-lg font-semibold">Sarah Johnson</p>
+                                <p class="text-gray-500 text-sm">Project Manager</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full gap-4">
+                            <div class="flex flex-col">
+                                <p class="text-lg font-semibold">Review Project Milestones</p>
+                                <p class="text-gray-400 text-sm">Ensure all deadlines and deliverables are on track for the next phase.</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                        <path d="M8 2V5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M16 2V5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M3.5 9.09H20.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                        <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M15.9965 11H16.0054" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M11.9955 11H12.0045" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M7.99451 11H8.00349" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-200">
+
+                    <div class="flex flex-col lg:flex-row items-start justify-between py-4 gap-4">
+                        <div class="flex items-center gap-4 w-80">
+                            <img src="https://i.pinimg.com/736x/7d/b4/27/7db4273065217d1b0dc870e19bafb19b.jpg" alt="Profile" class="w-12 h-12 rounded-full">
+                            <div class="flex flex-col">
+                                <p class="text-lg font-semibold">James Lee</p>
+                                <p class="text-gray-500 text-sm">Front-End Developer</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full gap-4">
+                            <div class="flex flex-col">
+                                <p class="text-lg font-semibold">Optimize Website Performance</p>
+                                <p class="text-gray-400 text-sm">Analyze and improve page load speed and responsiveness.</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                        <path d="M8 2V5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M16 2V5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M3.5 9.09H20.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                                        <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M15.9965 11H16.0054" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M11.9955 11H12.0045" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M7.99451 11H8.00349" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('analyticsChart').getContext('2d');
+        const data = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+                {
+                    label: 'Sales',
+                    data: [4000, 3000, 2000, 2780, 1890, 2390],
+                    backgroundColor: '#080808',
+                    borderRadius: 50,
+                },
+                {
+                    label: 'Revenue',
+                    data: [2400, 2210, 2290, 2000, 2181, 2500],
+                    backgroundColor: '#61677A',
+                    borderRadius: 50,
+                },
+            ],
+        };
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { enabled: true },
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { beginAtZero: true },
+                },
+            },
+        };      
+        new Chart(ctx, config);
+    </script>
+
+</body>
+</html>
