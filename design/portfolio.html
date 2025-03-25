@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4XN | Project</title>
+    <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-bl from-[#DEE4F0] via-slate-100 to-zinc-200 fade-in max-w-[90%] mx-auto p-4">
+    
+    <div class="flex justify-center">
+        <header id="header" class="mt-2 w-[90%] bg-white flex flex-col items-center justify-between p-4 md:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-10 transition-opacity duration-500">
+            <div class="flex items-center w-full">
+                <div class="flex-1 flex justify-start items-center">
+                    <img src="../assets/r4xn-black.png" alt="Logo" class="w-14 h-14 rounded-full">
+                </div>
+                <div class="hidden lg:flex flex-1 justify-center items-center space-x-6 text-black">
+                    <a href="#" class="text-md">Home</a>
+                    <a href="#" class="text-md">About</a>
+                    <a href="#" class="text-md">Photography</a>
+                    <a href="#" class="text-md">Gallery</a>
+                </div>
+                <div class="flex-1 flex justify-end items-center space-x-6">
+                    <a href="#" class="hidden lg:block w-40 text-center px-4 py-3 text-md text-white bg-black rounded-full">
+                        Contact Me
+                    </a>
+                    <button class="lg:hidden text-black" id="menu-btn">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="w-full mt-4 bg-white backdrop-blur-lg bg-opacity-10 text-center text-black hidden" id="mobile-menu">
+                <nav class="flex flex-col space-y-4 py-4">
+                    <a href="#" class="text-md py-2">Home</a>
+                    <a href="#" class="text-md py-2">About</a>
+                    <a href="#" class="text-md py-2">Photography</a>
+                    <a href="#" class="text-md py-2">Gallery</a>
+                    <a href="#" class="w-40 mx-auto text-center px-4 py-3 text-md text-white bg-black rounded-full">
+                        Contact Me
+                    </a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+    
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+    
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                header.style.opacity = '0';
+            } else {
+                header.style.opacity = '1';
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+        
+
+    <main class="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-8 md:min-h-[70vh]">
+        <div class="flex flex-col justify-center space-y-4 md:space-y-6">
+            <h2 class="text-4xl md:text-8xl font-extrabold">Where creative process happens</h2>
+            <p class="text-gray-600 w-full md:w-3/4 text-sm md:text-base">Explore stunning photography collections that capture the essence of each moment.</p>
+            <button class="bg-black text-md text-white px-3 py-3 md:py-5 rounded-full w-3/4 md:w-[40%]">Get In Touch</button>
+        </div>
+
+        <div class="flex h-full w-full items-center justify-center">
+            <div class="grid h-full w-full gap-4 p-2 grid-cols-5 grid-rows-4">
+                <div class="col-span-5 row-span-2 rounded-[30px] flex items-center justify-center">
+                    <img src="https://i.pinimg.com/564x/9f/1d/97/9f1d970ffb4571178c19f95499581820.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+                <div class="col-span-2 row-span-2 rounded-[30px] flex items-center justify-center h-4/5">
+                    <img src="https://i.pinimg.com/564x/81/50/17/815017018f3ac16f2db03199f481da49.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+                <div class="col-span-3 row-span-2 rounded-[30px] flex items-center justify-center h-4/5">
+                    <img src="https://i.pinimg.com/736x/70/ae/15/70ae151b9bd3966ebe9a8644f4d51bcb.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-20 mb-20">
+        <div class="flex h-full w-full items-center justify-center">
+            <div class="grid h-full w-full gap-4 p-2 grid-cols-4 grid-rows-7">
+                <div class="col-span-1 row-span-2 flex items-center justify-center rounded-[10px] lg:rounded-[30px] relative overflow-hidden">
+                    <img src="https://i.pinimg.com/564x/07/01/c7/0701c74f6b414cf17489d93dc7658432.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+                <div class="col-span-1 row-span-2 flex items-center justify-center rounded-[30px]">
+                    <p></p>
+                </div>
+                <div class="col-span-2 row-span-7 flex items-center justify-center rounded-[10px] lg:rounded-[30px] overflow-hidden">
+                    <img src="https://i.pinimg.com/564x/44/c5/66/44c566880ca1b64f8f0149da8e6a7570.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+                <div class="col-span-2 row-span-2 flex items-center justify-center rounded-[10px] lg:rounded-[30px] overflow-hidden">
+                    <img src="https://img.freepik.com/premium-photo/playful-lambs-frolicking-energy-innocence-captured-concept-animal-photography-wildlife-scenes-playful-animals-innocent-moments-capturing-energy_864588-51626.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+                <div class="col-span-2 row-span-1 flex items-center justify-center rounded-[30px] overflow-hidden">
+                    <img src="assets/portfolio.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+                <div class="col-span-1 row-span-2 flex items-center justify-center rounded-[30px]">
+                    <p></p>
+                </div>
+                <div class="col-span-1 row-span-2 flex items-center justify-center rounded-[10px] lg:rounded-[30px] overflow-hidden">
+                    <img src="https://i.pinimg.com/550x/5b/06/a0/5b06a05801537351d8c1e91698e7840b.jpg" class="w-full h-full object-cover rounded-[30px]">
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center space-y-4 md:space-y-6 md:ml-14">
+            <p class="text-black w-full md:w-3/4 text-sm md:text-lg">About Us</p>
+            <h2 class="text-4xl md:text-7xl font-bold">Why we</h2>
+            <h2 class="text-4xl md:text-7xl font-bold">make it happen</h2>
+            <p class="text-gray-600 w-full md:w-3/4 text-sm md:text-base">Explore stunning photography collections that capture the essence of each moment.</p>
+            <button class="bg-black text-md text-white px-3 py-3 md:py-5 rounded-full w-3/4 md:w-[40%]">Get In Touch</button>
+        </div>
+    </section>
+    
+    <section class="min-h-screen flex flex-col justify-center items-center mt-20 mb-20">
+        <h2 class="text-4xl md:text-7xl font-bold mb-8 text-center">Why Choose Us</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 p-8 w-full lg:max-w-[80%] border border-gray-300 text-center rounded-[30px]">
+            <div class="flex flex-col items-center p-6 border-r lg:border-r-gray-300 last:border-none">
+                <div class="mb-4">
+                    <i class="fas fa-camera-retro text-5xl text-black"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">High-Quality Images</h3>
+                <p class="text-center text-gray-600 text-sm">We capture moments in high resolution, ensuring every detail is vivid and memorable.</p>
+            </div>
+            <div class="flex flex-col items-center p-6 border-r lg:border-r-gray-300 last:border-none">
+                <div class="mb-4">
+                    <i class="fas fa-users text-5xl text-black"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Professional Team</h3>
+                <p class="text-center text-gray-600 text-sm">Our experienced photographers are dedicated to providing exceptional service and creativity.</p>
+            </div>
+            <div class="flex flex-col items-center p-6">
+                <div class="mb-4">
+                    <i class="fas fa-heart text-5xl text-black"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Passion for Photography</h3>
+                <p class="text-center text-gray-600 text-sm">We love what we do, and it shows in every project we undertake, making your memories special.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-20 mb-20">
+        <div class="flex h-4/5 w-full items-center justify-center">
+            <div class="grid h-full w-full gap-4 p-2 grid-cols-4 grid-rows-4">
+                <div class="col-span-2 row-span-2 flex items-center justify-center">
+                    <img src="https://i.pinimg.com/736x/ed/ce/77/edce778ccc542de6dbf5d6c3fc286b1b.jpg" alt="Salmon" class="h-full w-full object-cover rounded-[30px]" />
+                </div>
+                <div class="col-span-1 row-span-2 flex items-center justify-center">
+                    <p></p>                
+                </div>
+                <div class="col-span-1 row-span-2 flex items-center justify-center">
+                    <p></p>                
+                </div>
+                <div class="col-span-1 row-span-2 flex items-center justify-center">
+                    <p></p>                
+                </div>
+                <div class="col-span-1 row-span-2 flex items-center justify-center">
+                    <p></p>                
+                </div>
+                <div class="col-span-2 row-span-2 flex items-center justify-center">
+                    <img src="https://i.pinimg.com/736x/76/3f/98/763f98dd5314e04a5d48a2a724e3585e.jpg" alt="Tomato" class="h-full w-full object-cover rounded-[30px]" />
+                </div>
+            </div>
+        </div>
+      
+        <div class="flex flex-col justify-center space-y-4 md:space-y-6 md:ml-14">
+            <p class="text-black w-full md:w-3/4 text-sm md:text-lg">The project</p>
+            <h2 class="text-4xl md:text-7xl font-bold">Experiments and</h2>
+            <h2 class="text-4xl md:text-7xl font-bold">personal projects</h2>
+            <p class="text-gray-600 w-full md:w-3/4 text-sm md:text-base">Explore stunning photography collections that capture the essence of each moment.</p>            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mt-8 p-8 border border-gray-300 rounded-[30px]">
+                <div class="flex flex-col items-center p-4 border-r md:border-r-gray-300 last:border-none">
+                    <p class="text-4xl font-bold">99+</p>
+                    <p class="text-center text-gray-600 text-xs">Professional Photography Services.</p>
+                </div>
+                <div class="flex flex-col items-center p-4 border-r md:border-r-gray-300 last:border-none">
+                    <p class="text-4xl font-bold">100+</p>
+                    <p class="text-center text-gray-600 text-xs">Affordable Pricing for Everyone.</p>
+                </div>
+                <div class="flex flex-col items-center p-4">
+                    <p class="text-4xl font-bold">99+</p>
+                    <p class="text-center text-gray-600 text-xs">Capturing Moments that Last Forever.</p>
+                </div>
+            </div>            
+        </div>
+    </section>
+
+    <section class="flex flex-col items-center text-center space-y-4 md:space-y-6 py-12">
+        <h2 class="text-3xl md:text-7xl font-bold">Our Vision</h2>
+        <p class="text-gray-600 w-full md:w-2/3 text-base md:text-lg">
+            Discover how we bring stunning photography to life, capturing each moment with detail and passion.
+        </p>
+        <button class="bg-black text-white p-4 md:px-6 lg:w-1/5 w-full rounded-full text-lg md:text-xl">
+            Get in Touch
+        </button>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 py-8 md:px-16">
+        <div class="flex flex-col items-start space-y-2 text-left">
+            <img src="https://i.pinimg.com/736x/69/6e/40/696e40288349d2c68150b6427fb699c2.jpg" alt="Description 1" class="h-full w-full rounded-[30px] object-cover">
+        </div>
+        <div class="flex flex-col items-start space-y-2 text-left">
+            <img src="https://i.pinimg.com/564x/c8/35/64/c83564cd0c6f1357963eb561f3de74e0.jpg" alt="Description 2" class="h-full w-full rounded-[30px] object-cover">
+        </div>
+        <div class="flex flex-col items-start space-y-2 text-left">
+            <img src="https://i.pinimg.com/736x/72/9e/63/729e63a6de29fcb86cdcea08df30b605.jpg" alt="Description 3" class="h-full w-full rounded-[30px] object-cover">
+        </div>
+    </section>
+
+    <section class="px-4 py-8 mt-40">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-7xl font-bold">Our Gallery</h2>
+            <p class="text-gray-600 text-base md:text-lg mt-2">
+                Explore our collection of beautiful moments captured.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/564x/54/3b/9c/543b9cd2920a8ff20f2585082c2d22f8.jpg" alt="Gallery Image 1" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/564x/f3/71/97/f37197c5d21b6e689bde1cc696f27ecc.jpg" alt="Gallery Image 2" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/564x/ae/94/dc/ae94dccbc76b0a9d88344bc72aca538e.jpg" alt="Gallery Image 3" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/564x/67/a3/32/67a3329adb0327e5df76faadb0c5fe3b.jpg" alt="Gallery Image 4" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/564x/69/25/1b/69251b71f3531c2d815661a0200122e6.jpg" alt="Gallery Image 5" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/474x/f2/c0/58/f2c058199d93139c28df15cbb1a76c1f.jpg" alt="Gallery Image 6" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/474x/67/9c/64/679c6430b786e2916f513c433d5c8871.jpg" alt="Gallery Image 7" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/474x/0d/6a/81/0d6a81ca2e7e4a47eaf55aee2a34319a.jpg" alt="Gallery Image 8" class="w-full h-full object-cover">
+            </div>
+            <div class="overflow-hidden rounded-[30px] aspect-square">
+                <img src="https://i.pinimg.com/474x/7e/b5/e6/7eb5e69239a1b447357061c22aecda5d.jpg" alt="Gallery Image 9" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-6 mt-20">
+        <div class="flex flex-col sm:flex-row justify-between items-center">
+            <p class="text-center sm:text-left">© <span id="year"></span> | R4XN All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 sm:mt-0 text-xl">
+                <a href="#" class="hover:text-gray-500"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-gray-500"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-gray-500"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-gray-500"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    
+</body>
+</html>
