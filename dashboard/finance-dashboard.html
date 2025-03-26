@@ -172,11 +172,84 @@
             </div>
 
             <div class="grid grid-cols-4 gap-4">
-                <!-- Left: White Box (2 Columns) -->
-                <div class="col-span-2 bg-white p-6 rounded-xl">
-                    <h2 class="text-xl font-semibold">White Box</h2>
-                    <p>Content for the left white box.</p>
+                <div class="col-span-2 bg-white p-6 rounded-[30px] space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold">Expenses Breakdown</h2>
+                        <div class="flex items-center">
+                            <button class="px-6 py-3 bg-white rounded-full border-2 border-gray-300">Weekly</button>
+                            <button class="w-12 h-12 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center" aria-label="Notifications">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-5 h-5">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier"> 
+                                        <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                        <path d="M12 20.4999V3.66992" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="grid grid-cols-2 items-center">
+                        <p class="text-4xl">$12.8K</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
+                                <span class="text-sm font-medium text-gray-300">Category 1</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
+                                <span class="text-sm font-medium text-gray-300">Category 2</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
+                                <span class="text-sm font-medium text-gray-300">Category 3</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
+                                <span class="text-sm font-medium text-gray-300">Category 4</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="grid grid-cols-[1fr,2fr] gap-3">
+                        <div class="flex items-center">
+                            <p class="text-sm font-medium">Groceries</p>
+                        </div>
+                        <div class="flex gap-1">
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #92c9b1, #92c9b1 5px, #b3e0d2 5px, #b3e0d2 10px);"></div>                            
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                        </div>
+                        <div class="flex items-center">
+                            <p class="text-sm font-medium">Food</p>
+                        </div>
+                        <div class="flex gap-1">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                        </div>
+                        <div></div>
+                        <div class="flex justify-between w-full">
+                            <span class="text-sm text-center flex-1">S</span>
+                            <span class="text-sm text-center flex-1">M</span>
+                            <span class="text-sm text-center flex-1">T</span>
+                            <span class="text-sm text-center flex-1">W</span>
+                            <span class="text-sm text-center flex-1">T</span>
+                            <span class="text-sm text-center flex-1">F</span>
+                            <span class="text-sm text-center flex-1">S</span>
+                        </div>                        
+                    </div>
                 </div>
+                
             
                 <div class="flex flex-col gap-4 col-span-2">
                     <!-- Right: Gray Box (2 Columns) -->
