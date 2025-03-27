@@ -24,7 +24,20 @@
 
 <body class="min-h-screen flex overflow-x-hidden">
 
-    <aside class="w-80 bg-white text-black px-4 py-6 flex flex-col justify-between h-screen">
+    <button id="toggleSidebar" class="w-12 h-12 bg-black rounded-full flex items-center justify-center fixed top-6 left-4 z-[9999] pointer-events-auto lg:hidden" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> 
+                <path d="M17.5399 8.30989C18.8986 8.30989 20 7.20851 20 5.84989C20 4.49127 18.8986 3.38989 17.5399 3.38989C16.1813 3.38989 15.08 4.49127 15.08 5.84989C15.08 7.20851 16.1813 8.30989 17.5399 8.30989Z" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                <path d="M6.46001 8.30989C7.81863 8.30989 8.92 7.20851 8.92 5.84989C8.92 4.49127 7.81863 3.38989 6.46001 3.38989C5.10139 3.38989 4 4.49127 4 5.84989C4 7.20851 5.10139 8.30989 6.46001 8.30989Z" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                <path d="M17.5399 20.6099C18.8986 20.6099 20 19.5086 20 18.1499C20 16.7913 18.8986 15.6899 17.5399 15.6899C16.1813 15.6899 15.08 16.7913 15.08 18.1499C15.08 19.5086 16.1813 20.6099 17.5399 20.6099Z" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                <path d="M6.46001 20.6099C7.81863 20.6099 8.92 19.5086 8.92 18.1499C8.92 16.7913 7.81863 15.6899 6.46001 15.6899C5.10139 15.6899 4 16.7913 4 18.1499C4 19.5086 5.10139 20.6099 6.46001 20.6099Z" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+            </g>
+        </svg>
+    </button>
+
+    <aside id="sidebar" class="w-64 lg:w-60 bg-white text-black px-4 py-6 flex flex-col justify-between h-screen fixed left-0 top-0 z-50 transition-transform transform -translate-x-full lg:translate-x-0">
         <div class="space-y-4">
             <div class="flex items-center gap-4">
                 <img src="../dashboard/assets/finance-logo.jpg" alt="R4XN Logo" class="w-12 h-12 rounded-full">
@@ -73,47 +86,45 @@
                         <path d="M9.5 8.5H14.5" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
                     </g>
                 </svg>
-                <span class="text-sm">Emergency Funds</span>
+                <span class="text-sm">Emergency</span>
             </a>
         </nav>
         <img src="../dashboard/assets/finance-dashboard.jpg" alt="Dashboard Image" class="w-full h-[20vh] rounded-[30px] object-cover">
     </aside>
-    
 
-    <div class="flex flex-col w-full">
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const toggleBtn = document.getElementById("toggleSidebar");
+        toggleBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("-translate-x-full");
+        });
+    </script>
+
+    <div class="pl-0 lg:pl-60 flex flex-col w-full overflow-y-auto">
         
-        <header class="flex items-center justify-between p-6 bg-white">
-            <nav class="flex gap-1">
+        <header class="flex items-center justify-between p-6 bg-white md:flex-row flex-col gap-4">
+            <nav class="flex gap-1 flex-wrap">
                 <a href="#" class="text-white bg-[#0279F9] px-6 py-3 rounded-full">Dashboard</a>
                 <a href="#" class="text-gray-500 bg-[#F2F2F2] px-6 py-3 rounded-full">Analytics</a>
                 <a href="#" class="text-gray-500 bg-[#F2F2F2] px-6 py-3 rounded-full">Invoice</a>
-                <a href="#" class="text-gray-500 bg-[#F2F2F2] px-6 py-3 rounded-full">Calendar</a>
                 <a href="#" class="text-gray-500 bg-[#F2F2F2] px-6 py-3 rounded-full">Savings</a>
             </nav>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 flex-wrap">
                 <button class="w-12 h-12 bg-[#F2F2F2] rounded-full flex items-center justify-center" aria-label="Settings">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier"> <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#9e9e9e" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                            <path d="M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z" stroke="#9e9e9e" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                        </g>
+                    <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                        <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#9e9e9e" stroke-width="1.5"/>
+                        <path d="M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z" stroke="#9e9e9e" stroke-width="1.5"/>
                     </svg>
                 </button>
                 <button class="w-12 h-12 bg-[#F2F2F2] rounded-full flex items-center justify-center" aria-label="Notifications">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier"> 
-                            <path d="M12.02 2.90991C8.70997 2.90991 6.01997 5.59991 6.01997 8.90991V11.7999C6.01997 12.4099 5.75997 13.3399 5.44997 13.8599L4.29997 15.7699C3.58997 16.9499 4.07997 18.2599 5.37997 18.6999C9.68997 20.1399 14.34 20.1399 18.65 18.6999C19.86 18.2999 20.39 16.8699 19.73 15.7699L18.58 13.8599C18.28 13.3399 18.02 12.4099 18.02 11.7999V8.90991C18.02 5.60991 15.32 2.90991 12.02 2.90991Z" stroke="#9e9e9e" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"></path> 
-                            <path d="M13.87 3.19994C13.56 3.10994 13.24 3.03994 12.91 2.99994C11.95 2.87994 11.03 2.94994 10.17 3.19994C10.46 2.45994 11.18 1.93994 12.02 1.93994C12.86 1.93994 13.58 2.45994 13.87 3.19994Z" stroke="#9e9e9e" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                            <path d="M15.02 19.0601C15.02 20.7101 13.67 22.0601 12.02 22.0601C11.2 22.0601 10.44 21.7201 9.90002 21.1801C9.36002 20.6401 9.02002 19.8801 9.02002 19.0601" stroke="#9e9e9e" stroke-width="1.5" stroke-miterlimit="10"></path> 
-                        </g>
+                    <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                        <path d="M12.02 2.90991C8.70997 2.90991 6.01997 5.59991 6.01997 8.90991V11.7999C6.01997 12.4099 5.75997 13.3399 5.44997 13.8599L4.29997 15.7699C3.58997 16.9499 4.07997 18.2599 5.37997 18.6999C9.68997 20.1399 14.34 20.1399 18.65 18.6999C19.86 18.2999 20.39 16.8699 19.73 15.7699L18.58 13.8599C18.28 13.3399 18.02 12.4099 18.02 11.7999V8.90991C18.02 5.60991 15.32 2.90991 12.02 2.90991Z" stroke="#9e9e9e" stroke-width="1.5"/>
+                        <path d="M15.02 19.0601C15.02 20.7101 13.67 22.0601 12.02 22.0601C11.2 22.0601 10.44 21.7201 9.90002 21.1801C9.36002 20.6401 9.02002 19.8801 9.02002 19.0601" stroke="#9e9e9e" stroke-width="1.5"/>
                     </svg>
                 </button>
                 <div class="flex items-center gap-2">
                     <img src="../assets/r4xn-black.png" alt="Profile" class="w-12 h-12 rounded-full object-cover">
-                    <div>
+                    <div class="text-center md:text-left">
                         <p class="font-semibold">R4XN</p>
                         <p class="text-sm text-gray-500">r4xn@example.com</p>
                     </div>
@@ -121,64 +132,52 @@
             </div>
         </header>
 
-        <main class="p-8 bg-[#F2F2F2] rounded-tl-[30px]">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-semibold">Financial Overview</h2>
-                <div class="flex gap-2">
+        <main class="p-4 lg:p-8 bg-[#F2F2F2] rounded-tl-[30px]">
+            <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
+                <h2 class="text-3xl font-semibold text-center md:text-left w-full md:w-auto">Financial Overview</h2>
+                <div class="flex flex-wrap gap-2 justify-center md:justify-start">
                     <div class="flex items-center">
                         <button class="px-6 py-3 bg-white rounded-full">Default View</button>
                         <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center" aria-label="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier"> 
-                                    <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                </g>
+                            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5">
+                                <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
                     </div>
                     <div class="flex items-center">
                         <button class="px-6 py-3 bg-white rounded-full">Export</button>
                         <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center" aria-label="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier"> 
-                                    <path d="M13 11L21.2 2.80005" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                    <path d="M22 6.8V2H17.2" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                    <path d="M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                </g>
+                            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5">
+                                <path d="M13 11L21.2 2.80005" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M22 6.8V2H17.2" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
                     </div>
                     <div class="flex items-center">
                         <button class="px-6 py-3 bg-white rounded-full">Filter</button>
                         <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center" aria-label="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier"> 
-                                    <path d="M22 6.5H16" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                    <path d="M6 6.5H2" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                    <path d="M10 10C11.933 10 13.5 8.433 13.5 6.5C13.5 4.567 11.933 3 10 3C8.067 3 6.5 4.567 6.5 6.5C6.5 8.433 8.067 10 10 10Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                    <path d="M22 17.5H18" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                    <path d="M8 17.5H2" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                    <path d="M14 21C15.933 21 17.5 19.433 17.5 17.5C17.5 15.567 15.933 14 14 14C12.067 14 10.5 15.567 10.5 17.5C10.5 19.433 12.067 21 14 21Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
-                                </g>
+                            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5">
+                                <path d="M22 6.5H16" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M6 6.5H2" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M10 10C11.933 10 13.5 8.433 13.5 6.5C13.5 4.567 11.933 3 10 3C8.067 3 6.5 4.567 6.5 6.5C6.5 8.433 8.067 10 10 10Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M22 17.5H18" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M8 17.5H2" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M14 21C15.933 21 17.5 19.433 17.5 17.5C17.5 15.567 15.933 14 14 14C12.067 14 10.5 15.567 10.5 17.5C10.5 19.433 12.067 21 14 21Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>            
 
-            <div class="grid grid-cols-4 gap-4">
-                <div class="col-span-2 bg-white p-6 rounded-[30px] space-y-6">
-                    <div class="flex justify-between items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+                <div class="col-span-2 bg-white p-4 lg:p-6 rounded-[30px] space-y-6">
+                    <div class="flex flex-wrap justify-between items-center gap-4">
                         <h2 class="text-xl font-semibold">Expenses Breakdown</h2>
                         <div class="flex items-center">
-                            <button class="px-6 py-3 bg-white rounded-full border-2 border-gray-300">Weekly</button>
-                            <button class="w-12 h-12 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center" aria-label="Notifications">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-5 h-5">
+                            <button class="px-4 py-2 md:px-6 md:py-3 bg-white rounded-full border-2 border-gray-300 text-sm md:text-base">Weekly</button>
+                            <button class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center" aria-label="Notifications">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-4 h-4 md:w-5 md:h-5">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier"> 
@@ -190,93 +189,281 @@
                         </div>
                     </div>
                 
-                    <div class="grid grid-cols-2 items-center">
-                        <p class="text-4xl">$12.8K</p>
-                        <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-4">
+                        <p class="text-3xl lg:text-4xl text-left">$12.8K</p>
+                        <div class="grid lg:grid-cols-2 md:grid-cols-4 grid-cols-1 gap-4">
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
-                                <span class="text-sm font-medium text-gray-300">Category 1</span>
+                                <div class="w-4 h-4 bg-[#262626] rounded-full"></div>
+                                <span class="text-xs lg:text-sm font-medium text-gray-300">$1 - $100</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
-                                <span class="text-sm font-medium text-gray-300">Category 2</span>
+                                <div class="w-4 h-4 bg-[#092660] rounded-full"></div>
+                                <span class="text-xs lg:text-sm font-medium text-gray-300">&gt;$300</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
-                                <span class="text-sm font-medium text-gray-300">Category 3</span>
+                                <div class="w-4 h-4 bg-[#007AF3] rounded-full"></div>
+                                <span class="text-xs lg:text-sm font-medium text-gray-300">$100 - $300</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center"></div>
-                                <span class="text-sm font-medium text-gray-300">Category 4</span>
+                                <div class="w-4 h-4 bg-[#D1CDCE] rounded-full"></div>
+                                <span class="text-xs lg:text-sm font-medium text-gray-300">No expenses</span>
                             </div>
                         </div>
                     </div>
-                
-                    <div class="grid grid-cols-[1fr,2fr] gap-3">
-                        <div class="flex items-center">
+
+                    <div class="grid grid-cols-1 lg:grid-cols-[1fr,2fr] grid-rows-auto gap-3">
+                        <div class="flex items-center justify-center lg:justify-start">
                             <p class="text-sm font-medium">Groceries</p>
                         </div>
-                        <div class="flex gap-1">
-                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #92c9b1, #92c9b1 5px, #b3e0d2 5px, #b3e0d2 10px);"></div>                            
+                        <div class="flex flex-wrap gap-1 justify-center lg:justify-start">
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #262626, #262626 5px, #080808 5px, #080808 10px);"></div>                            
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #007AF3, #007AF3 5px, #219bff 5px, #219bff 10px);"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #092660, #092660 5px, #0e4f85 5px, #0e4f85 10px);"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
-                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
-                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
-                        </div> 
-                        <div class="flex items-center">
+                        </div>
+                        <div class="flex items-center justify-center lg:justify-start">
                             <p class="text-sm font-medium">Food</p>
                         </div>
-                        <div class="flex gap-1">
+                        <div class="flex flex-wrap gap-1 justify-center lg:justify-start">
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #007AF3, #007AF3 5px, #219bff 5px, #219bff 10px);"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #262626, #262626 5px, #080808 5px, #080808 10px);"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #007AF3, #007AF3 5px, #219bff 5px, #219bff 10px);"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #262626, #262626 5px, #080808 5px, #080808 10px);"></div>
+                        </div>
+                        <div class="flex items-center justify-center lg:justify-start">
+                            <p class="text-sm font-medium">Electronics</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1 justify-center lg:justify-start">
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #092660, #092660 5px, #0e4f85 5px, #0e4f85 10px);"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #262626, #262626 5px, #080808 5px, #080808 10px);"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
-                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #007AF3, #007AF3 5px, #219bff 5px, #219bff 10px);"></div>
+                            <div class="w-12 h-12 rounded-full" style="background: repeating-linear-gradient(45deg, #262626, #262626 5px, #080808 5px, #080808 10px);"></div>
                             <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
                         </div>
                         <div></div>
-                        <div class="flex justify-between w-full">
-                            <span class="text-sm text-center flex-1">S</span>
-                            <span class="text-sm text-center flex-1">M</span>
-                            <span class="text-sm text-center flex-1">T</span>
-                            <span class="text-sm text-center flex-1">W</span>
-                            <span class="text-sm text-center flex-1">T</span>
-                            <span class="text-sm text-center flex-1">F</span>
-                            <span class="text-sm text-center flex-1">S</span>
+                        <div class="flex flex-wrap gap-1 justify-center lg:justify-start">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-black">S</div>
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-black">M</div>
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-black">T</div>
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-black">W</div>
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-black">T</div>
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-black">F</div>
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-black">S</div>
                         </div>                        
                     </div>
                 </div>
                 
-            
                 <div class="flex flex-col gap-4 col-span-2">
-                    <!-- Right: Gray Box (2 Columns) -->
-                    <div class="bg-gray-300 p-6 rounded-xl">
-                        <h2 class="text-xl font-semibold">Gray Box</h2>
-                        <p>Content for the right gray box.</p>
-                    </div>
-            
-                    <!-- Below Right: 2 Red Boxes in a 2-Column Grid -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-red-500 p-6 rounded-xl text-white">
-                            <h2 class="text-lg font-semibold">Red Box 1</h2>
-                            <p>Content for red box 1.</p>
+                    <div class="p-4 md:p-6 rounded-[30px] relative h-full min-h-[250px] flex flex-col justify-between bg-cover bg-center" style="background: url('https://i.pinimg.com/736x/50/11/b8/5011b8561d414d9db49261fd8590c383.jpg') center/cover no-repeat;">
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-semibold text-white">Join Our Finance Class</h2>
+                            <p class="text-sm md:text-base text-white mt-2">Learn how to manage your money<br>effectively with expert guidance.</p>
                         </div>
-                        <div class="bg-red-500 p-6 rounded-xl text-white">
-                            <h2 class="text-lg font-semibold">Red Box 2</h2>
-                            <p>Content for red box 2.</p>
+                        <div class="flex items-center gap-4 mt-4 md:mt-6">
+                            <button class="px-4 md:px-6 py-2 md:py-3 text-white rounded-full bg-[#007AF3]">Join Now</button>
+                            <button class="w-10 md:w-12 h-10 md:h-12 text-white rounded-full bg-[#007AF3] flex items-center justify-center" aria-label="More Options">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-4 md:w-5 h-4 md:h-5">
+                                    <g id="SVGRepo_iconCarrier"> 
+                                        <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                        <path d="M12 20.4999V3.66992" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                    </g>
+                                </svg>
+                            </button>
                         </div>
+                    </div>                    
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-6 w-full lg:max-w-lg mx-auto max-w-none">
+                            <div class="bg-white p-4 lg:p-6 space-y-2 rounded-[30px] text-black flex flex-col justify-between h-full lg:aspect-[3/2] aspect-auto">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-gray-300" aria-label="Notifications">
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                                                <g id="SVGRepo_iconCarrier"> 
+                                                    <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <p class="text-lg lg:text-xl">Today Receive</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-3xl lg:text-4xl font-medium">$12,009K</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-base lg:text-lg text-gray-900">75%</span>
+                                        <button class="w-6 h-6 bg-white rounded-full flex items-center justify-center border-2 border-gray-300" aria-label="Notifications">
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3">
+                                                <g id="SVGRepo_iconCarrier"> 
+                                                    <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="w-10 lg:w-12 h-10 lg:h-12 bg-white rounded-full flex items-center justify-center border-2 border-gray-300" aria-label="Notifications">
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                                            <g id="SVGRepo_iconCarrier"> 
+                                                <path d="M19.9201 8.94995L13.4001 15.47C12.6301 16.24 11.3701 16.24 10.6001 15.47L4.08008 8.94995" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>                        
+                    
+                        <div class="bg-black p-4 lg:p-6 space-y-2 rounded-[30px] text-white flex flex-col justify-between h-full lg:aspect-[3/2] aspect-auto w-full lg:max-w-lg mx-auto max-w-none">
+                            <div class="flex items-center justify-between">
+                                <button class="w-10 lg:w-12 h-10 lg:h-12 bg-white rounded-full flex items-center justify-center border-2 border-gray-300" aria-label="Add">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-4 sm:w-5 h-4 sm:h-5">
+                                        <g id="SVGRepo_iconCarrier"> 
+                                            <path d="M6 12H18" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 18V6" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                        </g>
+                                    </svg>
+                                </button>
+                                <div class="flex gap-2">
+                                    <button class="w-10 lg:w-12 h-10 lg:h-12 bg-white rounded-full flex items-center justify-center border-2 border-gray-300" aria-label="Notifications">
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 sm:w-5 h-4 sm:h-5">
+                                            <g id="SVGRepo_iconCarrier"> 
+                                                <path d="M22 10V15C22 20 20 22 15 22H9C4 22 2 20 2 15V9C2 4 4 2 9 2H14" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                                <path d="M22 10H18C15 10 14 9 14 6V2L22 10Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                                <path d="M7 13H13" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                                <path d="M7 17H11" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <button class="w-10 lg:w-12 h-10 lg:h-12 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center" aria-label="Upload">
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-4 sm:w-5 h-4 sm:h-5">
+                                            <g id="SVGRepo_iconCarrier"> 
+                                                <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                                <path d="M12 20.4999V3.66992" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>                    
+                            <div class="mt-auto">
+                                <p class="text-xs lg:text-sm bg-gray-500 px-3 py-1 rounded-full inline-block">Track and Print Report</p>
+                                <p class="text-xl lg:text-2xl mt-2">Financial Report</p>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-6 mt-6">
+                <div class="col-span-3 bg-white p-4 lg:p-6 rounded-[30px] text-black">
+                    <div class="flex flex-wrap items-center justify-between mb-4 gap-3">
+                        <h2 class="text-lg lg:text-xl font-semibold">Income Sources</h2>
+                        <div class="flex items-center">
+                            <button class="px-4 lg:px-6 py-2 lg:py-3 bg-white rounded-full border-2 border-gray-300 text-sm lg:text-base">
+                                All Sources
+                            </button>
+                            <button class="w-10 lg:w-12 h-10 lg:h-12 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center" aria-label="Notifications">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-4 lg:w-5 h-4 lg:h-5">
+                                    <g id="SVGRepo_iconCarrier"> 
+                                        <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                        <path d="M12 20.4999V3.66992" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>                    
+                
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="col-span-1 text-black">
+                            <p class="text-sm bg-black text-white px-3 py-1 rounded-full inline-block">30 Days</p>
+                            <p class="text-4xl font-medium mt-4">$23,889K</p>
+                            <p class="text-sm mt-4">Total income in the past month.</p>
+                            <div class="grid grid-cols-2 gap-4 mt-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 bg-[#262626] rounded-full flex items-center justify-center"></div>
+                                    <span class="text-sm font-medium text-gray-300">Salary</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 bg-[#092660] rounded-full flex items-center justify-center"></div>
+                                    <span class="text-sm font-medium text-gray-300">Bonus</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 bg-[#007AF3] rounded-full flex items-center justify-center"></div>
+                                    <span class="text-sm font-medium text-gray-300">Freelance</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 bg-[#D1CDCE] rounded-full flex items-center justify-center"></div>
+                                    <span class="text-sm font-medium text-gray-300">Another Job</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-2 flex flex-col justify-between">
+                            <div class="grid grid-cols-4 lg:gap-4 gap-2 mt-auto">
+                                <div class="h-40 flex items-end">
+                                    <div class="w-full h-3/4 rounded-[20px]" style="background: repeating-linear-gradient(45deg, #092660, #092660 5px, #0e4f85 5px, #0e4f85 10px);"></div>
+                                </div>
+                                <div class="h-40 flex items-end">
+                                    <div class="w-full h-2/4 rounded-[20px]" style="background: repeating-linear-gradient(45deg, #262626, #262626 5px, #080808 5px, #080808 10px);"></div>
+                                </div>
+                                <div class="h-40 flex items-end">
+                                    <div class="w-full h-40 rounded-[20px]" style="background: repeating-linear-gradient(45deg, #007AF3, #007AF3 5px, #219bff 5px, #219bff 10px);"></div>
+                                </div>
+                                <div class="h-40 flex items-end">
+                                    <div class="w-full h-1/4 rounded-[20px]" style="background: repeating-linear-gradient(45deg, #a9c9e8, #a9c9e8 5px, #94c0ec 5px, #94c0ec 10px);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             
+                <div class="col-span-1 bg-white p-4 lg:p-6 rounded-[30px] text-black flex flex-col justify-between lg:mt-0 mt-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <h2 class="text-base lg:text-lg font-semibold">Financial Balance</h2>
+                        <button class="w-10 lg:w-12 h-10 lg:h-12 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center" aria-label="Notifications">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" class="w-4 lg:w-5 h-4 lg:h-5">
+                                <g id="SVGRepo_iconCarrier"> 
+                                    <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                    <path d="M12 20.4999V3.66992" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                </g>
+                            </svg>
+                        </button>
+                    </div>                    
+                
+                    <div class="grid grid-cols-2 gap-1 mt-4">
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-[#262626] rounded-full flex items-center justify-center"></div>
+                            <span class="text-sm font-medium text-gray-300">Total</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-[#092660] rounded-full flex items-center justify-center"></div>
+                            <span class="text-sm font-medium text-gray-300">Profit</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-[#007AF3] rounded-full flex items-center justify-center"></div>
+                            <span class="text-sm font-medium text-gray-300">Balance</span>
+                        </div>
+                    </div>
+                
+                    <div class="relative size-40 mx-auto mt-4">
+                        <svg class="size-full rotate-180" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 dark:text-neutral-700" stroke-width="1" stroke-dasharray="50 100" stroke-linecap="round"></circle>
+                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-blue-600 dark:text-blue-500" stroke-width="1.5" stroke-dasharray="37.5 100" stroke-linecap="round"></circle>
+                        </svg>
+                        <div class="absolute top-9 start-1/2 transform -translate-x-1/2 text-center">
+                            <span class="text-3xl font-bold text-blue-600 dark:text-blue-500">75%</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">Additional description or insights go here.</p>
+                </div>
+            </div>
         </main>
-        
-
     </div>
-
+    
 </body>
-
 </html>
