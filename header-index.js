@@ -5,12 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="flex items-center w-full justify-between">
                     <div class="flex items-center">
                         <div class="ml-3">
-                            <h1 class="text-lg font-semibold">R4XN</h1>
+                            <a href="index.html" class="text-lg font-semibold">
+                                R4XN
+                            </a>
                         </div>
                     </div>
                     <nav class="hidden lg:flex items-center space-x-6">
-                        <a href="#home" class="text-md">Home</a>
-                        <a href="#projects" class="text-md">Projects</a>
+                        <a href="index.html" class="text-md">Home</a>
+                        <a href="projects.html" class="text-md">Projects</a>
                         <a href="#discover" class="text-md">Discover</a>
                         <div class="relative">
                             <button id="desktop-resources-btn" class="text-md flex items-center space-x-2 focus:outline-none">
@@ -20,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div id="desktop-resources-menu"
                                 class="absolute right-0 mt-8 w-[750px] bg-[#0A0A0A] text-white rounded-[20px] shadow-lg opacity-0 scale-95 translate-y-2 transition-all duration-300 ease-in-out pointer-events-none p-4 backdrop-blur-md backdrop-filter hidden">
                                 <div class="grid grid-cols-3 w-full">
-                                    <a href="front-end-projects.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <a href="projects.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">Front-End Projects</h3>
                                         <p class="text-xs text-gray-400">Interactive web applications with modern UI/UX design.</p>
                                     </a>
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-white hidden" id="mobile-menu">
                     <nav class="flex flex-col space-y-4 py-4">
                         <a href="#home" class="text-md">Home</a>
-                        <a href="#projects" class="text-md py-2">Projects</a>
+                        <a href="projects.html" class="text-md py-2">Projects</a>
                         <a href="#discover" class="text-md py-2">Discover</a>
                         <div class="relative">
                             <button id="mobile-resources-btn" class="text-md flex items-center space-x-1 py-2">
