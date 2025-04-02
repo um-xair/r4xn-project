@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>UM -R4T4 | Portfolio</title>
+<title>UM - R4T4 | Portfolio</title>
 <link rel="stylesheet" href="styles.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflrae.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
@@ -181,10 +181,14 @@
         </div>
         <div class="footer">
             <p>All Right Reserved</p>
-            <p>R4T4 2024</p>
+            <p>R4T4 <span id="current-year"></span></p>
         </div>
     </div>
 
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    
     <script>
         gsap.from(".clip-top, .clip-bottom", 2,{
             delay: 1,
