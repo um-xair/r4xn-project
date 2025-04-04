@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const headerHTML = `
         <div class="flex justify-center text-white">
-            <header id="header" class="mt-10 bg-[#232323] w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-6 py-4 lg:rounded-full rounded-[30px] backdrop-filter backdrop-blur-sm bg-opacity-10 fixed z-[999] transition-opacity duration-500">
+            <header id="header" class="mt-10 bg-[#1B1B1B] w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-6 py-4 
+                    lg:rounded-full rounded-[30px] fixed z-[999] transition-opacity duration-500
+                    bg-opacity-100 lg:bg-opacity-10 lg:backdrop-blur-md">
                 <div class="flex items-center w-full justify-between">
                     <div class="flex items-center">
                         <div class="ml-3">
