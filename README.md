@@ -4,3 +4,4 @@ tiga
 empat
 lima
 enam
+tujuk
