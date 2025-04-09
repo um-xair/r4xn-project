@@ -40,26 +40,47 @@
 </head>
 <body class="fade-in">
     
-    <header id="header" class="bg-white/20 backdrop-blur-sm text-white w-full px-6 lg:px-20 lg:py-6 py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50">
-        <div class="flex items-center space-x-6">
-            <button id="menu-btn" class="block lg:hidden text-white focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-            <nav id="menu" class="hidden lg:flex space-x-4 text-sm lg:text-base">
-                <a href="#all" class="hover:underline">All</a>
-                <a href="#new" class="hover:underline">New In</a>
-                <a href="#about-us" class="hover:underline">About Us</a>
-            </nav>
+    <header id="header" class="bg-white/20 backdrop-blur-sm text-white w-full fixed top-0 left-0 right-0 z-50 px-6 py-4 lg:px-20 lg:py-6">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-6">
+                <h1 class="customfont text-xl lg:hidden">R4XN</h1>
+                <nav id="menu" class="hidden lg:flex space-x-4 text-sm lg:text-base">
+                    <a href="#all" class="hover:underline">All</a>
+                    <a href="#new" class="hover:underline">New In</a>
+                    <a href="#about-us" class="hover:underline">About Us</a>
+                </nav>
+            </div>
+            <h1 class="customfont hidden lg:block text-xl lg:text-4xl absolute left-1/2 transform -translate-x-1/2">R4XN</h1>
+            <div class="flex items-center space-x-6 text-sm lg:text-base">
+                <button id="menu-btn" class="block lg:hidden text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#login" class="hover:underline">Login</a>
+                    <a href="#cart" class="hover:underline">Cart</a>
+                    <a href="#search" class="hover:underline">Search</a>
+                </div>
+            </div>
         </div>
-        <h1 class="customfont text-xl lg:text-4xl text-center absolute left-1/2 transform -translate-x-1/2">R4XN</h1>
-        <div class="flex items-center space-x-6 text-sm lg:text-base">
+        <nav id="mobile-menu" class="hidden flex flex-col space-y-2 mt-4 text-sm lg:hidden">
+            <a href="#all" class="hover:underline">All</a>
+            <a href="#new" class="hover:underline">New In</a>
+            <a href="#about-us" class="hover:underline">About Us</a>
             <a href="#login" class="hover:underline">Login</a>
             <a href="#cart" class="hover:underline">Cart</a>
             <a href="#search" class="hover:underline">Search</a>
-        </div>
+        </nav>
     </header>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
     <script>
         let lastScrollTop = 0;
@@ -75,29 +96,27 @@
         });
     </script>
     
-    <section id="hero-section" class="customfont relative bg-cover bg-center h-screen w-full flex items-end justify-center text-white text-center transition-all duration-300 ease-in" style="background-image: url('assets/interior-1.jpg');">
+    <section id="hero-section" class="customfont relative bg-cover bg-center min-h-screen w-full flex items-end justify-center text-white text-center transition-all duration-300 ease-in" style="background-image: url('assets/interior-1.jpg');">
         <div id="bg-overlay" class="absolute inset-0 bg-black/10"></div>
-        <div class="relative z-10 px-6 pb-10 w-full max-w-6xl">
-            <p class="text-lg lg:text-2xl uppercase tracking-widest mb-4 text-white/80">New Arrival</p>
-            <h2 class="text-5xl md:text-7xl lg:text-[7rem] leading-tight mb-4">New Designs</h2>
-            <button class="w-full lg:w-1/4 bg-white/10 backdrop-blur-sm border border-white/20 text-white py-4 px-10 rounded-full text-lg lg:text-xl shadow-md hover:bg-white/20 transition duration-300">
-                Shop Now
-            </button>            
+        <div class="relative z-10 px-4 sm:px-6 md:px-10 lg:px-6 pb-10 w-full max-w-6xl">
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest mb-4 text-white/80">New Arrival</p>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] leading-tight mb-4">New Designs</h2>
+            <button class="w-full sm:w-2/3 md:w-1/2 lg:w-1/4 bg-white/10 backdrop-blur-sm border border-white/20 text-white py-3 sm:py-4 px-6 sm:px-10 rounded-full text-base sm:text-lg lg:text-xl shadow-md hover:bg-white/20 transition duration-300">Shop Now</button>
         </div>
     </section>
 
-    <section class="px-6 lg:px-20 py-20 min-h-screen bg-white text-[#0C0C0C]">
-        <div class="flex space-x-8 mb-8">
-            <button class="text-xl">New Design</button>
-            <button class="text-xl">Best Seller</button>
-            <button class="text-xl">Sale</button>
+    <section class="px-4 sm:px-6 lg:px-20 py-16 sm:py-20 min-h-screen bg-white text-[#0C0C0C]">
+        <div class="flex flex-wrap gap-4 sm:gap-8 justify-center sm:justify-start mb-10">
+            <button class="text-base sm:text-xl">New Design</button>
+            <button class="text-base sm:text-xl">Best Seller</button>
+            <button class="text-base sm:text-xl">Sale</button>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="relative group overflow-hidden rounded-[30px] shadow-lg aspect-[4/5]">
                 <img src="https://i.pinimg.com/736x/61/bb/9c/61bb9c191182be3f7ab40db8a7d85bd3.jpg" alt="Minimalist Chair" class="w-full h-full object-cover">
                 <div class="absolute bottom-0 w-full text-white text-center p-4 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
-                    <h3 class="text-lg customfont mb-2">Minimalist Chair</h3>
-                    <button class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light py-2 px-6 rounded-full w-full">
+                    <h3 class="text-base sm:text-lg customfont mb-2">Minimalist Chair</h3>
+                    <button class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light py-2 px-6 rounded-full w-full text-sm sm:text-base">
                         Buy Now
                     </button>
                 </div>
@@ -105,8 +124,8 @@
             <div class="relative group overflow-hidden rounded-[30px] shadow-lg aspect-[4/5]">
                 <img src="https://i.pinimg.com/736x/0e/a4/ae/0ea4aeec5431bd43eefdcb62f482c1ec.jpg" alt="Muji Vase" class="w-full h-full object-cover">
                 <div class="absolute bottom-0 w-full text-white text-center p-4 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
-                    <h3 class="text-lg customfont mb-2">Muji Vase</h3>
-                    <button class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light py-2 px-6 rounded-full w-full">
+                    <h3 class="text-base sm:text-lg customfont mb-2">Muji Vase</h3>
+                    <button class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light py-2 px-6 rounded-full w-full text-sm sm:text-base">
                         Buy Now
                     </button>
                 </div>
@@ -114,8 +133,8 @@
             <div class="relative group overflow-hidden rounded-[30px] shadow-lg aspect-[4/5]">
                 <img src="https://i.pinimg.com/736x/29/64/de/2964de74f7e27df03383fd5edb22cd5f.jpg" alt="House Accessories" class="w-full h-full object-cover">
                 <div class="absolute bottom-0 w-full text-white text-center p-4 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
-                    <h3 class="text-lg customfont mb-2">House Accessories</h3>
-                    <button class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light py-2 px-6 rounded-full w-full">
+                    <h3 class="text-base sm:text-lg customfont mb-2">House Accessories</h3>
+                    <button class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light py-2 px-6 rounded-full w-full text-sm sm:text-base">
                         Buy Now
                     </button>
                 </div>
@@ -125,32 +144,34 @@
 
     <section class="relative bg-cover bg-center min-h-screen w-full" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/atap-main/gallery-full/20f8e309-3b23-4801-b44d-f0c14eecb186/muji-concept-trinity-lemanja.jpg');">
         <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute top-0 left-0 p-20 z-20 text-white">
-            <h1 class="customfont text-[7rem] leading-tight">Living</h1>
+        <div class="absolute top-0 left-0 p-6 sm:p-10 lg:p-20 z-20 text-white">
+            <h1 class="customfont text-[3rem] sm:text-[5rem] lg:text-[7rem] leading-tight">Living</h1>
         </div>
-        <div class="absolute bottom-0 left-0 p-20 z-20 text-white">
-            <button class="bg-white/10 backdrop-blur-md border border-white/20 py-3 px-8 rounded-full font-semibold text-lg hover:bg-white/20 transition">
+        <div class="absolute bottom-0 left-0 p-6 sm:p-10 lg:p-20 z-20 text-white max-w-md">
+            <button class="bg-white/10 backdrop-blur-md border border-white/20 py-3 px-6 sm:px-8 rounded-full font-semibold text-base sm:text-lg hover:bg-white/20 transition">
                 Shop Living
             </button>
-            <p class="mt-3 text-sm text-white/80">Explore a curated collection of stylish, modern living essentials designed for comfort and elegance.</p>
+            <p class="mt-3 text-xs sm:text-sm text-white/80">
+                Explore a curated collection of stylish, modern living essentials designed for comfort and elegance.
+            </p>
         </div>
-        <div class="relative z-10 flex items-center justify-end py-10 px-20">
-            <div class="flex flex-col justify-between space-y-6">
-                <div class="bg-white/10 backdrop-blur border border-white/20 p-5 rounded-[30px] shadow-lg">
+        <div class="relative z-10 flex justify-center lg:justify-end py-10 px-6 sm:px-10 lg:px-20">
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-6">
+                <div class="bg-white/10 backdrop-blur border border-white/20 p-4 sm:p-5 rounded-[30px] shadow-lg w-full max-w-[260px]">
                     <div class="relative">
-                        <img src="https://i.pinimg.com/736x/a5/a7/15/a5a71591b96215e572ba33983003c9e1.jpg" alt="Product Image" class="w-60 h-60 object-cover rounded-[15px]">
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-lg font-semibold text-white">Product Name</h3>
+                        <img src="https://i.pinimg.com/736x/a5/a7/15/a5a71591b96215e572ba33983003c9e1.jpg" alt="Product Image" class="w-full h-60 object-cover rounded-[15px]">
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 w-full">
+                            <h3 class="text-base sm:text-lg font-semibold text-white">Product Name</h3>
                             <p class="text-sm text-white">$199.99</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white/10 backdrop-blur border border-white/20 p-5 rounded-[30px] shadow-lg">
+                <div class="bg-white/10 backdrop-blur border border-white/20 p-4 sm:p-5 rounded-[30px] shadow-lg w-full max-w-[260px]">
                     <div class="relative">
-                        <img src="https://i.pinimg.com/736x/e8/9c/2b/e89c2bcd51554a3d4e9b7ce4db5f225c.jpg" alt="Product Image" class="w-60 h-60 object-cover rounded-[15px]">
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-lg font-semibold text-white">Product Name</h3>
-                            <p class="text-sm text-white">$199.99</p>
+                        <img src="https://i.pinimg.com/736x/e8/9c/2b/e89c2bcd51554a3d4e9b7ce4db5f225c.jpg" alt="Product Image" class="w-full h-60 object-cover rounded-[15px]">
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 w-full">
+                        <h3 class="text-base sm:text-lg font-semibold text-white">Product Name</h3>
+                        <p class="text-sm text-white">$199.99</p>
                         </div>
                     </div>
                 </div>
@@ -160,31 +181,33 @@
 
     <section class="relative bg-cover bg-center min-h-screen w-full" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/atap-main/gallery-full/04022d2f-ed85-45ce-a960-15f4ec081148/muji-concept-trinity-lemanja.jpg');">
         <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute top-0 right-0 p-20 z-20 text-white">
-            <h1 class="customfont text-[7rem] leading-tight">Kitchen</h1>
+        <div class="absolute top-0 right-0 p-6 sm:p-10 lg:p-20 z-20 text-white text-right">
+            <h1 class="customfont text-[3rem] sm:text-[5rem] lg:text-[7rem] leading-tight">Kitchen</h1>
         </div>
-        <div class="absolute bottom-0 right-0 p-20 z-20 text-white flex flex-col items-end">
-            <button class="bg-white/10 backdrop-blur-md border border-white/20 py-3 px-8 rounded-full font-semibold text-lg hover:bg-white/20 transition">
+        <div class="absolute bottom-0 right-0 p-6 sm:p-10 lg:p-20 z-20 text-white flex flex-col items-end max-w-md">
+            <button class="bg-white/10 backdrop-blur-md border border-white/20 py-2 px-6 sm:py-3 sm:px-8 rounded-full font-semibold text-base sm:text-lg hover:bg-white/20 transition">
                 Shop Kitchen
             </button>
-            <p class="mt-3 text-sm text-white/80 text-right">Explore a curated collection of stylish, modern living essentials designed for comfort and elegance.</p>
-        </div>        
-        <div class="relative z-10 flex items-center justify-start py-10 px-20">
-            <div class="flex flex-col justify-between space-y-6">
-                <div class="bg-white/10 backdrop-blur border border-white/20 p-5 rounded-[30px] shadow-lg">
+            <p class="mt-3 text-xs sm:text-sm text-white/80 text-right">
+                Explore a curated collection of stylish, modern living essentials designed for comfort and elegance.
+            </p>
+        </div>
+        <div class="relative z-10 flex justify-center lg:justify-start py-10 px-6 sm:px-10 lg:px-20">
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-6">
+                <div class="bg-white/10 backdrop-blur border border-white/20 p-4 sm:p-5 rounded-[30px] shadow-lg w-full max-w-[260px]">
                     <div class="relative">
-                        <img src="https://i.pinimg.com/736x/4e/bb/0e/4ebb0eee109099258a5ed5b238612a57.jpg" alt="Product Image" class="w-60 h-60 object-cover rounded-[15px]">
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-lg font-semibold text-white">Product Name</h3>
+                        <img src="https://i.pinimg.com/736x/4e/bb/0e/4ebb0eee109099258a5ed5b238612a57.jpg" alt="Product Image" class="w-full h-60 object-cover rounded-[15px]">
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 w-full">
+                            <h3 class="text-base sm:text-lg font-semibold text-white">Product Name</h3>
                             <p class="text-sm text-white">$199.99</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white/10 backdrop-blur border border-white/20 p-5 rounded-[30px] shadow-lg">
+                <div class="bg-white/10 backdrop-blur border border-white/20 p-4 sm:p-5 rounded-[30px] shadow-lg w-full max-w-[260px]">
                     <div class="relative">
-                        <img src="https://i.pinimg.com/736x/a6/19/9e/a6199e34730f6309f561ad31dc2b3fe5.jpg" alt="Product Image" class="w-60 h-60 object-cover rounded-[15px]">
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-lg font-semibold text-white">Product Name</h3>
+                        <img src="https://i.pinimg.com/736x/a6/19/9e/a6199e34730f6309f561ad31dc2b3fe5.jpg" alt="Product Image" class="w-full h-60 object-cover rounded-[15px]">
+                        <div class="absolute bottom-0 left-0 p-3 sm:p-4 w-full">
+                            <h3 class="text-base sm:text-lg font-semibold text-white">Product Name</h3>
                             <p class="text-sm text-white">$199.99</p>
                         </div>
                     </div>
@@ -192,22 +215,22 @@
             </div>
         </div>
     </section>
-    
+
     <section class="px-6 lg:px-20 py-20 min-h-screen bg-white text-[#0C0C0C] flex justify-center items-center">
         <div class="text-center max-w-5xl mx-auto px-6">
-            <h2 class="text-6xl customfont">Inspiration</h2>
-            <p class="mt-4 text-sm leading-relaxed text-gray-400">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl customfont">Inspiration</h2>
+            <p class="mt-4 text-sm sm:text-base md:text-lg leading-relaxed text-gray-400">
                 Discover a world of creative ideas and stylish designs. Inspiration is key to transforming your living spaces into something truly unique. Whether you're looking for minimalistic elegance, bold statements, or cozy charm, our collection is here to inspire your next project. Let your imagination take flight and bring your dreams to life.
             </p>
             <div class="mt-10">
-                <img src="https://s3-ap-southeast-1.amazonaws.com/atap-main/gallery-full/20f8e309-3b23-4801-b44d-f0c14eecb186/muji-concept-trinity-lemanja.jpg" alt="Inspiration Image" class="w-full mx-auto rounded-full shadow-lg object-cover">
+                <img src="https://s3-ap-southeast-1.amazonaws.com/atap-main/gallery-full/20f8e309-3b23-4801-b44d-f0c14eecb186/muji-concept-trinity-lemanja.jpg" alt="Inspiration Image" class="w-full max-w-full mx-auto rounded-full shadow-lg object-cover">
             </div>
         </div>
     </section>
 
     <section class="px-6 lg:px-20 py-20 min-h-screen bg-white text-[#0C0C0C] flex justify-center items-center">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="flex flex-col justify-center items-start text-left">
                     <h3 class="text-2xl font-semibold mb-4">About</h3>
                     <img src="https://s3-ap-southeast-1.amazonaws.com/atap-main/gallery-full/ec8dbebf-23bd-4c4a-aff2-64772916c49d/muji-concept-trinity-lemanja.jpg" alt="Image 1" class="w-full h-60 object-cover mb-4 rounded-[20px] shadow-md">
@@ -233,93 +256,68 @@
         </div>
     </section>
 
-    <footer class="bg-gradient-to-t from-[#e4d3a6] to-transparent text-[#0C0C0C] py-12 px-6 lg:px-20">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Left Column -->
+    <footer class="bg-gradient-to-t from-[#e4d3a6] to-transparent text-[#0C0C0C] px-6 lg:px-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div class="flex flex-col space-y-6">
                 <div>
-                    <p class="text-sm">Subscribe for exclusive offers and updates</p>
-                    <button class="bg-white text-[#2e241e] py-2 px-6 rounded-full text-sm font-medium mt-2">
+                    <p class="text-md">Subscribe for the latest updates, special offers, and design inspiration.</p>
+                    <button class="bg-[#0C0C0C] text-white py-4 px-16 rounded-full text-sm font-medium mt-2 w-full sm:w-auto">
                         Subscribe
                     </button>
                 </div>
-                
                 <div>
-                    <p class="text-sm mt-6">Follow Us</p>
-                    <div class="flex space-x-6 mt-2">
-                        <a href="#" class="text-white hover:text-[#d3b59d]">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-white hover:text-[#d3b59d]">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-white hover:text-[#d3b59d]">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-white hover:text-[#d3b59d]">
-                            <i class="fab fa-youtube"></i>
-                        </a>
+                    <p class="text-md mt-6">Follow Us</p>
+                    <div class="flex flex-wrap gap-4 mt-2">
+                        <a href="#"><i class="text-2xl fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="text-2xl fab fa-twitter"></i></a>
+                        <a href="#"><i class="text-2xl fab fa-instagram"></i></a>
+                        <a href="#"><i class="text-2xl fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
-    
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div>
-                    <h4 class="text-lg font-semibold mb-2">Customer Service</h4>
+                    <h4 class="text-lg font-semibold mb-2">Menu</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#d3b59d]">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">FAQ</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Returns</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Shipping Info</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping Info</a></li>
                     </ul>
                 </div>
-    
                 <div>
                     <h4 class="text-lg font-semibold mb-2">About</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#d3b59d]">Our Story</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Careers</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Terms of Service</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
-    
                 <div>
                     <h4 class="text-lg font-semibold mb-2">Shop</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#d3b59d]">New Arrivals</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Sale</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Living</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Kitchen</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Sale</a></li>
+                        <li><a href="#">Living</a></li>
+                        <li><a href="#">Kitchen</a></li>
                     </ul>
                 </div>
-    
                 <div>
                     <h4 class="text-lg font-semibold mb-2">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#d3b59d]">Store Locations</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Gift Cards</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Track Orders</a></li>
-                        <li><a href="#" class="hover:text-[#d3b59d]">Blog</a></li>
+                        <li><a href="#">Store Locations</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#">Track Orders</a></li>
+                        <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    
-        <div class="text-center mt-12">
-            <h1 class="text-4xl font-semibold">R4XN</h1>
+        <div class="text-center mt-20 px-4">
+            <h1 class="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] text-white customfont leading-none break-words">R4XN</h1>
         </div>
     </footer>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 
 </body>
 </html>
