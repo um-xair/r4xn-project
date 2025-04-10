@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <h3 class="text-md font-semibold">IoT Solutions</h3>
                                         <p class="text-xs text-gray-400">Smart devices integration for real-time monitoring.</p>
                                     </a>
-                                    <a href="#" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
+                                    <a href="system.html" class="block p-3 hover:bg-neutral-900 rounded-md transition-all duration-300">
                                         <h3 class="text-md font-semibold">System Design</h3>
                                         <p class="text-xs text-gray-400">Scalable architectures for efficient software and hardware systems.</p>
                                     </a>
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div id="mobile-resources-menu" class="hidden flex flex-col space-y-2 bg-[#0A0A0A] text-white p-2 rounded-md">
                                 <a href="projects.html" class="text-sm py-2 block hover:bg-neutral-900 p-4">Front-End Projects</a>
                                 <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">IoT Solutions</a>
-                                <a href="#" class="text-sm py-2 block hover:bg-neutral-900 p-4">System Design</a>
+                                <a href="system.html" class="text-sm py-2 block hover:bg-neutral-900 p-4">System Design</a>
                             </div>
                         </div>
                         <a href="#about" class="text-md py-2">About</a>
