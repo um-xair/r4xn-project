@@ -3,235 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task & Sales Progress Tracker</title>
+  <title>Sales Progress Tracker (MYR)</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-6 font-sans">
-  <div class="max-w-6xl mx-auto space-y-6">
-    <h1 class="text-2xl font-bold mb-4">📋 Task & Sales Progress Tracker</h1>
+  <div class="max-w-4xl mx-auto space-y-6">
+    <h1 class="text-2xl font-bold mb-4">💰 Sales Progress Tracker (MYR)</h1>
 
-    <div class="grid grid-cols-2 gap-6">
-      <!-- Task Tracker Section -->
-      <div class="bg-white rounded-xl p-4 shadow">
-        <h2 class="text-lg font-semibold mb-2">📌 Task Tracker</h2>
-        <div id="taskList" class="space-y-4"></div>
-        <div class="w-full bg-gray-200 h-4 rounded mt-4">
-          <div id="taskProgressBar" class="bg-blue-500 h-4 rounded transition-all duration-300" style="width: 0%"></div>
-        </div>
-        <p id="taskProgressText" class="text-sm mt-1 text-gray-600">0% progress</p>
-      </div>
-
-      <!-- Sales Tracker Section -->
-      <div class="bg-white rounded-xl p-4 shadow">
-        <h2 class="text-lg font-semibold mb-2">💰 Sales Tracker</h2>
-        <div id="salesList" class="space-y-4"></div>
-        <div class="w-full bg-gray-200 h-4 rounded mt-4">
-          <div id="salesProgressBar" class="bg-green-500 h-4 rounded transition-all duration-300" style="width: 0%"></div>
-        </div>
-        <p id="salesProgressText" class="text-sm mt-1 text-gray-600">0% progress</p>
+    <!-- Add New Sale Form -->
+    <div class="bg-white rounded-xl p-4 shadow space-y-4">
+      <h2 class="text-lg font-semibold">➕ Add New Sale</h2>
+      <div class="flex flex-wrap gap-4 items-center">
+        <input id="new-sale-name" type="text" placeholder="Product Name/sales person" class="p-2 border border-gray-300 rounded w-4/5" />
+        <button onclick="addSale()" class="px-4 py-2 bg-green-600 text-white rounded">Add</button>
       </div>
     </div>
 
-    <!-- Priority Task Tracker Section -->
-    <div class="bg-white rounded-xl p-4 shadow mt-6">
-      <h2 class="text-lg font-semibold mb-2">📌 Priority Task Tracker (A1, B1, C1)</h2>
-      <div id="priorityTaskList" class="space-y-4"></div>
-      <div class="w-full bg-gray-200 h-4 rounded mt-4">
-        <div id="priorityProgressBar" class="bg-red-500 h-4 rounded transition-all duration-300" style="width: 0%"></div>
-      </div>
-      <p id="priorityProgressText" class="text-sm mt-1 text-gray-600">0% progress</p>
-    </div>
-
+    <!-- Sales List -->
+    <div id="salesList" class="space-y-6"></div>
   </div>
 
   <script>
-    // Task Tracker Data (for A1, A2, etc.)
-    const tasks = [
-      { name: 'A1', type: 'Content', total: 10, done: 3 },
-      { name: 'A2', type: 'Video', total: 5, done: 1 }
-    ];
+    let sales = [];
 
-    // Sales Tracker Data
-    const sales = [
-      { name: 'Product A', target: 50, sold: 15 },
-      { name: 'Product B', target: 30, sold: 10 }
-    ];
-
-    // Priority Tasks (A1, B1, C1)
-    const priorityTasks = [
-      { name: 'A1', type: 'Content', total: 8, done: 3, priority: 'A1' },
-      { name: 'B1', type: 'Design', total: 6, done: 2, priority: 'B1' },
-      { name: 'C1', type: 'Bug Fix', total: 12, done: 4, priority: 'C1' }
-    ];
-
-    const taskList = document.getElementById('taskList');
-    const salesList = document.getElementById('salesList');
-    const priorityTaskList = document.getElementById('priorityTaskList');
-    const taskProgressBar = document.getElementById('taskProgressBar');
-    const salesProgressBar = document.getElementById('salesProgressBar');
-    const priorityProgressBar = document.getElementById('priorityProgressBar');
-    const taskProgressText = document.getElementById('taskProgressText');
-    const salesProgressText = document.getElementById('salesProgressText');
-    const priorityProgressText = document.getElementById('priorityProgressText');
-
-    // Update Task Progress (Normal Tasks)
-    function updateTaskProgress(taskName) {
-      const task = tasks.find(t => t.name === taskName);
-
-      const inputDone = document.getElementById(`input-${taskName}-done`);
-      const inputTotal = document.getElementById(`input-${taskName}-total`);
-
-      const newDone = parseInt(inputDone.value) || 0;
-      const newTotal = parseInt(inputTotal.value) || task.total;
-      task.done = newDone;
-      task.total = newTotal;
-
-      const progress = task.done / task.total;
-      const percent = (progress * 100).toFixed(2);
-
-      document.getElementById(`progress-${taskName}`).style.width = `${percent}%`;
-      document.getElementById(`percent-${taskName}`).textContent = `${percent}% done`;
-
-      // Update Task Text
-      document.getElementById(`task-text-${task.name}`).textContent = `Total: ${task.total} | Done: ${task.done}`;
-
-      // Recalculate Task Progress
-      const totalTaskProgress = tasks.reduce((acc, t) => acc + (t.done / t.total), 0) / tasks.length;
-      const totalTaskPercent = (totalTaskProgress * 100).toFixed(2);
-
-      taskProgressBar.style.width = `${totalTaskPercent}%`;
-      taskProgressText.textContent = `${totalTaskPercent}% progress`;
+    function formatMYR(value) {
+      return value.toLocaleString('en-MY', {
+        style: 'currency',
+        currency: 'MYR',
+        minimumFractionDigits: 2
+      });
     }
 
-    // Update Sales Progress
-    function updateSalesProgress(salesName) {
-      const sale = sales.find(s => s.name === salesName);
+    function addSale() {
+      const nameInput = document.getElementById('new-sale-name');
+      const name = nameInput.value.trim();
+      if (!name) return;
 
-      const inputSold = document.getElementById(`input-${salesName}-sold`);
-      const inputTarget = document.getElementById(`input-${salesName}-target`);
-
-      const newSold = parseInt(inputSold.value) || 0;
-      const newTarget = parseInt(inputTarget.value) || sale.target;
-      sale.sold = newSold;
-      sale.target = newTarget;
-
-      const progress = sale.sold / sale.target;
-      const percent = (progress * 100).toFixed(2);
-
-      document.getElementById(`sales-progress-${salesName}`).style.width = `${percent}%`;
-      document.getElementById(`sales-percent-${salesName}`).textContent = `${percent}% sold`;
-
-      // Recalculate Sales Progress
-      const totalSalesProgress = sales.reduce((acc, s) => acc + (s.sold / s.target), 0) / sales.length;
-      const totalSalesPercent = (totalSalesProgress * 100).toFixed(2);
-
-      salesProgressBar.style.width = `${totalSalesPercent}%`;
-      salesProgressText.textContent = `${totalSalesPercent}% progress`;
+      const id = Date.now(); // simple unique ID
+      sales.push({ id, name, sold: 0, target: 0 });
+      nameInput.value = '';
+      renderSales();
     }
 
-    // Update Priority Task Progress (A1, B1, C1)
-    function updatePriorityTaskProgress(taskName) {
-      const task = priorityTasks.find(t => t.name === taskName);
-
-      const inputDone = document.getElementById(`input-${taskName}-done`);
-      const inputTotal = document.getElementById(`input-${taskName}-total`);
-
-      const newDone = parseInt(inputDone.value) || 0;
-      const newTotal = parseInt(inputTotal.value) || task.total;
-      task.done = newDone;
-      task.total = newTotal;
-
-      const progress = task.done / task.total;
-      const percent = (progress * 100).toFixed(2);
-
-      document.getElementById(`priority-progress-${taskName}`).style.width = `${percent}%`;
-      document.getElementById(`priority-percent-${taskName}`).textContent = `${percent}% done`;
-
-      // Update Priority Task Text
-      document.getElementById(`priority-task-text-${task.name}`).textContent = `Total: ${task.total} | Done: ${task.done}`;
-
-      // Recalculate Priority Task Progress
-      const totalPriorityProgress = priorityTasks.reduce((acc, t) => acc + (t.done / t.total), 0) / priorityTasks.length;
-      const totalPriorityPercent = (totalPriorityProgress * 100).toFixed(2);
-
-      priorityProgressBar.style.width = `${totalPriorityPercent}%`;
-      priorityProgressText.textContent = `${totalPriorityPercent}% progress`;
+    function removeSale(id) {
+      sales = sales.filter(sale => sale.id !== id);
+      renderSales();
     }
 
-    // Render Task UI (for A1, A2, etc.)
-    tasks.forEach(task => {
-      const progress = task.done / task.total;
-      const percent = (progress * 100).toFixed(2);
+    function updateProgress(id) {
+      const soldInput = document.getElementById(`sold-${id}`);
+      const targetInput = document.getElementById(`target-${id}`);
+      const bar = document.getElementById(`bar-${id}`);
+      const percentText = document.getElementById(`percent-${id}`);
+      const soldLabel = document.getElementById(`sold-label-${id}`);
+      const targetLabel = document.getElementById(`target-label-${id}`);
 
-      const card = document.createElement('div');
-      card.className = 'bg-white p-4 rounded-xl shadow';
-      card.innerHTML = `
-        <h2 class="text-lg font-semibold">📌 ${task.name} – ${task.type}</h2>
-        <p class="text-sm text-gray-600" id="task-text-${task.name}">Total: ${task.total} | Done: ${task.done}</p>
-        <div class="w-full bg-gray-200 h-4 rounded mt-2">
-          <div id="progress-${task.name}" class="bg-green-500 h-4 rounded transition-all duration-300" style="width: ${percent}%"></div>
-        </div>
-        <p class="text-sm mt-1 text-gray-600" id="percent-${task.name}">${percent}% done</p>
-        <div class="mt-2 flex items-center">
-          <label for="input-${task.name}-done" class="mr-2 text-sm">Done:</label>
-          <input id="input-${task.name}-done" type="number" class="p-2 border border-gray-300 rounded w-20" value="${task.done}" min="0" max="${task.total}">
-          <label for="input-${task.name}-total" class="ml-4 mr-2 text-sm">Total:</label>
-          <input id="input-${task.name}-total" type="number" class="p-2 border border-gray-300 rounded w-20" value="${task.total}" min="0">
-          <button onclick="updateTaskProgress('${task.name}')" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded">Update</button>
-        </div>
-      `;
-      taskList.appendChild(card);
-    });
+      const sold = parseFloat(soldInput.value) || 0;
+      const target = parseFloat(targetInput.value) || 1;
 
-    // Render Sales UI (Only One)
-    const sale = sales[0]; // Only one sales tracker
-    const progress = sale.sold / sale.target;
-    const percent = (progress * 100).toFixed(2);
+      const percent = Math.min((sold / target) * 100, 100).toFixed(2);
+      bar.style.width = `${percent}%`;
+      percentText.textContent = `${percent}% progress`;
+      soldLabel.textContent = formatMYR(sold).replace('MYR', '');
+      targetLabel.textContent = formatMYR(target).replace('MYR', '');
 
-    const salesCard = document.createElement('div');
-    salesCard.className = 'bg-white p-4 rounded-xl shadow';
-    salesCard.innerHTML = `
-      <h2 class="text-lg font-semibold">💰 ${sale.name}</h2>
-      <p class="text-sm text-gray-600" id="sales-text-${sale.name}">Target: ${sale.target} | Sold: ${sale.sold}</p>
-      <div class="w-full bg-gray-200 h-4 rounded mt-2">
-        <div id="sales-progress-${sale.name}" class="bg-green-500 h-4 rounded transition-all duration-300" style="width: ${percent}%"></div>
-      </div>
-      <p class="text-sm mt-1 text-gray-600" id="sales-percent-${sale.name}">${percent}% sold</p>
-      <div class="mt-2 flex items-center">
-        <label for="input-${sale.name}-sold" class="mr-2 text-sm">Sold:</label>
-        <input id="input-${sale.name}-sold" type="number" class="p-2 border border-gray-300 rounded w-20" value="${sale.sold}" min="0" max="${sale.target}">
-        <label for="input-${sale.name}-target" class="ml-4 mr-2 text-sm">Target:</label>
-        <input id="input-${sale.name}-target" type="number" class="p-2 border border-gray-300 rounded w-20" value="${sale.target}" min="0">
-        <button onclick="updateSalesProgress('${sale.name}')" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded">Update</button>
-      </div>
-    `;
-    salesList.appendChild(salesCard);
+      const index = sales.findIndex(s => s.id === id);
+      if (index !== -1) {
+        sales[index].sold = sold;
+        sales[index].target = target;
+      }
+    }
 
-    // Render Priority Task UI
-    priorityTasks.forEach(task => {
-      const progress = task.done / task.total;
-      const percent = (progress * 100).toFixed(2);
+    function renderSales() {
+      const container = document.getElementById('salesList');
+      container.innerHTML = '';
 
-      const card = document.createElement('div');
-      card.className = 'bg-white p-4 rounded-xl shadow';
-      card.innerHTML = `
-        <h2 class="text-lg font-semibold">📌 ${task.name} – ${task.type} (${task.priority})</h2>
-        <p class="text-sm text-gray-600" id="priority-task-text-${task.name}">Total: ${task.total} | Done: ${task.done}</p>
-        <div class="w-full bg-gray-200 h-4 rounded mt-2">
-          <div id="priority-progress-${task.name}" class="bg-red-500 h-4 rounded transition-all duration-300" style="width: ${percent}%"></div>
-        </div>
-        <p class="text-sm mt-1 text-gray-600" id="priority-percent-${task.name}">${percent}% done</p>
-        <div class="mt-2 flex items-center">
-          <label for="input-${task.name}-done" class="mr-2 text-sm">Done:</label>
-          <input id="input-${task.name}-done" type="number" class="p-2 border border-gray-300 rounded w-20" value="${task.done}" min="0" max="${task.total}">
-          <label for="input-${task.name}-total" class="ml-4 mr-2 text-sm">Total:</label>
-          <input id="input-${task.name}-total" type="number" class="p-2 border border-gray-300 rounded w-20" value="${task.total}" min="0">
-          <button onclick="updatePriorityTaskProgress('${task.name}')" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded">Update</button>
-        </div>
-      `;
-      priorityTaskList.appendChild(card);
-    });
-    
+      sales.forEach(sale => {
+        const percent = sale.target > 0 ? ((sale.sold / sale.target) * 100).toFixed(2) : 0;
+
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl p-4 shadow';
+
+        card.innerHTML = `
+          <div class="flex justify-between items-center mb-2">
+            <h2 class="text-lg font-semibold">${sale.name}</h2>
+            <button onclick="removeSale(${sale.id})" class="text-red-500 hover:underline text-sm">Remove</button>
+          </div>
+          <p class="text-sm text-gray-600 mb-1">
+            Target: MYR <span id="target-label-${sale.id}">${formatMYR(sale.target).replace('MYR', '')}</span> | 
+            Sold: MYR <span id="sold-label-${sale.id}">${formatMYR(sale.sold).replace('MYR', '')}</span>
+          </p>
+          <div class="w-full bg-gray-200 h-4 rounded">
+            <div id="bar-${sale.id}" class="bg-green-500 h-4 rounded transition-all duration-300" style="width: ${percent}%"></div>
+          </div>
+          <p id="percent-${sale.id}" class="text-sm mt-1 text-gray-600">${percent}% progress</p>
+
+          <div class="mt-4 flex flex-wrap gap-4 items-center">
+            <label class="text-sm">Sold (MYR):</label>
+            <input id="sold-${sale.id}" type="number" value="${sale.sold}" class="p-2 border border-gray-300 rounded w-24">
+            <label class="text-sm">Target (MYR):</label>
+            <input id="target-${sale.id}" type="number" value="${sale.target}" class="p-2 border border-gray-300 rounded w-24">
+            <button onclick="updateProgress(${sale.id})" class="px-4 py-2 bg-blue-500 text-white rounded">Update</button>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
   </script>
 </body>
 </html>

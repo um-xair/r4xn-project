@@ -1,149 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Priority Task Progress Tracker</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Priority Task Progress Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-6 font-sans">
-  <div class="max-w-4xl mx-auto space-y-6">
-    <h1 class="text-2xl font-bold mb-4">📌 Priority Task Progress Tracker</h1>
-
-    <!-- Add New Task -->
-    <div class="bg-white p-4 rounded-xl shadow">
-      <h2 class="text-lg font-semibold mb-2">➕ Add New Task</h2>
-      <div class="flex flex-wrap items-center gap-4">
-        <input id="newTaskType" type="text" placeholder="Task Type" class="p-2 border rounded w-40" />
-        <div class="flex items-center gap-4">
-          <button onclick="selectPriority('A')" class="px-4 py-2 bg-red-500 text-white rounded">High</button>
-          <button onclick="selectPriority('B')" class="px-4 py-2 bg-blue-500 text-white rounded">Medium</button>
-          <button onclick="selectPriority('C')" class="px-4 py-2 bg-green-500 text-white rounded">Low</button>
+    <div class="max-w-4xl mx-auto space-y-6">
+        <h1 class="text-2xl font-bold mb-4">📌 Priority Task Progress Tracker</h1>
+        
+        <!-- Add New Task -->
+        <div class="bg-white p-4 rounded-xl shadow">
+            <h2 class="text-lg font-semibold mb-2">➕ Add New Task</h2>
+            <div class="flex flex-wrap items-center gap-4">
+                <input id="newTaskType" type="text" placeholder="Task Type" class="p-2 border rounded w-40" />
+                <div class="flex items-center gap-4">
+                    <button onclick="selectPriority('A')" class="px-4 py-2 bg-red-500 text-white rounded">High</button>
+                    <button onclick="selectPriority('B')" class="px-4 py-2 bg-blue-500 text-white rounded">Medium</button>
+                    <button onclick="selectPriority('C')" class="px-4 py-2 bg-green-500 text-white rounded">Low</button>
+                </div>
+                <button onclick="addNewTask()" class="bg-green-500 text-white px-4 py-2 rounded">Add Task</button>
+            </div>
         </div>
-        <button onclick="addNewTask()" class="bg-green-500 text-white px-4 py-2 rounded">Add Task</button>
-      </div>
+      
+        <!-- Priority Task Tracker -->
+        <div class="bg-white rounded-xl p-4 shadow">
+            <h2 class="text-lg font-semibold mb-2">🟢 Priority Task Tracker</h2>
+            <div id="priorityTaskList" class="space-y-4"></div>
+                <div class="w-full bg-gray-200 h-4 rounded mt-4">
+                    <div id="priorityProgressBar" class="bg-red-500 h-4 rounded transition-all duration-300" style="width: 0%"></div>
+                </div>
+            <p id="priorityProgressText" class="text-sm mt-1 text-gray-600">0% progress (weighted)</p>
+        </div>
     </div>
 
-    <!-- Priority Task Tracker -->
-    <div class="bg-white rounded-xl p-4 shadow">
-      <h2 class="text-lg font-semibold mb-2">🟢 Priority Task Tracker</h2>
-      <div id="priorityTaskList" class="space-y-4"></div>
-      <div class="w-full bg-gray-200 h-4 rounded mt-4">
-        <div id="priorityProgressBar" class="bg-red-500 h-4 rounded transition-all duration-300" style="width: 0%"></div>
-      </div>
-      <p id="priorityProgressText" class="text-sm mt-1 text-gray-600">0% progress (weighted)</p>
-    </div>
-  </div>
+    <script>
+        const priorityTasks = [];
+        const taskCounter = { A: 1, B: 1, C: 1 };
+        const priorityWeights = { A: 3, B: 2, C: 1 };
 
-  <script>
-    const priorityTasks = [];
-    const taskCounter = { A: 1, B: 1, C: 1 };
-    const priorityWeights = { A: 3, B: 2, C: 1 };
+        const priorityTaskList = document.getElementById('priorityTaskList');
+        const priorityProgressBar = document.getElementById('priorityProgressBar');
+        const priorityProgressText = document.getElementById('priorityProgressText');
 
-    const priorityTaskList = document.getElementById('priorityTaskList');
-    const priorityProgressBar = document.getElementById('priorityProgressBar');
-    const priorityProgressText = document.getElementById('priorityProgressText');
+        let selectedPriority = null;
 
-    let selectedPriority = null;
+        function selectPriority(priority) {
+            selectedPriority = priority;
+            document.querySelectorAll('button').forEach(button => button.classList.remove('bg-black'));
+            document.querySelector(`button[onclick="selectPriority('${priority}')"]`).classList.add('bg-black');
+        }
 
-    function selectPriority(priority) {
-      selectedPriority = priority;
-      document.querySelectorAll('button').forEach(button => button.classList.remove('bg-yellow-500'));
-      document.querySelector(`button[onclick="selectPriority('${priority}')"]`).classList.add('bg-yellow-500');
-    }
+        function updatePriorityTaskProgress(taskName) {
+            const task = priorityTasks.find(t => t.name === taskName);
+            const inputDone = document.getElementById(`input-${taskName}-done`);
+            const inputTotal = document.getElementById(`input-${taskName}-total`);
 
-    function updatePriorityTaskProgress(taskName) {
-      const task = priorityTasks.find(t => t.name === taskName);
-      const inputDone = document.getElementById(`input-${taskName}-done`);
-      const inputTotal = document.getElementById(`input-${taskName}-total`);
+            task.done = parseInt(inputDone.value) || 0;
+            task.total = parseInt(inputTotal.value) || 0;
 
-      task.done = parseInt(inputDone.value) || 0;
-      task.total = parseInt(inputTotal.value) || 0;
+            const percent = task.total === 0 ? 0 : ((task.done / task.total) * 100).toFixed(2);
+            document.getElementById(`priority-progress-${task.name}`).style.height = `${percent}%`;
+            document.getElementById(`priority-percent-${task.name}`).textContent = `${percent}% done`;
+            document.getElementById(`priority-task-text-${task.name}`).textContent = `Total: ${task.total} | Done: ${task.done}`;
 
-      const percent = task.total === 0 ? 0 : ((task.done / task.total) * 100).toFixed(2);
-      document.getElementById(`priority-progress-${task.name}`).style.height = `${percent}%`;
-      document.getElementById(`priority-percent-${task.name}`).textContent = `${percent}% done`;
-      document.getElementById(`priority-task-text-${task.name}`).textContent = `Total: ${task.total} | Done: ${task.done}`;
+            updateOverallProgress();
+        }
 
-      updateOverallProgress();
-    }
+        function updateOverallProgress() {
+            let totalPoints = 0;
+            let earnedPoints = 0;
 
-    function updateOverallProgress() {
-      let totalPoints = 0;
-      let earnedPoints = 0;
+            priorityTasks.forEach(t => {
+              const weight = priorityWeights[t.priority] || 1;
+              totalPoints += t.total * weight;
+              earnedPoints += t.done * weight;
+            });
 
-      priorityTasks.forEach(t => {
-        const weight = priorityWeights[t.priority] || 1;
-        totalPoints += t.total * weight;
-        earnedPoints += t.done * weight;
-      });
+            const weightedPercent = totalPoints === 0 ? 0 : ((earnedPoints / totalPoints) * 100).toFixed(2);
+            priorityProgressBar.style.width = `${weightedPercent}%`;
+            priorityProgressText.textContent = `${weightedPercent}% progress (weighted)`;
+        }
 
-      const weightedPercent = totalPoints === 0 ? 0 : ((earnedPoints / totalPoints) * 100).toFixed(2);
-      priorityProgressBar.style.width = `${weightedPercent}%`;
-      priorityProgressText.textContent = `${weightedPercent}% progress (weighted)`;
-    }
+        function removeTask(taskName) {
+            const index = priorityTasks.findIndex(t => t.name === taskName);
+            if (index !== -1) {
+                priorityTasks.splice(index, 1);
+                document.getElementById(`card-${taskName}`)?.remove();
+                updateOverallProgress();
+            }
+        }
 
-    function removeTask(taskName) {
-      const index = priorityTasks.findIndex(t => t.name === taskName);
-      if (index !== -1) {
-        priorityTasks.splice(index, 1);
-        document.getElementById(`card-${taskName}`)?.remove();
-        updateOverallProgress();
-      }
-    }
+        function renderTaskCard(task) {
+            const percent = (task.total === 0) ? 0 : ((task.done / task.total) * 100).toFixed(2);
+            const card = document.createElement('div');
+            card.id = `card-${task.name}`;
+            card.className = 'bg-white p-4 rounded-xl shadow flex gap-4 items-start';
 
-    function renderTaskCard(task) {
-      const percent = (task.total === 0) ? 0 : ((task.done / task.total) * 100).toFixed(2);
-      const card = document.createElement('div');
-      card.id = `card-${task.name}`;
-      card.className = 'bg-white p-4 rounded-xl shadow flex gap-4 items-start';
+            card.innerHTML = `
+                <div class="flex flex-col justify-end items-center h-32 w-4 bg-gray-200 rounded">
+                    <div id="priority-progress-${task.name}" class="bg-red-500 w-full rounded transition-all duration-300" style="height: ${percent}%"></div>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-lg font-semibold">📌 ${task.name} – ${task.type}</h2>
+                    <p class="text-sm text-gray-600" id="priority-task-text-${task.name}">Total: ${task.total} | Done: ${task.done}</p>
+                    <p class="text-sm mt-1 text-gray-600" id="priority-percent-${task.name}">${percent}% done</p>
+                    <div class="mt-2 flex items-center flex-wrap gap-2">
+                        <label class="text-sm">Done:</label>
+                        <input id="input-${task.name}-done" type="number" class="p-2 border rounded w-20" value="${task.done}" min="0">
+                        <label class="text-sm">Total:</label>
+                        <input id="input-${task.name}-total" type="number" class="p-2 border rounded w-20" value="${task.total}" min="0">
+                        <button onclick="updatePriorityTaskProgress('${task.name}')" class="px-4 py-2 bg-blue-500 text-white rounded">Update</button>
+                        <button onclick="removeTask('${task.name}')" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
 
-      card.innerHTML = `
-        <div class="flex flex-col justify-end items-center h-32 w-4 bg-gray-200 rounded">
-          <div id="priority-progress-${task.name}" class="bg-red-500 w-full rounded transition-all duration-300" style="height: ${percent}%"></div>
-        </div>
-        <div class="flex-1">
-          <h2 class="text-lg font-semibold">📌 ${task.name} – ${task.type}</h2>
-          <p class="text-sm text-gray-600" id="priority-task-text-${task.name}">Total: ${task.total} | Done: ${task.done}</p>
-          <p class="text-sm mt-1 text-gray-600" id="priority-percent-${task.name}">${percent}% done</p>
-          <div class="mt-2 flex items-center flex-wrap gap-2">
-            <label class="text-sm">Done:</label>
-            <input id="input-${task.name}-done" type="number" class="p-2 border rounded w-20" value="${task.done}" min="0">
-            <label class="text-sm">Total:</label>
-            <input id="input-${task.name}-total" type="number" class="p-2 border rounded w-20" value="${task.total}" min="0">
-            <button onclick="updatePriorityTaskProgress('${task.name}')" class="px-4 py-2 bg-blue-500 text-white rounded">Update</button>
-            <button onclick="removeTask('${task.name}')" class="px-4 py-2 bg-red-500 text-white rounded">Remove</button>
-          </div>
-        </div>
-      `;
-      return card;
-    }
+        function addNewTask() {
+            const type = document.getElementById('newTaskType').value.trim();
+            if (!type || !selectedPriority) {
+                alert('Please enter task type and select a priority');
+                return;
+            }
 
-    function addNewTask() {
-      const type = document.getElementById('newTaskType').value.trim();
-      if (!type || !selectedPriority) {
-        alert('Please enter task type and select a priority');
-        return;
-      }
+            const taskName = `${selectedPriority}${taskCounter[selectedPriority]}`;
+            const task = {
+                name: taskName,
+                type,
+                total: 0,
+                done: 0,
+                priority: selectedPriority
+            };
 
-      const taskName = `${selectedPriority}${taskCounter[selectedPriority]}`;
-      const task = {
-        name: taskName,
-        type,
-        total: 0,
-        done: 0,
-        priority: selectedPriority
-      };
+            taskCounter[selectedPriority]++;
+            priorityTasks.push(task);
+            priorityTaskList.appendChild(renderTaskCard(task));
+            updateOverallProgress();
 
-      taskCounter[selectedPriority]++;
-      priorityTasks.push(task);
-      priorityTaskList.appendChild(renderTaskCard(task));
-      updateOverallProgress();
-
-      document.getElementById('newTaskType').value = '';
-      selectedPriority = null;
-      document.querySelectorAll('button').forEach(button => button.classList.remove('bg-yellow-500'));
-    }
-  </script>
+            document.getElementById('newTaskType').value = '';
+            selectedPriority = null;
+            document.querySelectorAll('button').forEach(button => button.classList.remove('bg-black'));
+        }
+    </script>
 </body>
 </html>
