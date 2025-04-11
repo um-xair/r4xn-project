@@ -7,14 +7,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-6 font-sans">
-  <div class="max-w-4xl mx-auto space-y-6">
-    <h1 class="text-2xl font-bold mb-4">💰 Sales Progress Tracker (MYR)</h1>
+  <div class="max-w-6xl mx-auto space-y-6">
+    <h1 class="text-3xl font-bold mb-6">💰 Sales Progress Tracker (MYR)</h1>
 
     <!-- Add New Sale Form -->
     <div class="bg-white rounded-xl p-4 shadow space-y-4">
       <h2 class="text-lg font-semibold">➕ Add New Sale</h2>
       <div class="flex flex-wrap gap-4 items-center">
-        <input id="new-sale-name" type="text" placeholder="Product Name/sales person" class="p-2 border border-gray-300 rounded w-4/5" />
+        <input id="new-sale-name" type="text" placeholder="Product Name / Sales Person" class="p-2 border border-gray-300 rounded w-full sm:w-3/5" />
+        <input id="new-sale-target" type="number" placeholder="Monthly Target (MYR)" class="p-2 border border-gray-300 rounded w-full sm:w-1/5" />
         <button onclick="addSale()" class="px-4 py-2 bg-green-600 text-white rounded">Add</button>
       </div>
     </div>
@@ -25,53 +26,84 @@
 
   <script>
     let sales = [];
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const colors = ['bg-red-500', 'bg-orange-400', 'bg-yellow-400', 'bg-blue-400', 'bg-green-400'];
 
     function formatMYR(value) {
-      return value.toLocaleString('en-MY', {
+      return "RM " + value.toLocaleString('en-MY', {
         style: 'currency',
         currency: 'MYR',
         minimumFractionDigits: 2
-      });
+      }).replace("MYR", "").trim();
     }
 
     function addSale() {
       const nameInput = document.getElementById('new-sale-name');
+      const targetInput = document.getElementById('new-sale-target');
       const name = nameInput.value.trim();
-      if (!name) return;
+      const target = parseFloat(targetInput.value) || 0;
+      if (!name || target <= 0) return;
 
-      const id = Date.now(); // simple unique ID
-      sales.push({ id, name, sold: 0, target: 0 });
+      const id = Date.now();
+      const weeklyTarget = +(target / 4).toFixed(2);
+      const dailyTarget = +(weeklyTarget / 5).toFixed(2);
+
+      sales.push({
+        id,
+        name,
+        target,
+        weeklyTarget,
+        dailyTarget,
+        currentWeek: 0,
+        weeks: Array(4).fill(null).map(() => days.map(() => 0)),
+        sold: 0,
+      });
+
       nameInput.value = '';
-      renderSales();
-    }
-
-    function removeSale(id) {
-      sales = sales.filter(sale => sale.id !== id);
+      targetInput.value = '';
       renderSales();
     }
 
     function updateProgress(id) {
-      const soldInput = document.getElementById(`sold-${id}`);
-      const targetInput = document.getElementById(`target-${id}`);
-      const bar = document.getElementById(`bar-${id}`);
-      const percentText = document.getElementById(`percent-${id}`);
-      const soldLabel = document.getElementById(`sold-label-${id}`);
-      const targetLabel = document.getElementById(`target-label-${id}`);
+      const sale = sales.find(s => s.id === id);
+      if (!sale) return;
 
-      const sold = parseFloat(soldInput.value) || 0;
-      const target = parseFloat(targetInput.value) || 1;
+      const weekIndex = sale.currentWeek;
+      let totalSold = 0;
 
-      const percent = Math.min((sold / target) * 100, 100).toFixed(2);
-      bar.style.width = `${percent}%`;
-      percentText.textContent = `${percent}% progress`;
-      soldLabel.textContent = formatMYR(sold).replace('MYR', '');
-      targetLabel.textContent = formatMYR(target).replace('MYR', '');
+      sale.weeks[weekIndex] = days.map((day, i) => {
+        const input = document.getElementById(`day-${day}-${weekIndex}-${id}`);
+        const value = parseFloat(input.value) || 0;
+        totalSold += value;
+        return value;
+      });
 
-      const index = sales.findIndex(s => s.id === id);
-      if (index !== -1) {
-        sales[index].sold = sold;
-        sales[index].target = target;
-      }
+      // Recalculate total from all weeks
+      const total = sale.weeks.flat().reduce((sum, v) => sum + v, 0);
+      sale.sold = total;
+
+      // Update DOM
+      document.getElementById(`percent-${id}`).textContent = `${((total / sale.target) * 100).toFixed(2)}% progress`;
+      document.getElementById(`sold-label-${id}`).textContent = formatMYR(total);
+
+      // Update progress bars
+      days.forEach((day, i) => {
+        const bar = document.getElementById(`bar-${day}-${weekIndex}-${id}`);
+        const dailyPercent = (sale.weeks[weekIndex][i] / sale.target) * 100;
+        bar.style.width = `${dailyPercent}%`;
+      });
+    }
+
+    function switchWeek(id, weekIndex) {
+      const sale = sales.find(s => s.id === id);
+      if (!sale) return;
+      sale.currentWeek = weekIndex;
+      renderSales();
+    }
+
+    function removeSale(id) {
+      sales = sales.filter(s => s.id !== id);
+      renderSales();
     }
 
     function renderSales() {
@@ -79,31 +111,63 @@
       container.innerHTML = '';
 
       sales.forEach(sale => {
-        const percent = sale.target > 0 ? ((sale.sold / sale.target) * 100).toFixed(2) : 0;
+        const percent = ((sale.sold || 0) / sale.target * 100).toFixed(2);
+        const weekIndex = sale.currentWeek;
 
         const card = document.createElement('div');
-        card.className = 'bg-white rounded-xl p-4 shadow';
+        card.className = 'bg-white rounded-xl p-6 shadow';
+
+        let weekButtons = '';
+        for (let w = 0; w < 4; w++) {
+          weekButtons += `
+            <button onclick="switchWeek(${sale.id}, ${w})" class="px-3 py-1 rounded text-sm font-medium ${
+              w === weekIndex ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            }">Week ${w + 1}</button>
+          `;
+        }
+
+        let dailyInputs = '';
+        days.forEach((day, i) => {
+          const value = sale.weeks[weekIndex][i];
+          dailyInputs += `
+            <div class="flex flex-col items-start">
+              <label class="text-xs text-gray-600">${day}</label>
+              <input id="day-${day}-${weekIndex}-${sale.id}" type="number" value="${value}" class="p-2 border border-gray-300 rounded w-24" />
+              <div class="text-xs text-gray-500">Target: ${formatMYR(sale.dailyTarget).replace('RM ', '')}</div>
+            </div>
+          `;
+        });
+
+        const stackedBars = days.map((day, i) => {
+          const width = (sale.weeks[weekIndex][i] / sale.target) * 100;
+          return `<div id="bar-${day}-${weekIndex}-${sale.id}" class="${colors[i]} h-4 transition-all duration-300" style="width: ${width}%"></div>`;
+        }).join('');
 
         card.innerHTML = `
           <div class="flex justify-between items-center mb-2">
-            <h2 class="text-lg font-semibold">${sale.name}</h2>
+            <h2 class="text-xl font-semibold">${sale.name}</h2>
             <button onclick="removeSale(${sale.id})" class="text-red-500 hover:underline text-sm">Remove</button>
           </div>
-          <p class="text-sm text-gray-600 mb-1">
-            Target: MYR <span id="target-label-${sale.id}">${formatMYR(sale.target).replace('MYR', '')}</span> | 
-            Sold: MYR <span id="sold-label-${sale.id}">${formatMYR(sale.sold).replace('MYR', '')}</span>
-          </p>
-          <div class="w-full bg-gray-200 h-4 rounded">
-            <div id="bar-${sale.id}" class="bg-green-500 h-4 rounded transition-all duration-300" style="width: ${percent}%"></div>
-          </div>
-          <p id="percent-${sale.id}" class="text-sm mt-1 text-gray-600">${percent}% progress</p>
 
-          <div class="mt-4 flex flex-wrap gap-4 items-center">
-            <label class="text-sm">Sold (MYR):</label>
-            <input id="sold-${sale.id}" type="number" value="${sale.sold}" class="p-2 border border-gray-300 rounded w-24">
-            <label class="text-sm">Target (MYR):</label>
-            <input id="target-${sale.id}" type="number" value="${sale.target}" class="p-2 border border-gray-300 rounded w-24">
-            <button onclick="updateProgress(${sale.id})" class="px-4 py-2 bg-blue-500 text-white rounded">Update</button>
+          <p class="text-base font-medium mb-2 text-gray-800">
+            Monthly Target: MYR <span class="font-bold text-black">${formatMYR(sale.target)}</span> |
+            Weekly Target: MYR <span class="font-bold text-black">${formatMYR(sale.weeklyTarget)}</span> |
+            Total Sold: MYR <span class="font-bold text-black" id="sold-label-${sale.id}">${formatMYR(sale.sold)}</span>
+          </p>
+
+          <!-- Week Selector -->
+          <div class="flex gap-2 mb-2">${weekButtons}</div>
+
+          <!-- Progress Bar -->
+          <div class="w-full bg-gray-200 h-4 rounded overflow-hidden flex mb-1">
+            ${stackedBars}
+          </div>
+          <p id="percent-${sale.id}" class="text-sm text-gray-600 mb-4">${percent}% progress</p>
+
+          <!-- Daily Inputs -->
+          <div class="flex flex-wrap gap-4 items-end mb-2">
+            ${dailyInputs}
+            <button onclick="updateProgress(${sale.id})" class="px-4 py-2 bg-blue-500 text-white rounded h-10">Update</button>
           </div>
         `;
 
