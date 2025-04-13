@@ -4,4 +4,4 @@ tiga
 empat
 lima
 enam
-tu
+
