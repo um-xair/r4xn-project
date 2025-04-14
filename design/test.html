@@ -78,20 +78,13 @@
         return value;
       });
 
-      // Recalculate total from all weeks
       const total = sale.weeks.flat().reduce((sum, v) => sum + v, 0);
       sale.sold = total;
 
-      // Update DOM
       document.getElementById(`percent-${id}`).textContent = `${((total / sale.target) * 100).toFixed(2)}% progress`;
       document.getElementById(`sold-label-${id}`).textContent = formatMYR(total);
 
-      // Update progress bars
-      days.forEach((day, i) => {
-        const bar = document.getElementById(`bar-${day}-${weekIndex}-${id}`);
-        const dailyPercent = (sale.weeks[weekIndex][i] / sale.target) * 100;
-        bar.style.width = `${dailyPercent}%`;
-      });
+      renderSales(); // refresh bars
     }
 
     function switchWeek(id, weekIndex) {
@@ -138,9 +131,14 @@
           `;
         });
 
+        // Sum sales across all weeks per day
+        const allDayTotals = days.map((_, i) =>
+          sale.weeks.reduce((sum, week) => sum + week[i], 0)
+        );
+
         const stackedBars = days.map((day, i) => {
-          const width = (sale.weeks[weekIndex][i] / sale.target) * 100;
-          return `<div id="bar-${day}-${weekIndex}-${sale.id}" class="${colors[i]} h-4 transition-all duration-300" style="width: ${width}%"></div>`;
+          const width = (allDayTotals[i] / sale.target) * 100;
+          return `<div id="bar-${day}-${weekIndex}-${sale.id}" class="${colors[i]} h-4 transition-all duration-300" style="width: ${Math.min(width, 100)}%"></div>`;
         }).join('');
 
         card.innerHTML = `
