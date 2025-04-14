@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Employee Roadmap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .milestone.completed {
+      background-color: #10b981 !important;
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 p-6 font-sans">
+
+  <div class="max-w-5xl mx-auto space-y-6">
+    <h1 class="text-3xl font-bold text-center">🚀 Employee Career Roadmap</h1>
+
+    <!-- Employee Info -->
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-2">👤 John Doe</h2>
+      <p class="text-sm text-gray-500">Frontend Developer - Engineering Department</p>
+    </div>
+
+    <!-- Add Milestones -->
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h2 class="text-lg font-semibold mb-2">➕ Add Milestone</h2>
+      <div class="flex gap-2">
+        <input id="milestoneInput" type="text" placeholder="Enter milestone" class="p-2 border rounded w-full"/>
+        <button onclick="addMilestone()" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+      </div>
+    </div>
+
+    <!-- Roadmap Milestones -->
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h2 class="text-lg font-semibold mb-4">🗺️ Career Milestones</h2>
+      <div id="roadmap" class="flex flex-wrap gap-4"></div>
+    </div>
+
+    <!-- Progress View -->
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h2 class="text-lg font-semibold mb-4">📊 Progress</h2>
+      <div class="w-full bg-gray-200 h-4 rounded-full">
+        <div id="progressBar" class="h-4 bg-green-500 rounded-full transition-all duration-500" style="width: 0%;"></div>
+      </div>
+      <p id="progressText" class="text-sm text-gray-600 mt-2 text-right">0% Complete</p>
+    </div>
+  </div>
+
+  <script>
+    const roadmapContainer = document.getElementById('roadmap');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    let milestones = [];
+
+    function addMilestone() {
+      const input = document.getElementById('milestoneInput');
+      const title = input.value.trim();
+      if (!title) return;
+
+      const milestone = {
+        id: Date.now(),
+        title,
+        completed: false
+      };
+      milestones.push(milestone);
+      input.value = '';
+      renderMilestones();
+    }
+
+    function toggleMilestone(id) {
+      const index = milestones.findIndex(m => m.id === id);
+      milestones[index].completed = !milestones[index].completed;
+      renderMilestones();
+    }
+
+    function renderMilestones() {
+      roadmapContainer.innerHTML = '';
+      milestones.forEach(m => {
+        const div = document.createElement('div');
+        div.className = `milestone cursor-pointer px-4 py-2 rounded shadow text-sm font-medium ${m.completed ? 'completed' : 'bg-gray-200 text-gray-800'}`;
+        div.innerText = m.title;
+        div.onclick = () => toggleMilestone(m.id);
+        roadmapContainer.appendChild(div);
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = milestones.length;
+      const completed = milestones.filter(m => m.completed).length;
+      const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+      progressBar.style.width = `${percent}%`;
+      progressText.innerText = `${percent}% Complete`;
+    }
+  </script>
+
+</body>
+</html>
