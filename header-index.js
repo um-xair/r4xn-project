@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const headerHTML = `
         <div class="flex justify-center text-white">
-            <header id="header" class="mt-10 bg-[#1B1B1B] w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-6 py-4 
+            <header id="header" class="mt-10 bg-[#1B1B1B] w-[90%] lg:w-[85%] flex flex-col items-center justify-between px-8 py-4 
                     lg:rounded-full rounded-[30px] fixed z-[999] transition-opacity duration-500
                     bg-opacity-100 lg:bg-opacity-10 lg:backdrop-blur-md">
                 <div class="flex items-center w-full justify-between">
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <div class="w-full mt-4 backdrop-blur-lg bg-opacity-10 text-white hidden" id="mobile-menu">
-                    <nav class="flex flex-col space-y-4 py-4">
+                    <nav class="flex flex-col space-y-4 py-4 lg:hidden">
                         <a href="#home" class="text-md">Home</a>
                         <a href="projects.html" class="text-md py-2">Projects</a>
                         <a href="#discover" class="text-md py-2">Discover</a>
