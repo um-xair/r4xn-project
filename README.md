@@ -3,5 +3,3 @@ dua
 tiga
 empat
 lima
-enam
-
