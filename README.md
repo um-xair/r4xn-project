@@ -1,3 +1,2 @@
 satu
 dua
-tiga
