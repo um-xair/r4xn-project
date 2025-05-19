@@ -7,6 +7,8 @@
 <link rel="icon" href="assets/r4xn-black.png" type="image/png" sizes="32x32">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -80,52 +82,82 @@
         </div>
     </header>
 
-    <main class="relative min-h-screen bg-[#FFF] flex flex-col items-center justify-center px-4 overflow-hidden">
+    <main id="hero" class="relative min-h-screen bg-[#FFF] flex flex-col items-center justify-center px-4 overflow-hidden">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-[120vw] z-0">
             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <path d="M 0 25 Q 50 100 100 25" stroke="#FFC0D3" stroke-width="20" fill="none" />
             </svg>
         </div>
+      
         <div class="relative z-10 text-center px-4 max-w-5xl mb-20 w-full">
-            <h1 class="text-xl md:text-4xl lg:text-6xl font-extrabold">
+            <h1 id="hero-title" class="text-xl md:text-4xl lg:text-6xl font-extrabold">
                 From oven to heart — delightful cakes for every occasion
             </h1>
-            <div class="grid grid-cols-[1fr_1.5fr_1fr] gap-2 items-center">
-              <img src="assets/cake-2-Photoroom.png" alt="Cake 1" class="object-cover w-full" />
-              <img src="assets/cake-1-Photoroom.png" alt="Cake 2" class="object-cover w-full" />
-              <img src="assets/cake-3-Photoroom.png" alt="Cake 3" class="object-cover w-full" />
+            <div class="grid grid-cols-[1fr_1.5fr_1fr] gap-2 items-center mt-8">
+                <img src="assets/cake-2-Photoroom.png" alt="Cake 1" class="cake-img object-cover w-full" />
+                <img src="assets/cake-1-Photoroom.png" alt="Cake 2" class="cake-img object-cover w-full" />
+                <img src="assets/cake-3-Photoroom.png" alt="Cake 3" class="cake-img object-cover w-full" />
             </div>
         </div>
     </main>
 
-    <section class="min-h-screen flex items-center justify-center bg-[#FFF] px-6 py-16">
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from("#hero-title", {
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out"
+        });
+        gsap.utils.toArray(".cake-img").forEach((img, index) => {
+            gsap.from(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 30,
+                scale: 0.9,
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: "back.out(1.7)"
+            });
+        });
+    </script>
+
+    <section id="cake-showcase" class="min-h-screen flex items-center justify-center bg-[#FFF] px-6 py-16">
         <div class="w-full max-w-7xl">
-            <h2 class="text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] mb-16 text-left">
+            <h2 class="section-title text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] mb-16 text-left">
               Cake Showcase
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
+                <div class="cake-card bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
                     <img src="assets/cake-2-Photoroom.png" alt="Cake 1" class="w-full h-full object-contain absolute -top-24 z-10 left-1/2 transform -translate-x-1/2" />
                     <div class="mt-32 w-full max-w-[220px]">
                         <h3 class="text-xl font-semibold text-[#D14D72]">Strawberry Bliss</h3>
                         <p class="text-sm text-[#D14D72] mt-1">starting at $18.00</p>
                     </div>
                 </div>
-                <div class="bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
+                <div class="cake-card bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
                     <img src="assets/cake-3-Photoroom.png" alt="Cake 2" class="w-full h-full object-contain absolute -top-24 z-10 left-1/2 transform -translate-x-1/2" />
                     <div class="mt-32 w-full max-w-[220px]">
                         <h3 class="text-xl font-semibold text-[#D14D72]">Chocolate Dream</h3>
                         <p class="text-sm text-[#D14D72] mt-1">starting at $22.00</p>
                     </div>
                 </div>
-                <div class="bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
+                <div class="cake-card bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
                     <img src="assets/cake-4-Photoroom.png" alt="Cake 3" class="w-full h-full object-contain absolute -top-24 z-10 left-1/2 transform -translate-x-1/2" />
                     <div class="mt-32 w-full max-w-[220px]">
                         <h3 class="text-xl font-semibold text-[#D14D72]">Lemon Delight</h3>
                         <p class="text-sm text-[#D14D72] mt-1">starting at $19.00</p>
                     </div>
                 </div>
-                <div class="bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
+                <div class="cake-card bg-[#FDEFF4] rounded-[30px] pt-20 pb-6 px-6 min-h-[300px] relative flex flex-col items-center text-left">
                     <img src="assets/cake-5-Photoroom.png" alt="Cake 4" class="w-full h-full object-contain absolute -top-24 z-10 left-1/2 transform -translate-x-1/2" />
                     <div class="mt-32 w-full max-w-[220px]">
                         <h3 class="text-xl font-semibold text-[#D14D72]">Berry Velvet</h3>
@@ -136,12 +168,42 @@
         </div>
     </section>
 
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".section-title", {
+            scrollTrigger: {
+                trigger: "#cake-showcase",
+                start: "top 80%",
+                toggleActions: "play none none none",
+            },
+            opacity: 0,
+            y: -40,
+            duration: 1,
+            ease: "power3.out"
+        });
+      
+        gsap.utils.toArray(".cake-card").forEach((card, index) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: index * 0.1
+            });
+        });
+    </script>
+
     <section class="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-16">
-        <h2 class="text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] mb-12 text-center">
+        <h2 class="featured-title text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] mb-12 text-center">
               Featured Cake
         </h2>
         <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 items-center gap-12">
-            <div class="relative flex justify-center items-center">
+            <div class="featured-cake-img relative flex justify-center items-center">
                   <div class="relative w-3/4 aspect-square flex justify-center items-center">
                         <img src="assets/cake-2-Photoroom.png" alt="Featured Cake" class="ml-10 mb-20 w-full object-contain z-20" />
                         <svg class="absolute w-[120%] h-[120%] z-30 pointer-events-none" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
@@ -156,19 +218,19 @@
                         </svg>
                   </div>
             </div>
-            <div class="flex flex-col justify-center space-y-6 px-4 md:px-0 text-left lg:max-w-lg">
+            <div class="featured-cake-text flex flex-col justify-center space-y-6 px-4 md:px-0 text-left lg:max-w-lg">
                   <h3 class="text-3xl font-semibold">Matcha Strawberry</h3>
                   <p class="text-md text-gray-500">
                         Imagine the earthy richness of premium matcha meeting the vibrant sweetness of strawberries in a cake so light, it melts in your mouth. That’s the experience waiting for you with our Matcha Strawberry Cake
                   </p>
             </div>
-            <div class="flex flex-col justify-center space-y-6 px-4 md:px-0 text-right lg:max-w-lg">
+            <div class="featured-cake-text flex flex-col justify-center space-y-6 px-4 md:px-0 text-right lg:max-w-lg">
                   <h3 class="text-3xl font-semibold">Birthday Cake</h3>
                   <p class="text-md text-gray-500">
                         Experience dark chocolate like never before with the luxurious Valrhona Caraibe 66% dark chocolate. Every layer uniquely brings out the beautiful authentic tones of dark chocolate.
                   </p>
             </div>
-            <div class="relative flex justify-center items-center">
+            <div class="featured-cake-img relative flex justify-center items-center">
                   <div class="relative w-3/4 aspect-square flex justify-center items-center">
                         <img src="assets/cake-4-Photoroom.png" alt="Featured Cake" class="mr-20 mb-20 w-full object-contain z-20" />
                         <svg class="absolute w-[120%] h-[120%] z-30 pointer-events-none" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
@@ -183,7 +245,7 @@
                         </svg>
                   </div>
             </div>
-            <div class="relative flex justify-center items-center">
+            <div class="featured-cake-img relative flex justify-center items-center">
                   <div class="relative w-3/4 aspect-square flex justify-center items-center">
                         <img src="assets/cake-5-Photoroom.png" alt="Featured Cake" class="ml-10 mb-20 w-full object-contain z-20" />
                         <svg class="absolute w-[120%] h-[120%] z-30 pointer-events-none" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +260,7 @@
                         </svg>
                   </div>
             </div>
-            <div class="flex flex-col justify-center space-y-6 px-4 md:px-0 text-left lg:max-w-lg">
+            <div class="featured-cake-text flex flex-col justify-center space-y-6 px-4 md:px-0 text-left lg:max-w-lg">
                   <h3 class="text-3xl font-semibold">Custom cake</h3>
                   <p class="text-md text-gray-500">
                         Experience the juicy, sweet, and aromatic flavours of Oolong and Melon in this Oolong Melon Cake, made specially for sponge cake lovers
@@ -207,10 +269,65 @@
         </div>
     </section>
 
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".featured-title", {
+            scrollTrigger: {
+                trigger: ".featured-title",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: -40,
+            duration: 1,
+            ease: "power2.out"
+        });
+      
+        gsap.utils.toArray(".featured-cake-img").forEach((img, index) => {
+            gsap.from(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                scale: 0.9,
+                y: 40,
+                duration: 1,
+                delay: index * 0.1,
+                ease: "power3.out"
+            });
+        });
+      
+        gsap.utils.toArray(".featured-cake-text").forEach((text, index) => {
+            gsap.from(text, {
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50,
+                duration: 1,
+                delay: index * 0.1,
+                ease: "power3.out"
+            });
+        });
+      
+        gsap.to("svg textPath", {
+            rotate: 360,
+            transformOrigin: "center",
+            repeat: -1,
+            duration: 20,
+            ease: "linear"
+        });
+    </script>
+
     <section class="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-16">
-        <h2 class="text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] mb-12 text-center">What Our Customers Say</h2>
+        <h2 class="testimonial-title text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] mb-12 text-center">What Our Customers Say</h2>
         <div class="max-w-7xl w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <div class="bg-[#FDEFF4] rounded-[20px] p-10 flex flex-col justify-between">
+            <div class="testimonial-card bg-[#FDEFF4] rounded-[20px] p-10 flex flex-col justify-between">
                 <div class="flex items-center space-x-4 mb-4">
                     <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Reviewer" class="w-12 h-12 rounded-full object-cover" />
                     <h3 class="text-xl font-semibold text-[#D14D72]">Emily R.</h3>
@@ -229,7 +346,7 @@
                     <i class="fas fa-quote-right text-[#D14D72] text-2xl"></i>
                 </div>
             </div>
-            <div class="bg-[#FDEFF4] rounded-[20px] p-10 flex flex-col justify-between">
+            <div class="testimonial-card bg-[#FDEFF4] rounded-[20px] p-10 flex flex-col justify-between">
                 <div class="flex items-center space-x-4 mb-4">
                     <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Reviewer" class="w-12 h-12 rounded-full object-cover" />
                     <h3 class="text-xl font-semibold text-[#D14D72]">James K.</h3>
@@ -248,7 +365,7 @@
                     <i class="fas fa-quote-right text-[#D14D72] text-2xl"></i>
                 </div>
             </div>
-            <div class="bg-[#FDEFF4] rounded-[20px] p-10 flex flex-col justify-between">
+            <div class="testimonial-card bg-[#FDEFF4] rounded-[20px] p-10 flex flex-col justify-between">
                 <div class="flex items-center space-x-4 mb-4">
                     <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Reviewer" class="w-12 h-12 rounded-full object-cover" />
                     <h3 class="text-xl font-semibold text-[#D14D72]">Sophia L.</h3>
@@ -270,33 +387,119 @@
         </div>
     </section>
 
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".testimonial-title", {
+            scrollTrigger: {
+                trigger: ".testimonial-title",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: -40,
+            duration: 1,
+            ease: "power2.out"
+        });
+      
+        gsap.from(".testimonial-card", {
+            scrollTrigger: {
+                trigger: ".testimonial-card",
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+    </script>
+
     <section class="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-16 relative overflow-hidden">
-        <h2 class="text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] text-center">Our Gallery</h2>
+        <h2 class="gallery-title text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72] text-center">Our Gallery</h2>
         <div class="relative w-full max-w-8xl mt-10 lg:mt-0 grid grid-cols-1 md:block gap-6" style="min-height:500px;">
-            <img src="https://i.pinimg.com/736x/d6/02/c3/d602c33ad9463f2f98a83d94d7a6830f.jpg" alt="Gallery 1" class="lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[20px] lg:left-[10%] lg:transform lg:rotate-[-5deg]" />
-            <img src="https://i.pinimg.com/736x/ab/92/84/ab9284f5b7c4885c77eba7b233068fb1.jpg" alt="Gallery 2" class="lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[150px] lg:left-[35%] lg:transform lg:rotate-[10deg]" />
-            <img src="https://i.pinimg.com/736x/b6/17/11/b617119f80f0be27897d512495fdc367.jpg" alt="Gallery 3" class="lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[80px] lg:left-[60%] lg:transform lg:rotate-[-8deg]" />
-            <img src="https://i.pinimg.com/736x/80/3f/4a/803f4aae01504ddf2181ba6bf4bba4e7.jpg" alt="Gallery 4" class="lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[200px] lg:left-[20%] lg:transform lg:rotate-[12deg]" />
-            <img src="https://i.pinimg.com/736x/59/ad/7d/59ad7dfa8c1a33019081315e262f20b5.jpg" alt="Gallery 5" class="lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[250px] lg:left-[50%] lg:transform lg:rotate-[-3deg]" />
-            <img src="https://i.pinimg.com/736x/08/b7/5a/08b75aaefa1447dd7851979838232556.jpg" alt="Gallery 6" class="lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[200px] lg:left-[75%] lg:transform lg:rotate-[7deg]" />
+            <img src="https://i.pinimg.com/736x/d6/02/c3/d602c33ad9463f2f98a83d94d7a6830f.jpg" alt="Gallery 1" class="gallery-image lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[20px] lg:left-[10%] lg:transform lg:rotate-[-5deg]" />
+            <img src="https://i.pinimg.com/736x/ab/92/84/ab9284f5b7c4885c77eba7b233068fb1.jpg" alt="Gallery 2" class="gallery-image lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[150px] lg:left-[35%] lg:transform lg:rotate-[10deg]" />
+            <img src="https://i.pinimg.com/736x/b6/17/11/b617119f80f0be27897d512495fdc367.jpg" alt="Gallery 3" class="gallery-image lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[80px] lg:left-[60%] lg:transform lg:rotate-[-8deg]" />
+            <img src="https://i.pinimg.com/736x/80/3f/4a/803f4aae01504ddf2181ba6bf4bba4e7.jpg" alt="Gallery 4" class="gallery-image lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[200px] lg:left-[20%] lg:transform lg:rotate-[12deg]" />
+            <img src="https://i.pinimg.com/736x/59/ad/7d/59ad7dfa8c1a33019081315e262f20b5.jpg" alt="Gallery 5" class="gallery-image lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[250px] lg:left-[50%] lg:transform lg:rotate-[-3deg]" />
+            <img src="https://i.pinimg.com/736x/08/b7/5a/08b75aaefa1447dd7851979838232556.jpg" alt="Gallery 6" class="gallery-image lg:w-60 lg:h-80 lg:mb-0 md:mb-4 object-cover rounded-[30px] shadow-lg mx-auto lg:absolute lg:top-[200px] lg:left-[75%] lg:transform lg:rotate-[7deg]" />
         </div>
     </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".gallery-title", {
+            scrollTrigger: {
+                trigger: ".gallery-title",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            y: -50,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out"
+        });
+      
+        gsap.from(".gallery-image", {
+            scrollTrigger: {
+                trigger: ".gallery-image",
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+    </script>
 
     <section class="min-h-screen flex items-center justify-center bg-white px-6 py-16 relative z-10">
         <div class="bg-[#F8E8EE] rounded-[30px] max-w-6xl w-full p-10 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 items-center">
-            <div class="flex flex-col space-y-6 text-center md:text-left mx-auto md:mx-0">
-                <h2 class="text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72]">Treat Yourself and Celebrate with Us.</h2>
-                <p class="text-lg text-[#FF5C8D]">Indulge in our irresistible cakes crafted for your sweetest moments.</p>
-                <button class="bg-[#D14D72] text-white py-5 px-10 rounded-full w-max mx-auto md:mx-0 hover:bg-pink-700 transition">
+            <div class="promo-text flex flex-col space-y-6 text-center md:text-left mx-auto md:mx-0">
+                <h2 class="promo-title text-xl md:text-4xl lg:text-6xl font-extrabold text-[#D14D72]">Treat Yourself and Celebrate with Us.</h2>
+                <p class="promo-subtext text-lg text-[#FF5C8D]">Indulge in our irresistible cakes crafted for your sweetest moments.</p>
+                <button class="promo-btn bg-[#D14D72] text-white py-5 px-10 rounded-full w-max mx-auto md:mx-0 hover:bg-pink-700 transition">
                     Order Now
                 </button>
             </div>
-            <div class="flex justify-center md:justify-end w-full mx-auto md:mx-0">
-                <img src="assets/dino-cake.png" alt="Treat Yourself Cake" class="w-full max-w-md object-contain" />
+            <div class="promo-img-container flex justify-center md:justify-end w-full mx-auto md:mx-0">
+                <img src="assets/dino-cake.png" alt="Treat Yourself Cake" class="promo-img w-full max-w-md object-contain" />
             </div>
         </div>
     </section>
 
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".promo-text", {
+            scrollTrigger: {
+                trigger: ".promo-text",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            x: -50,
+            duration: 1,
+            ease: "power2.out"
+        });
+      
+        gsap.from(".promo-img", {
+            scrollTrigger: {
+                trigger: ".promo-img",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            x: 50,
+            duration: 1,
+            delay: 0.2,
+            ease: "power2.out"
+        });
+    </script>
 
     <footer class="bg-black text-white px-6 py-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
