@@ -1,4 +1,2 @@
 satu
 dua
-tiga
-empat
