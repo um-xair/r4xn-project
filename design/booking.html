@@ -44,21 +44,11 @@
             <div class="text-[var(--deep-blue)] text-2xl font-bold">BookingFlight.</div>
             <nav>
                 <ul id="nav-links" class="hidden md:flex gap-6 text-[var(--deep-blue)]">
-                    <li>
-                        <a href="#" class="relative after:block after:h-[2px] after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Flights</a>
-                    </li>
-                    <li>
-                        <a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Hotels</a>
-                    </li>
-                    <li>
-                        <a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Trains</a>
-                    </li>
-                    <li>
-                        <a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Buses</a>
-                    </li>
-                    <li>
-                        <a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Cabs</a>
-                    </li>
+                    <li><a href="#" class="relative after:block after:h-[2px] after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Flights</a></li>
+                    <li><a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Hotels</a></li>
+                    <li><a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Trains</a></li>
+                    <li><a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Buses</a></li>
+                    <li><a href="#" class="relative after:block after:h-[2px] text-blue-300 after:bg-[var(--bright-blue)] after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">Cabs</a></li>
                 </ul>
             </nav>
             <button id="mobile-menu-button" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1">
@@ -67,31 +57,30 @@
                 <span class="block w-full h-[2px] bg-[var(--deep-blue)] transition-transform duration-300"></span>
             </button>
             <div class="hidden md:block">
-                <button class="bg-[var(--bright-blue)] text-white px-6 py-3 rounded-full">
+                <button class="bg-[var(--deep-blue)] text-white px-6 py-3 rounded-full">
                     Sign In
                 </button>
             </div>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-md z-10">
-          <ul class="flex flex-col gap-4 p-4 text-[var(--deep-blue)]">
-            <li><a href="#" class="block">Flights</a></li>
-            <li><a href="#" class="block">Hotels</a></li>
-            <li><a href="#" class="block">Trains</a></li>
-            <li><a href="#" class="block">Buses</a></li>
-            <li><a href="#" class="block">Cabs</a></li>
-            <li>
-              <button class="w-full bg-[var(--bright-blue)] text-white px-6 py-3 rounded-full mt-2">
-                Sign In
-              </button>
-            </li>
-          </ul>
+            <ul class="flex flex-col gap-4 p-4 text-[var(--deep-blue)]">
+                <li><a href="#" class="block">Flights</a></li>
+                <li><a href="#" class="block">Hotels</a></li>
+                <li><a href="#" class="block">Trains</a></li>
+                <li><a href="#" class="block">Buses</a></li>
+                <li><a href="#" class="block">Cabs</a></li>
+                <li>
+                <button class="w-full bg-[var(--deep-blue)] text-white px-6 py-3 rounded-full mt-2">
+                    Sign In
+                </button>
+                </li>
+            </ul>
         </div>
 
         <script>
             const btn = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
-            
             btn.addEventListener('click', () => {
                 menu.classList.toggle('hidden');
                 btn.children[0].classList.toggle('rotate-45');
@@ -115,22 +104,22 @@
         <div class="bg-white rounded-[30px] p-10 max-w-5xl mx-auto mt-32 text-left flex items-center justify-center">
             <div class="flex flex-wrap md:flex-nowrap gap-4 w-full max-w-5xl">
                 <div class="flex flex-col border border-gray-300 rounded-[15px] p-4 flex-1 min-w-[140px]">
-                    <label class="block text-sm font-medium text-gray-300 mb-1">From</label>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">From</label>
                     <input type="text" placeholder="e.g., Kuala Lumpur"
                            class="w-full border-none focus:outline-none focus:ring-0 px-0 py-0" />
                 </div>
                 <div class="flex flex-col border border-gray-300 rounded-[15px] p-4 flex-1 min-w-[140px]">
-                    <label class="block text-sm font-medium text-gray-300 mb-1">To</label>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">To</label>
                     <input type="text" placeholder="e.g., Tokyo"
                            class="w-full border-none focus:outline-none focus:ring-0 px-0 py-0" />
                 </div>
                 <div class="flex flex-col border border-gray-300 rounded-[15px] p-4 flex-1 min-w-[140px]">
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Departure</label>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">Departure</label>
                     <input type="date"
                            class="w-full border-none focus:outline-none focus:ring-0 px-0 py-0" />
                 </div>
                 <div class="flex flex-col border border-gray-300 rounded-[15px] p-4 flex-1 min-w-[140px]">
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Return</label>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">Return</label>
                     <input type="date"
                            class="w-full border-none focus:outline-none focus:ring-0 px-0 py-0" />
                 </div>
@@ -145,7 +134,7 @@
 
     <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 bg-[var(--light-bg)]">
         <h2 class="text-4xl md:text-5xl font-bold text-[var(--deep-blue)] uppercase">Top Flight Deals</h2>
-        <p class="mt-4 text-gray-300">
+        <p class="mt-4 text-gray-400">
             Explore our best offers on flights to top destinations around the globe.<br />
             Book now and enjoy exclusive discounts for your next unforgettable adventure.
         </p>
@@ -155,7 +144,7 @@
                 <img src="https://i.pinimg.com/736x/4d/c7/35/4dc735d9315289407e2673758aae64f9.jpg" alt="Deal 1" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div class="text-left absolute top-0 right-[-100%] group-hover:right-0 transition-all duration-500 h-full w-3/5 bg-white p-6 flex flex-col justify-center z-10">
                     <h3 class="text-2xl font-bold text-[var(--deep-blue)] mb-2 uppercase">Unlock the Best Fares</h3>
-                    <p class="text-sm text-gray-300 mb-4">Special promotions for top destinations worldwide!</p>
+                    <p class="text-sm text-gray-400 mb-4">Special promotions for top destinations worldwide!</p>
                 </div>
                 <div class="w-full absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-xl font-semibold transition-opacity duration-500 group-hover:opacity-0">
                     Unlock the Best Fares
@@ -169,7 +158,7 @@
                 <img src="https://i.pinimg.com/736x/8e/2a/25/8e2a2597b2db31e58e8aa6e087098626.jpg" alt="Deal 1" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div class="text-left absolute top-0 right-[-100%] group-hover:right-0 transition-all duration-500 h-full w-3/5 bg-white p-6 flex flex-col justify-center z-10">
                     <h3 class="text-2xl font-bold text-[var(--deep-blue)] mb-2 uppercase">Deal Time: Pack & Go!</h3>
-                    <p class="text-sm text-gray-300 mb-4">Last-minute flight specials you won’t want to miss!</p>
+                    <p class="text-sm text-gray-400 mb-4">Last-minute flight specials you won’t want to miss!</p>
                 </div>
                 <div class="w-full absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-xl font-semibold transition-opacity duration-500 group-hover:opacity-0">
                     Deal Time: Pack & Go!
@@ -183,7 +172,7 @@
                 <img src="https://i.pinimg.com/736x/94/89/b2/9489b2531564f783dea236ba33439a7b.jpg" alt="Deal 1" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div class="text-left absolute top-0 right-[-100%] group-hover:right-0 transition-all duration-500 h-full w-3/5 bg-white p-6 flex flex-col justify-center z-10">
                     <h3 class="text-2xl font-bold text-[var(--deep-blue)] mb-2 uppercase">Jet Off for Less</h3>
-                    <p class="text-sm text-gray-300 mb-4">Limited-time flight deals to make your travels more affordable!</p>
+                    <p class="text-sm text-gray-400 mb-4">Limited-time flight deals to make your travels more affordable!</p>
                 </div>
                 <div class="w-full absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-xl font-semibold transition-opacity duration-500 group-hover:opacity-0">
                     Jet Off for Less
@@ -197,8 +186,8 @@
 
     <section class="min-h-screen flex items-center justify-center px-6 py-16 bg-[var(--light-gray)]">
         <div class="text-center w-full">
-            <h2 class="text-4xl md:text-6xl font-extrabold text-[var(--deep-blue)] uppercase mb-4">Most Popular Airlines</h2>
-            <p class="text-gray-300 max-w-2xl mx-auto mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-[var(--deep-blue)] uppercase mb-4">Most Popular Airlines</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12">
                 Discover the best airlines trusted by millions of travelers worldwide. Fly in comfort and style with our top picks.
             </p>
             
@@ -283,7 +272,7 @@
 
     <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 bg-[var(--light-bg)]">
         <h2 class="text-4xl md:text-5xl font-bold text-[var(--deep-blue)] uppercase">Best Stays Best Rates</h2>
-        <p class="mt-4 text-gray-300">
+        <p class="mt-4 text-gray-400">
             Discover unbeatable offers on hotels in top destinations around the world.<br />
             Book now and enjoy exclusive savings for your next comfortable and memorable stay.
         </p>
@@ -298,7 +287,7 @@
                     <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-4/5 bg-white bg-opacity-90 rounded-[20px] px-6 py-3 shadow z-10 transition-all duration-300 ease-in-out h-[60px] group-hover:h-36 overflow-hidden flex flex-col items-center justify-center text-center">
                         <div class="flex flex-col items-center justify-center transition-all duration-300 h-full group-hover:justify-start pt-12 group-hover:pt-4">
                             <h4 class="text-[var(--deep-blue)] font-semibold text-lg">Hotel Riviera</h4>
-                            <div class="opacity-0 group-hover:opacity-100 text-xs text-gray-300 transition-opacity duration-300">
+                            <div class="opacity-0 group-hover:opacity-100 text-xs text-gray-400 transition-opacity duration-300">
                                 <div class="mb-1 text-lg">⭐⭐⭐⭐⭐</div>
                                 <div>Seaside views and premium service.</div>
                             </div>
@@ -316,7 +305,7 @@
                     <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-4/5 bg-white bg-opacity-90 rounded-[20px] px-6 py-3 shadow z-10 transition-all duration-300 ease-in-out h-[60px] group-hover:h-36 overflow-hidden flex flex-col items-center justify-center text-center">
                         <div class="flex flex-col items-center justify-center transition-all duration-300 h-full group-hover:justify-start pt-12 group-hover:pt-4">
                             <h4 class="text-[var(--deep-blue)] font-semibold text-lg">Urban Stay</h4>
-                            <div class="opacity-0 group-hover:opacity-100 text-xs text-gray-300 transition-opacity duration-300">
+                            <div class="opacity-0 group-hover:opacity-100 text-xs text-gray-400 transition-opacity duration-300">
                                 <div class="mb-1 text-lg">⭐⭐⭐⭐⭐</div>
                                 <div>Modern rooms right in the heart of the city.</div>
                             </div>
@@ -334,7 +323,7 @@
                     <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-4/5 bg-white bg-opacity-90 rounded-[20px] px-6 py-3 shadow z-10 transition-all duration-300 ease-in-out h-[60px] group-hover:h-36 overflow-hidden flex flex-col items-center justify-center text-center">
                         <div class="flex flex-col items-center justify-center transition-all duration-300 h-full group-hover:justify-start pt-12 group-hover:pt-4">
                             <h4 class="text-[var(--deep-blue)] font-semibold text-lg">Mountain Escape</h4>
-                            <div class="opacity-0 group-hover:opacity-100 text-xs text-gray-300 transition-opacity duration-300">
+                            <div class="opacity-0 group-hover:opacity-100 text-xs text-gray-400 transition-opacity duration-300">
                                 <div class="mb-1 text-lg">⭐⭐⭐⭐⭐</div>
                                 <div>Breathtaking views and cozy stays in nature.</div>
                             </div>
@@ -367,7 +356,7 @@
                 <div class="w-full bg-white rounded-[20px] p-6 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="flex flex-col text-center md:text-left">
                         <h4 class="text-xl font-bold text-[var(--deep-blue)]">Toyota Supra</h4>
-                        <p class="text-sm text-gray-300 mt-2">A blend of power and performance for the ultimate drive.</p>
+                        <p class="text-sm text-gray-400 mt-2">A blend of power and performance for the ultimate drive.</p>
                         <button class="mt-4 px-6 py-3 rounded-full bg-[var(--deep-blue)] text-white text-sm font-medium w-full md:w-2/4 mx-auto md:mx-0">
                             View Deals
                         </button>
@@ -379,7 +368,7 @@
                 <div class="w-full bg-white rounded-[20px] p-6 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="flex flex-col text-center md:text-left">
                         <h4 class="text-xl font-bold text-[var(--deep-blue)]">Range Rover Velar</h4>
-                        <p class="text-sm text-gray-300 mt-2">Luxury meets performance with iconic British engineering.</p>
+                        <p class="text-sm text-gray-400 mt-2">Luxury meets performance with iconic British engineering.</p>
                         <button class="mt-4 px-6 py-3 rounded-full bg-[var(--deep-blue)] text-white text-sm font-medium w-full md:w-2/4 mx-auto md:mx-0">
                             View Deals
                         </button>
@@ -391,7 +380,7 @@
                 <div class="w-full bg-white rounded-[20px] p-6 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="flex flex-col text-center md:text-left">
                         <h4 class="text-xl font-bold text-[var(--deep-blue)]">Mercedes-Benz C-Class</h4>
-                        <p class="text-sm text-gray-300 mt-2">Sophisticated design with cutting-edge innovation.</p>
+                        <p class="text-sm text-gray-400 mt-2">Sophisticated design with cutting-edge innovation.</p>
                         <button class="mt-4 px-6 py-3 rounded-full bg-[var(--deep-blue)] text-white text-sm font-medium w-full md:w-2/4 mx-auto md:mx-0">
                             View Deals
                         </button>
@@ -413,14 +402,14 @@
           
             <div class="p-8 flex flex-col justify-center">
                 <h2 class="text-4xl font-bold text-[var(--deep-blue)] mb-2">Frequently Asked Questions</h2>
-                <p class="text-gray-300 mb-6">Find answers to the most common questions about our services and offerings.</p>
+                <p class="text-gray-400 mb-6">Find answers to the most common questions about our services and offerings.</p>
 
                 <div>
                     <div class="border-b border-dashed border-gray-300">
                         <button class="w-full text-lg text-left p-4 font-medium text-[var(--deep-blue)] toggle-btn" onclick="toggleAnswer(this)">
                             What is your return policy?
                         </button>
-                        <div class="faq-content text-sm max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-sm text-gray-300 px-4">
+                        <div class="faq-content text-sm max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-sm text-gray-400 px-4">
                             <p class="mb-4">You can return any item within 30 days of purchase for a full refund.</p>
                         </div>
                     </div>
@@ -428,7 +417,7 @@
                         <button class="w-full text-lg text-left p-4 font-medium text-[var(--deep-blue)] toggle-btn" onclick="toggleAnswer(this)">
                             How long does shipping take?
                         </button>
-                        <div class="faq-content text-sm max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-sm text-gray-300 px-4">
+                        <div class="faq-content text-sm max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-sm text-gray-400 px-4">
                             <p class="mb-4">Shipping typically takes 3–5 business days within the country.</p>
                         </div>
                     </div>
@@ -436,7 +425,7 @@
                         <button class="w-full text-lg text-left p-4 font-medium text-[var(--deep-blue)] toggle-btn" onclick="toggleAnswer(this)">
                             Can I change my order after placing it?
                         </button>
-                        <div class="faq-content text-sm max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-sm text-gray-300 px-4">
+                        <div class="faq-content text-sm max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-sm text-gray-400 px-4">
                             <p class="mb-4">Yes, you can modify your order within 24 hours of purchase.</p>
                         </div>
                     </div>
@@ -457,8 +446,133 @@
         }
     </script>
 
+    <section class="min-h-screen flex items-center justify-center bg-[var(--light-bg)] px-4 py-16 overflow-hidden">
+        <div class="max-w-7xl w-full text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-[var(--deep-blue)] uppercase">
+                Top Visited Places
+            </h2>
+            <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                Discover the world’s most popular travel destinations, loved by adventurers and explorers alike.
+            </p>
 
+            <div class="mt-6 flex flex-wrap justify-center gap-4">
+                <button class="px-6 py-3 rounded-full bg-[var(--deep-blue)] text-white">One Way</button>
+                <button class="px-6 py-3 rounded-full bg-blue-50 text-[var(--deep-blue)]">Round Trip</button>
+                <button class="px-6 py-3 rounded-full bg-blue-50 text-[var(--deep-blue)]">Multi City</button>
+            </div>
 
+            <div class="mt-12 flex flex-col lg:flex-row gap-4 max-h-[700px]">
+                <div class="flex flex-col gap-4 flex-1">
+                    <div class="relative h-[150px] sm:h-[180px]">
+                        <button class="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-sm bg-white/50 border border-white/40 text-[var(--deep-blue)] flex items-center justify-center shadow-md z-10">
+                        <i class="fas fa-heart text-base sm:text-lg"></i>
+                        </button>
+                        <img src="https://i.pinimg.com/736x/5c/bc/ea/5cbcea45c2dba94e43c0ff1966d2c1f1.jpg" alt="Place 1"
+                        class="w-full h-full object-cover rounded-[20px] shadow-md" />
+                    </div>
+                    <div class="relative flex-1 min-h-[200px] sm:min-h-[300px]">
+                        <button class="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-sm bg-white/50 border border-white/40 text-[var(--deep-blue)] flex items-center justify-center shadow-md z-10">
+                            <i class="fas fa-heart text-base sm:text-lg"></i>
+                        </button>
+                        <img src="https://i.pinimg.com/736x/41/70/83/417083dd40b019b960e41853f2479dd6.jpg" alt="Place 2"
+                        class="w-full h-full object-cover rounded-[20px] shadow-md" />
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 flex-1">
+                    <div class="relative flex-1 min-h-[200px] sm:min-h-[300px]">
+                        <button class="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-sm bg-white/50 border border-white/40 text-[var(--deep-blue)] flex items-center justify-center shadow-md z-10">
+                            <i class="fas fa-heart text-base sm:text-lg"></i>
+                        </button>
+                        <img src="https://i.pinimg.com/736x/84/d3/7e/84d37eea29266b8591aba05a634aa0ff.jpg" alt="Place 4"
+                        class="w-full h-full object-cover rounded-[20px] shadow-md" />
+                    </div>
+                    <div class="relative h-[150px] sm:h-[180px]">
+                        <button class="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-sm bg-white/50 border border-white/40 text-[var(--deep-blue)] flex items-center justify-center shadow-md z-10">
+                            <i class="fas fa-heart text-base sm:text-lg"></i>
+                        </button>
+                        <img src="https://i.pinimg.com/736x/9c/67/fe/9c67fe03e59f3d8a295113fac4cda201.jpg" alt="Place 3"
+                        class="w-full h-full object-cover rounded-[20px] shadow-md" />
+                    </div>
+                </div>
+
+                <div class="relative flex-1 min-h-[360px] sm:min-h-[450px]">
+                    <button class="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-sm bg-white/50 border border-white/40 text-[var(--deep-blue)] flex items-center justify-center shadow-md z-10">
+                        <i class="fas fa-heart text-base sm:text-lg"></i>
+                    </button>
+                    <img src="https://i.pinimg.com/736x/4d/ed/02/4ded02b55ca28b9170b40c39708cfee6.jpg" alt="Place 5"
+                        class="w-full h-full object-cover rounded-[20px] shadow-md" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-[var(--deep-blue)] mb-2">Subscribe to our Newsletter</h2>
+            <p class="text-gray-400 mb-6">Stay updated with the latest news, travel deals, and exclusive content directly in your inbox.</p>
+            
+            <div class="relative max-w-xl mx-auto">
+                <input type="email" placeholder="Enter your email address" class="w-full border border-gray-300 rounded-full py-5 px-6 pr-32 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
+                <button class="absolute top-2 right-2 bottom-2 bg-[var(--deep-blue)] text-white px-5 rounded-full hover:bg-blue-800 transition">
+                  Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white text-gray-700 px-6 py-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-10">
+
+            <div class="flex-1">
+                <h3 class="text-2xl font-bold text-[var(--deep-blue)] mb-4">BookingFlight.</h3>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-[var(--bright-blue)]"></i>
+                        <span class="text-sm text-gray-400">123 Main Street, City, Country</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-phone mt-1 text-[var(--bright-blue)]"></i>
+                        <span class="text-sm text-gray-400">+1 234 567 890</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-envelope mt-1 text-[var(--bright-blue)]"></i>
+                        <span class="text-sm text-gray-400">contact@yourbrand.com</span>
+                    </li>
+                </ul>
+            </div>
+          
+            <div class="w-px bg-gray-300 hidden md:block"></div>
+          
+            <div class="flex-[2] grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="font-semibold mb-3 text-[var(--deep-blue)]">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">About Us</a></li>
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Careers</a></li>
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3 text-[var(--deep-blue)]">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Help Center</a></li>
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3 text-[var(--deep-blue)]">Explore</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Destinations</a></li>
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Blog</a></li>
+                        <li><a href="#" class="hover:text-[var(--deep-blue)]">Special Offers</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
