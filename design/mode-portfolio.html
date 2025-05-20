@@ -17,18 +17,15 @@
     html {
         scroll-behavior: smooth;
     }
-
+    .theme-toggle {
+        transition: background-color 0.5s ease, color 0.5s ease;
+    }
 </style>
-<script>
-        tailwind.config = {
-                darkMode: 'class',
-        };
-</script>
 </head>
-<body class="bg-white text-black dark:bg-white dark:text-black">
+<body class="bg-white text-black theme-toggle">
 
 <header class="mt-6 px-4">
-    <div class="max-w-7xl bg-black text-white mx-auto px-4 py-3 hidden lg:flex items-center justify-between gap-4 rounded-full">
+    <div class="max-w-7xl bg-black text-white mx-auto px-4 py-3 hidden lg:flex items-center justify-between gap-4 rounded-full theme-toggle">
         <a href="#" class="bg-[#2563EB] px-6 py-3 rounded-full text-white font-medium">Home</a>
         <a href="#" class="px-6 py-3">About</a>
         <a href="#" class="px-6 py-3">Service</a>
@@ -39,7 +36,6 @@
             <i class="fas fa-moon"></i> Dark mode
         </button>
     </div>
-
     <div class="lg:hidden flex justify-between items-center bg-black text-white px-4 py-3 rounded-full">
         <div class="text-2xl font-bold">R4XN</div>
         <div class="flex items-center gap-4">
@@ -51,7 +47,6 @@
             </button>
         </div>
     </div>
-
     <div id="mobileMenu" class="md:hidden mt-2 rounded-[20px] bg-black text-white lg:text-center hidden">
         <a href="#" class="block px-6 py-3">Home</a>
         <a href="#" class="block px-6 py-3">About</a>
@@ -66,7 +61,6 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const themeToggle = document.getElementById('themeToggle');
     const themeToggleMobile = document.getElementById('themeToggleMobile');
-
     mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
         const icon = mobileMenuBtn.querySelector('i');
@@ -81,32 +75,37 @@
         }
     });
 
-    function toggleDarkMode() {
-        document.documentElement.classList.toggle('dark');
-        [themeToggle, themeToggleMobile].forEach(btn => {
-            const icon = btn.querySelector('i');
-            if (document.documentElement.classList.contains('dark')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
+    function toggleTheme() {
+        const elementsToToggle = document.querySelectorAll('.theme-toggle');
+        elementsToToggle.forEach(el => {
+            el.classList.toggle('bg-black');
+            el.classList.toggle('bg-white');
+            el.classList.toggle('text-white');
+            el.classList.toggle('text-black');
+        });
+        const themeIcons = document.querySelectorAll('#themeToggle i, #themeToggleMobile i');
+        themeIcons.forEach(icon => {
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+        const themeButtons = document.querySelectorAll('#themeToggle, #themeToggleMobile');
+        themeButtons.forEach(btn => {
+            btn.innerHTML = btn.innerHTML.includes('Dark')
+            ? `<i class="fas fa-sun"></i> Light mode`
+            : `<i class="fas fa-moon"></i> Dark mode`;
         });
     }
-    themeToggle.addEventListener('click', toggleDarkMode);
-    themeToggleMobile.addEventListener('click', toggleDarkMode);
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
 </script>
 
-<section class="min-h-screen flex justify-center items-center bg-white px-4 text-center relative">
-  
+<section class="min-h-screen flex justify-center items-center bg-white text-black px-4 text-center relative theme-toggle">
     <div class="absolute left-16 mt-16 flex flex-col items-start text-left hidden lg:block">
         <i class="fas fa-quote-left text-4xl"></i>
         <p class="mt-2 max-w-[300px] text-xl">
             Building elegant web that scale seamlessly across devices.
         </p>
     </div>
-
     <div class="absolute right-16 mt-16 flex flex-col items-end text-right hidden lg:block">
         <div class="flex space-x-1 text-yellow-400 text-4xl">
             <i class="fas fa-star"></i>
@@ -118,35 +117,32 @@
         <p class="mt-2 text-5xl font-semibold">10 Years</p>
         <span class="text-xl">experience</span>
     </div>
-
     <div class="flex flex-col items-center text-center space-y-1">
-        <div class="border border-black rounded-full px-6 py-3 text-md inline-block">Hello</div>
+        <div class="border border-black dark:border-white rounded-full px-6 py-3 text-md inline-block">Hello</div>
         <div class="leading-tight">
-            <h1 class="text-3xl md:text-6xl lg:text-8xl font-semibold">I’m <span class="text-blue-600">R4XN</span></h1>
-            <p class="text-3xl md:text-6xl lg:text-8xl font-semibold">Website Developer</p>
+            <h1 class="text-6xl md:text-8xl font-semibold">I’m <span class="text-[#2563EB]">R4XN</span></h1>
+            <p class="text-6xl md:text-8xl font-semibold">Website Developer</p>
         </div>
         <div class="relative w-full max-w-md mx-auto h-[340px]">
-            <div class="absolute lg:bottom-0 -bottom-16 left-1/2 -translate-x-1/2 lg:w-[150%] w-[90%] h-full bg-blue-600 rounded-t-full z-0"></div>
+            <div class="absolute lg:bottom-0 -bottom-16 left-1/2 -translate-x-1/2 lg:w-[150%] w-[90%] h-full bg-[#2563EB] rounded-t-full z-0"></div>
             <img src="https://static.vecteezy.com/system/resources/thumbnails/050/817/792/small_2x/happy-smiling-business-woman-in-suit-with-hand-pointing-at-empty-space-standing-isolate-on-transparent-background-png.png" alt="Profile photo" class="w-full relative z-10 lg:bottom-[108px]"/>
         </div>
     </div>
-
 </section>
 
-<section class="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-12 text-center">
-    <h2 class="text-6xl font-bold mb-2">My <span class="text-blue-600">Work Experience</span></h2>
-
-    <div class="max-w-6xl w-full relative mt-10">
+<section class="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-16 text-center theme-toggle">
+    <h2 class="text-4xl md:text-6xl font-bold mb-2">My <span class="text-[#2563EB]">Work Experience</span></h2>
+    <div class="max-w-7xl w-full relative mt-10">
         <div class="hidden md:flex flex-row">
             <div class="w-1/2 pr-8 text-left">
                 <h4 class=" text-lg lg:text-2xl font-semibold mb-1">TechCorp Inc, Kuala Lumpur</h4>
-                <p class="text-md text-gray-500">Jan 2020 – Dec 2022</p>
+                <p class="text-md">Jan 2020 – Dec 2022</p>
             </div>
             <div class="relative w-12 flex flex-col items-center">
-                <div class="w-10 h-10 rounded-full border-4 border-dashed border-blue-600 bg-white z-10 flex items-center justify-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-600"></div>
+                <div class="w-10 h-10 rounded-full border-4 border-dashed border-[#2563EB] z-10 flex items-center justify-center">
+                    <div class="w-5 h-5 rounded-full bg-[#2563EB]"></div>
                 </div>
-                <div class="flex-1 border-l-4 border-blue-600 border-dashed mt-1"></div>
+                <div class="flex-1 border-l-4 border-[#2563EB] border-dashed mt-1"></div>
             </div>
             <div class="w-1/2 pl-10 text-left">
                 <h4 class="text-lg lg:text-3xl font-semibold mb-2">Front-End Developer</h4>
@@ -155,17 +151,16 @@
                 </p>
             </div>
         </div>
-
         <div class="flex flex-col md:hidden">
             <div class="relative w-12 flex flex-col items-center mb-4">
-                <div class="w-10 h-10 rounded-full border-4 border-dashed border-blue-600 bg-white z-10 flex items-center justify-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-600"></div>
+                <div class="w-10 h-10 rounded-full border-4 border-dashed border-[#2563EB] z-10 flex items-center justify-center">
+                    <div class="w-5 h-5 rounded-full bg-[#2563EB]"></div>
                 </div>
-                <div class="flex-1 border-l-4 border-blue-600 border-dashed mt-1 h-full"></div>
+                <div class="flex-1 border-l-4 border-[#2563EB] border-dashed mt-1 h-full"></div>
             </div>
             <div class="text-left mb-4">
                 <h4 class=" text-lg lg:text-2xl font-semibold mb-1">TechCorp Inc, Kuala Lumpur</h4>
-                <p class="text-md text-gray-500">Jan 2020 – Dec 2022</p>
+                <p class="text-md">Jan 2020 – Dec 2022</p>
             </div>
             <div class="text-left">
                 <h4 class="text-lg lg:text-3xl font-semibold mb-2">Front-End Developer</h4>
@@ -175,19 +170,17 @@
             </div>
         </div>
     </div>
-
-    <!-- Repeat above structure for other entries -->
-    <div class="max-w-6xl w-full relative mt-10">
+    <div class="max-w-7xl w-full relative mt-10">
         <div class="hidden md:flex flex-row">
             <div class="w-1/2 pr-8 text-left">
                 <h4 class=" text-lg lg:text-2xl font-semibold mb-1">InnovateX Solutions, Selangor</h4>
-                <p class="text-md text-gray-500">Jan 2018 – Dec 2019</p>
+                <p class="text-md">Jan 2018 – Dec 2019</p>
             </div>
             <div class="relative w-12 flex flex-col items-center">
-                <div class="w-10 h-10 rounded-full border-4 border-dashed border-blue-600 bg-white z-10 flex items-center justify-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-600"></div>
+                <div class="w-10 h-10 rounded-full border-4 border-dashed border-[#2563EB] z-10 flex items-center justify-center">
+                    <div class="w-5 h-5 rounded-full bg-[#2563EB]"></div>
                 </div>
-                <div class="flex-1 border-l-4 border-blue-600 border-dashed mt-1"></div>
+                <div class="flex-1 border-l-4 border-[#2563EB] border-dashed mt-1"></div>
             </div>
             <div class="w-1/2 pl-10 text-left">
                 <h4 class="text-lg lg:text-3xl font-semibold mb-2">UI/UX Designer</h4>
@@ -196,17 +189,16 @@
                 </p>
             </div>
         </div>
-
         <div class="flex flex-col md:hidden">
             <div class="relative w-12 flex flex-col items-center mb-4">
-                <div class="w-10 h-10 rounded-full border-4 border-dashed border-blue-600 bg-white z-10 flex items-center justify-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-600"></div>
+                <div class="w-10 h-10 rounded-full border-4 border-dashed border-[#2563EB] z-10 flex items-center justify-center">
+                    <div class="w-5 h-5 rounded-full bg-[#2563EB]"></div>
                 </div>
-                <div class="flex-1 border-l-4 border-blue-600 border-dashed mt-1 h-full"></div>
+                <div class="flex-1 border-l-4 border-[#2563EB] border-dashed mt-1 h-full"></div>
             </div>
             <div class="text-left mb-4">
                 <h4 class=" text-lg lg:text-2xl font-semibold mb-1">InnovateX Solutions, Selangor</h4>
-                <p class="text-md text-gray-500">Jan 2018 – Dec 2019</p>
+                <p class="text-md">Jan 2018 – Dec 2019</p>
             </div>
             <div class="text-left">
                 <h4 class="text-lg lg:text-3xl font-semibold mb-2">UI/UX Designer</h4>
@@ -216,18 +208,17 @@
             </div>
         </div>
     </div>
-
-    <div class="max-w-6xl w-full relative mt-10">
+    <div class="max-w-7xl w-full relative mt-10">
         <div class="hidden md:flex flex-row">
             <div class="w-1/2 pr-8 text-left">
                 <h4 class=" text-lg lg:text-2xl font-semibold mb-1">AlphaTech Labs, Cyberjaya</h4>
-                <p class="text-md text-gray-500">Jul 2016 – Dec 2017</p>
+                <p class="text-md">Jul 2016 – Dec 2017</p>
             </div>
             <div class="relative w-12 flex flex-col items-center">
-                <div class="w-10 h-10 rounded-full border-4 border-dashed border-blue-600 bg-white z-10 flex items-center justify-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-600"></div>
+                <div class="w-10 h-10 rounded-full border-4 border-dashed border-[#2563EB] z-10 flex items-center justify-center">
+                    <div class="w-5 h-5 rounded-full bg-[#2563EB]"></div>
                 </div>
-                <div class="flex-1 border-l-4 border-blue-600 border-dashed mt-1"></div>
+                <div class="flex-1 border-l-4 border-[#2563EB] border-dashed mt-1"></div>
             </div>
             <div class="w-1/2 pl-10 text-left">
                 <h4 class="text-lg lg:text-3xl font-semibold mb-2">Junior Developer</h4>
@@ -236,17 +227,16 @@
                 </p>
             </div>
         </div>
-
         <div class="flex flex-col md:hidden">
             <div class="relative w-12 flex flex-col items-center mb-4">
-                <div class="w-10 h-10 rounded-full border-4 border-dashed border-blue-600 bg-white z-10 flex items-center justify-center">
-                    <div class="w-5 h-5 rounded-full bg-blue-600"></div>
+                <div class="w-10 h-10 rounded-full border-4 border-dashed border-[#2563EB] z-10 flex items-center justify-center">
+                    <div class="w-5 h-5 rounded-full bg-[#2563EB]"></div>
                 </div>
-                <div class="flex-1 border-l-4 border-blue-600 border-dashed mt-1 h-full"></div>
+                <div class="flex-1 border-l-4 border-[#2563EB] border-dashed mt-1 h-full"></div>
             </div>
             <div class="text-left mb-4">
                 <h4 class=" text-lg lg:text-2xl font-semibold mb-1">AlphaTech Labs, Cyberjaya</h4>
-                <p class="text-md text-gray-500">Jul 2016 – Dec 2017</p>
+                <p class="text-md">Jul 2016 – Dec 2017</p>
             </div>
             <div class="text-left">
                 <h4 class="text-lg lg:text-3xl font-semibold mb-2">Junior Developer</h4>
@@ -258,48 +248,226 @@
     </div>
 </section>
 
-<section class="min-h-screen flex items-center justify-center bg-white px-4">
-    <div class="max-w-8xl w-full flex flex-col md:flex-row items-center justify-center gap-16">
-
-        <div class="relative flex-shrink-0 flex justify-center items-center">
-            <div class="absolute bottom-0 left-4 w-56 h-56 rounded-3xl bg-gradient-to-tr from-blue-500 to-blue-700 shadow-lg"></div>
-            <img src="https://via.placeholder.com/220" alt="Profile Image" class="relative rounded-3xl shadow-2xl w-56 h-56 object-cover border-8 border-white"/>
+<section class="min-h-screen flex items-center justify-center bg-white px-6 py-16 theme-toggle">
+    <div class="max-w-7xl w-full flex flex-col md:flex-row items-center justify-center gap-16">
+        <div class="relative flex-shrink-0 flex justify-center items-center w-full md:w-auto">
+            <div class="absolute bottom-0 md:left-2 w-64 h-64 lg:w-80 lg:h-80 rounded-[30px] bg-[#2563EB]"></div>
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/050/817/792/small_2x/happy-smiling-business-woman-in-suit-with-hand-pointing-at-empty-space-standing-isolate-on-transparent-background-png.png" alt="Profile Image" class="relative w-full max-w-xs md:max-w-full object-cover"/>
         </div>
-      
-        <div class="flex flex-col justify-center text-left max-w-xl">
-            <h2 class="text-6xl font-extrabold mb-6">Why <span class="text-blue-600">Hire Me?</span></h2>
-            <p class="text-gray-700 text-lg mb-10 leading-relaxed">
-                I bring a unique blend of skills and experience that guarantees high-quality results, adaptability, and a strong commitment to your success. Let's build something amazing together.
-            </p>
-          
-            <div class="flex flex-wrap gap-10 mb-12">
+        <div class="flex flex-col justify-center text-left max-w-xl w-full">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6">Why <span class="text-[#2563EB]">Hire Me?</span></h2>
+            <p class="text-md mb-10 leading-relaxed">I bring a unique blend of skills and experience that guarantees high-quality results, adaptability, and a strong commitment to your success. Let's build something amazing together.</p>
+            <div class="flex flex-wrap gap-10 mb-12 justify-center md:justify-start">
                 <div class="flex flex-col items-center">
-                    <p class="text-5xl font-extrabold text-blue-600">5+</p>
-                    <p class="text-gray-600 uppercase tracking-wider mt-1 text-sm">Years Experience</p>
+                    <p class="text-4xl font-extrabold text-[#2563EB]">5+</p>
+                    <p class="uppercase tracking-wider mt-1 text-sm">Years Experience</p>
                 </div>
                 <div class="flex flex-col items-center">
-                    <p class="text-5xl font-extrabold text-blue-600">100%</p>
-                    <p class="text-gray-600 uppercase tracking-wider mt-1 text-sm">Client Satisfaction</p>
+                    <p class="text-4xl font-extrabold text-[#2563EB]">100%</p>
+                    <p class="uppercase tracking-wider mt-1 text-sm">Client Satisfaction</p>
                 </div>
                 <div class="flex flex-col items-center">
-                    <p class="text-5xl font-extrabold text-blue-600">50+</p>
-                    <p class="text-gray-600 uppercase tracking-wider mt-1 text-sm">Projects Completed</p>
+                    <p class="text-4xl font-extrabold text-[#2563EB]">50+</p>
+                    <p class="uppercase tracking-wider mt-1 text-sm">Projects Completed</p>
                 </div>
             </div>
-          
-            <button class="self-start bg-blue-600 text-white px-12 py-4 rounded-xl font-semibold shadow-lg hover:bg-blue-700 transition duration-300">
+            <button class="md:self-start bg-[#2563EB] text-white px-10 py-4 text-lg rounded-full">
                 Hire Me
             </button>
         </div>
     </div>
 </section>
 
+<section class="min-h-screen flex items-center justify-center bg-white px-6 py-16 theme-toggle">
+    <div class="max-w-7xl w-full flex flex-col items-center justify-center text-left">
+        <div class="w-full flex items-center justify-between mb-12 flex-col md:flex-row text-center md:text-left">
+            <h2 class="text-4xl md:text-6xl font-extrabold">Let's have a look <br>at my <span class="text-[#2563EB]">Portfolio</span></h2>
+            <button class="mt-4 md:mt-0 bg-[#2563EB] text-white px-10 py-4 rounded-full text-lg">See All</button>
+        </div>
+        <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
+            <div class="overflow-hidden flex flex-col border-[#2563EB] border-2 p-6 rounded-[30px]">
+                <img src="https://i.pinimg.com/736x/90/56/d3/9056d37cff0fcead7492b2a4fb4b01cf.jpg" alt="Project 1" class="rounded-[15px] mb-4 aspect-square">
+                <h3 class="text-xl font-semibold mb-2">Project Title 1</h3>
+                <p class="text-sm mb-4">Short description of the project goes here.</p>
+                <button class="mt-auto self-start bg-[#2563EB] text-white px-6 py-3 rounded-full text-md">View Project</button>
+            </div>
+            <div class="overflow-hidden flex flex-col border-[#2563EB] border-2 p-6 rounded-[30px]">
+                <img src="https://i.pinimg.com/736x/af/dd/c6/afddc6372b7b195d14e81aace6305c76.jpg" alt="Project 2" class="rounded-[15px] mb-4 aspect-square">
+                <h3 class="text-xl font-semibold mb-2">Project Title 2</h3>
+                <p class="text-sm mb-4">Short description of the project goes here.</p>
+                <button class="mt-auto self-start bg-[#2563EB] text-white px-6 py-3 rounded-full text-md">View Project</button>
+            </div>
+            <div class="overflow-hidden flex flex-col border-[#2563EB] border-2 p-6 rounded-[30px]">
+                <img src="https://i.pinimg.com/736x/e6/03/03/e603030f4b3c67c230be9c878bb25fd8.jpg" alt="Project 3" class="rounded-[15px] mb-4 aspect-square">
+                <h3 class="text-xl font-semibold mb-2">Project Title 3</h3>
+                <p class="text-sm mb-4">Short description of the project goes here.</p>
+                <button class="mt-auto self-start bg-[#2563EB] text-white px-6 py-3 rounded-full text-md">View Project</button>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="flex items-center justify-center bg-white px-4 py-20 theme-toggle">
+    <div class="max-w-7xl w-full flex flex-col items-center text-center">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-10">Have an awesome project idea? <br><span class="text-[#2563EB]">Let's Discuss.</span></h2>
+        <div class="w-full max-w-xl relative mb-6">
+            <input type="email" placeholder="Enter your email address" class="w-full py-6 px-6 pr-32 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#2563EB]">
+            <button class="absolute right-2 top-2 bottom-2 bg-[#2563EB] text-white px-6 rounded-full font-medium">
+                Submit
+            </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 md:gap-8 gap-4 w-full max-w-xl">
+            <div class="flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+                <p class="text-xs">5-Star Client Ratings</p>
+            </div>
+            <div class="flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148 98 112-98 112 14 148-144 32-76 128-136-58-136 58Zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24 58 96Zm102-318Zm-42 142 226-226-56-58-170 170-86-84-56 56 142 142Z"/></svg>
+                <p class="text-xs">Verified Testimonials</p>
+            </div>
+            <div class="flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="m387-412 35-114-92-74h114l36-112 36 112h114l-93 74 35 114-92-71-93 71ZM240-40v-309q-38-42-59-96t-21-115q0-134 93-227t227-93q134 0 227 93t93 227q0 61-21 115t-59 96v309l-240-80-240 80Zm240-280q100 0 170-70t70-170q0-100-70-170t-170-70q-100 0-170 70t-70 170q0 100 70 170t170 70ZM320-159l160-41 160 41v-124q-35 20-75.5 31.5T480-240q-44 0-84.5-11.5T320-283v124Zm160-62Z"/></svg>
+                <p class="text-xs">Reliable & Trusted Work</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="bg-[#2563EB] text-white py-6 overflow-hidden">
+    <div class="relative w-full">
+        <div class="flex animate-marquee whitespace-nowrap">
+            <div class="flex gap-16 px-4">
+                <span class="text-xl">Creative Developer</span>
+                <span class="text-xl">UI/UX Designer</span>
+                <span class="text-xl">Full-Stack Enthusiast</span>
+                <span class="text-xl">Problem Solver</span>
+                <span class="text-xl">Open to Collaboration</span>
+            </div>
+            <div class="flex gap-16 px-4">
+                <span class="text-xl">Creative Developer</span>
+                <span class="text-xl">UI/UX Designer</span>
+                <span class="text-xl">Full-Stack Enthusiast</span>
+                <span class="text-xl">Problem Solver</span>
+                <span class="text-xl">Open to Collaboration</span>
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+      
+        .animate-marquee {
+            animation: marquee 8s linear infinite;
+        }
+    </style>
+</section>
 
+<section class="min-h-screen flex items-center justify-center bg-white px-6 py-16 theme-toggle">
+    <div class="max-w-7xl w-full flex flex-col items-center justify-center text-left">
+        <div class="w-full flex items-center justify-between mb-12 flex-col md:flex-row text-center md:text-left">
+            <h2 class="text-4xl md:text-6xl font-extrabold">From my <span class="text-[#2563EB]">Blogpost</span></h2>
+            <button class="mt-4 md:mt-0 bg-[#2563EB] text-white px-10 py-4 rounded-full text-lg">See All</button>
+        </div>
+        <div class="relative max-w-7xl w-full mx-auto">
+            <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
+                <div class="overflow-hidden flex flex-col">
+                    <div class="relative rounded-[30px] mb-4 overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/e6/03/03/e603030f4b3c67c230be9c878bb25fd8.jpg" alt="Project 3" class="w-full aspect-square object-cover"/>
+                        <button class="absolute bottom-6 right-6 bg-[#2563EB] text-white rounded-full p-3 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap mb-2">
+                        <span class="bg-[#2563EB] text-white text-xs px-6 py-3 rounded-full">Angular</span>
+                    </div>
+                    <h3 class="text-xl font-semibold">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </h3>
+                </div>
+                <div class="overflow-hidden flex flex-col">
+                    <div class="relative rounded-[30px] mb-4 overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/e6/03/03/e603030f4b3c67c230be9c878bb25fd8.jpg" alt="Project 3" class="w-full aspect-square object-cover"/>
+                        <button class="absolute bottom-6 right-6 bg-[#2563EB] text-white rounded-full p-3 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap mb-2">
+                        <span class="bg-[#2563EB] text-white text-xs px-6 py-3 rounded-full">Angular</span>
+                    </div>
+                    <h3 class="text-xl font-semibold">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </h3>
+                </div>
+                <div class="overflow-hidden flex flex-col">
+                    <div class="relative rounded-[30px] mb-4 overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/e6/03/03/e603030f4b3c67c230be9c878bb25fd8.jpg" alt="Project 3" class="w-full aspect-square object-cover"/>
+                        <button class="absolute bottom-6 right-6 bg-[#2563EB] text-white rounded-full p-3 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap mb-2">
+                        <span class="bg-[#2563EB] text-white text-xs px-6 py-3 rounded-full">Angular</span>
+                    </div>
+                    <h3 class="text-xl font-semibold">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-
+<footer class="bg-[#2563EB] text-white px-6 py-16 no-theme-toggle">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mb-10 gap-6 text-center md:text-left">
+        <h2 class="text-4xl md:text-6xl font-extrabold">Let’s Connect Here</h2>
+        <button class="bg-white text-[#2563EB] px-10 py-4 text-lg rounded-full">Hire Me</button>
+    </div>
+    <div class="border-t border-white/30 mb-10"></div>
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+        <div class="max-w-md">
+          <h3 class="text-2xl font-bold mb-2">Let’s build something together</h3>
+          <p class="text-white/80">
+            Feel free to reach out if you’re looking for a designer, developer, or partner for your next big idea.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full max-w-3xl">
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Explore</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">About</a></li>
+                    <li><a href="#" class="hover:underline">Portfolio</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">Web Design</a></li>
+                    <li><a href="#" class="hover:underline">App Development</a></li>
+                    <li><a href="#" class="hover:underline">UI/UX Design</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Support</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                    <li><a href="#" class="hover:underline">Blog</a></li>
+                    <li><a href="#" class="hover:underline">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="border-t border-white/30 mt-10 mb-6"></div>
+    <div class="max-w-7xl mx-auto text-sm text-white/70">© 2025 R4XN. All rights reserved.</div>
+</footer>
 
 </body>
 </html>
