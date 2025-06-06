@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 R4XN
                             </a>
                         </div>
-                    </div>
+                    </div> 
                     <nav class="hidden lg:flex items-center space-x-6">
                         <a href="index.html" class="text-md">Home</a>
                         <a href="projects.html" class="text-md">Projects</a>
