@@ -79,33 +79,56 @@
         });
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <main class="min-h-screen flex flex-col items-center justify-center py-12 lg:pt-32 pt-24">
         <div class="max-w-7xl mx-auto px-6 text-center relative">
             <div class="relative inline-block overflow-hidden w-full">
-                <img src="assets/modern-house-with-garage-and-car.jpg" alt="Modern House" class="object-cover w-full h-[500px] rounded-full">  
+                <img id="main-image" src="assets/modern-house-with-garage-and-car.jpg" alt="Modern House"
+                    class="object-cover w-full h-[500px] rounded-full">
             </div>
-            <div class="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2">
-                <a href="#future-section" class="bg-blue-600 text-white px-12 py-6 rounded-full text-lg w-64 inline-block text-center shadow-lg">
+            <div id="main-button" class="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2">
+                <a href="#future-section"
+                    class="bg-blue-600 text-white px-12 py-6 rounded-full text-lg w-64 inline-block text-center shadow-lg">
                     View Project
                 </a>
             </div>
         </div>
     </main>
 
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            gsap.from("#main-image", {
+                opacity: 0,
+                scale: 0.9,
+                duration: 1.2,
+                ease: "power2.out"
+            });
+            gsap.from("#main-button", {
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                ease: "power2.out",
+                delay: 0.3
+            });
+        });
+    </script>
+
     <section id="future-section" class="bg-gray-900 text-white px-4 sm:px-8 md:px-12 xl:px-20 py-12 min-h-screen flex flex-col justify-center">
         <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-start justify-between gap-8">
-            <h2 class="custom-font text-4xl md:text-6xl font-bold lg:text-left text-center md:w-1/2 w-full">
+            <h2 id="future-title" class="custom-font text-4xl md:text-6xl font-bold lg:text-left text-center md:w-1/2 w-full">
                 EXPERIENCE THE FUTURE OF HOME
             </h2>
-            <p class="text-md md:text-xl text-gray-400 md:w-1/2 w-full md:text-right text-center md:mt-2 mt-4">
+            <p id="future-desc" class="text-md md:text-xl text-gray-400 md:w-1/2 w-full md:text-right text-center md:mt-2 mt-4">
                 An excellent real estate professional, integrity, in-depth community and market knowledge, marketing savvy, effective negotiation skills, and high-quality service.
             </p>
         </div>
         <div class="w-full relative py-10">
             <div class="relative w-full">
-                <img src="assets/w.webp" alt="Modern House" class="object-cover w-full h-[450px] rounded-full">
-                <a href="#"
+                <img id="future-img" src="assets/w.webp" alt="Modern House" class="object-cover w-full h-[450px] rounded-full">
+                <a id="future-btn"
+                   href="#"
                    class="absolute -bottom-8 right-1/2 translate-x-1/2 md:right-60 md:translate-x-0 bg-blue-600 text-white px-12 py-6 rounded-full text-lg w-64 inline-block text-center shadow-lg">
                     View Project
                 </a>
@@ -113,19 +136,69 @@
         </div>
     </section>
     
-    <section class="bg-gray-100 min-h-screen flex flex-col justify-center py-12">
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from("#future-title", {
+            scrollTrigger: {
+                trigger: "#future-section",
+                start: "top 80%",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        gsap.from("#future-desc", {
+            scrollTrigger: {
+                trigger: "#future-section",
+                start: "top 80%",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: "power2.out"
+        });
+
+        gsap.from("#future-img", {
+            scrollTrigger: {
+                trigger: "#future-img",
+                start: "top 85%",
+            },
+            scale: 0.9,
+            opacity: 0,
+            duration: 1.2,
+            delay: 0.5,
+            ease: "power2.out"
+        });
+
+        gsap.from("#future-btn", {
+            scrollTrigger: {
+                trigger: "#future-img",
+                start: "top 85%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            delay: 0.8,
+            ease: "power2.out"
+        });
+    </script>
+
+    <section class="bg-gray-100 min-h-screen flex flex-col justify-center py-12" id="testimonials-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col-reverse md:flex-row md:items-start md:justify-between mb-16">
-                <p class="text-md md:text-xl text-gray-500 max-w-xl text-center md:text-right w-full md:w-1/2">
+                <p id="testimonials-desc" class="text-md md:text-xl text-gray-500 max-w-xl text-center md:text-right w-full md:w-1/2">
                     An excellent real estate professional, integrity, in-depth community and market knowledge, marketing savvy, effective negotiation skills, and high-quality service.
                 </p>
-                <h2 class="custom-font text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-center md:text-right w-full md:w-1/2">
+                <h2 id="testimonials-title" class="custom-font text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-center md:text-right w-full md:w-1/2">
                     WHAT OUR CLIENTS SAY ABOUT US
                 </h2>
             </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-white/90 p-8 rounded-xl border border-blue-200 hover:shadow-md hover:shadow-blue-200 transition duration-300 flex flex-col items-center text-center">
+                <div class="testimonial-card bg-white/90 p-8 rounded-xl border border-blue-200 hover:shadow-md hover:shadow-blue-200 transition duration-300 flex flex-col items-center text-center">
                     <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-blue-100 shadow-sm mb-6">
                         <img src="assets/house1.jpeg" alt="Client 1" class="object-cover w-full h-full" />
                     </div>
@@ -134,7 +207,7 @@
                     </blockquote>
                     <cite class="mt-4 text-gray-500 text-sm">— John Doe</cite>
                 </div>
-                <div class="bg-white/90 p-8 rounded-xl border border-blue-200 hover:shadow-md hover:shadow-blue-200 transition duration-300 flex flex-col items-center text-center">
+                <div class="testimonial-card bg-white/90 p-8 rounded-xl border border-blue-200 hover:shadow-md hover:shadow-blue-200 transition duration-300 flex flex-col items-center text-center">
                     <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-blue-100 shadow-sm mb-6">
                         <img src="assets/house2.jpeg" alt="Client 2" class="object-cover w-full h-full" />
                     </div>
@@ -143,7 +216,7 @@
                     </blockquote>
                     <cite class="mt-4 text-gray-500 text-sm">— Jane Smith</cite>
                 </div>
-                <div class="bg-white/90 p-8 rounded-xl border border-blue-200 hover:shadow-md hover:shadow-blue-200 transition duration-300 flex flex-col items-center text-center">
+                <div class="testimonial-card bg-white/90 p-8 rounded-xl border border-blue-200 hover:shadow-md hover:shadow-blue-200 transition duration-300 flex flex-col items-center text-center">
                     <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-blue-100 shadow-sm mb-6">
                         <img src="assets/house3.jpeg" alt="Client 3" class="object-cover w-full h-full" />
                     </div>
@@ -156,17 +229,57 @@
         </div>
     </section>
 
-    <section class="bg-gray-900 text-white px-4 sm:px-8 md:px-12 lg:px-16 py-12 min-h-screen flex flex-col justify-center">
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from("#testimonials-title", {
+            scrollTrigger: {
+                trigger: "#testimonials-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        gsap.from("#testimonials-desc", {
+            scrollTrigger: {
+                trigger: "#testimonials-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: 0.3,
+            ease: "power2.out"
+        });
+
+        gsap.utils.toArray(".testimonial-card").forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 90%",
+                },
+                opacity: 0,
+                y: 40,
+                duration: 1,
+                delay: i * 0.2,
+                ease: "power2.out"
+            });
+        });
+    </script>
+
+    <section class="bg-gray-900 text-white px-4 sm:px-8 md:px-12 lg:px-16 py-12 min-h-screen flex flex-col justify-center" id="collection-section">
         <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-start justify-between gap-8">
-            <h2 class="custom-font text-4xl md:text-6xl font-bold lg:text-left text-center md:w-1/2 w-full">
+            <h2 id="collection-heading" class="custom-font text-4xl md:text-6xl font-bold lg:text-left text-center md:w-1/2 w-full">
                 OUR LATEST COLLECTION
             </h2>
-            <p class="text-md md:text-xl text-gray-400 md:w-1/2 w-full md:text-right text-center md:mt-2 mt-4">
+            <p id="collection-desc" class="text-md md:text-xl text-gray-400 md:w-1/2 w-full md:text-right text-center md:mt-2 mt-4">
                 An excellent real estate professional, integrity, in-depth community and market knowledge, marketing savvy, effective negotiation skills, and high-quality service.
             </p>
         </div>
         <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6 mt-10">
-            <div class="relative rounded-lg overflow-hidden w-[300px] md:w-[400px] flex flex-col items-center">
+            <div class="collection-card relative rounded-lg overflow-hidden w-[300px] md:w-[400px] flex flex-col items-center">
                 <div class="relative inline-block rounded-full overflow-hidden w-full">
                     <img src="assets/modernhouse.jpeg" alt="Property 1" class="object-cover w-full h-[600px]">
                 </div>
@@ -175,7 +288,7 @@
                     <p class="text-center text-gray-500">Greensboro, GA 30642</p>
                 </div>
             </div>
-            <div class="relative rounded-lg overflow-hidden w-[300px] md:w-[400px] flex flex-col md:flex-col-reverse items-center">
+            <div class="collection-card relative rounded-lg overflow-hidden w-[300px] md:w-[400px] flex flex-col md:flex-col-reverse items-center">
                 <div class="relative inline-block rounded-full overflow-hidden w-full">
                     <img src="assets/modernhouse1.jpeg" alt="Property 2" class="object-cover w-full h-[600px]">
                 </div>
@@ -184,7 +297,7 @@
                     <p class="text-center text-gray-500">Greensboro, GA 30642</p>
                 </div>
             </div>
-            <div class="relative rounded-lg overflow-hidden w-[300px] md:w-[400px] flex flex-col items-center">
+            <div class="collection-card relative rounded-lg overflow-hidden w-[300px] md:w-[400px] flex flex-col items-center">
                 <div class="relative inline-block rounded-full overflow-hidden w-full">
                     <img src="assets/modernhouse3.jpeg" alt="Property 3" class="object-cover w-full h-[600px]">
                 </div>
@@ -195,20 +308,98 @@
             </div>
         </div>
     </section>
+    
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from("#collection-heading", {
+            scrollTrigger: {
+                trigger: "#collection-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 60,
+            duration: 1,
+            ease: "power3.out"
+        });
 
-    <section class="px-4 py-12 bg-gray-100 min-h-screen flex items-center justify-center">
+        gsap.from("#collection-desc", {
+            scrollTrigger: {
+                trigger: "#collection-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 60,
+            delay: 0.2,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.utils.toArray(".collection-card").forEach((card, index) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                },
+                opacity: 0,
+                y: 60,
+                delay: index * 0.2,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+    </script>
+
+    <section class="px-4 py-12 bg-gray-100 min-h-screen flex items-center justify-center" id="discover-section">
         <div class="flex flex-col items-center text-center space-y-10 w-full">
-            <h2 class="custom-font text-4xl md:text-5xl font-bold">
+            <h2 id="discover-heading-1" class="custom-font text-4xl md:text-5xl font-bold">
                 DISCOVER YOUR PERFECT HOME
             </h2>
-            <div class="relative inline-block rounded-full overflow-hidden w-4/5">
+            <div id="discover-image" class="relative inline-block rounded-full overflow-hidden w-4/5">
                 <img src="assets/w.webp" alt="Modern House" class="object-cover w-full h-[500px]">
             </div>
-            <h2 class="custom-font text-4xl md:text-5xl font-bold">
+            <h2 id="discover-heading-2" class="custom-font text-4xl md:text-5xl font-bold">
                 IS NOW OR NEVER WITH R4XN RESIDENTIAL
             </h2>
         </div>
     </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from("#discover-heading-1", {
+            scrollTrigger: {
+                trigger: "#discover-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 60,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.from("#discover-image", {
+            scrollTrigger: {
+                trigger: "#discover-image",
+                start: "top 80%",
+            },
+            opacity: 0,
+            scale: 0.95,
+            duration: 1,
+            delay: 0.2,
+            ease: "power3.out"
+        });
+
+        gsap.from("#discover-heading-2", {
+            scrollTrigger: {
+                trigger: "#discover-heading-2",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 60,
+            duration: 1,
+            delay: 0.4,
+            ease: "power3.out"
+        });
+    </script>
 
     <footer class="bg-gray-900 text-white px-6 py-16">
         <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-start">
